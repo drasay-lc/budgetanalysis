@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lewis &amp; Clark Budget Analysis</title>
+<meta name="description" content="Animated views of Lewis & Clark College tuition, discounting, endowment and operating results from public filings, FY2000 to FY2025.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #F3F5F8; --panel: #FFFFFF; --ink: #17202A; --muted: #5A6675; --rule: #DEE3EA;
+  --gross: #4F63D2; --net: #0B8770; --aid: #C8760F; --endow: #A2449A;
+  --f-display: "Spectral", Georgia, "Times New Roman", serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0F141B; --panel: #161D26; --ink: #E6EBF1; --muted: #95A2B1; --rule: #2A3442;
+    --gross: #7685EE; --net: #22A07F; --aid: #C67C22; --endow: #C862B8; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 56rem; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 40px 56px; }
+.crumb { font-size: 13px; margin: 0 0 18px; }
+.crumb a { color: var(--muted); }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin: 0 0 6px; }
+h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; margin: 0 0 10px; text-wrap: balance; }
+.dek { color: var(--muted); max-width: 62ch; margin: 0 0 28px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: 16px; }
+.card { display: grid; gap: 10px; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px; color: inherit; text-decoration: none; transition: border-color .15s; }
+.card:hover { border-color: var(--muted); }
+.card:focus-visible { outline: 2px solid var(--gross); outline-offset: 2px; }
+.card h2 { font-family: var(--f-display); font-weight: 500; font-size: 24px; margin: 0; line-height: 1.2; }
+.card p { margin: 0; color: var(--muted); font-size: 14.5px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12.5px; color: var(--muted); }
+.chips span { display: inline-flex; align-items: center; gap: 6px; }
+.chips i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+.go { font-family: var(--f-data); font-size: 13px; color: var(--ink); }
+.notes { margin-top: 32px; border-top: 1px solid var(--rule); padding-top: 18px; font-size: 13.5px; color: var(--muted); max-width: 64ch; }
+.notes h3 { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); margin: 0 0 6px; }
+.notes p { margin: 0 0 8px; }
+.notes a { color: inherit; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <p class="eyebrow">Lewis &amp; Clark College · FY2000 to FY2025</p>
+  <h1>Budget Analysis</h1>
+  <p class="dek">Animated views of how the college pays its bills, built from public filings. Each one plays year by year, with a slider to stop on any year and a switch between inflation-adjusted and nominal dollars.</p>
+
+  <div class="cards">
+    <a class="card" href="discount-spiral/">
+      <h2>The Discount Spiral</h2>
+      <p>Gross tuition, net tuition, the discount rate and the audited operating result. List price nearly doubled after inflation while the money kept barely moved.</p>
+      <div class="chips"><span><i style="background: var(--gross)"></i>Gross</span><span><i style="background: var(--net)"></i>Net</span><span><i style="background: var(--aid)"></i>Discount</span></div>
+      <span class="go">Open animation →</span>
+    </a>
+  </div>
+
+  <section class="notes">
+    <h3>About the data</h3>
+    <p>Figures cover the whole college (the College of Arts &amp; Sciences, the Law School and the Graduate School), the only level at which operating results and the endowment are reported.</p>
+    <p>Sources: IPEDS finance survey; Form 990 returns, including Schedule D endowment detail; audited financial statements published on the college's <a href="https://www.lclark.edu/offices/business/required-reporting/">required reporting page</a>; BLS CPI-U for inflation.</p>
+  </section>
+</main>
+</body>
+</html>
