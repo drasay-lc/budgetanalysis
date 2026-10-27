@@ -1,0 +1,17 @@
+number,source,url
+1,"IPEDS Finance survey, Lewis & Clark College (unit ID 209056), FY2000 to FY2024: gross tuition and fees (rev_tuition_fees_gross), scholarship allowances against tuition (sch_allowances_tuition_fees) and net tuition (rev_tuition_fees_net). Retrieved through the Urban Institute Education Data API; the survey year is the fiscal year minus one (survey 2023 = FY2024).",https://educationdata.urban.org/api/v1/college-university/ipeds/finance/2023/?unitid=209056
+2,"Lewis & Clark College, audited financial statements, years ended May 31, 2025 and 2024: statement of activities (FY2025 tuition net of $98,998,984 in scholarships; operating revenue, expenses and result) and note 15 (tuition by program).",https://www.lclark.edu/live/files/37721-lewis-clark-college-2025-audfinalpdf
+3,"Single audit report with financial statements, FY2016 (statement of activities, FY2016 and FY2015). Federal Audit Clearinghouse.",https://app.fac.gov/dissemination/report/pdf/2016-05-CENSUS-0000116380
+4,"Single audit report with financial statements, FY2017. Federal Audit Clearinghouse.",https://app.fac.gov/dissemination/report/pdf/2017-05-CENSUS-0000116380
+5,"Single audit report with financial statements, FY2018. Federal Audit Clearinghouse.",https://app.fac.gov/dissemination/report/pdf/2018-05-CENSUS-0000116380
+6,"Single audit report with financial statements, FY2019. Federal Audit Clearinghouse.",https://app.fac.gov/dissemination/report/pdf/2019-05-CENSUS-0000116380
+7,"Single audit report with financial statements, FY2020. Federal Audit Clearinghouse.",https://app.fac.gov/dissemination/report/pdf/2020-05-CENSUS-0000116380
+8,"Lewis & Clark College, audited financial statements, FY2021.",https://www.lclark.edu/live/files/32441-audited-financial-statements-5-31-21-fs-finalpdf
+9,"Lewis & Clark College, audited financial statements, FY2022.",https://www.lclark.edu/live/files/33938-lewis-and-clark-college-fs-finalpdf
+10,"Lewis & Clark College, audited financial statements, FY2023.",https://www.lclark.edu/live/files/35274-lcc-issued-financial-statementspdf
+11,"Lewis & Clark College, audited financial statements, FY2024.",https://www.lclark.edu/live/files/36692-2024-audited-financial-statement
+12,"Lewis & Clark College of Arts & Sciences, CAS Trends factbook, AY 2025-26 (October 2025): ""10-Year History - Retention and Graduation Rates of First-Time, First-Year Cohorts,"" fall 2015 to fall 2024 cohorts.",https://www.lclark.edu/live/files/37566-ay-25-26-cas-trends-
+13,"Lewis & Clark College, Common Data Set 2015-16, item B22 (retention of the fall 2014 first-year class: 83.13%).",https://www.lclark.edu/live/files/37625-2015-2016-cds-lcpdf
+14,"IPEDS Fall Enrollment survey, first-time first-year undergraduates, fall 1999 to fall 2014 (unit ID 209056), retrieved through the Urban Institute Education Data API.",https://educationdata.urban.org/documentation/colleges.html
+15,"U.S. Bureau of Labor Statistics, CPI-U, U.S. city average, all items, not seasonally adjusted (series CUUR0000SA0), annual averages. The 2025 value is approximate.",https://data.bls.gov/timeseries/CUUR0000SA0
+16,"Lewis & Clark Business Office, Required Reporting (index of audited statements and Form 990s).",https://www.lclark.edu/offices/business/required-reporting/
