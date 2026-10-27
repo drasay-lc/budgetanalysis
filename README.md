@@ -1,12 +1,13 @@
 # Lewis & Clark budget analysis
 
-Animated views of Lewis & Clark College tuition, discounting and operating results, FY2000 to FY2025, built from public filings (IPEDS, Form 990s including Schedule D, and audited financial statements). Published with GitHub Pages from the `main` branch.
+Animated views of Lewis & Clark College tuition, discounting, operating results and first-year retention, FY2000 to FY2025, built from public sources (IPEDS, audited financial statements, and the college's CAS Trends factbook and Common Data Sets). Published with GitHub Pages from the `main` branch.
 
 Site: https://drasay-lc.github.io/budgetanalysis/
 
 | Folder | Page |
 | --- | --- |
 | `discount-spiral/` | [The Discount Spiral](https://drasay-lc.github.io/budgetanalysis/discount-spiral/): gross and net tuition, the discount rate and the audited operating result. |
+| `spiral-students/` | [The Spiral and the Students](https://drasay-lc.github.io/budgetanalysis/spiral-students/): the same measures plus each CAS entering first-year class and its second-year retention, as points. |
 
 ## Adding a page
 

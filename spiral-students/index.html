@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<style>body { margin: 0; }</style>
+<title>Spiral and Students</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one stage card. Wide chart on the left, a live ledger on the right; a transport bar under both. Stacks to one column on phones. */
+:root {
+  --bg: #F3F5F8;
+  --panel: #FFFFFF;
+  --ink: #17202A;
+  --muted: #5A6675;
+  --rule: #DEE3EA;
+  --grid: #E9EDF2;
+  --gross: #4F63D2;
+  --net: #0B8770;
+  --aid: #C8760F;
+  --aid-fill: rgba(200, 118, 15, 0.16);
+  --surplus: #3E4C5C;
+  --class: #3E4C5C;
+  --ret: #A2449A;
+  --deficit: #B23A3A;
+  --focus: #4F63D2;
+  --f-display: "Spectral", Georgia, "Times New Roman", serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F141B; --panel: #161D26; --ink: #E6EBF1; --muted: #95A2B1; --rule: #2A3442; --grid: #212A36;
+    --gross: #7685EE; --net: #22A07F; --aid: #C67C22; --aid-fill: rgba(198, 124, 34, 0.22);
+    --surplus: #A9B6C6; --deficit: #E0736A; --focus: #7685EE; --class: #A9B6C6; --ret: #C862B8; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F141B; --panel: #161D26; --ink: #E6EBF1; --muted: #95A2B1; --rule: #2A3442; --grid: #212A36;
+  --gross: #7685EE; --net: #22A07F; --aid: #C67C22; --aid-fill: rgba(198, 124, 34, 0.22);
+  --surplus: #A9B6C6; --deficit: #E0736A; --focus: #7685EE; --class: #A9B6C6; --ret: #C862B8; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 72rem; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 28px 48px; }
+header { display: grid; gap: 6px; margin-bottom: 20px; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(28px, 4.2vw, 40px); line-height: 1.1; margin: 0; text-wrap: balance; }
+.dek { color: var(--muted); max-width: 62ch; margin: 0; }
+
+.stage { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: clamp(14px, 2.4vw, 24px); display: grid; gap: 18px; }
+.stage-grid { display: grid; grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 860px) { .stage-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.chart-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 16px; margin-bottom: 6px; }
+.chart-title { font-weight: 600; font-size: 15px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw-line { width: 16px; height: 3px; border-radius: 2px; display: inline-block; }
+.sw-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.sw-fill { width: 14px; height: 10px; border-radius: 2px; display: inline-block; background: var(--aid-fill); border: 1px solid var(--aid); }
+#main { position: relative; min-height: 340px; }
+#main svg, #ops svg, #stu svg { display: block; width: 100%; overflow: visible; }
+.axis text, .lbl { font-family: var(--f-data); font-size: 11px; fill: var(--muted); }
+.lbl-strong { font-family: var(--f-data); font-size: 12px; font-weight: 500; }
+.lbl-aid { font-family: var(--f-body); font-size: 12px; font-weight: 600; fill: var(--aid); }
+.ev { cursor: pointer; }
+.ev:focus-visible circle { stroke: var(--focus); stroke-width: 3; }
+
+.ledger { display: grid; gap: 14px; }
+.year { font-family: var(--f-display); font-size: clamp(44px, 6vw, 60px); line-height: 1; font-weight: 400; font-variant-numeric: tabular-nums; }
+.year small { font-family: var(--f-body); font-size: 13px; color: var(--muted); display: block; margin-top: 6px; letter-spacing: .02em; }
+.readouts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+.ro { display: grid; gap: 1px; padding-top: 8px; border-top: 2px solid var(--rule); min-width: 0; }
+.ro .k { font-size: 12px; color: var(--muted); }
+.ro .v { font-family: var(--f-data); font-size: 20px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.ro.gross { border-top-color: var(--gross); }
+.ro.net { border-top-color: var(--net); }
+.ro.aid { border-top-color: var(--aid); }
+.ro.disc { border-top-color: var(--aid); }
+.ro.disc .v { color: var(--aid); }
+.ro.cls { border-top-color: var(--class); }
+.ro.ret { border-top-color: var(--ret); }
+.ro.ret .v { color: var(--ret); }
+.ro .v small { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: 4px; }
+#stu { position: relative; margin-top: 18px; min-height: 260px; }
+.stu-title { font-weight: 600; font-size: 15px; margin: 18px 0 2px; }
+.stu-note { font-size: 12.5px; color: var(--muted); margin: 0; }
+
+.gauge { display: flex; align-items: center; gap: 14px; }
+.gauge svg { width: 92px; height: 92px; flex: none; }
+.gauge p { margin: 0; font-size: 13px; color: var(--muted); }
+.gauge p b { color: var(--ink); font-weight: 600; font-family: var(--f-data); }
+
+.ops-card { border-top: 1px solid var(--rule); padding-top: 12px; display: grid; gap: 6px; }
+.ops-title { font-weight: 600; font-size: 14px; }
+.ops-note { font-size: 12px; color: var(--muted); margin: 0; }
+#ops { position: relative; min-height: 150px; }
+
+.caption { display: flex; align-items: baseline; gap: 6px 14px; flex-wrap: wrap; min-height: calc(3 * 1.3em); font-family: var(--f-display); font-size: clamp(21px, 2.7vw, 28px); line-height: 1.3; margin: 0; padding-bottom: 14px; border-bottom: 1px solid var(--rule); text-wrap: pretty; }
+.caption .cy { flex: none; font-family: var(--f-data); font-size: clamp(16px, 1.9vw, 20px); font-weight: 600; color: var(--panel); background: var(--ink); border-radius: 6px; padding: 2px 10px; line-height: 1.4; font-variant-numeric: tabular-nums; }
+.caption .ct { flex: 1 1 20ch; min-width: 0; max-width: 60ch; }
+@media (max-width: 560px) { .caption { min-height: calc(5 * 1.3em); } }
+
+.transport { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; border-top: 1px solid var(--rule); padding-top: 14px; }
+button, select { font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 7px 12px; cursor: pointer; }
+button:hover, select:hover { border-color: var(--muted); }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+#play { background: var(--ink); color: var(--panel); border-color: var(--ink); font-weight: 600; min-width: 7.5rem; display: inline-flex; align-items: center; gap: 8px; justify-content: center; }
+#play svg { width: 12px; height: 12px; fill: currentColor; }
+.scrub { flex: 1 1 14rem; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.scrub input { flex: 1; min-width: 0; accent-color: var(--ink); }
+.scrub output { font-family: var(--f-data); font-size: 13px; color: var(--muted); min-width: 4.5ch; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.seg button { border: 0; border-radius: 0; padding: 7px 10px; font-size: 13px; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--panel); }
+
+.notes { margin-top: 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 18px 28px; font-size: 13px; color: var(--muted); }
+.notes h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); margin: 0 0 6px; font-weight: 600; }
+.notes p, .notes ul { margin: 0 0 6px; }
+.notes ul { padding-left: 1.1em; }
+.notes a { color: inherit; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+
+<div class="wrap">
+  <p style="margin:0 0 14px;font-size:13px"><a href="../" style="color:var(--muted)">← Budget analysis</a></p>
+  <header>
+    <div class="eyebrow">Lewis &amp; Clark College · FY2000 to FY2025</div>
+    <h1>The Spiral and the Students</h1>
+    <p class="dek">List-price tuition nearly doubled after inflation while the money the college keeps barely moved. Below the money, each point is an entering first-year class and the share of it that came back for a second year. Press play to see whether the rising aid bought bigger classes or better retention.</p>
+  </header>
+
+  <section class="stage" aria-label="Animated tuition chart">
+    <p class="caption" id="caption" aria-live="polite"></p>
+
+    <div class="stage-grid">
+      <div>
+        <div class="chart-head">
+          <div class="chart-title" id="chart-title">Tuition and fees, $M</div>
+          <div class="legend" aria-hidden="true">
+            <span><i class="sw-line" style="background: var(--gross)"></i>Gross (list price)</span>
+            <span><i class="sw-fill"></i>Scholarships</span>
+            <span><i class="sw-line" style="background: var(--net)"></i>Net (kept)</span>
+          </div>
+        </div>
+        <div id="main" role="img" aria-labelledby="chart-title"></div>
+        <div class="stu-title" id="stu-title">Entering first-year classes (CAS)</div>
+        <p class="stu-note">One point per entering class, placed in the fiscal year the class started. Retention is the share that enrolled again the next fall.</p>
+        <div class="legend" aria-hidden="true" style="margin-top:6px">
+          <span><i class="sw-dot" style="background: var(--class)"></i>First-year class, students</span>
+          <span><i class="sw-dot" style="background: var(--ret)"></i>Returned for year two, % of class</span>
+        </div>
+        <div id="stu" role="img" aria-labelledby="stu-title"></div>
+      </div>
+
+      <aside class="ledger" aria-live="polite">
+        <div class="year" id="year">FY2025<small id="year-sub">Fiscal year ending May 31</small></div>
+        <div class="readouts">
+          <div class="ro gross"><span class="k">Gross tuition</span><span class="v" id="v-gross">—</span></div>
+          <div class="ro net"><span class="k">Net tuition</span><span class="v" id="v-net">—</span></div>
+          <div class="ro aid"><span class="k">Scholarships</span><span class="v" id="v-aid">—</span></div>
+          <div class="ro disc"><span class="k">Discount rate</span><span class="v" id="v-disc">—</span></div>
+          <div class="ro cls"><span class="k">First-year class</span><span class="v" id="v-cls">—</span></div>
+          <div class="ro ret"><span class="k">Returned for year two</span><span class="v" id="v-ret">—</span></div>
+        </div>
+        <div class="gauge">
+          <svg viewBox="0 0 92 92" aria-hidden="true">
+            <circle cx="46" cy="46" r="38" fill="none" stroke="var(--grid)" stroke-width="10"></circle>
+            <circle id="ring" cx="46" cy="46" r="38" fill="none" stroke="var(--aid)" stroke-width="10" stroke-linecap="round" transform="rotate(-90 46 46)" stroke-dasharray="0 999"></circle>
+            <text id="ring-t" x="46" y="51" text-anchor="middle" style="font-family: var(--f-data); font-size: 15px; font-weight: 500; fill: var(--ink)">—</text>
+          </svg>
+          <p>Of every <b>$100</b> of list tuition, the college keeps <b id="keep">—</b> and gives back <b id="give">—</b> as aid.</p>
+        </div>
+        <div class="ops-card">
+          <div class="ops-title">Net operating result, $M</div>
+          <p class="ops-note">Audited change in net assets from operations, the nonprofit version of net profit. Available from FY2015.</p>
+          <div id="ops" role="img" aria-label="Operating surplus or deficit by year, FY2015 to FY2025"></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="transport">
+      <button id="play" type="button" aria-label="Play"><svg viewBox="0 0 12 12" id="play-ico"><path d="M2 1 L11 6 L2 11 Z"></path></svg><span id="play-t">Play</span></button>
+      <button id="restart" type="button">Restart</button>
+      <div class="scrub">
+        <label for="t" class="sr-only">Year</label>
+        <input id="t" type="range" min="2000" max="2025" step="0.01" value="2025">
+        <output id="t-out" for="t">FY2025</output>
+      </div>
+      <label for="speed" class="sr-only">Speed</label>
+      <select id="speed">
+        <option value="0.6">Slow</option>
+        <option value="1" selected>Normal</option>
+        <option value="2">Fast</option>
+      </select>
+      <div class="seg" role="group" aria-label="Dollars">
+        <button type="button" id="m-real" aria-pressed="true">FY2025 dollars</button>
+        <button type="button" id="m-nom" aria-pressed="false">Nominal</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="notes">
+    <div>
+      <h2>What the measures mean</h2>
+      <p><b>Gross tuition</b> is list-price tuition and fees for every student. <b>Scholarships</b> are the college's own aid, booked as a discount. <b>Net tuition</b> is what is left. The <b>discount rate</b> is scholarships divided by gross tuition.</p>
+      <p><b>Net operating result</b> is the audited change in net assets from operating activities. It leaves out investment gains and gifts for buildings, so it is the closest thing a nonprofit has to operating profit.</p>
+      <p><b>First-year class</b> is the number of first-time, first-year CAS students who started in the fall that opens the fiscal year (fall 2024 is FY2025). <b>Returned for year two</b> is the share of that class enrolled again the following fall.</p>
+    </div>
+    <div>
+      <h2>Scope and caveats</h2>
+      <ul>
+        <li>College-wide: CAS, Law and the Graduate School together, the only level where an operating result is reported. CAS alone ran a 63% discount in FY2025 (audited note 15).</li>
+        <li>FY2021 and FY2022 results were lifted by pandemic spending cuts and federal grants (a peak of $7.0M in FY2022).</li>
+        <li>Inflation uses CPI-U, fiscal-year weighted; the 2025 index is approximate.</li>
+        <li>Tuition and the operating result cover the whole college; the student points cover CAS only, the undergraduate school.</li>
+        <li>Class sizes for FY2016 to FY2025 are the factbook's retention cohorts, which can differ by a few students from federal counts. Earlier years use federal (IPEDS) first-time enrollment.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Sources</h2>
+      <ul>
+        <li>IPEDS finance survey, FY2000 to FY2024 (gross and net tuition, scholarship allowances), unit ID 209056.</li>
+        <li>Audited financial statements and single audits, FY2015 to FY2025 (operating results; FY2025 tuition). <a href="https://www.lclark.edu/offices/business/required-reporting/" target="_blank" rel="noopener">lclark.edu required reporting</a></li>
+        <li>Lewis &amp; Clark CAS Trends factbook, AY 2025-26: entering cohorts and second-year retention, fall 2015 to fall 2024 classes.</li>
+        <li>Common Data Set 2015-16 (B22): retention for the fall 2014 class. IPEDS fall enrollment: first-time students, fall 1999 to fall 2014.</li>
+        <li>BLS CPI-U, series CUUR0000SA0.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  const DATA = [{"fy":2000,"gross":58.18,"net":43.49,"gross_r":109.22,"net_r":81.65,"disc":25.2,"fyc":512},{"fy":2001,"gross":59.95,"net":46.28,"gross_r":109.13,"net_r":84.24,"disc":22.8,"fyc":429},{"fy":2002,"gross":61.15,"net":46.9,"gross_r":108.79,"net_r":83.43,"disc":23.3,"fyc":416},{"fy":2003,"gross":66.51,"net":49.01,"gross_r":116.14,"net_r":85.58,"disc":26.3,"fyc":504},{"fy":2004,"gross":70.61,"net":51.7,"gross_r":120.38,"net_r":88.14,"disc":26.8,"fyc":493},{"fy":2005,"gross":77.95,"net":56.17,"gross_r":129.04,"net_r":93.0,"disc":27.9,"fyc":537},{"fy":2006,"gross":84.61,"net":62.12,"gross_r":135.58,"net_r":99.54,"disc":26.6,"fyc":490},{"fy":2007,"gross":89.5,"net":65.27,"gross_r":139.15,"net_r":101.48,"disc":27.1,"fyc":509},{"fy":2008,"gross":95.33,"net":70.75,"gross_r":143.51,"net_r":106.52,"disc":25.8,"fyc":507},{"fy":2009,"gross":99.54,"net":74.2,"gross_r":146.84,"net_r":109.47,"disc":25.5,"fyc":533},{"fy":2010,"gross":104.78,"net":75.98,"gross_r":153.84,"net_r":111.56,"disc":27.5,"fyc":498},{"fy":2011,"gross":111.14,"net":79.05,"gross_r":159.54,"net_r":113.48,"disc":28.9,"fyc":493},{"fy":2012,"gross":119.82,"net":82.11,"gross_r":167.49,"net_r":114.78,"disc":31.5,"fyc":607},{"fy":2013,"gross":124.95,"net":84.56,"gross_r":171.56,"net_r":116.1,"disc":32.3,"fyc":552},{"fy":2014,"gross":123.24,"net":81.17,"gross_r":166.65,"net_r":109.77,"disc":34.1,"fyc":473},{"fy":2015,"gross":128.62,"net":81.8,"gross_r":172.22,"net_r":109.53,"disc":36.4,"op":-3.68,"op_r":-4.92,"margin":-3.1,"fyc":563,"ret":83.1},{"fy":2016,"gross":133.94,"net":82.19,"gross_r":178.29,"net_r":109.41,"disc":38.6,"op":-2.37,"op_r":-3.15,"margin":-2.0,"fyc":654,"retn":553,"ret":84.6},{"fy":2017,"gross":136.39,"net":82.22,"gross_r":178.65,"net_r":107.69,"disc":39.7,"op":0.69,"op_r":0.9,"margin":0.6,"fyc":506,"retn":418,"ret":82.6},{"fy":2018,"gross":139.25,"net":81.72,"gross_r":178.36,"net_r":104.67,"disc":41.3,"op":1.34,"op_r":1.71,"margin":1.1,"fyc":525,"retn":428,"ret":81.5},{"fy":2019,"gross":142.51,"net":81.64,"gross_r":178.65,"net_r":102.34,"disc":42.7,"op":3.3,"op_r":4.13,"margin":2.6,"fyc":562,"retn":483,"ret":85.9},{"fy":2020,"gross":143.15,"net":79.62,"gross_r":176.67,"net_r":98.27,"disc":44.4,"op":2.73,"op_r":3.37,"margin":2.2,"fyc":507,"retn":398,"ret":78.5},{"fy":2021,"gross":143.39,"net":75.99,"gross_r":172.34,"net_r":91.33,"disc":47.0,"op":8.09,"op_r":9.72,"margin":6.7,"fyc":510,"retn":440,"ret":86.3},{"fy":2022,"gross":168.16,"net":85.09,"gross_r":190.47,"net_r":96.38,"disc":49.4,"op":14.64,"op_r":16.58,"margin":10.6,"fyc":677,"retn":583,"ret":86.1},{"fy":2023,"gross":178.1,"net":88.33,"gross_r":189.75,"net_r":94.11,"disc":50.4,"op":7.05,"op_r":7.51,"margin":5.0,"fyc":623,"retn":508,"ret":81.5},{"fy":2024,"gross":182.47,"net":88.41,"gross_r":187.62,"net_r":90.9,"disc":51.6,"op":8.55,"op_r":8.79,"margin":5.7,"fyc":553,"retn":476,"ret":86.1},{"fy":2025,"gross":184.48,"net":85.48,"gross_r":184.48,"net_r":85.48,"disc":53.7,"op":1.35,"op_r":1.35,"margin":0.9,"fyc":482,"retn":400,"ret":83.0}];
+
+  const NOTES = {
+    2000: "The starting line. Scholarships take about a quarter of list tuition.",
+    2001: "The low point for discounting: 23%. Of every $100 of list price, the college keeps $77.",
+    2009: "Great Recession. The endowment loses about 28% of its value in a year, yet the discount barely moves.",
+    2011: "The discount starts a climb it never comes back from.",
+    2013: "Net tuition peaks after inflation. From here, list price keeps rising but the money kept does not.",
+    2014: "The entering class shrinks to 473, the smallest since FY2002, even as the discount keeps climbing.",
+    2015: "The first audited operating result in this series is a deficit. 83% of the entering class returns for a second year.",
+    2016: "A big entering class of 654, but it does not last: the next four classes are all smaller.",
+    2017: "The operating result turns back to a thin surplus.",
+    2019: "The college now gives back 43 cents of every list-price dollar.",
+    2020: "Only 78.5% of this class returns for a second year, the lowest in the series. Their second year is the pandemic fall of 2020.",
+    2021: "Pandemic year. Total CAS enrollment hits bottom, spending is cut 7%, and the operating surplus jumps.",
+    2022: "The largest entering class in the series, 677 students, and 86% of them return. Most of the jump in gross tuition still goes back out as aid.",
+    2024: "The discount passes 50%. More than half of list tuition now goes back as aid.",
+    2025: "Scholarships reach $99M, yet the entering class falls to 482, the smallest since FY2014. Retention holds at 83%, and the operating margin shrinks to 0.9%."
+  };
+  const EVENTS = Object.keys(NOTES).map(Number).filter(y => y > 2000);
+
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let mode = "real";       // "real" | "nom"
+  let t = 2025;            // current time (fractional fiscal year)
+  let playing = false, last = 0, raf = 0, stepAcc = 0;
+
+  const $ = (id) => document.getElementById(id);
+  const fmtM = (v) => "$" + d3.format(".1f")(v) + "M";
+  const fmtSigned = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + "$" + d3.format(".1f")(Math.abs(v)) + "M";
+  const g = (r) => mode === "real" ? r.gross_r : r.gross;
+  const n = (r) => mode === "real" ? r.net_r : r.net;
+  const o = (r) => mode === "real" ? r.op_r : r.op;
+
+  // value at fractional time
+  function at(time) {
+    const i = Math.max(0, Math.min(DATA.length - 2, Math.floor(time - 2000)));
+    const a = DATA[i], b = DATA[i + 1];
+    const f = Math.max(0, Math.min(1, time - a.fy));
+    const lerp = (x, y) => x + (y - x) * f;
+    if (time >= 2025) return { fy: time, gross: g(DATA[DATA.length - 1]), net: n(DATA[DATA.length - 1]) };
+    return { fy: time, gross: lerp(g(a), g(b)), net: lerp(n(a), n(b)) };
+  }
+  function visible(time) {
+    const pts = DATA.filter(r => r.fy <= time).map(r => ({ fy: r.fy, gross: g(r), net: n(r) }));
+    if (time < 2025 && time > Math.floor(time)) pts.push(at(time));
+    return pts;
+  }
+
+  // ---------- main chart ----------
+  let M = null;
+  function buildMain() {
+    const el = $("main");
+    el.textContent = "";
+    const W = Math.max(300, el.clientWidth);
+    const H = Math.round(Math.max(300, Math.min(470, W * 0.68)));
+    const narrow = W < 520;
+    const m = { t: 14, r: narrow ? 64 : 96, b: 30, l: 44 };
+    const x = d3.scaleLinear([2000, 2025], [m.l, W - m.r]);
+    const y = d3.scaleLinear([0, 200], [H - m.b, m.t]);
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const grid = svg.append("g");
+    y.ticks(4).forEach(v => {
+      grid.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", "var(--grid)").attr("stroke-width", 1);
+      grid.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text("$" + v + (v === 200 ? "M" : ""));
+    });
+    svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(0)).attr("y2", y(0)).attr("stroke", "var(--muted)").attr("stroke-width", 1);
+    const xt = narrow ? [2000, 2010, 2020, 2025] : [2000, 2005, 2010, 2015, 2020, 2025];
+    xt.forEach(v => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - m.b + 18).attr("text-anchor", "middle").text("FY" + String(v).slice(2)));
+    // event markers on the baseline
+    const evg = svg.append("g");
+    EVENTS.forEach(yr => {
+      const gEv = evg.append("g").attr("class", "ev").attr("tabindex", 0).attr("role", "button").attr("aria-label", "Jump to FY" + yr)
+        .on("click", () => jump(yr)).on("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); jump(yr); } });
+      gEv.append("circle").attr("cx", x(yr)).attr("cy", y(0)).attr("r", 9).attr("fill", "transparent");
+      gEv.append("circle").attr("class", "evdot").attr("cx", x(yr)).attr("cy", y(0)).attr("r", 3.5).attr("fill", "var(--panel)").attr("stroke", "var(--muted)").attr("stroke-width", 1.5);
+    });
+    const area = svg.append("path").attr("fill", "var(--aid-fill)");
+    const lg = svg.append("path").attr("fill", "none").attr("stroke", "var(--gross)").attr("stroke-width", 2.5).attr("stroke-linejoin", "round").attr("stroke-linecap", "round");
+    const ln = svg.append("path").attr("fill", "none").attr("stroke", "var(--net)").attr("stroke-width", 2.5).attr("stroke-linejoin", "round").attr("stroke-linecap", "round");
+    const now = svg.append("line").attr("stroke", "var(--rule)").attr("stroke-width", 1);
+    const aidLbl = svg.append("text").attr("class", "lbl-aid").attr("text-anchor", "middle");
+    const dg = svg.append("circle").attr("r", 5).attr("fill", "var(--gross)").attr("stroke", "var(--panel)").attr("stroke-width", 2);
+    const dn = svg.append("circle").attr("r", 5).attr("fill", "var(--net)").attr("stroke", "var(--panel)").attr("stroke-width", 2);
+    const tg = svg.append("text").attr("class", "lbl-strong").attr("fill", "var(--gross)");
+    const tn = svg.append("text").attr("class", "lbl-strong").attr("fill", "var(--net)");
+    M = { W, H, m, x, y, svg, area, lg, ln, now, aidLbl, dg, dn, tg, tn, narrow };
+  }
+  function drawMain() {
+    if (!M) return;
+    const { x, y, m, H } = M;
+    const pts = visible(t);
+    const line = (k) => d3.line().x(d => x(d.fy)).y(d => y(d[k]))(pts);
+    M.lg.attr("d", pts.length > 1 ? line("gross") : null);
+    M.ln.attr("d", pts.length > 1 ? line("net") : null);
+    M.area.attr("d", pts.length > 1 ? d3.area().x(d => x(d.fy)).y0(d => y(d.net)).y1(d => y(d.gross))(pts) : null);
+    const cur = at(t);
+    const cx = x(Math.min(t, 2025));
+    M.now.attr("x1", cx).attr("x2", cx).attr("y1", m.t).attr("y2", H - m.b).attr("opacity", t < 2025 ? 1 : 0);
+    M.dg.attr("cx", cx).attr("cy", y(cur.gross));
+    M.dn.attr("cx", cx).attr("cy", y(cur.net));
+    let yg = y(cur.gross), yn = y(cur.net);
+    if (yn - yg < 18) { const mid = (yg + yn) / 2; yg = mid - 9; yn = mid + 9; }
+    M.tg.attr("x", cx + 10).attr("y", yg).attr("dy", "0.35em").text(fmtM(cur.gross));
+    M.tn.attr("x", cx + 10).attr("y", yn).attr("dy", "0.35em").text(fmtM(cur.net));
+    // aid label in the gap, a little behind the leading edge
+    const lagT = Math.max(2000, t - (M.narrow ? 4 : 3));
+    const lag = at(lagT);
+    const gap = y(lag.net) - y(lag.gross);
+    if (t >= 2004 && gap > 26) {
+      M.aidLbl.attr("x", x(lagT)).attr("y", (y(lag.net) + y(lag.gross)) / 2).attr("dy", "0.35em").attr("opacity", 1).text("Scholarships");
+    } else M.aidLbl.attr("opacity", 0);
+  }
+
+
+  // ---------- entering classes: points on a shared timeline ----------
+  let SV = null;
+  const STU = DATA.filter(r => r.fyc != null);
+  function buildStu() {
+    const el = $("stu");
+    el.textContent = "";
+    const W = Math.max(300, el.clientWidth);
+    const narrow = W < 520;
+    const m = { r: narrow ? 64 : 96, l: 44 };
+    const hA = 120, hB = 96, gap = 34;
+    const A = { top: 16, bot: 16 + hA }, B = { top: 16 + hA + gap, bot: 16 + hA + gap + hB };
+    const H = B.bot + 30;
+    const x = d3.scaleLinear([2000, 2025], [m.l, W - m.r]);
+    const yA = d3.scaleLinear([300, 750], [A.bot, A.top]);
+    const yB = d3.scaleLinear([70, 95], [B.bot, B.top]);
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const grid = (p, y, ticks, fmt, label) => {
+      ticks.forEach(v => {
+        svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", "var(--grid)").attr("stroke-width", 1);
+        svg.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text(fmt(v));
+      });
+      svg.append("text").attr("class", "lbl").attr("x", m.l).attr("y", p.top - 6).text(label);
+    };
+    grid(A, yA, [300, 450, 600, 750], d3.format(","), "First-year class, students");
+    grid(B, yB, [70, 80, 90], v => v + "%", "Returned for year two");
+    const xt = narrow ? [2000, 2010, 2020, 2025] : [2000, 2005, 2010, 2015, 2020, 2025];
+    xt.forEach(v => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", B.bot + 20).attr("text-anchor", "middle").text("FY" + String(v).slice(2)));
+    const waitB = svg.append("text").attr("class", "lbl").attr("x", (x(2000) + x(2015)) / 2).attr("y", (B.top + B.bot) / 2).attr("dy", "0.35em").attr("text-anchor", "middle").text("Retention data start with the FY2015 class");
+    const now = svg.append("line").attr("y1", A.top).attr("y2", B.bot).attr("stroke", "var(--rule)").attr("stroke-width", 1);
+    const dA = svg.append("g").selectAll("circle").data(STU).join("circle").attr("cx", d => x(d.fy)).attr("cy", d => yA(d.fyc)).attr("fill", "var(--class)").attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
+    const RET = STU.filter(d => d.ret != null);
+    const dB = svg.append("g").selectAll("circle").data(RET).join("circle").attr("cx", d => x(d.fy)).attr("cy", d => yB(d.ret)).attr("fill", "var(--ret)").attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
+    const lA = svg.append("text").attr("class", "lbl-strong").attr("fill", "var(--ink)");
+    const lB = svg.append("text").attr("class", "lbl-strong").attr("fill", "var(--ret)");
+    SV = { x, yA, yB, A, B, dA, dB, lA, lB, now, waitB, W, m };
+  }
+  function drawStu() {
+    if (!SV) return;
+    const cy = Math.max(2000, Math.min(2025, Math.floor(t)));
+    // a point pops in as the playhead reaches its year, then settles to a smaller size
+    const r = (d) => {
+      if (t < d.fy - 0.25) return 0;
+      if (d.fy === cy) return 6.5;
+      return Math.min(4.5, 4.5 * (t - (d.fy - 0.25)) / 0.25);
+    };
+    SV.dA.attr("r", r).attr("opacity", d => d.fy === cy ? 1 : 0.7);
+    SV.dB.attr("r", r).attr("opacity", d => d.fy === cy ? 1 : 0.7);
+    SV.waitB.attr("opacity", t < 2014.6 ? 1 : 0);
+    const cx = SV.x(Math.min(t, 2025));
+    SV.now.attr("x1", cx).attr("x2", cx).attr("opacity", t < 2025 ? 1 : 0);
+    const row = STU.find(d => d.fy === cy);
+    const lx = SV.x(cy) + 11;
+    if (row && t >= cy) {
+      SV.lA.attr("opacity", 1).attr("x", lx).attr("y", SV.yA(row.fyc)).attr("dy", "0.35em").text(d3.format(",")(row.fyc));
+    } else SV.lA.attr("opacity", 0);
+    if (row && row.ret != null && t >= cy) {
+      SV.lB.attr("opacity", 1).attr("x", lx).attr("y", SV.yB(row.ret)).attr("dy", "0.35em").text(d3.format(".1f")(row.ret) + "%");
+    } else SV.lB.attr("opacity", 0);
+  }
+
+  // ---------- operating result bars ----------
+  let O = null;
+  const OPS = DATA.filter(r => r.op != null);
+  function buildOps() {
+    const el = $("ops");
+    el.textContent = "";
+    const W = Math.max(220, el.clientWidth), H = 150;
+    const m = { t: 18, r: 6, b: 22, l: 6 };
+    const x = d3.scaleBand(OPS.map(r => r.fy), [m.l, W - m.r]).padding(0.28);
+    const y = d3.scaleLinear([-6, 18], [H - m.b, m.t]);
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(0)).attr("y2", y(0)).attr("stroke", "var(--muted)").attr("stroke-width", 1);
+    [2015, 2020, 2025].forEach(v => svg.append("text").attr("class", "lbl").attr("x", x(v) + x.bandwidth() / 2).attr("y", H - 4).attr("text-anchor", "middle").text("FY" + String(v).slice(2)));
+    const bars = svg.append("g").selectAll("rect").data(OPS).join("rect").attr("x", d => x(d.fy)).attr("width", x.bandwidth()).attr("rx", Math.min(3, x.bandwidth() / 2));
+    const val = svg.append("text").attr("class", "lbl-strong").attr("text-anchor", "middle");
+    const wait = svg.append("text").attr("class", "lbl").attr("x", W / 2).attr("y", y(6)).attr("text-anchor", "middle").text("Audited results start in FY2015");
+    O = { x, y, bars, val, wait, W };
+  }
+  function drawOps() {
+    if (!O) return;
+    const { x, y } = O;
+    O.bars.each(function (d) {
+      const grow = Math.max(0, Math.min(1, (t - d.fy) / 0.6 + 1)); // bar grows during the last 0.6 of the run-up to its year
+      const v = o(d) * (t >= d.fy ? 1 : (t > d.fy - 0.6 ? grow : 0));
+      const y0 = y(0), y1 = y(v);
+      d3.select(this).attr("y", Math.min(y0, y1)).attr("height", Math.abs(y1 - y0)).attr("fill", o(d) < 0 ? "var(--deficit)" : "var(--surplus)")
+        .attr("opacity", Math.floor(t) === d.fy || t >= 2025 && d.fy === 2025 ? 1 : 0.55);
+    });
+    O.wait.attr("opacity", t < 2014.4 ? 1 : 0);
+    const cy = Math.max(2000, Math.min(2025, Math.floor(t)));
+    const cur = OPS.find(r => r.fy === cy);
+    if (cur) {
+      const v = o(cur);
+      O.val.attr("x", x(cur.fy) + x.bandwidth() / 2).attr("y", v >= 0 ? y(v) - 6 : y(v) + 13).attr("fill", v < 0 ? "var(--deficit)" : "var(--ink)").attr("opacity", 1).text(fmtSigned(v));
+      // keep label inside the box
+      const node = O.val.node(); const bb = node.getBBox();
+      if (bb.x < 0) O.val.attr("x", bb.width / 2 + 2); else if (bb.x + bb.width > O.W) O.val.attr("x", O.W - bb.width / 2 - 2);
+    } else O.val.attr("opacity", 0);
+  }
+
+  // ---------- ledger + caption ----------
+  function drawLedger() {
+    const cy = Math.max(2000, Math.min(2025, Math.floor(t)));
+    const row = DATA.find(r => r.fy === cy);
+    const cur = at(t);
+    $("year").firstChild.nodeValue = "FY" + cy;
+    $("year-sub").textContent = "Year ending May 31, " + cy + (mode === "real" ? " · FY2025 dollars" : " · nominal dollars");
+    $("v-gross").textContent = fmtM(cur.gross);
+    $("v-net").textContent = fmtM(cur.net);
+    $("v-aid").textContent = fmtM(cur.gross - cur.net);
+    const disc = 100 * (cur.gross - cur.net) / cur.gross;
+    $("v-disc").textContent = d3.format(".1f")(disc) + "%";
+    const C = 2 * Math.PI * 38;
+    $("ring").setAttribute("stroke-dasharray", (C * disc / 100).toFixed(1) + " " + C.toFixed(1));
+    $("ring-t").textContent = d3.format(".0f")(disc) + "%";
+    $("keep").textContent = "$" + d3.format(".0f")(100 - disc);
+    $("give").textContent = "$" + d3.format(".0f")(disc);
+    $("v-cls").textContent = row.fyc != null ? d3.format(",")(row.fyc) : "\u2014";
+    const vr = $("v-ret");
+    if (row.ret != null) {
+      vr.textContent = d3.format(".1f")(row.ret) + "%";
+      if (row.retn != null) { const sm = document.createElement("small"); sm.textContent = d3.format(",")(row.retn); vr.appendChild(sm); }
+    } else vr.textContent = "\u2014";
+    const cap = $("caption");
+    const note = NOTES[cy];
+    const text = note || ("Discount " + d3.format(".1f")(row.disc) + "%. Net tuition " + fmtM(n(row)) + " on " + fmtM(g(row)) + " of list price.");
+    if (cap.dataset.y !== String(cy) || cap.dataset.m !== mode) {
+      cap.dataset.y = String(cy); cap.dataset.m = mode;
+      cap.textContent = "";
+      const s = document.createElement("span"); s.className = "cy"; s.textContent = "FY" + cy; cap.appendChild(s);
+      const ct = document.createElement("span"); ct.className = "ct"; ct.textContent = text; cap.appendChild(ct);
+    }
+    $("t").value = String(t);
+    $("t-out").textContent = "FY" + cy;
+  }
+
+  function render() { drawMain(); drawStu(); drawOps(); drawLedger(); }
+
+  // ---------- transport ----------
+  const yearMs = 1150;
+  function setPlaying(p) {
+    playing = p;
+    $("play-t").textContent = p ? "Pause" : (t >= 2025 ? "Replay" : "Play");
+    $("play").setAttribute("aria-label", p ? "Pause" : "Play");
+    $("play-ico").innerHTML = p ? '<path d="M2 1 H5 V11 H2 Z M7 1 H10 V11 H7 Z"></path>' : '<path d="M2 1 L11 6 L2 11 Z"></path>';
+    if (p) { last = performance.now(); stepAcc = 0; cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); }
+    else cancelAnimationFrame(raf);
+  }
+  function tick(now) {
+    const dt = Math.max(0, Math.min(100, now - last)); last = now;
+    const speed = Number($("speed").value);
+    if (reduce) {
+      stepAcc += dt * speed;
+      if (stepAcc >= yearMs) { stepAcc = 0; t = Math.min(2025, Math.floor(t) + 1); render(); }
+    } else {
+      t = Math.max(2000, Math.min(2025, t + dt * speed / yearMs));
+      render();
+    }
+    if (t >= 2025) { t = 2025; render(); setPlaying(false); return; }
+    raf = requestAnimationFrame(tick);
+  }
+  function jump(yr) { setPlaying(false); t = yr; render(); $("play-t").textContent = "Play"; }
+
+  $("play").addEventListener("click", () => {
+    if (playing) { setPlaying(false); return; }
+    if (t >= 2025) { t = 2000; render(); }
+    setPlaying(true);
+  });
+  $("restart").addEventListener("click", () => { t = 2000; render(); setPlaying(true); });
+  $("t").addEventListener("input", (e) => { setPlaying(false); t = Number(e.target.value); render(); $("play-t").textContent = t >= 2025 ? "Replay" : "Play"; });
+  function setMode(mo) {
+    mode = mo;
+    $("m-real").setAttribute("aria-pressed", String(mo === "real"));
+    $("m-nom").setAttribute("aria-pressed", String(mo === "nom"));
+    $("chart-title").textContent = mo === "real" ? "Tuition and fees, $M in FY2025 dollars" : "Tuition and fees, $M in each year's dollars";
+    render();
+  }
+  $("m-real").addEventListener("click", () => setMode("real"));
+  $("m-nom").addEventListener("click", () => setMode("nom"));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === " " && !/^(INPUT|SELECT|BUTTON)$/.test(document.activeElement.tagName) && !document.activeElement.closest(".ev")) {
+      e.preventDefault(); $("play").click();
+    }
+  });
+
+  function rebuild() { buildMain(); buildStu(); buildOps(); render(); }
+  let rz = 0;
+  const ro = new ResizeObserver(() => { cancelAnimationFrame(rz); rz = requestAnimationFrame(rebuild); });
+  ro.observe($("main"));
+  rebuild();
+  setMode("real");
+  $("play-t").textContent = "Replay";
+})();
+</script>
+
+</html>
