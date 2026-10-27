@@ -47,6 +47,18 @@ td:last-child { font-family: var(--f-body); }
 .cite { color: var(--accent); text-decoration: none; font-family: var(--f-data); font-size: 12px; }
 .cite:hover { text-decoration: underline; }
 .tnote { font-size: 13px; color: var(--muted); margin: 10px 2px 0; max-width: 80ch; }
+.summary .sum-lede { margin: 0 0 14px; max-width: 72ch; }
+.summary a { color: var(--accent); }
+.sum-list { margin: 0; display: grid; gap: 12px; }
+.sum-list > div { display: grid; grid-template-columns: minmax(0, 16rem) minmax(0, 1fr); gap: 4px 20px; padding: 12px 0; border-top: 1px solid var(--rule); }
+@media (max-width: 640px) { .sum-list > div { grid-template-columns: minmax(0, 1fr); } }
+.sum-list dt { font-weight: 600; }
+.sum-list dt a { color: var(--ink); text-decoration-color: var(--rule); }
+.sum-list dt span { display: block; font-weight: 400; font-size: 12.5px; color: var(--muted); font-family: var(--f-data); }
+.sum-list dd { margin: 0; max-width: 72ch; }
+.sum-foot { border-top: 1px solid var(--rule); padding-top: 12px; display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+.sum-foot p { margin: 0; max-width: 80ch; }
+.sum-foot b { color: var(--ink); }
 .sources ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 13.5px; }
 .sources li { display: grid; grid-template-columns: 2.6rem 1fr; }
 .sources li:target { background: var(--zebra); outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
@@ -63,6 +75,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   <h1>Data Behind the Charts</h1>
   <p class="dek">Every number drawn in the budget analysis animations, with the source for each row. Numbers in brackets link to the full citation at the bottom of the page. Each table can be downloaded as a CSV.</p>
   <ul class="toc">
+    <li><a href="#summary">Summary of sources</a></li>
     <li><a href="#tuition">Tuition and scholarships</a></li>
     <li><a href="#operating">Operating result</a></li>
     <li><a href="#students">First-year classes and retention</a></li>
@@ -70,6 +83,28 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     <li><a href="#inflation">Inflation adjustment</a></li>
     <li><a href="#sources">Sources</a></li>
   </ul>
+
+<section class="block summary" id="summary">
+  <h2>Summary of sources</h2>
+  <p class="sum-lede">Five tables, one for each kind of chart in the animations, drawn from 16 public documents. Every row carries a numbered citation; the full list is at the <a href="#sources">bottom of the page</a>.</p>
+  <dl class="sum-list">
+    <div><dt><a href="#tuition">Tuition and scholarships</a> <span>FY2000 to FY2025</span></dt>
+      <dd>Exact dollars for gross tuition, scholarships, net tuition and the discount rate, plus the inflation-adjusted values the charts draw. FY2000 to FY2024 come from the federal IPEDS Finance survey <a class="cite" href="#src-1">[1]</a>; FY2025 comes from the 2025 audited financial statements <a class="cite" href="#src-2">[2]</a>.</dd></div>
+    <div><dt><a href="#operating">Operating result</a> <span>FY2015 to FY2025</span></dt>
+      <dd>Operating revenue, expenses, result and margin, each year cited to its own audited statements <a class="cite" href="#src-3">[3]</a> to <a class="cite" href="#src-11">[11]</a> and <a class="cite" href="#src-2">[2]</a>. The result is the change in net assets from operating activities.</dd></div>
+    <div><dt><a href="#students">First-year classes and retention</a> <span>Fall 1999 to fall 2024 classes</span></dt>
+      <dd>Entering class sizes and the number and share returning for a second year. The fall 2015 to fall 2024 classes come from the CAS Trends factbook <a class="cite" href="#src-12">[12]</a>, earlier class sizes from federal IPEDS enrollment data <a class="cite" href="#src-14">[14]</a>, and retention for the fall 2014 class from the Common Data Set <a class="cite" href="#src-13">[13]</a>.</dd></div>
+    <div><dt><a href="#index">Index, FY2015 = 100</a> <span>FY2000 to FY2025</span></dt>
+      <dd>Computed from the three tables above, in both the inflation-adjusted and nominal versions that the one-chart animation switches between.</dd></div>
+    <div><dt><a href="#inflation">Inflation adjustment</a> <span>FY2000 to FY2025</span></dt>
+      <dd>CPI-U annual averages <a class="cite" href="#src-15">[15]</a> and the factor used to convert each year to FY2025 dollars. Fiscal years run June to May, so each year's index weights two calendar years. The 2025 value is approximate.</dd></div>
+  </dl>
+  <div class="sum-foot">
+    <p><b>Checks.</b> Every value in these tables was checked against the numbers the animations draw, and they match. Federal and audited figures agree to within a few dollars where they overlap: FY2016 net tuition is $82,194,736 in IPEDS and $82,194,732 in the audited statements <a class="cite" href="#src-3">[3]</a>.</p>
+    <p><b>Scope.</b> Tuition, scholarships and the operating result cover the whole college (the College of Arts &amp; Sciences, the Law School and the Graduate School). First-year classes and retention cover the College of Arts &amp; Sciences only.</p>
+    <p><b>Downloads.</b> Each table, and the source list, can be downloaded as a CSV from its section.</p>
+  </div>
+</section>
 
 <section class="block" id="tuition">
   <h2>Tuition and scholarships</h2>
