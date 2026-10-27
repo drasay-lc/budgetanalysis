@@ -8,6 +8,7 @@ Site: https://drasay-lc.github.io/budgetanalysis/
 | --- | --- |
 | `discount-spiral/` | [The Discount Spiral](https://drasay-lc.github.io/budgetanalysis/discount-spiral/): gross and net tuition, the discount rate and the audited operating result. |
 | `spiral-students/` | [The Spiral and the Students](https://drasay-lc.github.io/budgetanalysis/spiral-students/): the same measures plus each CAS entering first-year class and its second-year retention, as points. |
+| `spiral-one-chart/` | [The Spiral and the Students, on One Chart](https://drasay-lc.github.io/budgetanalysis/spiral-one-chart/): the same measures on a single chart, each indexed to FY2015 = 100. |
 
 ## Adding a page
 
