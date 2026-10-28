@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<style>body { margin: 0; }</style>
+<title>What the Discount Bought (all schools)</title>
+<meta name="description" content="Lewis & Clark's tuition discount, FY2015 to FY2026: the yearly climb, net tuition at the period average, what deeper first-year aid did to yield, and where net tuition peaks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #F3F5F8; --panel: #FFFFFF; --ink: #17202A; --muted: #5A6675; --rule: #DEE3EA; --grid: #E9EDF2;
+  --gross: #4F63D2; --net: #0B8770; --aid: #C8760F; --aid-fill: rgba(200, 118, 15, 0.16); --endow: #A2449A;
+  --cf: #5A6675; --focus: #4F63D2;
+  --f-display: "Spectral", Georgia, "Times New Roman", serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F141B; --panel: #161D26; --ink: #E6EBF1; --muted: #95A2B1; --rule: #2A3442; --grid: #212A36;
+    --gross: #7685EE; --net: #22A07F; --aid: #C67C22; --aid-fill: rgba(198, 124, 34, 0.22); --endow: #C862B8;
+    --cf: #95A2B1; --focus: #7685EE; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F141B; --panel: #161D26; --ink: #E6EBF1; --muted: #95A2B1; --rule: #2A3442; --grid: #212A36;
+  --gross: #7685EE; --net: #22A07F; --aid: #C67C22; --aid-fill: rgba(198, 124, 34, 0.22); --endow: #C862B8;
+  --cf: #95A2B1; --focus: #7685EE; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 72rem; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 28px 48px; }
+header { display: grid; gap: 6px; margin-bottom: 20px; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(28px, 4.2vw, 40px); line-height: 1.1; margin: 0; text-wrap: balance; }
+.dek { color: var(--muted); max-width: 66ch; margin: 0; }
+
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 12px; margin: 0 0 18px; }
+.kpi { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: grid; gap: 2px; }
+.kpi .k { font-size: 12px; color: var(--muted); }
+.kpi .v { font-family: var(--f-data); font-size: 22px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.kpi .s { font-size: 12.5px; color: var(--muted); }
+
+.stage { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: clamp(14px, 2.4vw, 24px); display: grid; gap: 18px; }
+.stage + .stage { margin-top: 22px; }
+.stage-grid { display: grid; grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 860px) { .stage-grid { grid-template-columns: minmax(0, 1fr); } }
+.charts { display: grid; gap: 22px; min-width: 0; }
+
+.chart-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 16px; margin-bottom: 6px; }
+.chart-title { font-weight: 600; font-size: 15px; }
+.chart-sub { font-size: 12.5px; color: var(--muted); margin: -2px 0 6px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw-line { width: 16px; height: 3px; border-radius: 2px; display: inline-block; }
+.sw-dash { width: 16px; height: 0; border-top: 2px dashed var(--cf); display: inline-block; }
+.sw-bar { width: 8px; height: 12px; border-radius: 2px; display: inline-block; background: var(--aid-fill); border: 1px solid var(--aid); }
+.sw-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; background: var(--endow); }
+#main, #fy, #model-chart { position: relative; }
+#main svg, #fy svg, #model-chart svg { display: block; width: 100%; overflow: visible; }
+.lbl { font-family: var(--f-data); font-size: 11px; fill: var(--muted); }
+.lbl-strong { font-family: var(--f-data); font-size: 12px; font-weight: 500; }
+.lbl-note { font-family: var(--f-body); font-size: 12px; fill: var(--muted); }
+.ev { cursor: pointer; }
+.ev:focus-visible circle { stroke: var(--focus); stroke-width: 3; }
+
+.ledger { display: grid; gap: 14px; }
+.year { font-family: var(--f-display); font-size: clamp(44px, 6vw, 60px); line-height: 1; font-weight: 400; font-variant-numeric: tabular-nums; }
+.year small { font-family: var(--f-body); font-size: 13px; color: var(--muted); display: block; margin-top: 6px; letter-spacing: .02em; }
+.group-k { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 2px 0 -6px; }
+.readouts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+.ro { display: grid; gap: 1px; padding-top: 8px; border-top: 2px solid var(--rule); min-width: 0; }
+.ro .k { font-size: 12px; color: var(--muted); }
+.ro .v { font-family: var(--f-data); font-size: 19px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.ro.disc { border-top-color: var(--aid); } .ro.disc .v { color: var(--aid); }
+.ro.net { border-top-color: var(--net); }
+.ro.cf { border-top-color: var(--cf); border-top-style: dashed; }
+.ro.fy { border-top-color: var(--endow); }
+.gauge { display: flex; align-items: center; gap: 14px; }
+.gauge svg { width: 84px; height: 84px; flex: none; }
+.gauge p { margin: 0; font-size: 13px; color: var(--muted); }
+.gauge p b { color: var(--ink); font-weight: 600; font-family: var(--f-data); }
+
+.caption { display: flex; align-items: baseline; gap: 6px 14px; flex-wrap: wrap; min-height: calc(3 * 1.3em); font-family: var(--f-display); font-size: clamp(20px, 2.6vw, 27px); line-height: 1.3; margin: 0; padding-bottom: 14px; border-bottom: 1px solid var(--rule); text-wrap: pretty; }
+.caption .cy { flex: none; font-family: var(--f-data); font-size: clamp(16px, 1.9vw, 20px); font-weight: 600; color: var(--panel); background: var(--ink); border-radius: 6px; padding: 2px 10px; line-height: 1.4; font-variant-numeric: tabular-nums; }
+.caption .ct { flex: 1 1 20ch; min-width: 0; max-width: 62ch; }
+@media (max-width: 560px) { .caption { min-height: calc(5 * 1.3em); } }
+
+.transport { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; border-top: 1px solid var(--rule); padding-top: 14px; }
+button, select { font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 7px 12px; cursor: pointer; }
+button:hover, select:hover { border-color: var(--muted); }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+#play { background: var(--ink); color: var(--panel); border-color: var(--ink); font-weight: 600; min-width: 7.5rem; display: inline-flex; align-items: center; gap: 8px; justify-content: center; }
+#play svg { width: 12px; height: 12px; fill: currentColor; }
+.scrub { flex: 1 1 14rem; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.scrub input { flex: 1; min-width: 0; accent-color: var(--ink); }
+.scrub output { font-family: var(--f-data); font-size: 13px; color: var(--muted); min-width: 4.5ch; }
+
+.model-head h2 { font-family: var(--f-display); font-weight: 500; font-size: clamp(22px, 3vw, 28px); margin: 0 0 4px; }
+.model-head p { margin: 0; color: var(--muted); max-width: 70ch; }
+.controls { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.controls label { font-size: 14px; color: var(--muted); }
+.controls input[type=range] { flex: 1 1 12rem; min-width: 0; accent-color: var(--ink); }
+.controls output { font-family: var(--f-data); font-size: 15px; font-weight: 500; min-width: 3.5ch; }
+.presets { display: flex; flex-wrap: wrap; gap: 8px; }
+.presets button { font-size: 13px; padding: 6px 10px; }
+.presets button[aria-pressed="true"] { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+.model-grid { display: grid; grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 860px) { .model-grid { grid-template-columns: minmax(0, 1fr); } }
+.cards { display: grid; gap: 10px; }
+.card { border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; display: grid; gap: 1px; }
+.card .k { font-size: 12px; color: var(--muted); }
+.card .v { font-family: var(--f-data); font-size: 20px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.card .s { font-size: 12.5px; color: var(--muted); }
+.tbox { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+caption { text-align: left; font-weight: 600; font-size: 14px; padding-bottom: 6px; }
+th, td { padding: 6px 10px; border-bottom: 1px solid var(--rule); text-align: right; white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+thead th { font-size: 12px; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--muted); }
+tr.sel td { background: var(--grid); font-weight: 600; }
+.mnote { font-size: 12.5px; color: var(--muted); margin: 0; }
+
+.notes { margin-top: 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 18px 28px; font-size: 13px; color: var(--muted); }
+.notes h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); margin: 0 0 6px; font-weight: 600; }
+.notes p, .notes ul { margin: 0 0 6px; }
+.notes ul { padding-left: 1.1em; }
+.notes a { color: inherit; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p style="margin:0 0 14px;font-size:13px"><a href="../" style="color:var(--muted)">← Budget analysis</a></p>
+  <header>
+    <div class="eyebrow">Lewis &amp; Clark College · FY2015 to FY2026</div>
+    <h1>What the Discount Bought (all schools and CAS)</h1>
+    <p class="dek">Since FY2015 the discount has risen every single year. Aid per entering student more than doubled and the real price a first-year pays fell 44%, yet the share of admitted students who enroll did not rise. Press play to watch it year by year, then use the model below to see where net tuition peaks.</p>
+  </header>
+
+  <div class="kpis" aria-label="Key figures">
+    <div class="kpi"><span class="k">Average discount, FY2015 to FY2026</span><span class="v" id="k-avg">…</span><span class="s">36.4% in FY2015 to 55.0% in FY2026, up every year</span></div>
+    <div class="kpi"><span class="k">FY2026 net tuition at that average</span><span class="v" id="k-cf">…</span><span class="s" id="k-cf-s">…</span></div>
+    <div class="kpi"><span class="k">Real first-year net price, fall 2015 to fall 2025</span><span class="v" id="k-price">…</span><span class="s" id="k-price-s">…</span></div>
+    <div class="kpi"><span class="k">Enrollment response to price since FY2015</span><span class="v">≈ 0</span><span class="s">No measurable effect (estimate 0.00, standard error 0.56)</span></div>
+  </div>
+
+  <section class="stage" aria-label="Animated discount chart">
+    <p class="caption" id="caption" aria-live="polite"></p>
+    <div class="stage-grid">
+      <div class="charts">
+        <div>
+          <div class="chart-head">
+            <div class="chart-title" id="main-title">Discount rate, all schools</div>
+            <div class="legend" aria-hidden="true">
+              <span><i class="sw-line" style="background: var(--aid)"></i>Discount rate</span>
+              <span><i class="sw-dash"></i>FY2015 to FY2026 average</span>
+              <span><i class="sw-bar"></i>Change from prior year</span>
+            </div>
+          </div>
+          <p class="chart-sub">Scholarships as a share of gross tuition and fees. The rate axis starts at 20%; the bars below show each year's change.</p>
+          <div id="main" role="img" aria-labelledby="main-title" aria-describedby="main-desc"></div>
+          <p class="sr-only" id="main-desc">The discount rate rose every year from 36.4% in FY2015 to 55.0% in FY2026, averaging 45.9%. Yearly increases ranged from 1.0 to 2.6 points.</p>
+        </div>
+        <div>
+          <div class="chart-head">
+            <div class="chart-title" id="fy-title">CAS first-year classes: price paid vs share who enroll</div>
+            <div class="legend" aria-hidden="true"><span><i class="sw-dot"></i>Entering class (size = students)</span></div>
+          </div>
+          <p class="chart-sub">Each dot is one fall class. Moving left means a cheaper real price after aid; moving up means a larger share of admitted students enrolled.</p>
+          <div id="fy" role="img" aria-labelledby="fy-title" aria-describedby="fy-desc"></div>
+          <p class="sr-only" id="fy-desc">Real first-year net price fell from about $30,100 for the fall 2015 class to $16,800 for fall 2025 (2025 dollars). Yield moved between 9.7% and 15.4% with no upward trend: 14.1% in fall 2015 and 12.5% in fall 2025.</p>
+        </div>
+      </div>
+
+      <aside class="ledger" aria-live="polite">
+        <div class="year" id="year">FY2026<small id="year-sub">Fiscal year ending May 31</small></div>
+        <p class="group-k">All schools</p>
+        <div class="readouts">
+          <div class="ro disc"><span class="k">Discount rate</span><span class="v" id="v-disc">…</span></div>
+          <div class="ro disc"><span class="k">Change vs prior year</span><span class="v" id="v-chg">…</span></div>
+          <div class="ro net"><span class="k">Net tuition</span><span class="v" id="v-net">…</span></div>
+          <div class="ro cf"><span class="k">Net at 45.9% average</span><span class="v" id="v-cf">…</span></div>
+        </div>
+        <p class="group-k" id="fy-k">CAS entering class</p>
+        <div class="readouts">
+          <div class="ro fy"><span class="k">Grant aid per entrant</span><span class="v" id="v-aid">…</span></div>
+          <div class="ro fy"><span class="k">Net price, 2025 $</span><span class="v" id="v-price">…</span></div>
+          <div class="ro fy"><span class="k">Yield</span><span class="v" id="v-yield">…</span></div>
+          <div class="ro fy"><span class="k">Class size</span><span class="v" id="v-cls">…</span></div>
+        </div>
+        <div class="gauge">
+          <svg viewBox="0 0 84 84" aria-hidden="true">
+            <circle cx="42" cy="42" r="34" fill="none" stroke="var(--grid)" stroke-width="10"></circle>
+            <circle id="ring" cx="42" cy="42" r="34" fill="none" stroke="var(--aid)" stroke-width="10" stroke-linecap="round" transform="rotate(-90 42 42)" stroke-dasharray="0 999"></circle>
+            <text id="ring-t" x="42" y="47" text-anchor="middle" style="font-family: var(--f-data); font-size: 14px; font-weight: 500; fill: var(--ink)">…</text>
+          </svg>
+          <p>Of every <b>$100</b> of list tuition, the college keeps <b id="keep">…</b> and gives back <b id="give">…</b> as aid.</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="transport">
+      <button id="play" type="button" aria-label="Play"><svg viewBox="0 0 12 12" id="play-ico"><path d="M2 1 L11 6 L2 11 Z"></path></svg><span id="play-t">Play</span></button>
+      <button id="restart" type="button">Restart</button>
+      <div class="scrub">
+        <label for="t" class="sr-only">Year</label>
+        <input id="t" type="range" min="2015" max="2026" step="0.01" value="2026">
+        <output id="t-out" for="t">FY2026</output>
+      </div>
+      <label for="speed" class="sr-only">Speed</label>
+      <select id="speed">
+        <option value="0.6">Slow</option>
+        <option value="1" selected>Normal</option>
+        <option value="2">Fast</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="stage" id="model" aria-label="Net tuition model">
+    <div class="model-head">
+      <h2>Where FY2026 net tuition peaks</h2>
+      <p>A lower discount raises the price each student pays but loses some students. How many depends on price sensitivity: the percent of enrollment lost for each 1% rise in net price. Pick a value to see FY2026 net tuition at every discount from 30% to 65%.</p>
+    </div>
+    <div class="controls">
+      <label for="el">Price sensitivity</label>
+      <input type="range" id="el" min="0" max="1.2" step="0.01" value="0.64">
+      <output id="el-out" for="el">0.64</output>
+    </div>
+    <div class="presets" role="group" aria-label="Sensitivity presets">
+      <button type="button" data-e="0">0.00 · measured since FY2015</button>
+      <button type="button" data-e="0.3">0.30 · low</button>
+      <button type="button" data-e="0.64">0.64 · L&amp;C FY2000 to FY2021</button>
+      <button type="button" data-e="1">1.00 · high</button>
+    </div>
+    <div class="model-grid">
+      <div>
+        <div class="chart-head">
+          <div class="chart-title" id="model-title">FY2026 net tuition by discount rate, $M</div>
+          <div class="legend" aria-hidden="true">
+            <span><i class="sw-line" style="background: var(--net)"></i>Net tuition</span>
+            <span><i class="sw-dash"></i>Enrollment vs today (right labels)</span>
+          </div>
+        </div>
+        <div id="model-chart" role="img" aria-labelledby="model-title" aria-describedby="model-desc"></div>
+        <p class="sr-only" id="model-desc" aria-live="polite"></p>
+      </div>
+      <div class="cards" aria-live="polite">
+        <div class="card"><span class="k">Revenue-maximizing discount</span><span class="v" id="m-peak">…</span><span class="s">Today: 55.0%</span></div>
+        <div class="card"><span class="k">Net tuition at that discount</span><span class="v" id="m-rev">…</span><span class="s" id="m-rev-s">…</span></div>
+        <div class="card"><span class="k">Enrollment at that discount</span><span class="v" id="m-stu">…</span><span class="s" id="m-stu-s">…</span></div>
+        <div class="card"><span class="k">At the 45.9% FY2015 to FY2026 average</span><span class="v" id="m-avg">…</span><span class="s" id="m-avg-s">…</span></div>
+      </div>
+    </div>
+    <p class="chart-title" style="margin:0">Scenarios for FY2026 (today: 55.0% discount, $83.4M net tuition)</p>
+    <div class="tbox">
+      <table id="scen" aria-label="Scenarios for FY2026">
+        <thead><tr><th scope="col">Price sensitivity</th><th scope="col">Peak discount</th><th scope="col">Net at peak</th><th scope="col">vs today</th><th scope="col">Enrollment at peak</th><th scope="col">Net at 45.9% average</th><th scope="col">Enrollment at average</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="mnote">Linear demand, set so the chosen sensitivity holds at today's 55.0% discount. When the peak falls at the 30% edge, the true peak is lower but outside the range this simple model can stand behind. Entering-student counts apply the change to the fall 2025 class of 517.</p>
+  </section>
+
+  <p style="margin:22px 0 0;font-size:14px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline"><a href="../data/#since2015" style="color:var(--ink);font-weight:600">Data tables and sources for these charts →</a><span style="color:var(--muted);font-size:13px">Every value with its citation, plus CSV downloads.</span></p>
+  <div class="notes">
+    <div>
+      <h2>What the measures mean</h2>
+      <p><b>Discount rate</b> is scholarships divided by gross tuition and fees for the whole college (CAS, Law and the Graduate School). <b>Net at 45.9% average</b> applies the FY2015 to FY2026 average discount to that year's gross tuition, holding enrollment fixed.</p>
+      <p><b>Grant aid per entrant</b> is grant aid to the CAS first-time, full-time class divided by the class size: need-based grants (Common Data Set H2, lines e and k) plus institutional non-need grants to students without need (H2A, lines n and o). It includes federal and state need-based grants, which put it about 4% above IPEDS institutional grant aid, on average, for the fall 2015 to fall 2021 classes. <b>Net price</b> is list tuition less that aid, in 2025 dollars. <b>Yield</b> is enrolled divided by admitted.</p>
+    </div>
+    <div>
+      <h2>How sensitivity was measured</h2>
+      <p>For the fall 2015 to fall 2025 classes, log enrolled first-years were regressed on log real net price, log admits and a time trend. The price effect is 0.00 (standard error 0.56); yield on price gives a similar result. Real net price fell 44% while yield stayed between 9.7% and 15.4%.</p>
+      <p>This does not prove aid has no effect. Applications fell 21% over the same years, and if aid was raised to offset falling demand, the measured effect is pulled toward zero. The same method on fall 2001 to fall 2021 gave 0.64, used here as the conservative default.</p>
+    </div>
+    <div>
+      <h2>Sources</h2>
+      <ul>
+        <li>IPEDS finance survey, FY2015 to FY2024; audited statements for FY2025 and FY2026 (note 15).</li>
+        <li>Lewis &amp; Clark Common Data Sets, 2015-16 to 2025-26 (sections C1, H2, H2A). <a href="https://www.lclark.edu/offices/institutional_research/common_data_set/" target="_blank" rel="noopener">lclark.edu</a></li>
+        <li>IPEDS admissions survey, fall 2015 to fall 2024; BLS CPI-U.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  const P = {"data": [{"fy": 2015, "gross": 128.62, "schol": 46.82, "net": 81.8, "disc": 36.4, "chg": null, "cf": 69.65}, {"fy": 2016, "gross": 133.94, "schol": 51.75, "net": 82.19, "disc": 38.63, "chg": 2.23, "cf": 72.53, "fall": 2015, "list": 44744, "fyAid": 22614, "fyNetNom": 22130, "fyNet": 30065, "yld": 14.1, "cls": 654, "admits": 4629, "apps": 7368, "fyDisc": 50.5}, {"fy": 2017, "gross": 136.39, "schol": 54.17, "net": 82.22, "disc": 39.72, "chg": 1.09, "cf": 73.85, "fall": 2016, "list": 46534, "fyAid": 23702, "fyNetNom": 22832, "fyNet": 30632, "yld": 11.8, "cls": 507, "admits": 4284, "apps": 7796, "fyDisc": 50.9}, {"fy": 2018, "gross": 139.25, "schol": 57.53, "net": 81.72, "disc": 41.32, "chg": 1.6, "cf": 75.4, "fall": 2017, "list": 48628, "fyAid": 25883, "fyNetNom": 22745, "fyNet": 29879, "yld": 11.7, "cls": 526, "admits": 4500, "apps": 6305, "fyDisc": 53.2}, {"fy": 2019, "gross": 142.51, "schol": 60.87, "net": 81.64, "disc": 42.71, "chg": 1.4, "cf": 77.17, "fall": 2018, "list": 50574, "fyAid": 28298, "fyNetNom": 22276, "fyNet": 28565, "yld": 12.4, "cls": 562, "admits": 4528, "apps": 6139, "fyDisc": 56.0}, {"fy": 2020, "gross": 143.15, "schol": 63.53, "net": 79.62, "disc": 44.38, "chg": 1.66, "cf": 77.51, "fall": 2019, "list": 52346, "fyAid": 28017, "fyNetNom": 24329, "fyNet": 30642, "yld": 12.0, "cls": 507, "admits": 4231, "apps": 5863, "fyDisc": 53.5}, {"fy": 2021, "gross": 143.39, "schol": 67.4, "net": 75.99, "disc": 47.01, "chg": 2.63, "cf": 77.64, "fall": 2020, "list": 54832, "fyAid": 33483, "fyNetNom": 21349, "fyNet": 26562, "yld": 11.4, "cls": 512, "admits": 4486, "apps": 5620, "fyDisc": 61.1}, {"fy": 2022, "gross": 168.16, "schol": 83.07, "net": 85.09, "disc": 49.4, "chg": 2.39, "cf": 91.06, "fall": 2021, "list": 56970, "fyAid": 36900, "fyNetNom": 20070, "fyNet": 23849, "yld": 15.4, "cls": 677, "admits": 4385, "apps": 5519, "fyDisc": 64.8}, {"fy": 2023, "gross": 178.1, "schol": 89.77, "net": 88.33, "disc": 50.4, "chg": 1.0, "cf": 96.44, "fall": 2022, "list": 59250, "fyAid": 37826, "fyNetNom": 21424, "fyNet": 23573, "yld": 13.7, "cls": 626, "admits": 4570, "apps": 6663, "fyDisc": 63.8}, {"fy": 2024, "gross": 182.47, "schol": 94.06, "net": 88.41, "disc": 51.55, "chg": 1.15, "cf": 98.8, "fall": 2023, "list": 61916, "fyAid": 42847, "fyNetNom": 19069, "fyNet": 20152, "yld": 11.7, "cls": 553, "admits": 4721, "apps": 6334, "fyDisc": 69.2}, {"fy": 2025, "gross": 184.48, "schol": 99.0, "net": 85.48, "disc": 53.66, "chg": 2.11, "cf": 99.89, "fall": 2024, "list": 64394, "fyAid": 47351, "fyNetNom": 17043, "fyNet": 17495, "yld": 9.7, "cls": 482, "admits": 4967, "apps": 6328, "fyDisc": 73.5}, {"fy": 2026, "gross": 185.5, "schol": 102.08, "net": 83.42, "disc": 55.03, "chg": 1.37, "cf": 100.44, "fall": 2025, "list": 67614, "fyAid": 50811, "fyNetNom": 16803, "fyNet": 16803, "yld": 12.5, "cls": 517, "admits": 4131, "apps": 5804, "fyDisc": 75.1}], "avg": 45.85, "G": 185.5, "d0": 0.55031, "N0": 83.417};
+  const DATA = P.data, AVG = P.avg, G = P.G, D0 = P.d0, N0 = P.N0;
+  const FY = DATA.filter(r => r.fall != null);
+  const T0 = 2015, T1 = 2026;
+
+  const NOTES = {
+    2015: "The starting line: scholarships take 36% of list tuition. From here the discount rises every year.",
+    2016: "Fall 2015 brings the largest class of the period, 654 students, and 14.1% of admitted students enroll.",
+    2017: "The discount keeps climbing, but the next class is 147 students smaller and yield drops to 11.8%.",
+    2019: "First-year aid per entrant tops $28,000. The real price a first-year pays has barely moved since fall 2015.",
+    2021: "Pandemic year: the discount jumps 2.6 points, the largest one-year rise of the period.",
+    2022: "The one good year: aid per entrant reaches $36,900, the class rebounds to 677 and yield hits 15.4%.",
+    2023: "Half of list tuition now goes back as aid. The fall 2022 class is 51 students smaller despite more aid.",
+    2025: "Fall 2024: aid per entrant is $47,400 and the real first-year price is 42% below fall 2015, yet yield falls to 9.7%.",
+    2026: "Discount 55.0%. At the period's 45.9% average, FY2026 tuition would net $100.4M instead of $83.4M, if no students were lost."
+  };
+  const EVENTS = Object.keys(NOTES).map(Number).filter(y => y > T0);
+
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let t = T1, playing = false, last = 0, raf = 0, stepAcc = 0;
+  const $ = (id) => document.getElementById(id);
+  const fM = (v) => "$" + d3.format(".1f")(v) + "M";
+  const fK = (v) => "$" + d3.format(",.0f")(v);
+  const fP = (v, p = 1) => d3.format("." + p + "f")(v) + "%";
+  const sgn = (v, p = 1) => (v > 0 ? "+" : v < 0 ? "−" : "") + d3.format("." + p + "f")(Math.abs(v));
+  const sgnM = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + "$" + d3.format(".1f")(Math.abs(v)) + "M";
+
+  // KPIs
+  const first = FY[0], lastFy = FY[FY.length - 1], lastRow = DATA[DATA.length - 1];
+  $("k-avg").textContent = fP(AVG);
+  $("k-cf").textContent = fM(lastRow.cf);
+  $("k-cf-s").textContent = sgnM(lastRow.cf - lastRow.net) + " vs actual " + fM(lastRow.net) + ", before any loss of students";
+  $("k-price").textContent = fK(first.fyNet) + " → " + fK(lastFy.fyNet);
+  $("k-price-s").textContent = sgn(100 * (lastFy.fyNet / first.fyNet - 1), 0) + "% in 2025 dollars; yield " + fP(first.yld) + " → " + fP(lastFy.yld);
+
+  // interpolation
+  function at(time, key) {
+    const tt = Math.max(T0, Math.min(T1, time));
+    let i = DATA.findIndex(r => r.fy > tt) - 1;
+    if (i < 0) i = DATA.length - 2;
+    i = Math.max(0, Math.min(DATA.length - 2, i));
+    const a = DATA[i], b = DATA[i + 1], f = Math.max(0, Math.min(1, tt - a.fy));
+    return a[key] + (b[key] - a[key]) * f;
+  }
+
+  // ---------- discount chart ----------
+  let M = null;
+  function buildMain() {
+    const el = $("main"); el.textContent = "";
+    const W = Math.max(300, el.clientWidth);
+    const narrow = W < 520;
+    const H = Math.round(Math.max(290, Math.min(400, W * 0.56)));
+    const m = { t: 16, r: narrow ? 52 : 70, b: 26, l: 40 };
+    const bandH = Math.round(H * 0.24);
+    const topB = H - m.b - bandH - 34;
+    const x = d3.scaleLinear([T0 - 0.4, T1 + 0.4], [m.l, W - m.r]);
+    const y = d3.scaleLinear([20, 60], [topB, m.t]);
+    const yb = d3.scaleLinear([0, 3], [H - m.b, H - m.b - bandH]);
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    [20, 30, 40, 50, 60].forEach(v => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text(v + "%");
+    });
+    // average line
+    svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(AVG)).attr("y2", y(AVG)).attr("stroke", "var(--cf)").attr("stroke-width", 1.5).attr("stroke-dasharray", "5 4");
+    svg.append("text").attr("class", "lbl").attr("x", W - m.r + 6).attr("y", y(AVG)).attr("dy", "0.35em").text("avg " + fP(AVG));
+    // change band
+    svg.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", yb(3)).attr("dy", "0.35em").attr("text-anchor", "end").text("+3");
+    svg.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", yb(0)).attr("dy", "0.35em").attr("text-anchor", "end").text("0");
+    svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", yb(0)).attr("y2", yb(0)).attr("stroke", "var(--muted)");
+    svg.append("text").attr("class", "lbl").attr("x", m.l).attr("y", yb(3) - 12).text("Change from prior year, points");
+    const bw = Math.max(6, Math.min(22, (x(1) - x(0)) * 0.5));
+    const bars = svg.append("g").selectAll("rect").data(DATA.filter(r => r.chg != null)).join("rect")
+      .attr("x", d => x(d.fy) - bw / 2).attr("width", bw).attr("rx", 2).attr("fill", "var(--aid-fill)").attr("stroke", "var(--aid)");
+    const barLbl = svg.append("g").selectAll("text").data(DATA.filter(r => r.chg != null)).join("text").attr("class", "lbl").attr("text-anchor", "middle")
+      .attr("x", d => x(d.fy)).text(d => sgn(d.chg));
+    const xt = narrow ? [2015, 2018, 2021, 2024, 2026] : d3.range(T0, T1 + 1);
+    xt.forEach(v => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - m.b + 16).attr("text-anchor", "middle").text("FY" + String(v).slice(2)));
+    const evg = svg.append("g");
+    EVENTS.forEach(yr => {
+      const gEv = evg.append("g").attr("class", "ev").attr("tabindex", 0).attr("role", "button").attr("aria-label", "Jump to FY" + yr)
+        .on("click", () => jump(yr)).on("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); jump(yr); } });
+      gEv.append("circle").attr("cx", x(yr)).attr("cy", yb(0)).attr("r", 9).attr("fill", "transparent");
+      gEv.append("circle").attr("cx", x(yr)).attr("cy", yb(0)).attr("r", 3.5).attr("fill", "var(--panel)").attr("stroke", "var(--muted)").attr("stroke-width", 1.5);
+    });
+    const gap = svg.append("path").attr("fill", "var(--aid-fill)").attr("opacity", 0.7);
+    const line = svg.append("path").attr("fill", "none").attr("stroke", "var(--aid)").attr("stroke-width", 2.6).attr("stroke-linejoin", "round").attr("stroke-linecap", "round");
+    const now = svg.append("line").attr("stroke", "var(--rule)");
+    const dot = svg.append("circle").attr("r", 5).attr("fill", "var(--aid)").attr("stroke", "var(--panel)").attr("stroke-width", 2);
+    const lab = svg.append("text").attr("class", "lbl-strong").attr("fill", "var(--aid)");
+    M = { W, H, m, x, y, yb, topB, svg, bars, barLbl, gap, line, now, dot, lab, narrow };
+  }
+  function drawMain() {
+    if (!M) return;
+    const { x, y, yb, m, H } = M;
+    const pts = DATA.filter(r => r.fy <= t).map(r => ({ fy: r.fy, d: r.disc }));
+    if (t < T1 && t > Math.floor(t)) pts.push({ fy: t, d: at(t, "disc") });
+    M.line.attr("d", pts.length > 1 ? d3.line().x(p => x(p.fy)).y(p => y(p.d))(pts) : null);
+    M.gap.attr("d", pts.length > 1 ? d3.area().x(p => x(p.fy)).y0(y(AVG)).y1(p => y(Math.max(p.d, AVG)))(pts) : null);
+    const cd = at(t, "disc"), cx = x(Math.min(t, T1));
+    M.now.attr("x1", cx).attr("x2", cx).attr("y1", m.t).attr("y2", H - m.b).attr("opacity", t < T1 ? 1 : 0);
+    M.dot.attr("cx", cx).attr("cy", y(cd));
+    M.lab.attr("x", cx + 9).attr("y", y(cd) - 8).text(fP(cd));
+    if (cx + 60 > M.W) M.lab.attr("x", cx - 9).attr("text-anchor", "end"); else M.lab.attr("text-anchor", "start");
+    M.bars.each(function (d) {
+      const grow = Math.max(0, Math.min(1, (t - d.fy) / 0.6 + 1));
+      const v = d.chg * (t >= d.fy ? 1 : grow);
+      d3.select(this).attr("y", yb(v)).attr("height", Math.max(0, yb(0) - yb(v))).attr("opacity", Math.floor(t) === d.fy ? 1 : 0.7);
+    });
+    M.barLbl.attr("y", d => yb(d.chg) - 4).attr("opacity", d => t >= d.fy && (!M.narrow || d.fy === Math.floor(t + 1e-9)) ? 1 : 0);
+  }
+
+  // ---------- first-year connected scatter ----------
+  let S = null;
+  function buildFy() {
+    const el = $("fy"); el.textContent = "";
+    const W = Math.max(300, el.clientWidth);
+    const narrow = W < 520;
+    const H = Math.round(Math.max(250, Math.min(340, W * 0.48)));
+    const m = { t: 14, r: 18, b: 38, l: 44 };
+    const x = d3.scaleLinear([15000, 32000], [m.l, W - m.r]);
+    const y = d3.scaleLinear([8, 17], [H - m.b, m.t]);
+    const r = d3.scaleSqrt([400, 700], [narrow ? 5 : 6, narrow ? 10 : 13]);
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    [8, 10, 12, 14, 16].forEach(v => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text(v + "%");
+    });
+    (narrow ? [16000, 22000, 28000] : [16000, 20000, 24000, 28000, 32000]).forEach(v => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - m.b + 16).attr("text-anchor", "middle").text("$" + v / 1000 + "K"));
+    svg.append("text").attr("class", "lbl-note").attr("x", (m.l + W - m.r) / 2).attr("y", H - 4).attr("text-anchor", "middle").text(narrow ? "Real net price, 2025 $ (left is cheaper)" : "← cheaper   Real first-year net price, 2025 dollars   pricier →");
+    svg.append("text").attr("class", "lbl").attr("x", m.l + 4).attr("y", m.t + 2).attr("dy", "0.7em").text("Yield");
+    const path = svg.append("path").attr("fill", "none").attr("stroke", "var(--endow)").attr("stroke-width", 1.6).attr("stroke-opacity", 0.55);
+    const dots = svg.append("g").selectAll("circle").data(FY).join("circle")
+      .attr("cx", d => x(d.fyNet)).attr("cy", d => y(d.yld)).attr("r", d => r(d.cls)).attr("fill", "var(--endow)").attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
+    const tags = svg.append("g").selectAll("text").data(FY).join("text").attr("class", "lbl")
+      .attr("x", d => x(d.fyNet) + r(d.cls) + 3).attr("y", d => y(d.yld) - r(d.cls) + 2).text(d => "F" + String(d.fall).slice(2));
+    const head = svg.append("circle").attr("fill", "none").attr("stroke", "var(--ink)").attr("stroke-width", 2);
+    const headLbl = svg.append("text").attr("class", "lbl-strong").attr("fill", "var(--ink)").attr("x", W - m.r).attr("y", m.t + 2).attr("dy", "0.7em").attr("text-anchor", "end");
+    const wait = svg.append("text").attr("class", "lbl-note").attr("x", (m.l + W - m.r) / 2).attr("y", (m.t + H - m.b) / 2).attr("text-anchor", "middle").text("First-year data start with the fall 2015 class (FY2016)");
+    S = { W, x, y, r, path, dots, tags, head, headLbl, wait, narrow };
+  }
+  function drawFy() {
+    if (!S) return;
+    const { x, y, r } = S;
+    const shown = FY.filter(d => d.fy <= t);
+    const pts = shown.map(d => [x(d.fyNet), y(d.yld)]);
+    const nxt = FY.find(d => d.fy > t);
+    if (shown.length && nxt && t > shown[shown.length - 1].fy) {
+      const f = t - shown[shown.length - 1].fy, a = shown[shown.length - 1];
+      pts.push([x(a.fyNet + (nxt.fyNet - a.fyNet) * f), y(a.yld + (nxt.yld - a.yld) * f)]);
+    }
+    S.path.attr("d", pts.length > 1 ? d3.line()(pts) : null);
+    const cur = shown[shown.length - 1];
+    S.dots.attr("opacity", d => d.fy <= t ? (cur && d.fy === cur.fy ? 1 : 0.45) : 0);
+    S.tags.attr("opacity", d => d.fy <= t ? 1 : 0);
+    S.wait.attr("opacity", shown.length ? 0 : 1);
+    if (cur) {
+      S.head.attr("cx", x(cur.fyNet)).attr("cy", y(cur.yld)).attr("r", r(cur.cls) + 4).attr("opacity", 1);
+      S.headLbl.text(S.narrow ? "Fall " + cur.fall + ": " + fK(cur.fyNet) + ", " + fP(cur.yld) : "Fall " + cur.fall + ": " + fK(cur.fyNet) + " net price, " + fP(cur.yld) + " yield, " + cur.cls + " students");
+    } else { S.head.attr("opacity", 0); S.headLbl.text(""); }
+  }
+
+  // ---------- ledger ----------
+  function drawLedger() {
+    const cy = Math.max(T0, Math.min(T1, Math.floor(t + 1e-9)));
+    const row = DATA.find(r => r.fy === cy);
+    $("year").firstChild.nodeValue = "FY" + cy;
+    $("year-sub").textContent = "Year ending May 31, " + cy;
+    const disc = at(t, "disc");
+    $("v-disc").textContent = fP(disc);
+    $("v-chg").textContent = row.chg == null ? "n/a" : sgn(row.chg) + " pts";
+    $("v-net").textContent = fM(at(t, "net"));
+    $("v-cf").textContent = fM(at(t, "cf"));
+    const C = 2 * Math.PI * 34;
+    $("ring").setAttribute("stroke-dasharray", (C * disc / 100).toFixed(1) + " " + C.toFixed(1));
+    $("ring-t").textContent = d3.format(".0f")(disc) + "%";
+    $("keep").textContent = "$" + d3.format(".0f")(100 - disc);
+    $("give").textContent = "$" + d3.format(".0f")(disc);
+    if (row.fall != null) {
+      $("fy-k").textContent = "CAS class entering fall " + row.fall;
+      $("v-aid").textContent = fK(row.fyAid); $("v-price").textContent = fK(row.fyNet);
+      $("v-yield").textContent = fP(row.yld); $("v-cls").textContent = d3.format(",")(row.cls);
+    } else {
+      $("fy-k").textContent = "CAS entering class (from fall 2015)";
+      ["v-aid", "v-price", "v-yield", "v-cls"].forEach(id => $(id).textContent = "n/a");
+    }
+    const cap = $("caption");
+    const text = NOTES[cy] || ("Discount " + fP(row.disc) + ", up " + sgn(row.chg) + " points. Net tuition " + fM(row.net) + "; at the 45.9% average it would be " + fM(row.cf) + ".");
+    if (cap.dataset.y !== String(cy)) {
+      cap.dataset.y = String(cy); cap.textContent = "";
+      const s = document.createElement("span"); s.className = "cy"; s.textContent = "FY" + cy; cap.appendChild(s);
+      const ct = document.createElement("span"); ct.className = "ct"; ct.textContent = text; cap.appendChild(ct);
+    }
+    $("t").value = String(t);
+    $("t-out").textContent = "FY" + cy;
+  }
+  function render() { drawMain(); drawFy(); drawLedger(); }
+
+  // ---------- transport ----------
+  const yearMs = 1300;
+  function setPlaying(p) {
+    playing = p;
+    $("play-t").textContent = p ? "Pause" : (t >= T1 ? "Replay" : "Play");
+    $("play").setAttribute("aria-label", p ? "Pause" : "Play");
+    $("play-ico").innerHTML = p ? '<path d="M2 1 H5 V11 H2 Z M7 1 H10 V11 H7 Z"></path>' : '<path d="M2 1 L11 6 L2 11 Z"></path>';
+    if (p) { last = performance.now(); stepAcc = 0; cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); } else cancelAnimationFrame(raf);
+  }
+  function tick(now) {
+    const dt = Math.max(0, Math.min(100, now - last)); last = now;
+    const speed = Number($("speed").value);
+    if (reduce) { stepAcc += dt * speed; if (stepAcc >= yearMs) { stepAcc = 0; t = Math.min(T1, Math.floor(t) + 1); render(); } }
+    else { t = Math.max(T0, Math.min(T1, t + dt * speed / yearMs)); render(); }
+    if (t >= T1) { t = T1; render(); setPlaying(false); return; }
+    raf = requestAnimationFrame(tick);
+  }
+  function jump(yr) { setPlaying(false); t = yr; render(); $("play-t").textContent = t >= T1 ? "Replay" : "Play"; }
+  $("play").addEventListener("click", () => { if (playing) { setPlaying(false); return; } if (t >= T1) { t = T0; render(); } setPlaying(true); });
+  $("restart").addEventListener("click", () => { t = T0; render(); setPlaying(true); });
+  $("t").addEventListener("input", (e) => { setPlaying(false); t = Number(e.target.value); render(); $("play-t").textContent = t >= T1 ? "Replay" : "Play"; });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === " " && !/^(INPUT|SELECT|BUTTON)$/.test(document.activeElement.tagName) && !document.activeElement.closest(".ev")) { e.preventDefault(); $("play").click(); }
+  });
+
+  // ---------- model ----------
+  const DMIN = 0.30, DMAX = 0.65, CLS = 517;
+  const enr = (d, e) => Math.max(0, 1 - e * ((1 - d) / (1 - D0) - 1));
+  const rev = (d, e) => G * (1 - d) * enr(d, e);
+  function peak(e) {
+    if (e <= 0) return { d: DMIN, edge: true };
+    const raw = 1 - (1 - D0) * (1 + e) / (2 * e);
+    return { d: Math.max(DMIN, Math.min(DMAX, raw)), edge: raw < DMIN };
+  }
+  let E = 0.64, MD = null;
+  function buildModel() {
+    const el = $("model-chart"); el.textContent = "";
+    const W = Math.max(300, el.clientWidth), narrow = W < 520;
+    const H = Math.round(Math.max(260, Math.min(360, W * 0.5)));
+    const m = { t: 16, r: narrow ? 46 : 56, b: 32, l: 44 };
+    const x = d3.scaleLinear([DMIN * 100, DMAX * 100], [m.l, W - m.r]);
+    const y = d3.scaleLinear([40, 140], [H - m.b, m.t]);
+    const y2 = d3.scaleLinear([-60, 40], [H - m.b, m.t]);
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    [40, 60, 80, 100, 120, 140].forEach(v => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text("$" + v);
+    });
+    [-40, -20, 0, 20].forEach(v => svg.append("text").attr("class", "lbl").attr("x", W - m.r + 8).attr("y", y2(v)).attr("dy", "0.35em").text((v > 0 ? "+" : "") + v + "%"));
+    (narrow ? [30, 40, 50, 60] : [30, 35, 40, 45, 50, 55, 60, 65]).forEach(v => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - m.b + 16).attr("text-anchor", "middle").text(v + "%"));
+    svg.append("text").attr("class", "lbl-note").attr("x", (m.l + W - m.r) / 2).attr("y", H - 2).attr("text-anchor", "middle").text("Discount rate");
+    const vAvg = svg.append("line").attr("x1", x(AVG)).attr("x2", x(AVG)).attr("y1", m.t).attr("y2", H - m.b).attr("stroke", "var(--aid)").attr("stroke-dasharray", "2 3");
+    svg.append("text").attr("class", "lbl").attr("x", x(AVG) + 4).attr("y", m.t + 8).text("avg " + fP(AVG));
+    const enrPath = svg.append("path").attr("fill", "none").attr("stroke", "var(--cf)").attr("stroke-width", 1.5).attr("stroke-dasharray", "5 4");
+    const revPath = svg.append("path").attr("fill", "none").attr("stroke", "var(--net)").attr("stroke-width", 2.6);
+    const today = svg.append("circle").attr("r", 6).attr("fill", "var(--muted)").attr("stroke", "var(--panel)").attr("stroke-width", 2).attr("cx", x(D0 * 100)).attr("cy", y(N0));
+    const todayL = svg.append("text").attr("class", "lbl-strong").attr("fill", "var(--ink)").attr("text-anchor", "middle").attr("x", x(D0 * 100)).text("Today");
+    const pk = svg.append("path").attr("fill", "var(--net)").attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
+    const pkL = svg.append("text").attr("class", "lbl-strong").attr("fill", "var(--net)").attr("text-anchor", "middle");
+    const hov = svg.append("g").attr("opacity", 0);
+    const hl = hov.append("line").attr("stroke", "var(--rule)").attr("y1", m.t).attr("y2", H - m.b);
+    const ht = hov.append("text").attr("class", "lbl-strong").attr("fill", "var(--ink)");
+    svg.append("rect").attr("x", m.l).attr("y", m.t).attr("width", W - m.l - m.r).attr("height", H - m.t - m.b).attr("fill", "transparent")
+      .on("pointermove", (ev) => {
+        const [px] = d3.pointer(ev); const d = Math.max(DMIN * 100, Math.min(DMAX * 100, x.invert(px)));
+        hov.attr("opacity", 1); hl.attr("x1", x(d)).attr("x2", x(d));
+        const right = x(d) < W * 0.6;
+        ht.attr("x", x(d) + (right ? 6 : -6)).attr("y", m.t + 26).attr("text-anchor", right ? "start" : "end")
+          .text(fP(d) + ": " + fM(rev(d / 100, E)) + ", enrollment " + sgn(100 * (enr(d / 100, E) - 1), 0) + "%");
+      })
+      .on("pointerleave", () => hov.attr("opacity", 0));
+    MD = { x, y, y2, revPath, enrPath, pk, pkL, todayL };
+  }
+  function drawModel() {
+    if (!MD) return;
+    const { x, y, y2 } = MD;
+    const ds = d3.range(DMIN, DMAX + 1e-9, 0.0025);
+    MD.revPath.attr("d", d3.line().x(d => x(d * 100)).y(d => y(Math.max(40, Math.min(140, rev(d, E)))))(ds));
+    MD.enrPath.attr("d", d3.line().x(d => x(d * 100)).y(d => y2(Math.max(-60, Math.min(40, 100 * (enr(d, E) - 1)))))(ds));
+    const p = peak(E), pr = rev(p.d, E);
+    const px = x(p.d * 100), py = y(Math.min(140, pr));
+    MD.pk.attr("d", `M${px},${py - 8}L${px + 7},${py}L${px},${py + 8}L${px - 7},${py}Z`);
+    MD.pkL.attr("x", px).attr("y", py - 14).text("Peak " + fP(p.d * 100) + (p.edge ? " (edge)" : ""));
+    MD.todayL.attr("y", y(N0) + 20);
+    const pe = enr(p.d, E) - 1, ae = enr(AVG / 100, E) - 1, ar = rev(AVG / 100, E);
+    $("el-out").textContent = d3.format(".2f")(E);
+    $("m-peak").textContent = (p.edge ? "≤ " : "") + fP(p.d * 100);
+    $("m-rev").textContent = fM(pr);
+    $("m-rev-s").textContent = sgnM(pr - N0) + " vs today's " + fM(N0);
+    $("m-stu").textContent = sgn(100 * pe, 0) + "%";
+    $("m-stu-s").textContent = "About " + d3.format(",")(Math.abs(Math.round(pe * CLS))) + " of 517 entering students " + (pe < 0 ? "lost" : "gained");
+    $("m-avg").textContent = fM(ar);
+    $("m-avg-s").textContent = sgnM(ar - N0) + " vs today; enrollment " + sgn(100 * ae, 0) + "%";
+    $("model-desc").textContent = "At sensitivity " + d3.format(".2f")(E) + ", net tuition peaks at a " + fP(p.d * 100) + " discount with " + fM(pr) + ", compared with " + fM(N0) + " today.";
+    document.querySelectorAll(".presets button").forEach(b => b.setAttribute("aria-pressed", String(Math.abs(Number(b.dataset.e) - E) < 0.001)));
+    document.querySelectorAll("#scen tbody tr").forEach(tr => tr.classList.toggle("sel", Math.abs(Number(tr.dataset.e) - E) < 0.001));
+  }
+  function buildTable() {
+    const tb = document.querySelector("#scen tbody"); tb.textContent = "";
+    [[0, "0.00 (measured since FY2015)"], [0.3, "0.30 (low)"], [0.64, "0.64 (L&C FY2000 to FY2021)"], [1, "1.00 (high)"]].forEach(([e, lab]) => {
+      const p = peak(e), pr = rev(p.d, e), ar = rev(AVG / 100, e);
+      const tr = document.createElement("tr"); tr.dataset.e = e;
+      [lab, (p.edge ? "≤ " : "") + fP(p.d * 100), fM(pr), sgnM(pr - N0), sgn(100 * (enr(p.d, e) - 1), 0) + "%", fM(ar), sgn(100 * (enr(AVG / 100, e) - 1), 0) + "%"]
+        .forEach((v, i) => { const td = document.createElement(i ? "td" : "th"); if (!i) td.scope = "row"; td.textContent = v; tr.appendChild(td); });
+      tb.appendChild(tr);
+    });
+  }
+  $("el").addEventListener("input", (e) => { E = Number(e.target.value); drawModel(); });
+  document.querySelectorAll(".presets button").forEach(b => b.addEventListener("click", () => { E = Number(b.dataset.e); $("el").value = String(E); drawModel(); }));
+
+  function rebuild() { buildMain(); buildFy(); buildModel(); render(); drawModel(); }
+  let rz = 0;
+  const ro = new ResizeObserver(() => { cancelAnimationFrame(rz); rz = requestAnimationFrame(rebuild); });
+  ro.observe($("main")); ro.observe($("model-chart"));
+  buildTable();
+  rebuild();
+  $("play-t").textContent = "Replay";
+})();
+</script>
+</body>
+</html>

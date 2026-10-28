@@ -1,6 +1,6 @@
 # Lewis & Clark budget analysis
 
-Animated views of Lewis & Clark College tuition, discounting, operating results and first-year retention, FY2000 to FY2025, built from public sources (IPEDS, audited financial statements, and the college's CAS Trends factbook and Common Data Sets). Published with GitHub Pages from the `main` branch.
+Animated views of Lewis & Clark College tuition, discounting, operating results and first-year retention, FY2000 to FY2026, built from public sources (IPEDS, audited financial statements, and the college's CAS Trends factbook and Common Data Sets). Published with GitHub Pages from the `main` branch.
 
 Site: https://drasay-lc.github.io/budgetanalysis/
 
@@ -9,6 +9,7 @@ Site: https://drasay-lc.github.io/budgetanalysis/
 | `discount-spiral/` | [The Discount Spiral (all schools)](https://drasay-lc.github.io/budgetanalysis/discount-spiral/): gross and net tuition, the discount rate and the audited operating result. |
 | `spiral-students/` | [The Spiral (all schools) and the Students (CAS)](https://drasay-lc.github.io/budgetanalysis/spiral-students/): the same measures plus each CAS entering first-year class and its second-year retention, as points. |
 | `spiral-one-chart/` | [The Spiral (all schools) and the Students, on One Chart (CAS)](https://drasay-lc.github.io/budgetanalysis/spiral-one-chart/): the same measures on a single chart, each indexed to FY2015 = 100. |
+| `discount-since-2015/` | [What the Discount Bought (all schools and CAS)](https://drasay-lc.github.io/budgetanalysis/discount-since-2015/): the discount rate FY2015 to FY2026 with its yearly change and net tuition at the period average, each CAS entering class's grant aid, net price and yield, and a model of where FY2026 net tuition peaks. |
 | `discount-trends/` | [Discount Rate Trends by School](https://drasay-lc.github.io/budgetanalysis/discount-trends/): discount rate by program from audited note 15, FY2024 to FY2026, with linear trend equations, R² and projections to FY2019 and FY2031. |
 | `data/` | [Data behind the charts](https://drasay-lc.github.io/budgetanalysis/data/): every charted value in tables with row-level citations, plus a CSV per table. |
 
