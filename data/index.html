@@ -80,13 +80,14 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     <li><a href="#operating">Operating result</a></li>
     <li><a href="#students">First-year classes and retention</a></li>
     <li><a href="#index">Index, FY2015 = 100</a></li>
+    <li><a href="#programs">Discount rate by school</a></li>
     <li><a href="#inflation">Inflation adjustment</a></li>
     <li><a href="#sources">Sources</a></li>
   </ul>
 
 <section class="block summary" id="summary">
   <h2>Summary of sources</h2>
-  <p class="sum-lede">Five tables, one for each kind of chart in the animations, drawn from 16 public documents. Every row carries a numbered citation; the full list is at the <a href="#sources">bottom of the page</a>.</p>
+  <p class="sum-lede">Seven tables, one for each kind of chart on the site, drawn from 18 public documents. Every row carries a numbered citation; the full list is at the <a href="#sources">bottom of the page</a>.</p>
   <dl class="sum-list">
     <div><dt><a href="#tuition">Tuition and scholarships</a> <span>FY2000 to FY2025</span></dt>
       <dd>Exact dollars for gross tuition, scholarships, net tuition and the discount rate, plus the inflation-adjusted values the charts draw. FY2000 to FY2024 come from the federal IPEDS Finance survey <a class="cite" href="#src-1">[1]</a>; FY2025 comes from the 2025 audited financial statements <a class="cite" href="#src-2">[2]</a>.</dd></div>
@@ -96,6 +97,8 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
       <dd>Entering class sizes and the number and share returning for a second year. The fall 2015 to fall 2024 classes come from the CAS Trends factbook <a class="cite" href="#src-12">[12]</a>, earlier class sizes from federal IPEDS enrollment data <a class="cite" href="#src-14">[14]</a>, and retention for the fall 2014 class from the Common Data Set <a class="cite" href="#src-13">[13]</a>.</dd></div>
     <div><dt><a href="#index">Index, FY2015 = 100</a> <span>FY2000 to FY2025</span></dt>
       <dd>Computed from the three tables above, in both the inflation-adjusted and nominal versions that the one-chart animation switches between.</dd></div>
+    <div><dt><a href="#programs">Discount rate by school</a> <span>FY2024 to FY2026, projected FY2019 to FY2031</span></dt>
+      <dd>Tuition, fees and scholarships for the undergraduate, graduate and law programs from note 15 of the FY2025 <a class="cite" href="#src-2">[2]</a> and FY2026 <a class="cite" href="#src-16">[16]</a> audited statements, the linear trend fitted to each program, and the reported rates used to check the backward projection: the college total from IPEDS <a class="cite" href="#src-1">[1]</a> and an unaudited CAS estimate from the Common Data Sets <a class="cite" href="#src-17">[17]</a>.</dd></div>
     <div><dt><a href="#inflation">Inflation adjustment</a> <span>FY2000 to FY2025</span></dt>
       <dd>CPI-U annual averages <a class="cite" href="#src-15">[15]</a> and the factor used to convert each year to FY2025 dollars. Fiscal years run June to May, so each year's index weights two calendar years. The 2025 value is approximate.</dd></div>
   </dl>
@@ -219,6 +222,43 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 <tr><th scope="row">FY2025</th><td>107.1</td><td>157.9</td><td>78.0</td><td>143.4</td><td>211.4</td><td>104.5</td><td>85.6</td><td>99.9</td></tr>
 </tbody></table></div><p class="tnote">Each value ÷ its FY2015 value × 100, computed from the three tables above <a class="cite" href="#src-1">[1]</a> <a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-12">[12]</a> <a class="cite" href="#src-13">[13]</a> <a class="cite" href="#src-14">[14]</a>. The chart draws the real or nominal columns depending on the dollars switch.</p>
 </section>
+<section class="block" id="programs">
+  <h2>Discount rate by school</h2>
+  <div class="meta"><span class="meta-k">Used in</span><a class="chip" href="../discount-trends/">Discount Rate Trends</a><a class="csv" href="discount_by_program.csv" download>Download CSV</a></div>
+  <div class="tbox"><table id="t-programs"><caption>Tuition, fees and scholarships by program (note 15), FY2024 to FY2026</caption><thead><tr><th scope="col">Fiscal year</th><th scope="col">Program</th><th scope="col">Tuition ($)</th><th scope="col">Fees ($)</th><th scope="col">Gross tuition and fees ($)</th><th scope="col">Scholarships ($)</th><th scope="col">Net tuition and fees ($)</th><th scope="col">Discount rate</th><th scope="col">Source</th></tr></thead><tbody>
+<tr><th scope="row">FY2024</th><td>Undergraduate</td><td>130,551,252</td><td>5,274,153</td><td>135,825,405</td><td>78,769,510</td><td>57,055,895</td><td>58.0%</td><td><a class="cite" href="#src-2">[2]</a></td></tr>
+<tr><th scope="row">FY2024</th><td>Graduate</td><td>13,749,810</td><td>54,313</td><td>13,804,123</td><td>705,987</td><td>13,098,136</td><td>5.1%</td><td><a class="cite" href="#src-2">[2]</a></td></tr>
+<tr><th scope="row">FY2024</th><td>Law</td><td>32,015,355</td><td>824,686</td><td>32,840,041</td><td>14,588,350</td><td>18,251,691</td><td>44.4%</td><td><a class="cite" href="#src-2">[2]</a></td></tr>
+<tr><th scope="row">FY2024</th><td>College total</td><td>176,316,417</td><td>6,153,152</td><td>182,469,569</td><td>94,063,847</td><td>88,405,722</td><td>51.6%</td><td><a class="cite" href="#src-2">[2]</a></td></tr>
+<tr><th scope="row">FY2025</th><td>Undergraduate</td><td>132,191,066</td><td>4,965,315</td><td>137,156,381</td><td>83,100,365</td><td>54,056,016</td><td>60.6%</td><td><a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-16">[16]</a></td></tr>
+<tr><th scope="row">FY2025</th><td>Graduate</td><td>14,284,753</td><td>62,743</td><td>14,347,496</td><td>1,530,881</td><td>12,816,615</td><td>10.7%</td><td><a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-16">[16]</a></td></tr>
+<tr><th scope="row">FY2025</th><td>Law</td><td>32,215,910</td><td>761,471</td><td>32,977,381</td><td>14,367,738</td><td>18,609,643</td><td>43.6%</td><td><a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-16">[16]</a></td></tr>
+<tr><th scope="row">FY2025</th><td>College total</td><td>178,691,729</td><td>5,789,529</td><td>184,481,258</td><td>98,998,984</td><td>85,482,274</td><td>53.7%</td><td><a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-16">[16]</a></td></tr>
+<tr><th scope="row">FY2026</th><td>Undergraduate</td><td>130,146,392</td><td>4,850,417</td><td>134,996,809</td><td>85,222,439</td><td>49,774,370</td><td>63.1%</td><td><a class="cite" href="#src-16">[16]</a></td></tr>
+<tr><th scope="row">FY2026</th><td>Graduate</td><td>15,368,793</td><td>65,132</td><td>15,433,925</td><td>1,378,609</td><td>14,055,316</td><td>8.9%</td><td><a class="cite" href="#src-16">[16]</a></td></tr>
+<tr><th scope="row">FY2026</th><td>Law</td><td>34,335,583</td><td>733,462</td><td>35,069,045</td><td>15,482,147</td><td>19,586,898</td><td>44.1%</td><td><a class="cite" href="#src-16">[16]</a></td></tr>
+<tr><th scope="row">FY2026</th><td>College total</td><td>179,850,768</td><td>5,649,011</td><td>185,499,779</td><td>102,083,195</td><td>83,416,584</td><td>55.0%</td><td><a class="cite" href="#src-16">[16]</a></td></tr>
+</tbody></table></div><p class="tnote">Discount rate = scholarships ÷ (tuition + fees). The college total is the sum of the three programs and matches the statements of activities. FY2025 appears in both audits with identical figures.</p><div style="height:16px"></div><div class="tbox"><table id="t-fits"><caption>Linear trend equations, fitted to FY2024 to FY2026</caption><thead><tr><th scope="col">Program</th><th scope="col">Equation</th><th scope="col">Slope, points per year</th><th scope="col">R²</th><th scope="col">Projected FY2019</th><th scope="col">Projected FY2031</th></tr></thead><tbody>
+<tr><th scope="row">Undergraduate</th><td>y = 60.57 + 2.57 × (FY − 2025)</td><td>+2.57</td><td>0.9999</td><td>45.2%</td><td>76.0%</td></tr>
+<tr><th scope="row">Law</th><td>y = 44.05 − 0.14 × (FY − 2025)</td><td>−0.14</td><td>0.0993</td><td>44.9%</td><td>43.2%</td></tr>
+<tr><th scope="row">Graduate</th><td>y = 8.24 + 1.91 × (FY − 2025)</td><td>+1.91</td><td>0.4511</td><td>0.0%</td><td>19.7%</td></tr>
+<tr><th scope="row">College total</th><td>y = 53.42 + 1.74 × (FY − 2025)</td><td>+1.74</td><td>0.9849</td><td>43.0%</td><td>63.9%</td></tr>
+</tbody></table></div><p class="tnote">Ordinary least squares on the three audited years in the table above <a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-16">[16]</a>. y is the discount rate in percent. Projections below zero are shown as 0%.</p><div style="height:16px"></div><div class="tbox"><table id="t-trends"><caption>Trend lines and the backward check, FY2019 to FY2031</caption><thead><tr><th scope="col">Fiscal year</th><th scope="col">Undergraduate trend</th><th scope="col">Law trend</th><th scope="col">Graduate trend</th><th scope="col">College total trend</th><th scope="col">Reported college total (IPEDS)</th><th scope="col">CAS estimate (CDS)</th></tr></thead><tbody>
+<tr><th scope="row">FY2019</th><td>45.2%</td><td>44.9%</td><td>0.0%</td><td>43.0%</td><td>42.7% <a class="cite" href="#src-1">[1]</a></td><td>49.1% <a class="cite" href="#src-17">[17]</a></td></tr>
+<tr><th scope="row">FY2020</th><td>47.7%</td><td>44.7%</td><td>0.0%</td><td>44.7%</td><td>44.4% <a class="cite" href="#src-1">[1]</a></td><td>51.6% <a class="cite" href="#src-17">[17]</a></td></tr>
+<tr><th scope="row">FY2021</th><td>50.3%</td><td>44.6%</td><td>0.6%</td><td>46.5%</td><td>47.0% <a class="cite" href="#src-1">[1]</a></td><td>54.1% <a class="cite" href="#src-17">[17]</a></td></tr>
+<tr><th scope="row">FY2022</th><td>52.9%</td><td>44.5%</td><td>2.5%</td><td>48.2%</td><td>49.4% <a class="cite" href="#src-1">[1]</a></td><td>57.1% <a class="cite" href="#src-17">[17]</a></td></tr>
+<tr><th scope="row">FY2023</th><td>55.4%</td><td>44.3%</td><td>4.4%</td><td>49.9%</td><td>50.4% <a class="cite" href="#src-1">[1]</a></td><td>57.8% <a class="cite" href="#src-17">[17]</a></td></tr>
+<tr><th scope="row">FY2024</th><td>58.0%</td><td>44.2%</td><td>6.3%</td><td>51.7%</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">FY2025</th><td>60.6%</td><td>44.0%</td><td>8.2%</td><td>53.4%</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">FY2026</th><td>63.1%</td><td>43.9%</td><td>10.1%</td><td>55.2%</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">FY2027</th><td>65.7%</td><td>43.8%</td><td>12.1%</td><td>56.9%</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">FY2028</th><td>68.3%</td><td>43.6%</td><td>14.0%</td><td>58.6%</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">FY2029</th><td>70.8%</td><td>43.5%</td><td>15.9%</td><td>60.4%</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">FY2030</th><td>73.4%</td><td>43.4%</td><td>17.8%</td><td>62.1%</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">FY2031</th><td>76.0%</td><td>43.2%</td><td>19.7%</td><td>63.9%</td><td>—</td><td>—</td></tr>
+</tbody></table></div><p class="tnote">FY2024 to FY2026 trend values are the fitted line, not the audited values. The reported college total uses the same definition as the audit and equals it in FY2024 (51.6%). The CAS estimate is list tuition times full-time undergraduates less institutional grants; it is not audited.</p><p class="tnote"><a class="csv" href="discount_trends.csv" download>Download the trend table as CSV</a></p>
+</section>
 <section class="block" id="inflation">
   <h2>Inflation adjustment</h2>
   <div class="meta"><span class="meta-k">Used in</span><a class="chip" href="../discount-spiral/">The Discount Spiral</a><a class="chip" href="../spiral-students/">The Spiral and the Students</a><a class="chip" href="../spiral-one-chart/">On One Chart</a><a class="csv" href="cpi.csv" download>Download CSV</a></div>
@@ -271,7 +311,9 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 <li id="src-13"><span class="sn">[13]</span> Lewis &amp; Clark College, Common Data Set 2015-16, item B22 (retention of the fall 2014 first-year class: 83.13%). <a href="https://www.lclark.edu/live/files/37625-2015-2016-cds-lcpdf" rel="noopener">https://www.lclark.edu/live/files/37625-2015-2016-cds-lcpdf</a></li>
 <li id="src-14"><span class="sn">[14]</span> IPEDS Fall Enrollment survey, first-time first-year undergraduates, fall 1999 to fall 2014 (unit ID 209056), retrieved through the Urban Institute Education Data API. <a href="https://educationdata.urban.org/documentation/colleges.html" rel="noopener">https://educationdata.urban.org/documentation/colleges.html</a></li>
 <li id="src-15"><span class="sn">[15]</span> U.S. Bureau of Labor Statistics, CPI-U, U.S. city average, all items, not seasonally adjusted (series CUUR0000SA0), annual averages. The 2025 value is approximate. <a href="https://data.bls.gov/timeseries/CUUR0000SA0" rel="noopener">https://data.bls.gov/timeseries/CUUR0000SA0</a></li>
-<li id="src-16"><span class="sn">[16]</span> Lewis &amp; Clark Business Office, Required Reporting (index of audited statements and Form 990s). <a href="https://www.lclark.edu/offices/business/required-reporting/" rel="noopener">https://www.lclark.edu/offices/business/required-reporting/</a></li>
+<li id="src-16"><span class="sn">[16]</span> Lewis &amp; Clark College, audited financial statements, years ended May 31, 2026 and 2025: note 15 (tuition, fees and scholarships by program). <a href="https://www.lclark.edu/live/files/38352-lewis-clark-college-issued-statmentspdf" rel="noopener">https://www.lclark.edu/live/files/38352-lewis-clark-college-issued-statmentspdf</a></li>
+<li id="src-17"><span class="sn">[17]</span> Lewis &amp; Clark College, Common Data Sets 2018-19 to 2022-23 (sections B, G and H), used for the estimated undergraduate discount rate, FY2019 to FY2023. Example: 2018-19. <a href="https://www.lclark.edu/live/files/37622-2018-2019-lc-cdspdf" rel="noopener">https://www.lclark.edu/live/files/37622-2018-2019-lc-cdspdf</a></li>
+<li id="src-18"><span class="sn">[18]</span> Lewis &amp; Clark Business Office, Required Reporting (index of audited statements and Form 990s). <a href="https://www.lclark.edu/offices/business/required-reporting/" rel="noopener">https://www.lclark.edu/offices/business/required-reporting/</a></li>
   </ol>
 </section>
 </main>

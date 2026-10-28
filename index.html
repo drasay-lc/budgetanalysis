@@ -50,7 +50,7 @@ h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(30px, 5vw
 <main class="wrap">
   <p class="eyebrow">Lewis &amp; Clark College · FY2000 to FY2025</p>
   <h1>Budget Analysis</h1>
-  <p class="dek">Animated views of how the college pays its bills, built from public filings. Each one plays year by year, with a slider to stop on any year and a switch between inflation-adjusted and nominal dollars.</p>
+  <p class="dek">Charts of how the college pays its bills, built from public filings. The animations play year by year, with a slider to stop on any year and a switch between inflation-adjusted and nominal dollars; the trend chart breaks the discount rate out by school.</p>
 
   <div class="cards">
     <a class="card" href="discount-spiral/">
@@ -71,11 +71,18 @@ h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(30px, 5vw
       <div class="chips"><span><i style="background: var(--aid)"></i>Scholarships</span><span><i style="background: var(--net)"></i>Net</span><span><i style="background: var(--endow)"></i>Retention</span></div>
       <span class="go">Open animation →</span>
     </a>
+    <a class="card" href="discount-trends/">
+      <h2>Discount Rate Trends by School</h2>
+      <p>Scholarships as a share of gross tuition for the undergraduate, graduate and law programs, FY2024 to FY2026 from audited note 15, with linear trend lines, equations and R², projected from FY2019 to FY2031.</p>
+      <div class="chips"><span><i style="background: var(--gross)"></i>Undergraduate</span><span><i style="background: var(--aid)"></i>Law</span><span><i style="background: var(--net)"></i>Graduate</span></div>
+      <span class="go">Open chart →</span>
+    </a>
   </div>
 
   <section class="notes">
     <h3>About the data</h3>
     <p>Tuition, aid and operating results cover the whole college (the College of Arts &amp; Sciences, the Law School and the Graduate School), the only level at which operating results are reported. First-year classes and retention cover the College of Arts &amp; Sciences, the undergraduate school.</p>
+    <p>The discount-rate trends use note 15 of the FY2025 and FY2026 audited statements, which split tuition and scholarships by school.</p>
     <p>Sources: IPEDS finance and enrollment surveys; the college's CAS Trends factbook and Common Data Sets; audited financial statements published on the college's <a href="https://www.lclark.edu/offices/business/required-reporting/">required reporting page</a>; BLS CPI-U for inflation.</p>
     <p><a href="data/">Data tables and sources for every chart</a>, with CSV downloads.</p>
   </section>

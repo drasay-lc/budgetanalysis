@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<style>body { margin: 0; }</style>
+<title>Discount Rate Trends by School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: header, one wide trend chart with shaded projection zones, an equations table beside the legend, then the back-check and data notes. */
+:root {
+  --bg: #F3F5F8; --panel: #FFFFFF; --ink: #17202A; --muted: #5A6675; --rule: #DEE3EA; --grid: #E9EDF2; --zebra: #F7F9FB; --proj: rgba(90, 102, 117, 0.07);
+  --ug: #4F63D2; --grad: #0B8770; --law: #C8760F; --tot: #3E4C5C; --focus: #4F63D2;
+  --f-display: "Spectral", Georgia, "Times New Roman", serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F141B; --panel: #161D26; --ink: #E6EBF1; --muted: #95A2B1; --rule: #2A3442; --grid: #212A36; --zebra: #1A222D; --proj: rgba(149, 162, 177, 0.08);
+    --ug: #7685EE; --grad: #22A07F; --law: #C67C22; --tot: #A9B6C6; --focus: #7685EE; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F141B; --panel: #161D26; --ink: #E6EBF1; --muted: #95A2B1; --rule: #2A3442; --grid: #212A36; --zebra: #1A222D; --proj: rgba(149, 162, 177, 0.08);
+  --ug: #7685EE; --grad: #22A07F; --law: #C67C22; --tot: #A9B6C6; --focus: #7685EE; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 72rem; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 28px 56px; }
+header { display: grid; gap: 6px; margin-bottom: 18px; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(28px, 4.2vw, 40px); line-height: 1.1; margin: 0; text-wrap: balance; }
+.dek { color: var(--muted); max-width: 68ch; margin: 0; }
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: clamp(14px, 2.4vw, 22px); min-width: 0; }
+.card + .card { margin-top: 16px; }
+.card h2 { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
+.card .note { font-size: 13px; color: var(--muted); margin: 0 0 10px; max-width: 72ch; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: 13.5px; margin-bottom: 6px; }
+.controls label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.controls input { accent-color: var(--ink); }
+.controls input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.key { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--muted); margin-bottom: 6px; }
+.key span { display: inline-flex; align-items: center; gap: 6px; }
+.chart { position: relative; min-height: 420px; }
+.chart svg { display: block; width: 100%; overflow: visible; }
+.lbl { font-family: var(--f-data); font-size: 11px; fill: var(--muted); }
+.zone { font-family: var(--f-body); font-size: 11.5px; fill: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.end { font-family: var(--f-data); font-size: 12px; font-weight: 600; }
+.tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,.12); padding: 6px 10px; font-size: 12.5px; white-space: nowrap; opacity: 0; font-variant-numeric: tabular-nums; z-index: 2; }
+.tip .h { color: var(--muted); margin-bottom: 2px; }
+.tip .r { display: flex; align-items: center; gap: 6px; }
+.tip .r i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.tip .r b { margin-left: auto; padding-left: 12px; font-family: var(--f-data); font-weight: 600; }
+
+.tbox { overflow-x: auto; border: 1px solid var(--rule); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+th, td { padding: 7px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--rule); }
+thead th { font-size: 12px; color: var(--muted); font-weight: 600; white-space: normal; vertical-align: bottom; }
+tbody th { text-align: left; font-weight: 600; }
+tbody th i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; vertical-align: middle; }
+td { font-family: var(--f-data); }
+td.eq { text-align: left; }
+tbody tr:nth-child(even) { background: var(--zebra); }
+.weak { color: var(--muted); }
+.tnote { font-size: 13px; color: var(--muted); margin: 10px 2px 0; max-width: 84ch; }
+.find { margin: 14px 0 0; font-family: var(--f-display); font-size: clamp(18px, 2.2vw, 21px); line-height: 1.4; max-width: 68ch; text-wrap: pretty; }
+.notes { margin-top: 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 18px 28px; font-size: 13px; color: var(--muted); }
+.notes h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); margin: 0 0 6px; font-weight: 600; }
+.notes p, .notes ul, .notes ol { margin: 0 0 6px; }
+.notes ul { padding-left: 1.1em; }
+.notes ol { padding-left: 1.6em; }
+.notes li { margin-bottom: 4px; }
+.notes a { color: inherit; word-break: break-word; }
+</style>
+
+<div class="wrap">
+  <p style="margin:0 0 14px;font-size:13px"><a href="../" style="color:var(--muted)">← Budget analysis</a></p>
+  <header>
+    <div class="eyebrow">Lewis &amp; Clark College · discount rate by school</div>
+    <h1>Discount Rate Trends by School</h1>
+    <p class="dek">Scholarships as a share of gross tuition and fees for each program, FY2024 to FY2026 from audited note 15, with a straight-line least-squares fit for each. The fitted lines are extended five years back (to FY2019) and five years forward (to FY2031).</p>
+  </header>
+
+  <section class="card" aria-labelledby="h-chart">
+    <h2 id="h-chart">Discount rate with linear trend and projection</h2>
+    <p class="note">Solid points are audited. Solid lines are the fitted trend over the audited years; dashed lines are the projection. Turn on the check to compare the backward projection with values actually reported for FY2019 to FY2023.</p>
+    <div class="controls">
+      <label><input type="checkbox" id="chk-actual" checked> Show reported values for FY2019 to FY2023</label>
+    </div>
+    <div class="key" aria-hidden="true">
+      <span><svg width="22" height="10"><line x1="1" y1="5" x2="21" y2="5" stroke="var(--muted)" stroke-width="2.5"></line></svg>Fitted trend</span>
+      <span><svg width="22" height="10"><line x1="1" y1="5" x2="21" y2="5" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 4"></line></svg>Projection</span>
+      <span><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="var(--muted)"></circle></svg>Audited value</span>
+      <span><svg width="12" height="12"><rect x="1.5" y="1.5" width="9" height="9" fill="var(--panel)" stroke="var(--tot)" stroke-width="2"></rect></svg>Reported college total (IPEDS)</span>
+      <span><svg width="12" height="12"><path d="M6 1 L11 6 L6 11 L1 6 Z" fill="var(--panel)" stroke="var(--ug)" stroke-width="2"></path></svg>CAS estimate (Common Data Set)</span>
+    </div>
+    <div class="chart" id="chart" role="img" aria-label="Discount rate by school with linear trend lines projected from FY2019 to FY2031"></div>
+    <p class="find" id="find"></p>
+  </section>
+
+  <section class="card" aria-labelledby="h-eq">
+    <h2 id="h-eq">Trend equations</h2>
+    <p class="note">Each line is y = a + b × (FY − 2025), where y is the discount rate in percent, a is the fitted rate in FY2025 and b is the change per year in percentage points. Centering on FY2025 keeps the intercept readable.</p>
+    <div class="tbox">
+      <table>
+        <thead><tr>
+          <th scope="col" style="text-align:left">Program</th><th scope="col" style="text-align:left">Equation</th><th scope="col">Slope, points per year</th><th scope="col">R²</th>
+          <th scope="col">FY2024</th><th scope="col">FY2025</th><th scope="col">FY2026</th><th scope="col">Projected FY2019</th><th scope="col">Projected FY2031</th>
+        </tr></thead>
+        <tbody id="eq-body"></tbody>
+      </table>
+    </div>
+    <p class="tnote">R² is the share of year-to-year variation the straight line explains. With only three audited years, a high R² shows the three points line up; it is not strong evidence that the trend will continue. A projection below zero is shown as 0%.</p>
+  </section>
+
+  <p class="data-link" style="margin:22px 0 0;font-size:14px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline"><a href="../data/#programs" style="color:var(--ink);font-weight:600">Data tables and sources for this chart →</a><span style="color:var(--muted);font-size:13px">Every value with its citation, plus CSV downloads.</span></p>
+  <div class="notes">
+    <div>
+      <h3>How it was calculated</h3>
+      <p>Discount rate = scholarships ÷ (tuition + fees), for each program in note 15. The college total adds the three programs and matches the statements of activities.</p>
+      <p>Each trend is an ordinary least-squares line through the three audited years. Projections simply extend that line; they are not forecasts and do not account for enrollment, pricing or policy changes.</p>
+    </div>
+    <div>
+      <h3>The backward check</h3>
+      <ul>
+        <li><b>College total:</b> the squares are the discount rate reported to IPEDS for FY2019 to FY2023, calculated the same way. IPEDS gives 51.6% for FY2024, identical to the audit.</li>
+        <li><b>Undergraduate:</b> the diamonds are an estimate from the Common Data Sets (list tuition times full-time undergraduates, less institutional grants). It is not audited and runs about 1.4 points above the audited rate in FY2024.</li>
+        <li>No comparable earlier figures exist for the graduate and law programs.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Sources</h3>
+      <ol>
+        <li>Lewis &amp; Clark College, audited financial statements, May 31, 2026 and 2025, note 15. <a href="https://www.lclark.edu/live/files/38352-lewis-clark-college-issued-statmentspdf" target="_blank" rel="noopener">lclark.edu/live/files/38352</a></li>
+        <li>Lewis &amp; Clark College, audited financial statements, May 31, 2025 and 2024, note 15. <a href="https://www.lclark.edu/live/files/37721-lewis-clark-college-2025-audfinalpdf" target="_blank" rel="noopener">lclark.edu/live/files/37721</a></li>
+        <li>IPEDS Finance survey, FY2019 to FY2024 (scholarship allowances ÷ gross tuition and fees), unit ID 209056. <a href="https://educationdata.urban.org/documentation/colleges.html" target="_blank" rel="noopener">educationdata.urban.org</a></li>
+        <li>Lewis &amp; Clark Common Data Sets 2018-19 to 2022-23 (section H, institutional grants; section B, enrollment; section G, list tuition), for example <a href="https://www.lclark.edu/live/files/37622-2018-2019-lc-cdspdf" target="_blank" rel="noopener">2018-19</a> and <a href="https://www.lclark.edu/live/files/37618-lccds2022-2023pdf" target="_blank" rel="noopener">2022-23</a>.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  // note 15: [tuition, fees, scholarships] by program and fiscal year
+  const NOTE15 = {
+    ug:   { 2024: [130551252, 5274153, 78769510], 2025: [132191066, 4965315, 83100365], 2026: [130146392, 4850417, 85222439] },
+    grad: { 2024: [13749810, 54313, 705987],      2025: [14284753, 62743, 1530881],     2026: [15368793, 65132, 1378609] },
+    law:  { 2024: [32015355, 824686, 14588350],   2025: [32215910, 761471, 14367738],   2026: [34335583, 733462, 15482147] }
+  };
+  const SERIES = [
+    { key: "ug", label: "Undergraduate (CAS)", short: "Undergraduate", color: "var(--ug)" },
+    { key: "law", label: "Law", short: "Law", color: "var(--law)" },
+    { key: "grad", label: "Graduate", short: "Graduate", color: "var(--grad)" },
+    { key: "tot", label: "College total", short: "Total", color: "var(--tot)" }
+  ];
+  const YEARS = [2024, 2025, 2026];
+  const rate = (k, y) => {
+    if (k === "tot") {
+      let g = 0, s = 0;
+      ["ug", "grad", "law"].forEach(p => { const [t, f, sc] = NOTE15[p][y]; g += t + f; s += sc; });
+      return 100 * s / g;
+    }
+    const [t, f, sc] = NOTE15[k][y]; return 100 * sc / (t + f);
+  };
+  // reported values for the backward check
+  const IPEDS_TOTAL = { 2019: 42.71, 2020: 44.38, 2021: 47.01, 2022: 49.40, 2023: 50.40 };
+  const CDS_UG = { 2019: 49.1, 2020: 51.6, 2021: 54.1, 2022: 57.1, 2023: 57.8 };
+
+  // ordinary least squares on (FY - 2025)
+  function fit(xs, ys) {
+    const n = xs.length, mx = d3.mean(xs), my = d3.mean(ys);
+    let sxy = 0, sxx = 0; xs.forEach((x, i) => { sxy += (x - mx) * (ys[i] - my); sxx += (x - mx) ** 2; });
+    const b = sxy / sxx, a = my - b * mx;
+    const ssr = d3.sum(xs, (x, i) => (ys[i] - (a + b * x)) ** 2), sst = d3.sum(ys, y => (y - my) ** 2);
+    return { a, b, r2: sst === 0 ? 1 : 1 - ssr / sst };
+  }
+  SERIES.forEach(s => {
+    s.obs = YEARS.map(y => ({ fy: y, v: rate(s.key, y) }));
+    s.f = fit(YEARS.map(y => y - 2025), s.obs.map(o => o.v));
+    s.at = (fy) => s.f.a + s.f.b * (fy - 2025);
+  });
+  // check against the totals in the statements of activities
+  const STMT = { 2024: [94063847, 88405722], 2025: [98998984, 85482274], 2026: [102083195, 83416584] };
+  YEARS.forEach(y => { let s = 0; ["ug", "grad", "law"].forEach(p => s += NOTE15[p][y][2]); if (s !== STMT[y][0]) console.error("Scholarship total mismatch", y); });
+
+  const $ = (id) => document.getElementById(id);
+  const p1 = d3.format(".1f"), p2 = d3.format(".2f");
+  const sgn = (v, f) => (v < 0 ? "− " : "+ ") + f(Math.abs(v));
+  const clip0 = (v) => Math.max(0, v);
+  const r2f = (v) => d3.format(".4f")(Math.floor(v * 1e4) / 1e4);
+
+  // ---------- equations table ----------
+  const tb = $("eq-body");
+  SERIES.forEach(s => {
+    const tr = document.createElement("tr");
+    const th = document.createElement("th"); th.scope = "row"; const i = document.createElement("i"); i.style.background = s.color; th.append(i, document.createTextNode(s.label)); tr.appendChild(th);
+    const eq = document.createElement("td"); eq.className = "eq"; eq.textContent = "y = " + p2(s.f.a) + " " + sgn(s.f.b, p2) + " × (FY − 2025)"; tr.appendChild(eq);
+    const cells = [sgn(s.f.b, p2).replace(" ", ""), r2f(s.f.r2)].concat(s.obs.map(o => p1(o.v) + "%"), [p1(clip0(s.at(2019))) + "%", p1(clip0(s.at(2031))) + "%"]);
+    cells.forEach((c, k) => { const td = document.createElement("td"); td.textContent = c; if (k === 1 && s.f.r2 < 0.5) td.className = "weak"; tr.appendChild(td); });
+    tb.appendChild(tr);
+  });
+
+  // ---------- finding ----------
+  const ug = SERIES[0], tot = SERIES[3];
+  const maxGap = d3.max(Object.keys(IPEDS_TOTAL), y => Math.abs(tot.at(+y) - IPEDS_TOTAL[y]));
+  const cdsSlope = (CDS_UG[2023] - CDS_UG[2019]) / 4, ugGap = CDS_UG[2019] - ug.at(2019);
+  $("find").textContent = "Undergraduate discounting is rising " + p1(ug.f.b) + " points a year in a near-perfect line (R² " + r2f(ug.f.r2) + "). If it held, the CAS rate would reach " +
+    p1(ug.at(2031)) + "% by FY2031. Law is flat and graduate too noisy to call a trend. Projected backward, the college-total line lands within " + p1(maxGap) +
+    " points of every rate reported for FY2019 to FY2023. The undergraduate line runs " + p1(ugGap) + " points below the Common Data Set estimate by FY2019, which suggests CAS discounting has sped up, from about " +
+    p1(cdsSlope) + " points a year before FY2024 to " + p1(ug.f.b) + " since.";
+
+  // ---------- chart ----------
+  let showActual = true;
+  function draw() {
+    const el = $("chart");
+    el.textContent = "";
+    const W = Math.max(300, el.clientWidth), H = Math.round(Math.max(360, Math.min(500, W * 0.55)));
+    const narrow = W < 560;
+    const m = { t: 26, r: narrow ? 54 : 118, b: 34, l: 44 };
+    const x = d3.scaleLinear([2019, 2031], [m.l, W - m.r]);
+    const y = d3.scaleLinear([0, 80], [H - m.b, m.t]);
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    // projection zones
+    svg.append("rect").attr("x", x(2019)).attr("y", m.t).attr("width", x(2024) - x(2019)).attr("height", H - m.b - m.t).attr("fill", "var(--proj)");
+    svg.append("rect").attr("x", x(2026)).attr("y", m.t).attr("width", x(2031) - x(2026)).attr("height", H - m.b - m.t).attr("fill", "var(--proj)");
+    svg.append("text").attr("class", "zone").attr("x", (x(2019) + x(2024)) / 2).attr("y", m.t - 9).attr("text-anchor", "middle").text("Projected back");
+    svg.append("text").attr("class", "zone").attr("x", (x(2024) + x(2026)) / 2).attr("y", m.t - 9).attr("text-anchor", "middle").text("Audited");
+    svg.append("text").attr("class", "zone").attr("x", (x(2026) + x(2031)) / 2).attr("y", m.t - 9).attr("text-anchor", "middle").text("Projected forward");
+    d3.range(0, 81, 10).forEach(v => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", v === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text(v + "%");
+    });
+    const ticks = narrow ? [2019, 2022, 2025, 2028, 2031] : d3.range(2019, 2032);
+    ticks.forEach(v => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - m.b + 18).attr("text-anchor", "middle").attr("fill", v >= 2024 && v <= 2026 ? "var(--ink)" : null).text("FY" + String(v).slice(2)));
+
+    // projected and fitted lines, clipped at 0
+    const clipId = "clip0";
+    svg.append("clipPath").attr("id", clipId).append("rect").attr("x", m.l).attr("y", m.t - 4).attr("width", W - m.l - m.r).attr("height", y(0) - m.t + 4);
+    const lines = svg.append("g").attr("clip-path", `url(#${clipId})`);
+    SERIES.forEach(s => {
+      const seg = (a, b, dash) => lines.append("line").attr("x1", x(a)).attr("x2", x(b)).attr("y1", y(s.at(a))).attr("y2", y(s.at(b)))
+        .attr("stroke", s.color).attr("stroke-width", dash ? 2 : 2.75).attr("stroke-linecap", "round").attr("stroke-dasharray", dash ? "6 5" : null).attr("opacity", dash ? 0.85 : 1);
+      seg(2019, 2024, true); seg(2024, 2026, false); seg(2026, 2031, true);
+    });
+    // reported earlier values
+    if (showActual) {
+      const g = svg.append("g");
+      Object.entries(IPEDS_TOTAL).forEach(([fy, v]) => g.append("rect").attr("x", x(+fy) - 4.5).attr("y", y(v) - 4.5).attr("width", 9).attr("height", 9).attr("fill", "var(--panel)").attr("stroke", "var(--tot)").attr("stroke-width", 2));
+      Object.entries(CDS_UG).forEach(([fy, v]) => { const cx = x(+fy), cy = y(v); g.append("path").attr("d", `M${cx} ${cy - 6} L${cx + 6} ${cy} L${cx} ${cy + 6} L${cx - 6} ${cy} Z`).attr("fill", "var(--panel)").attr("stroke", "var(--ug)").attr("stroke-width", 2); });
+    }
+    // audited points
+    SERIES.forEach(s => s.obs.forEach(o => svg.append("circle").attr("cx", x(o.fy)).attr("cy", y(o.v)).attr("r", 5).attr("fill", s.color).attr("stroke", "var(--panel)").attr("stroke-width", 2)));
+    // end labels at FY2031, pushed apart
+    const ends = SERIES.map(s => ({ s, v: clip0(s.at(2031)), yy: y(clip0(s.at(2031))) })).sort((a, b) => a.yy - b.yy);
+    for (let i = 1; i < ends.length; i++) if (ends[i].yy - ends[i - 1].yy < 15) ends[i].yy = ends[i - 1].yy + 15;
+    ends.forEach(e => {
+      const t = svg.append("text").attr("class", "end").attr("x", x(2031) + 8).attr("y", e.yy).attr("dy", "0.35em").attr("fill", e.s.color);
+      if (!narrow) t.append("tspan").attr("font-weight", 400).attr("fill", "var(--muted)").attr("font-family", "var(--f-body)").text(e.s.short + " ");
+      t.append("tspan").text(p1(e.v) + "%");
+    });
+
+    // hover
+    const tip = d3.select(el).append("div").attr("class", "tip");
+    const rule = svg.append("line").attr("y1", m.t).attr("y2", H - m.b).attr("stroke", "var(--muted)").attr("opacity", 0);
+    svg.append("rect").attr("x", m.l).attr("y", m.t).attr("width", W - m.l - m.r).attr("height", H - m.t - m.b).attr("fill", "transparent")
+      .on("pointermove", (ev) => {
+        const [px] = d3.pointer(ev);
+        const fy = Math.max(2019, Math.min(2031, Math.round(x.invert(px))));
+        rule.attr("x1", x(fy)).attr("x2", x(fy)).attr("opacity", 0.5);
+        const kind = fy < 2024 || fy > 2026 ? "projected" : "audited (trend)";
+        tip.html("");
+        tip.append("div").attr("class", "h").text("FY" + fy + " · " + kind);
+        SERIES.forEach(s => {
+          const r = tip.append("div").attr("class", "r");
+          r.append("i").style("background", s.color); r.append("span").text(s.short);
+          const ob = s.obs.find(o => o.fy === fy);
+          r.append("b").text(ob ? p1(ob.v) + "% (trend " + p1(s.at(fy)) + "%)" : p1(clip0(s.at(fy))) + "%");
+        });
+        if (showActual && IPEDS_TOTAL[fy] != null) tip.append("div").attr("class", "h").text("Reported: total " + p1(IPEDS_TOTAL[fy]) + "%, CAS est. " + p1(CDS_UG[fy]) + "%");
+        const tw = tip.node().offsetWidth, sc = el.clientWidth / W;
+        let left = x(fy) * sc + 12; if (left + tw > el.clientWidth) left = x(fy) * sc - tw - 12;
+        tip.style("left", Math.max(0, left) + "px").style("top", "8px").style("opacity", 1);
+      })
+      .on("pointerleave", () => { tip.style("opacity", 0); rule.attr("opacity", 0); });
+  }
+  $("chk-actual").addEventListener("change", (e) => { showActual = e.target.checked; draw(); });
+  let lastW = 0, rz = 0;
+  new ResizeObserver(() => { const w = $("chart").clientWidth; if (w === lastW) return; lastW = w; cancelAnimationFrame(rz); rz = requestAnimationFrame(draw); }).observe($("chart"));
+  draw();
+})();
+</script>
+
+</html>
