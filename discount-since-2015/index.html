@@ -39,6 +39,9 @@ header { display: grid; gap: 6px; margin-bottom: 20px; }
 .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
 h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(28px, 4.2vw, 40px); line-height: 1.1; margin: 0; text-wrap: balance; }
 .dek { color: var(--muted); max-width: 66ch; margin: 0; }
+.btn-link { justify-self: start; display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; padding: 8px 14px; border-radius: 8px; background: var(--ink); color: var(--panel); font-size: 14px; font-weight: 600; text-decoration: none; border: 1px solid var(--ink); }
+.btn-link:hover { background: var(--panel); color: var(--ink); }
+.btn-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 12px; margin: 0 0 18px; }
 .kpi { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: grid; gap: 2px; }
@@ -144,6 +147,7 @@ tr.sel td { background: var(--grid); font-weight: 600; }
     <div class="eyebrow">Lewis &amp; Clark College · FY2015 to FY2026</div>
     <h1>What the Discount Bought (all schools and CAS)</h1>
     <p class="dek">Since FY2015 the discount has risen every single year. Aid per entering student more than doubled and the real price a first-year pays fell 44%, yet the share of admitted students who enroll did not rise. Press play to watch it year by year, then use the model below to see where net tuition peaks.</p>
+    <a class="btn-link" href="https://docs.google.com/document/d/1LVIZs2gOYBI4fsIkTLDl7o_eDag4pbWvtyV4g1WgRdI/edit" target="_blank" rel="noopener">The Treat Jar: this analysis for young readers and good dogs <span aria-hidden="true">↗</span></a>
   </header>
 
   <div class="kpis" aria-label="Key figures">
