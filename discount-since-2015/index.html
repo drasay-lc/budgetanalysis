@@ -100,6 +100,9 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px s
 .scrub { flex: 1 1 14rem; display: flex; align-items: center; gap: 10px; min-width: 0; }
 .scrub input { flex: 1; min-width: 0; accent-color: var(--ink); }
 .scrub output { font-family: var(--f-data); font-size: 13px; color: var(--muted); min-width: 4.5ch; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.seg button { border: 0; border-radius: 0; padding: 7px 10px; font-size: 13px; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--panel); }
 
 .model-head h2 { font-family: var(--f-display); font-weight: 500; font-size: clamp(22px, 3vw, 28px); margin: 0 0 4px; }
 .model-head p { margin: 0; color: var(--muted); max-width: 70ch; }
@@ -146,7 +149,7 @@ tr.sel td { background: var(--grid); font-weight: 600; }
   <div class="kpis" aria-label="Key figures">
     <div class="kpi"><span class="k">Average discount, FY2015 to FY2026</span><span class="v" id="k-avg">…</span><span class="s">36.4% in FY2015 to 55.0% in FY2026, up every year</span></div>
     <div class="kpi"><span class="k">FY2026 net tuition at that average</span><span class="v" id="k-cf">…</span><span class="s" id="k-cf-s">…</span></div>
-    <div class="kpi"><span class="k">Real first-year net price, fall 2015 to fall 2025</span><span class="v" id="k-price">…</span><span class="s" id="k-price-s">…</span></div>
+    <div class="kpi"><span class="k" id="k-price-k">First-year net price, fall 2015 to fall 2025</span><span class="v" id="k-price">…</span><span class="s" id="k-price-s">…</span></div>
     <div class="kpi"><span class="k">Enrollment response to price since FY2015</span><span class="v">≈ 0</span><span class="s">No measurable effect (estimate 0.00, standard error 0.56)</span></div>
   </div>
 
@@ -172,7 +175,7 @@ tr.sel td { background: var(--grid); font-weight: 600; }
             <div class="chart-title" id="fy-title">CAS first-year classes: price paid vs share who enroll</div>
             <div class="legend" aria-hidden="true"><span><i class="sw-dot"></i>Entering class (size = students)</span></div>
           </div>
-          <p class="chart-sub">Each dot is one fall class. Moving left means a cheaper real price after aid; moving up means a larger share of admitted students enrolled.</p>
+          <p class="chart-sub">Each dot is one fall class. Moving left means a cheaper price after aid; moving up means a larger share of admitted students enrolled.</p>
           <div id="fy" role="img" aria-labelledby="fy-title" aria-describedby="fy-desc"></div>
           <p class="sr-only" id="fy-desc">Real first-year net price fell from about $30,100 for the fall 2015 class to $16,800 for fall 2025 (2025 dollars). Yield moved between 9.7% and 15.4% with no upward trend: 14.1% in fall 2015 and 12.5% in fall 2025.</p>
         </div>
@@ -190,7 +193,7 @@ tr.sel td { background: var(--grid); font-weight: 600; }
         <p class="group-k" id="fy-k">CAS entering class</p>
         <div class="readouts">
           <div class="ro fy"><span class="k">Grant aid per entrant</span><span class="v" id="v-aid">…</span></div>
-          <div class="ro fy"><span class="k">Net price, 2025 $</span><span class="v" id="v-price">…</span></div>
+          <div class="ro fy"><span class="k">Net price after aid</span><span class="v" id="v-price">…</span></div>
           <div class="ro fy"><span class="k">Yield</span><span class="v" id="v-yield">…</span></div>
           <div class="ro fy"><span class="k">Class size</span><span class="v" id="v-cls">…</span></div>
         </div>
@@ -219,6 +222,10 @@ tr.sel td { background: var(--grid); font-weight: 600; }
         <option value="1" selected>Normal</option>
         <option value="2">Fast</option>
       </select>
+      <div class="seg" role="group" aria-label="Dollars">
+        <button type="button" id="m-real" aria-pressed="true">FY2025 dollars</button>
+        <button type="button" id="m-nom" aria-pressed="false">Nominal</button>
+      </div>
     </div>
   </section>
 
@@ -257,7 +264,7 @@ tr.sel td { background: var(--grid); font-weight: 600; }
         <div class="card"><span class="k">At the 45.9% FY2015 to FY2026 average</span><span class="v" id="m-avg">…</span><span class="s" id="m-avg-s">…</span></div>
       </div>
     </div>
-    <p class="chart-title" style="margin:0">Scenarios for FY2026 (today: 55.0% discount, $83.4M net tuition)</p>
+    <p class="chart-title" style="margin:0" id="scen-title">Scenarios for FY2026</p>
     <div class="tbox">
       <table id="scen" aria-label="Scenarios for FY2026">
         <thead><tr><th scope="col">Price sensitivity</th><th scope="col">Peak discount</th><th scope="col">Net at peak</th><th scope="col">vs today</th><th scope="col">Enrollment at peak</th><th scope="col">Net at 45.9% average</th><th scope="col">Enrollment at average</th></tr></thead>
@@ -272,6 +279,7 @@ tr.sel td { background: var(--grid); font-weight: 600; }
     <div>
       <h2>What the measures mean</h2>
       <p><b>Discount rate</b> is scholarships divided by gross tuition and fees for the whole college (CAS, Law and the Graduate School). <b>Net at 45.9% average</b> applies the FY2015 to FY2026 average discount to that year's gross tuition, holding enrollment fixed.</p>
+      <p><b>Dollars.</b> FY2025 dollars use CPI-U, fiscal-year weighted, as on the other pages; FY2026 uses an estimated factor of 0.9739 (2026 CPI assumed 2.7% above 2025). First-year aid and price use calendar-year CPI-U for the fall the class entered, in 2025 dollars. Nominal shows each year's own dollars.</p>
       <p><b>Grant aid per entrant</b> is grant aid to the CAS first-time, full-time class divided by the class size: need-based grants (Common Data Set H2, lines e and k) plus institutional non-need grants to students without need (H2A, lines n and o). It includes federal and state need-based grants, which put it about 4% above IPEDS institutional grant aid, on average, for the fall 2015 to fall 2021 classes. <b>Net price</b> is list tuition less that aid, in 2025 dollars. <b>Yield</b> is enrolled divided by admitted.</p>
     </div>
     <div>
@@ -293,8 +301,19 @@ tr.sel td { background: var(--grid); font-weight: 600; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script>
 (function () {
-  const P = {"data": [{"fy": 2015, "gross": 128.62, "schol": 46.82, "net": 81.8, "disc": 36.4, "chg": null, "cf": 69.65}, {"fy": 2016, "gross": 133.94, "schol": 51.75, "net": 82.19, "disc": 38.63, "chg": 2.23, "cf": 72.53, "fall": 2015, "list": 44744, "fyAid": 22614, "fyNetNom": 22130, "fyNet": 30065, "yld": 14.1, "cls": 654, "admits": 4629, "apps": 7368, "fyDisc": 50.5}, {"fy": 2017, "gross": 136.39, "schol": 54.17, "net": 82.22, "disc": 39.72, "chg": 1.09, "cf": 73.85, "fall": 2016, "list": 46534, "fyAid": 23702, "fyNetNom": 22832, "fyNet": 30632, "yld": 11.8, "cls": 507, "admits": 4284, "apps": 7796, "fyDisc": 50.9}, {"fy": 2018, "gross": 139.25, "schol": 57.53, "net": 81.72, "disc": 41.32, "chg": 1.6, "cf": 75.4, "fall": 2017, "list": 48628, "fyAid": 25883, "fyNetNom": 22745, "fyNet": 29879, "yld": 11.7, "cls": 526, "admits": 4500, "apps": 6305, "fyDisc": 53.2}, {"fy": 2019, "gross": 142.51, "schol": 60.87, "net": 81.64, "disc": 42.71, "chg": 1.4, "cf": 77.17, "fall": 2018, "list": 50574, "fyAid": 28298, "fyNetNom": 22276, "fyNet": 28565, "yld": 12.4, "cls": 562, "admits": 4528, "apps": 6139, "fyDisc": 56.0}, {"fy": 2020, "gross": 143.15, "schol": 63.53, "net": 79.62, "disc": 44.38, "chg": 1.66, "cf": 77.51, "fall": 2019, "list": 52346, "fyAid": 28017, "fyNetNom": 24329, "fyNet": 30642, "yld": 12.0, "cls": 507, "admits": 4231, "apps": 5863, "fyDisc": 53.5}, {"fy": 2021, "gross": 143.39, "schol": 67.4, "net": 75.99, "disc": 47.01, "chg": 2.63, "cf": 77.64, "fall": 2020, "list": 54832, "fyAid": 33483, "fyNetNom": 21349, "fyNet": 26562, "yld": 11.4, "cls": 512, "admits": 4486, "apps": 5620, "fyDisc": 61.1}, {"fy": 2022, "gross": 168.16, "schol": 83.07, "net": 85.09, "disc": 49.4, "chg": 2.39, "cf": 91.06, "fall": 2021, "list": 56970, "fyAid": 36900, "fyNetNom": 20070, "fyNet": 23849, "yld": 15.4, "cls": 677, "admits": 4385, "apps": 5519, "fyDisc": 64.8}, {"fy": 2023, "gross": 178.1, "schol": 89.77, "net": 88.33, "disc": 50.4, "chg": 1.0, "cf": 96.44, "fall": 2022, "list": 59250, "fyAid": 37826, "fyNetNom": 21424, "fyNet": 23573, "yld": 13.7, "cls": 626, "admits": 4570, "apps": 6663, "fyDisc": 63.8}, {"fy": 2024, "gross": 182.47, "schol": 94.06, "net": 88.41, "disc": 51.55, "chg": 1.15, "cf": 98.8, "fall": 2023, "list": 61916, "fyAid": 42847, "fyNetNom": 19069, "fyNet": 20152, "yld": 11.7, "cls": 553, "admits": 4721, "apps": 6334, "fyDisc": 69.2}, {"fy": 2025, "gross": 184.48, "schol": 99.0, "net": 85.48, "disc": 53.66, "chg": 2.11, "cf": 99.89, "fall": 2024, "list": 64394, "fyAid": 47351, "fyNetNom": 17043, "fyNet": 17495, "yld": 9.7, "cls": 482, "admits": 4967, "apps": 6328, "fyDisc": 73.5}, {"fy": 2026, "gross": 185.5, "schol": 102.08, "net": 83.42, "disc": 55.03, "chg": 1.37, "cf": 100.44, "fall": 2025, "list": 67614, "fyAid": 50811, "fyNetNom": 16803, "fyNet": 16803, "yld": 12.5, "cls": 517, "admits": 4131, "apps": 5804, "fyDisc": 75.1}], "avg": 45.85, "G": 185.5, "d0": 0.55031, "N0": 83.417};
-  const DATA = P.data, AVG = P.avg, G = P.G, D0 = P.d0, N0 = P.N0;
+  const P = {"data":[{"fy":2015,"gross":128.62,"schol":46.82,"net":81.8,"disc":36.4,"chg":null,"cf":69.65,"f":1.339},{"fy":2016,"gross":133.94,"schol":51.75,"net":82.19,"disc":38.63,"chg":2.23,"cf":72.53,"fall":2015,"list":44744,"fyAid":22614,"fyNetNom":22130,"fyNet":30065,"yld":14.1,"cls":654,"admits":4629,"apps":7368,"fyDisc":50.5,"f":1.3311,"fyF":1.3586},{"fy":2017,"gross":136.39,"schol":54.17,"net":82.22,"disc":39.72,"chg":1.09,"cf":73.85,"fall":2016,"list":46534,"fyAid":23702,"fyNetNom":22832,"fyNet":30632,"yld":11.8,"cls":507,"admits":4284,"apps":7796,"fyDisc":50.9,"f":1.3098,"fyF":1.3416},{"fy":2018,"gross":139.25,"schol":57.53,"net":81.72,"disc":41.32,"chg":1.6,"cf":75.4,"fall":2017,"list":48628,"fyAid":25883,"fyNetNom":22745,"fyNet":29879,"yld":11.7,"cls":526,"admits":4500,"apps":6305,"fyDisc":53.2,"f":1.2808,"fyF":1.3136},{"fy":2019,"gross":142.51,"schol":60.87,"net":81.64,"disc":42.71,"chg":1.4,"cf":77.17,"fall":2018,"list":50574,"fyAid":28298,"fyNetNom":22276,"fyNet":28565,"yld":12.4,"cls":562,"admits":4528,"apps":6139,"fyDisc":56.0,"f":1.2536,"fyF":1.2823},{"fy":2020,"gross":143.15,"schol":63.53,"net":79.62,"disc":44.38,"chg":1.66,"cf":77.51,"fall":2019,"list":52346,"fyAid":28017,"fyNetNom":24329,"fyNet":30642,"yld":12.0,"cls":507,"admits":4231,"apps":5863,"fyDisc":53.5,"f":1.2342,"fyF":1.2595},{"fy":2021,"gross":143.39,"schol":67.4,"net":75.99,"disc":47.01,"chg":2.63,"cf":77.64,"fall":2020,"list":54832,"fyAid":33483,"fyNetNom":21349,"fyNet":26562,"yld":11.4,"cls":512,"admits":4486,"apps":5620,"fyDisc":61.1,"f":1.2019,"fyF":1.2442},{"fy":2022,"gross":168.16,"schol":83.07,"net":85.09,"disc":49.4,"chg":2.39,"cf":91.06,"fall":2021,"list":56970,"fyAid":36900,"fyNetNom":20070,"fyNet":23849,"yld":15.4,"cls":677,"admits":4385,"apps":5519,"fyDisc":64.8,"f":1.1327,"fyF":1.1883},{"fy":2023,"gross":178.1,"schol":89.77,"net":88.33,"disc":50.4,"chg":1.0,"cf":96.44,"fall":2022,"list":59250,"fyAid":37826,"fyNetNom":21424,"fyNet":23573,"yld":13.7,"cls":626,"admits":4570,"apps":6663,"fyDisc":63.8,"f":1.0654,"fyF":1.1003},{"fy":2024,"gross":182.47,"schol":94.06,"net":88.41,"disc":51.55,"chg":1.15,"cf":98.8,"fall":2023,"list":61916,"fyAid":42847,"fyNetNom":19069,"fyNet":20152,"yld":11.7,"cls":553,"admits":4721,"apps":6334,"fyDisc":69.2,"f":1.0282,"fyF":1.0568},{"fy":2025,"gross":184.48,"schol":99.0,"net":85.48,"disc":53.66,"chg":2.11,"cf":99.89,"fall":2024,"list":64394,"fyAid":47351,"fyNetNom":17043,"fyNet":17495,"yld":9.7,"cls":482,"admits":4967,"apps":6328,"fyDisc":73.5,"f":1.0,"fyF":1.0265},{"fy":2026,"gross":185.5,"schol":102.08,"net":83.42,"disc":55.03,"chg":1.37,"cf":100.44,"fall":2025,"list":67614,"fyAid":50811,"fyNetNom":16803,"fyNet":16803,"yld":12.5,"cls":517,"admits":4131,"apps":5804,"fyDisc":75.1,"f":0.9739,"fyF":1.0}],"avg":45.85,"G":185.5,"d0":0.55031,"N0":83.417,"F26":0.9739};
+  const DATA = P.data, AVG = P.avg, D0 = P.d0;
+  let mode = "real", G = P.G * P.F26, N0 = P.N0 * P.F26;
+  const DOLL = () => mode === "real" ? "FY2025 dollars" : "nominal dollars";
+  function applyMode() {
+    const k = mode === "real";
+    DATA.forEach(r => {
+      r.netD = k ? r.net * r.f : r.net; r.cfD = k ? r.cf * r.f : r.cf;
+      if (r.fall != null) { r.aidD = k ? r.fyAid * r.fyF : r.fyAid; r.priceD = k ? r.fyNet : r.fyNetNom; }
+    });
+    G = k ? P.G * P.F26 : P.G; N0 = k ? P.N0 * P.F26 : P.N0;
+  }
+  applyMode();
   const FY = DATA.filter(r => r.fall != null);
   const T0 = 2015, T1 = 2026;
 
@@ -302,14 +321,24 @@ tr.sel td { background: var(--grid); font-weight: 600; }
     2015: "The starting line: scholarships take 36% of list tuition. From here the discount rises every year.",
     2016: "Fall 2015 brings the largest class of the period, 654 students, and 14.1% of admitted students enroll.",
     2017: "The discount keeps climbing, but the next class is 147 students smaller and yield drops to 11.8%.",
-    2019: "First-year aid per entrant tops $28,000. The real price a first-year pays has barely moved since fall 2015.",
+    2019: "",
     2021: "Pandemic year: the discount jumps 2.6 points, the largest one-year rise of the period.",
-    2022: "The one good year: aid per entrant reaches $36,900, the class rebounds to 677 and yield hits 15.4%.",
+    2022: "",
     2023: "Half of list tuition now goes back as aid. The fall 2022 class is 51 students smaller despite more aid.",
-    2025: "Fall 2024: aid per entrant is $47,400 and the real first-year price is 42% below fall 2015, yet yield falls to 9.7%.",
-    2026: "Discount 55.0%. At the period's 45.9% average, FY2026 tuition would net $100.4M instead of $83.4M, if no students were lost."
+    2025: "",
+    2026: ""
   };
   const EVENTS = Object.keys(NOTES).map(Number).filter(y => y > T0);
+  function note(cy) {
+    const r = DATA.find(d => d.fy === cy), f15 = DATA.find(d => d.fall === 2015);
+    const vs15 = (d) => { const c = 100 * (d.priceD / f15.priceD - 1); return Math.abs(c) < 0.5 ? "about the same as in fall 2015" : d3.format(".0f")(Math.abs(c)) + "% " + (c < 0 ? "below" : "above") + " fall 2015"; };
+    const tag = mode === "real" ? " (FY2025 dollars)" : "";
+    if (cy === 2019) return "First-year aid per entrant reaches " + fK(r.aidD) + ". The price a first-year pays after aid is " + vs15(r) + (mode === "real" ? ", after inflation." : ", in nominal dollars.");
+    if (cy === 2022) return "The one good year: aid per entrant reaches " + fK(r.aidD) + ", the class rebounds to 677 and yield hits 15.4%.";
+    if (cy === 2025) return "Fall 2024: aid per entrant is " + fK(r.aidD) + " and the first-year price after aid is " + vs15(r) + ", yet yield falls to 9.7%.";
+    if (cy === 2026) return "Discount 55.0%. At the period's 45.9% average, FY2026 tuition would net " + fM(r.cfD) + " instead of " + fM(r.netD) + tag + ", if no students were lost.";
+    return NOTES[cy];
+  }
 
   const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let t = T1, playing = false, last = 0, raf = 0, stepAcc = 0;
@@ -323,10 +352,12 @@ tr.sel td { background: var(--grid); font-weight: 600; }
   // KPIs
   const first = FY[0], lastFy = FY[FY.length - 1], lastRow = DATA[DATA.length - 1];
   $("k-avg").textContent = fP(AVG);
-  $("k-cf").textContent = fM(lastRow.cf);
-  $("k-cf-s").textContent = sgnM(lastRow.cf - lastRow.net) + " vs actual " + fM(lastRow.net) + ", before any loss of students";
-  $("k-price").textContent = fK(first.fyNet) + " → " + fK(lastFy.fyNet);
-  $("k-price-s").textContent = sgn(100 * (lastFy.fyNet / first.fyNet - 1), 0) + "% in 2025 dollars; yield " + fP(first.yld) + " → " + fP(lastFy.yld);
+  function drawKpis() {
+    $("k-cf").textContent = fM(lastRow.cfD);
+    $("k-cf-s").textContent = sgnM(lastRow.cfD - lastRow.netD) + " vs actual " + fM(lastRow.netD) + ", before any loss of students" + (mode === "real" ? " (FY2025 dollars)" : "");
+    $("k-price").textContent = fK(first.priceD) + " → " + fK(lastFy.priceD);
+    $("k-price-s").textContent = sgn(100 * (lastFy.priceD / first.priceD - 1), 0) + "% " + (mode === "real" ? "after inflation (2025 dollars)" : "in nominal dollars") + "; yield " + fP(first.yld) + " → " + fP(lastFy.yld);
+  }
 
   // interpolation
   function at(time, key) {
@@ -422,13 +453,13 @@ tr.sel td { background: var(--grid); font-weight: 600; }
       svg.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text(v + "%");
     });
     (narrow ? [16000, 22000, 28000] : [16000, 20000, 24000, 28000, 32000]).forEach(v => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - m.b + 16).attr("text-anchor", "middle").text("$" + v / 1000 + "K"));
-    svg.append("text").attr("class", "lbl-note").attr("x", (m.l + W - m.r) / 2).attr("y", H - 4).attr("text-anchor", "middle").text(narrow ? "Real net price, 2025 $ (left is cheaper)" : "← cheaper   Real first-year net price, 2025 dollars   pricier →");
+    svg.append("text").attr("class", "lbl-note").attr("x", (m.l + W - m.r) / 2).attr("y", H - 4).attr("text-anchor", "middle").text(narrow ? (mode === "real" ? "Net price, 2025 $" : "Net price, nominal $") + " (left is cheaper)" : "← cheaper   First-year net price after aid, " + (mode === "real" ? "2025 dollars" : "nominal dollars") + "   pricier →");
     svg.append("text").attr("class", "lbl").attr("x", m.l + 4).attr("y", m.t + 2).attr("dy", "0.7em").text("Yield");
     const path = svg.append("path").attr("fill", "none").attr("stroke", "var(--endow)").attr("stroke-width", 1.6).attr("stroke-opacity", 0.55);
     const dots = svg.append("g").selectAll("circle").data(FY).join("circle")
-      .attr("cx", d => x(d.fyNet)).attr("cy", d => y(d.yld)).attr("r", d => r(d.cls)).attr("fill", "var(--endow)").attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
+      .attr("cx", d => x(d.priceD)).attr("cy", d => y(d.yld)).attr("r", d => r(d.cls)).attr("fill", "var(--endow)").attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
     const tags = svg.append("g").selectAll("text").data(FY).join("text").attr("class", "lbl")
-      .attr("x", d => x(d.fyNet) + r(d.cls) + 3).attr("y", d => y(d.yld) - r(d.cls) + 2).text(d => "F" + String(d.fall).slice(2));
+      .attr("x", d => x(d.priceD) + r(d.cls) + 3).attr("y", d => y(d.yld) - r(d.cls) + 2).text(d => "F" + String(d.fall).slice(2));
     const head = svg.append("circle").attr("fill", "none").attr("stroke", "var(--ink)").attr("stroke-width", 2);
     const headLbl = svg.append("text").attr("class", "lbl-strong").attr("fill", "var(--ink)").attr("x", W - m.r).attr("y", m.t + 2).attr("dy", "0.7em").attr("text-anchor", "end");
     const wait = svg.append("text").attr("class", "lbl-note").attr("x", (m.l + W - m.r) / 2).attr("y", (m.t + H - m.b) / 2).attr("text-anchor", "middle").text("First-year data start with the fall 2015 class (FY2016)");
@@ -438,11 +469,11 @@ tr.sel td { background: var(--grid); font-weight: 600; }
     if (!S) return;
     const { x, y, r } = S;
     const shown = FY.filter(d => d.fy <= t);
-    const pts = shown.map(d => [x(d.fyNet), y(d.yld)]);
+    const pts = shown.map(d => [x(d.priceD), y(d.yld)]);
     const nxt = FY.find(d => d.fy > t);
     if (shown.length && nxt && t > shown[shown.length - 1].fy) {
       const f = t - shown[shown.length - 1].fy, a = shown[shown.length - 1];
-      pts.push([x(a.fyNet + (nxt.fyNet - a.fyNet) * f), y(a.yld + (nxt.yld - a.yld) * f)]);
+      pts.push([x(a.priceD + (nxt.priceD - a.priceD) * f), y(a.yld + (nxt.yld - a.yld) * f)]);
     }
     S.path.attr("d", pts.length > 1 ? d3.line()(pts) : null);
     const cur = shown[shown.length - 1];
@@ -450,8 +481,8 @@ tr.sel td { background: var(--grid); font-weight: 600; }
     S.tags.attr("opacity", d => d.fy <= t ? 1 : 0);
     S.wait.attr("opacity", shown.length ? 0 : 1);
     if (cur) {
-      S.head.attr("cx", x(cur.fyNet)).attr("cy", y(cur.yld)).attr("r", r(cur.cls) + 4).attr("opacity", 1);
-      S.headLbl.text(S.narrow ? "Fall " + cur.fall + ": " + fK(cur.fyNet) + ", " + fP(cur.yld) : "Fall " + cur.fall + ": " + fK(cur.fyNet) + " net price, " + fP(cur.yld) + " yield, " + cur.cls + " students");
+      S.head.attr("cx", x(cur.priceD)).attr("cy", y(cur.yld)).attr("r", r(cur.cls) + 4).attr("opacity", 1);
+      S.headLbl.text(S.narrow ? "Fall " + cur.fall + ": " + fK(cur.priceD) + ", " + fP(cur.yld) : "Fall " + cur.fall + ": " + fK(cur.priceD) + " net price, " + fP(cur.yld) + " yield, " + cur.cls + " students");
     } else { S.head.attr("opacity", 0); S.headLbl.text(""); }
   }
 
@@ -460,12 +491,12 @@ tr.sel td { background: var(--grid); font-weight: 600; }
     const cy = Math.max(T0, Math.min(T1, Math.floor(t + 1e-9)));
     const row = DATA.find(r => r.fy === cy);
     $("year").firstChild.nodeValue = "FY" + cy;
-    $("year-sub").textContent = "Year ending May 31, " + cy;
+    $("year-sub").textContent = "Year ending May 31, " + cy + " · " + DOLL();
     const disc = at(t, "disc");
     $("v-disc").textContent = fP(disc);
     $("v-chg").textContent = row.chg == null ? "n/a" : sgn(row.chg) + " pts";
-    $("v-net").textContent = fM(at(t, "net"));
-    $("v-cf").textContent = fM(at(t, "cf"));
+    $("v-net").textContent = fM(at(t, "netD"));
+    $("v-cf").textContent = fM(at(t, "cfD"));
     const C = 2 * Math.PI * 34;
     $("ring").setAttribute("stroke-dasharray", (C * disc / 100).toFixed(1) + " " + C.toFixed(1));
     $("ring-t").textContent = d3.format(".0f")(disc) + "%";
@@ -473,16 +504,16 @@ tr.sel td { background: var(--grid); font-weight: 600; }
     $("give").textContent = "$" + d3.format(".0f")(disc);
     if (row.fall != null) {
       $("fy-k").textContent = "CAS class entering fall " + row.fall;
-      $("v-aid").textContent = fK(row.fyAid); $("v-price").textContent = fK(row.fyNet);
+      $("v-aid").textContent = fK(row.aidD); $("v-price").textContent = fK(row.priceD);
       $("v-yield").textContent = fP(row.yld); $("v-cls").textContent = d3.format(",")(row.cls);
     } else {
       $("fy-k").textContent = "CAS entering class (from fall 2015)";
       ["v-aid", "v-price", "v-yield", "v-cls"].forEach(id => $(id).textContent = "n/a");
     }
     const cap = $("caption");
-    const text = NOTES[cy] || ("Discount " + fP(row.disc) + ", up " + sgn(row.chg) + " points. Net tuition " + fM(row.net) + "; at the 45.9% average it would be " + fM(row.cf) + ".");
-    if (cap.dataset.y !== String(cy)) {
-      cap.dataset.y = String(cy); cap.textContent = "";
+    const text = note(cy) || ("Discount " + fP(row.disc) + ", up " + sgn(row.chg) + " points. Net tuition " + fM(row.netD) + "; at the 45.9% average it would be " + fM(row.cfD) + ".");
+    if (cap.dataset.y !== String(cy) || cap.dataset.m !== mode) {
+      cap.dataset.y = String(cy); cap.dataset.m = mode; cap.textContent = "";
       const s = document.createElement("span"); s.className = "cy"; s.textContent = "FY" + cy; cap.appendChild(s);
       const ct = document.createElement("span"); ct.className = "ct"; ct.textContent = text; cap.appendChild(ct);
     }
@@ -602,11 +633,20 @@ tr.sel td { background: var(--grid); font-weight: 600; }
   document.querySelectorAll(".presets button").forEach(b => b.addEventListener("click", () => { E = Number(b.dataset.e); $("el").value = String(E); drawModel(); }));
 
   function rebuild() { buildMain(); buildFy(); buildModel(); render(); drawModel(); }
+  function setMode(mo) {
+    mode = mo; applyMode();
+    $("m-real").setAttribute("aria-pressed", String(mo === "real"));
+    $("m-nom").setAttribute("aria-pressed", String(mo === "nom"));
+    $("model-title").textContent = "FY2026 net tuition by discount rate, $M in " + DOLL();
+    $("scen-title").textContent = "Scenarios for FY2026, " + DOLL() + " (today: 55.0% discount, " + fM(N0) + " net tuition)";
+    drawKpis(); buildTable(); rebuild();
+  }
+  $("m-real").addEventListener("click", () => setMode("real"));
+  $("m-nom").addEventListener("click", () => setMode("nom"));
   let rz = 0;
   const ro = new ResizeObserver(() => { cancelAnimationFrame(rz); rz = requestAnimationFrame(rebuild); });
   ro.observe($("main")); ro.observe($("model-chart"));
-  buildTable();
-  rebuild();
+  setMode("real");
   $("play-t").textContent = "Replay";
 })();
 </script>
