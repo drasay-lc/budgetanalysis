@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex">
 <style>body { margin: 0; }</style>
 <title>Where Net Tuition Peaks</title>
-<meta name="description" content="A plain-language guide to Lewis & Clark's tuition discount: how price sensitivity works, how it was measured from public data, and which discount brings in the most net tuition in FY2026.">
+<meta name="description" content="A plain-language guide to Lewis & Clark's tuition discount, using FY2015 to FY2026 data only: how price sensitivity works, what the recent entering classes show, and which discount brings in the most net tuition in FY2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -112,17 +112,18 @@ a { color: inherit; }
 <body>
 <main class="wrap">
   <p class="crumb"><a href="../">← Budget analysis</a> · <a href="../discount-since-2015/">What the Discount Bought</a></p>
-  <div class="eyebrow">Lewis &amp; Clark College · FY2026 · All schools</div>
+  <div class="eyebrow">Lewis &amp; Clark College · FY2015 to FY2026 data · All schools</div>
   <h1>Where Net Tuition Peaks: A Plain-Language Guide</h1>
-  <p class="dek">The college gives back 55% of its list-price tuition as scholarships. Would it bring in more money by giving back less? This page walks through the answer one idea at a time, using only public data. No economics background needed.</p>
+  <p class="dek">The college gives back 55% of its list-price tuition as scholarships. Would it bring in more money by giving back less? This page walks through the answer one idea at a time, using only public data from FY2015 to FY2026 (the entering classes of fall 2015 to fall 2025). No economics background needed.</p>
 
   <section class="card bottom-line" aria-labelledby="bl">
     <h2 id="bl">The bottom line</h2>
     <ul>
       <li><b>Today:</b> in FY2026 the college listed $185.5M of tuition and fees, gave back $102.1M as scholarships (a 55.0% discount) and kept $83.4M.</li>
       <li><b>The trade-off:</b> giving back less raises what each student pays, but some students would then choose another school. Which effect wins depends on how price-sensitive students are.</li>
-      <li><b>What the data say:</b> Lewis &amp; Clark's own history from 2001 to 2021 suggests a moderate sensitivity (about 0.64). Classes since 2015 show no measurable response to price at all, though that number is uncertain.</li>
-      <li><b>The answer:</b> at 0.64, net tuition peaks at about a 42% discount, roughly $4M a year more than today, with about 18% fewer students. At any sensitivity below 1.0, today's 55% is past the peak. Only at 1.0 or higher is today's discount the best choice.</li>
+      <li><b>What 2015 to 2025 shows:</b> the price an entering student paid after scholarships fell 44% after inflation, yet the share of admitted students who enrolled went from 14.1% to 12.5%. The best estimate of price sensitivity from these classes is 0.00: no measurable effect. The estimate is uncertain; the realistic range runs from 0 to about 1.1.</li>
+      <li><b>The answer:</b> if the best estimate holds, giving back less loses no students. At the period's own 45.9% average discount, FY2026 net tuition would be $100.4M, $17.0M more than today. At 0.56, the middle of the realistic range, net tuition peaks near a 37% discount at about $7M more than today, with about 22% fewer students. Only near the top of the range (about 1.1) is today's 55% close to the best choice.</li>
+      <li><b>The catch:</b> aid rose while applications fell, which pulls the measured sensitivity toward zero. The true number is probably above 0, so the gains above are likely on the high side.</li>
     </ul>
   </section>
 
@@ -141,8 +142,8 @@ a { color: inherit; }
     <p><span class="term">Price sensitivity</span> (economists call it <i>elasticity</i>) is the percent of students you lose when the price after scholarships goes up 1%. A sensitivity of 0.5 means a 10% price increase loses 5% of students. A sensitivity of 1.0 means it loses 10%.</p>
     <div class="controls">
       <label for="el1">Price sensitivity</label>
-      <input type="range" id="el1" min="0" max="1.5" step="0.01" value="0.64">
-      <output id="el1-out" for="el1">0.64</output>
+      <input type="range" id="el1" min="0" max="1.5" step="0.01" value="0">
+      <output id="el1-out" for="el1">0.00</output>
     </div>
     <div class="presets" role="group" aria-label="Sensitivity presets" data-sync></div>
     <div class="dots-wrap">
@@ -188,7 +189,7 @@ a { color: inherit; }
 
   <section class="card" aria-labelledby="s4">
     <h2 id="s4"><span class="n">STEP 4</span>Why net tuition has a peak</h2>
-    <p>Plot the box's area for every discount and you get a hill. At a very low discount, the price is high but too few students come. At a very high discount, plenty of students come but each pays little. Somewhere in between is the top of the hill: the discount that brings in the most money.</p>
+    <p>Plot the box's area for every discount and, at most sensitivities, you get a hill. At a very low discount, the price is high but too few students come. At a very high discount, plenty of students come but each pays little. Somewhere in between is the top of the hill: the discount that brings in the most money. At a sensitivity of exactly 0 there is no hill: every point of discount cut is pure gain, because no students leave. That is why the uncertainty in Step 5 matters so much; try 0.56 or 1.12 to see the hill form.</p>
     <div class="callout"><p><b>The rule for finding the top:</b> net tuition is at its peak when a 1% price increase loses exactly 1% of students. Below that point, raising the price gains more from students who stay than it loses from students who leave.</p></div>
     <div class="presets" role="group" aria-label="Sensitivity presets" data-sync></div>
     <div class="chart-title" id="hill-title">FY2026 net tuition at each discount rate, $M</div>
@@ -200,28 +201,23 @@ a { color: inherit; }
   <section class="card" aria-labelledby="s5">
     <h2 id="s5"><span class="n">STEP 5</span>How sensitive are Lewis &amp; Clark's students?</h2>
     <p>Everything above depends on one number, so it matters how it was measured. The college publishes enough each year to compare the price an entering class paid after scholarships with how many admitted students chose to enroll. That share is called <span class="term">yield</span>.</p>
-    <p>If students are price-sensitive, years when the price after aid was lower should show higher yield. The chart shows each entering class. A cloud that slopes down to the right means students respond to price; a flat cloud means they do not.</p>
-    <div class="presets" role="group" aria-label="Which years">
-      <button type="button" id="p-old" aria-pressed="true">Fall 2001 to fall 2021</button>
-      <button type="button" id="p-new" aria-pressed="false">Fall 2015 to fall 2025</button>
-    </div>
+    <p>If students are price-sensitive, years when the price after aid was lower should show higher yield. The chart shows each entering class from fall 2015 to fall 2025. A cloud that slopes down to the right means students respond to price; a flat cloud means they do not.</p>
     <div class="chart-title" id="ev-title">Each entering class: price after aid vs share of admitted students who enrolled</div>
-    <p class="chart-sub" id="ev-sub"></p>
-    <div class="chart" id="ev" role="img" aria-labelledby="ev-title" aria-describedby="ev-desc"></div>
-    <p class="sr-only" id="ev-desc"></p>
+    <p class="chart-sub" id="ev-sub">The price after aid fell from $30,100 (fall 2015) to $16,800 (fall 2025), in 2025 dollars. Yield moved between 9.7% and 15.4% with no upward trend.</p>
+    <div class="chart" id="ev" role="img" aria-labelledby="ev-title" aria-describedby="ev-sub"></div>
     <h3>From the dots to one number</h3>
     <p>A raw chart can mislead, because other things change over the years too. So the estimate compares classes while holding two things steady: how many students were admitted (a bigger admitted pool means a bigger class at any price) and a gradual long-run drift that affects many private colleges. In statistics this is a <span class="term">regression</span>. Its result comes with a <span class="term">standard error</span>, a measure of how far the estimate could be off: the true value is very likely within about two standard errors of the estimate.</p>
     <div class="tbox">
       <table>
         <thead><tr><th scope="col">Entering classes</th><th scope="col">Classes</th><th scope="col">Sensitivity</th><th scope="col">Standard error</th><th scope="col" class="src">What it means</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Fall 2001 to fall 2021</th><td>18</td><td>0.64</td><td>0.23</td><td class="src">A 10% higher price after aid cost about 6% of enrolling students. Likely range about 0.2 to 1.1.</td></tr>
-          <tr><th scope="row">Fall 2015 to fall 2025</th><td>11</td><td>0.00</td><td>0.56</td><td class="src">No measurable response. Likely range about −1.1 to 1.1, too wide to rule much out.</td></tr>
+          <tr><th scope="row">Fall 2015 to fall 2025</th><td>11</td><td>0.00</td><td>0.56</td><td class="src">No measurable response to price. Two standard errors either side is about −1.1 to 1.1. A value below 0 would mean higher prices attract more students, which is not believable, so the realistic range is 0 to about 1.1.</td></tr>
         </tbody>
       </table>
     </div>
-    <h3>Why the recent number is probably too low</h3>
-    <p>Since 2015 the college raised aid steeply while demand was falling: applications dropped from 7,796 in fall 2016 to 5,804 in fall 2025. If aid went up <i>because</i> fewer students were interested, the extra aid and the weaker interest arrive together and hide each other in the data. That pulls the measured sensitivity toward zero even if aid does help. The older, longer period has more variety in prices and gives a firmer estimate, so this page uses 0.64 as the default and lets you try others.</p>
+    <p>Comparing yield alone with price, instead of class size, gives the same answer: no measurable effect. The page uses four values from the realistic range: 0.00 (the best estimate), 0.30, 0.56 (the middle of the range, one standard error above the estimate) and 1.12 (the top, two standard errors above).</p>
+    <h3>Why the true number is probably above zero</h3>
+    <p>Since 2015 the college raised aid steeply while demand was falling: applications dropped from 7,796 in fall 2016 to 5,804 in fall 2025. If aid went up <i>because</i> fewer students were interested, the extra aid and the weaker interest arrive together and hide each other in the data. That pulls the measured sensitivity toward zero even if aid does help. Eleven classes is also a small sample. So read 0.00 as "these years show no clear payoff from more aid," not as proof that students ignore price.</p>
   </section>
 
   <section class="card" aria-labelledby="s6">
@@ -241,6 +237,7 @@ a { color: inherit; }
       <li><b>Time.</b> A change reaches one entering class a year, so the full effect takes about four years.</li>
       <li><b>Shape.</b> The model assumes a straight demand line. That is reasonable near today's discount and less reliable far from it, which is why the range stops at 30% and 65%.</li>
       <li><b>One sensitivity for everyone.</b> It is measured on first-year undergraduates and applied to the whole college, including Law and the Graduate School, which discount far less.</li>
+      <li><b>Few years.</b> Eleven entering classes is a short record, which is why the realistic range is wide.</li>
     </ul>
   </section>
 
@@ -254,8 +251,7 @@ a { color: inherit; }
           <tr><td>Scholarships, FY2026</td><td class="mono">$102,083,195</td><td>Same audit, note 15. Discount = scholarships ÷ gross = 55.03%.</td></tr>
           <tr><td>Net tuition, FY2026</td><td class="mono">$83,416,584</td><td>Same audit, note 15.</td></tr>
           <tr><td>Average discount, FY2015 to FY2026</td><td class="mono">45.85%</td><td>IPEDS finance survey (FY2015 to FY2024) and audited statements (FY2025, FY2026). <a href="../data/#since2015">Data table</a></td></tr>
-          <tr><td>Classes of fall 2001 to fall 2021</td><td class="mono">18 classes</td><td>IPEDS student financial aid survey (share of first-time, full-time students receiving institutional grants and their average grant) and admissions survey (admits, enrollees); list tuition from IPEDS. Fall 2005, 2007 and 2010 are missing a needed value. <a href="../data/first_year_aid_ipeds.csv" download>CSV</a></td></tr>
-          <tr><td>Classes of fall 2015 to fall 2025</td><td class="mono">11 classes</td><td>Common Data Sets 2015-16 to 2025-26, items H2 and H2A (grant aid to first-time, full-time students) and C1 (fall 2025 admits and enrollees); IPEDS admissions for fall 2015 to 2024. Includes federal and state need-based grants. <a href="../data/#since2015">Data table</a></td></tr>
+          <tr><td>Classes of fall 2015 to fall 2025</td><td class="mono">11 classes</td><td>Common Data Sets 2015-16 to 2025-26, items H2 and H2A (grant aid to first-time, full-time students) and C1 (fall 2025 admits and enrollees); IPEDS admissions for fall 2015 to 2024. Includes federal and state need-based grants. <a href="../data/#since2015">Data table</a> · <a href="../data/first_year_aid.csv" download>CSV</a></td></tr>
           <tr><td>Inflation</td><td class="mono">CPI-U</td><td>U.S. Bureau of Labor Statistics, annual averages; prices on the evidence chart are in 2025 dollars. <a href="../data/#inflation">Data table</a></td></tr>
           <tr><td>Entering class, fall 2025</td><td class="mono">517</td><td>Common Data Set 2025-26, item C1.</td></tr>
         </tbody>
@@ -268,11 +264,11 @@ a { color: inherit; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script>
 (function () {
-  const OLD = [{"fall":2001,"net":27037,"yld":21.1},{"fall":2002,"net":22290,"yld":23.0},{"fall":2003,"net":23258,"yld":21.3},{"fall":2004,"net":25147,"yld":21.8},{"fall":2006,"net":29531,"yld":18.6},{"fall":2008,"net":34703,"yld":16.6},{"fall":2009,"net":33892,"yld":14.4},{"fall":2011,"net":27554,"yld":15.5},{"fall":2012,"net":33014,"yld":13.2},{"fall":2013,"net":32511,"yld":11.7},{"fall":2014,"net":30324,"yld":13.5},{"fall":2015,"net":33039,"yld":14.1},{"fall":2016,"net":32407,"yld":11.8},{"fall":2017,"net":31809,"yld":11.7},{"fall":2018,"net":30068,"yld":12.4},{"fall":2019,"net":28665,"yld":12.0},{"fall":2020,"net":27971,"yld":11.4},{"fall":2021,"net":24734,"yld":15.4}], NEW = [{"fall":2015,"net":30065,"yld":14.1},{"fall":2016,"net":30632,"yld":11.8},{"fall":2017,"net":29879,"yld":11.7},{"fall":2018,"net":28565,"yld":12.4},{"fall":2019,"net":30642,"yld":12.0},{"fall":2020,"net":26562,"yld":11.4},{"fall":2021,"net":23849,"yld":15.4},{"fall":2022,"net":23573,"yld":13.7},{"fall":2023,"net":20152,"yld":11.7},{"fall":2024,"net":17495,"yld":9.7},{"fall":2025,"net":16803,"yld":12.5}];
+  const NEW = [{"fall":2015,"net":30065,"yld":14.1},{"fall":2016,"net":30632,"yld":11.8},{"fall":2017,"net":29879,"yld":11.7},{"fall":2018,"net":28565,"yld":12.4},{"fall":2019,"net":30642,"yld":12.0},{"fall":2020,"net":26562,"yld":11.4},{"fall":2021,"net":23849,"yld":15.4},{"fall":2022,"net":23573,"yld":13.7},{"fall":2023,"net":20152,"yld":11.7},{"fall":2024,"net":17495,"yld":9.7},{"fall":2025,"net":16803,"yld":12.5}];
   const G = 185.4998, D0 = 0.5503, N0 = G * (1 - D0), K0 = 100 * (1 - D0), AVG = 45.85, CLS = 517;
   const DMIN = 0.30, DMAX = 0.65;
-  const PRESETS = [[0, "0.00 · since 2015"], [0.3, "0.30 · low"], [0.64, "0.64 · 2001 to 2021"], [1, "1.00 · high"]];
-  let E = 0.64, D = D0;
+  const PRESETS = [[0, "0.00 · best estimate"], [0.3, "0.30"], [0.56, "0.56 · middle of range"], [1.12, "1.12 · top of range"]];
+  let E = 0, D = D0;
   const $ = (id) => document.getElementById(id);
   const fM = (v) => "$" + d3.format(".1f")(v) + "M";
   const fP = (v, p = 1) => d3.format("." + p + "f")(v) + "%";
@@ -301,9 +297,9 @@ a { color: inherit; }
     const lost = Math.max(0, Math.min(100, Math.round(E * 10)));
     [...dots.children].forEach((d, i) => d.classList.toggle("gone", i >= 100 - lost));
     $("el1-out").textContent = d3.format(".2f")(E);
-    $("dots-say").innerHTML = "If the price after scholarships rises <b>10%</b>, about <b>" + d3.format(".1f")(E * 10) + "</b> of every 100 students go elsewhere.";
+    $("dots-say").innerHTML = E < 0.005 ? "If the price after scholarships rises <b>10%</b>, <b>none</b> of the 100 students go elsewhere." : "If the price after scholarships rises <b>10%</b>, about <b>" + d3.format(".1f")(E * 10) + "</b> of every 100 students go elsewhere.";
     const net = (1.1 * (1 - E * 0.1) - 1) * 100;
-    $("dots-rule").textContent = "The remaining students each pay 10% more, so tuition from this group changes by " + sgn(net, 1) + "%. " +
+    $("dots-rule").textContent = (E < 0.005 ? "Every student stays and pays 10% more" : "The remaining students each pay 10% more") + ", so tuition from this group changes by " + sgn(net, 1) + "%. " +
       (E < 1 ? "Below a sensitivity of 1.0, a price increase brings in more money." : E > 1 ? "Above a sensitivity of 1.0, a price increase brings in less money." : "At exactly 1.0, the two effects cancel out.");
   }
 
@@ -358,7 +354,7 @@ a { color: inherit; }
     const pct = 100 * (k / K0 - 1);
     $("dem-say").textContent = Math.abs(D - D0) < 0.0001
       ? "This is today: the college keeps $" + d3.format(".2f")(K0) + " of every $100 of list price. Move the discount slider to see the trade-off."
-      : "At a " + fP(D * 100) + " discount, students pay " + d3.format(".0f")(Math.abs(pct)) + "% " + (pct >= 0 ? "more" : "less") + " than today after scholarships, so " + (n < 100 ? "about " + d3.format(".0f")(100 - n) + "% fewer" : "about " + d3.format(".0f")(n - 100) + "% more") + " enroll. Net tuition comes to " + fM(r) + ", " + sgnM(r - N0) + " compared with today.";
+      : "At a " + fP(D * 100) + " discount, students pay " + d3.format(".0f")(Math.abs(pct)) + "% " + (pct >= 0 ? "more" : "less") + " than today after scholarships, so " + (Math.abs(n - 100) < 0.5 ? "enrollment does not change at this sensitivity" : (n < 100 ? "about " + d3.format(".0f")(100 - n) + "% fewer" : "about " + d3.format(".0f")(n - 100) + "% more") + " enroll") + ". Net tuition comes to " + fM(r) + ", " + sgnM(r - N0) + " compared with today.";
     $("dem-desc").textContent = $("dem-say").textContent;
   }
 
@@ -401,25 +397,25 @@ a { color: inherit; }
     HL.pkL.attr("x", Math.max(60, px)).attr("y", py - 13).text("Peak " + (p.edge ? "≤ " : "") + fP(p.d * 100));
     // one-point step from today
     const d1 = D0 - 0.01, priceUp = 100 * ((1 - d1) / (1 - D0) - 1), lost = 100 * (1 - enr(d1, E)), dr = rev(d1, E) - N0;
-    $("hill-desc").textContent = "At sensitivity " + d3.format(".2f")(E) + ", net tuition peaks at " + (p.edge ? "30% or lower" : "a " + fP(p.d * 100) + " discount") + ", with " + fM(pr) + " (" + sgnM(pr - N0) + " vs today) and " + (Math.abs(enr(p.d, E) - 1) < 0.005 ? "the same number of students" : d3.format(".0f")(Math.abs(100 * (enr(p.d, E) - 1))) + "% " + (enr(p.d, E) < 1 ? "fewer" : "more") + " students") + ". " +
-      "Check the rule from today: cutting the discount one point, to 54.0%, raises the price after aid " + d3.format(".1f")(priceUp) + "% and loses about " + d3.format(".1f")(lost) + "% of students, so net tuition changes by " + sgnM(dr) + ".";
+    $("hill-desc").textContent = "At sensitivity " + d3.format(".2f")(E) + ", net tuition peaks at " + (p.edge ? "30% or lower" : "a " + fP(p.d * 100) + " discount") + ", with " + fM(pr) + (p.edge ? " or more" : "") + " (" + sgnM(pr - N0) + (p.edge ? " or more" : "") + " vs today) and " + (Math.abs(enr(p.d, E) - 1) < 0.005 ? "the same number of students" : d3.format(".0f")(Math.abs(100 * (enr(p.d, E) - 1))) + "% " + (enr(p.d, E) < 1 ? "fewer" : "more") + " students") + ". " +
+      "Check the rule from today: cutting the discount one point, to 54.0%, raises the price after aid " + d3.format(".1f")(priceUp) + "% and " + (lost < 0.05 ? "loses no students" : "loses about " + d3.format(".1f")(lost) + "% of students") + ", so net tuition changes by " + sgnM(dr) + ".";
   }
 
   // ---------- step 5: evidence ----------
-  let EV = null, period = "old";
+  let EV = null;
   function buildEv() {
     const el = $("ev"); el.textContent = "";
     const W = Math.max(300, el.clientWidth), narrow = W < 520;
     const H = Math.round(Math.max(250, Math.min(340, W * 0.44)));
     const m = { t: 14, r: 18, b: 40, l: 44 };
-    const x = d3.scaleLinear([15000, 36000], [m.l, W - m.r]);
-    const y = d3.scaleLinear([8, 24], [H - m.b, m.t]);
+    const x = d3.scaleLinear([15000, 32000], [m.l, W - m.r]);
+    const y = d3.scaleLinear([8, 17], [H - m.b, m.t]);
     const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
-    [8, 12, 16, 20, 24].forEach(v => {
+    [8, 10, 12, 14, 16].forEach(v => {
       svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", "var(--grid)");
       svg.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text(v + "%");
     });
-    (narrow ? [16000, 24000, 32000] : [16000, 20000, 24000, 28000, 32000, 36000]).forEach(v => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - m.b + 16).attr("text-anchor", "middle").text("$" + v / 1000 + "K"));
+    (narrow ? [16000, 24000, 32000] : [16000, 20000, 24000, 28000, 32000]).forEach(v => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - m.b + 16).attr("text-anchor", "middle").text("$" + v / 1000 + "K"));
     svg.append("text").attr("class", "lbl-note").attr("x", (m.l + W - m.r) / 2).attr("y", H - 4).attr("text-anchor", "middle").text("Price after aid for an entering student, 2025 dollars");
     svg.append("text").attr("class", "lbl").attr("x", m.l + 4).attr("y", m.t).attr("dy", "0.7em").text("Yield");
     const g = svg.append("g");
@@ -428,26 +424,17 @@ a { color: inherit; }
   function drawEv() {
     if (!EV) return;
     const { x, y } = EV;
-    const D_ = period === "old" ? OLD : NEW;
-    const col = period === "old" ? "var(--gross)" : "var(--endow)";
     EV.g.selectAll("*").remove();
-    const gs = EV.g.selectAll("g").data(D_).join("g");
-    gs.append("circle").attr("cx", d => x(d.net)).attr("cy", d => y(d.yld)).attr("r", 6).attr("fill", col).attr("fill-opacity", 0.8).attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
-    gs.append("text").attr("class", "lbl").attr("x", d => x(d.net) + 8).attr("y", d => y(d.yld) + 4).text(d => "F" + String(d.fall).slice(2));
-    $("p-old").setAttribute("aria-pressed", String(period === "old"));
-    $("p-new").setAttribute("aria-pressed", String(period === "new"));
-    $("ev-sub").textContent = period === "old"
-      ? "IPEDS data: the college's own grants to first-time, full-time students. Estimated sensitivity 0.64. The cloud slopes gently down: cheaper years tended to enroll a bigger share, though yield also drifted down over time."
-      : "Common Data Set data: all grant aid to first-time, full-time students, including federal and state grants. Estimated sensitivity about 0. The price fell from $30,100 to $16,800, yet yield stayed between 9.7% and 15.4%.";
-    $("ev-desc").textContent = $("ev-sub").textContent;
+    EV.g.append("path").attr("d", d3.line()(NEW.map(d => [x(d.net), y(d.yld)]))).attr("fill", "none").attr("stroke", "var(--endow)").attr("stroke-opacity", 0.35).attr("stroke-width", 1.4);
+    const gs = EV.g.selectAll("g.pt").data(NEW).join("g").attr("class", "pt");
+    gs.append("circle").attr("cx", d => x(d.net)).attr("cy", d => y(d.yld)).attr("r", 6).attr("fill", "var(--endow)").attr("fill-opacity", 0.85).attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
+    gs.append("text").attr("class", "lbl").attr("x", d => x(d.net) + 8).attr("y", d => y(d.yld) - 6).text(d => "F" + String(d.fall).slice(2));
   }
-  $("p-old").addEventListener("click", () => { period = "old"; drawEv(); });
-  $("p-new").addEventListener("click", () => { period = "new"; drawEv(); });
 
   // ---------- step 6: table ----------
   function buildTable() {
     const tb = document.querySelector("#scen tbody"); tb.textContent = "";
-    [[0, "0.00 (since 2015)"], [0.3, "0.30 (low)"], [0.64, "0.64 (2001 to 2021)"], [1, "1.00 (high)"]].forEach(([e, lab]) => {
+    [[0, "0.00 (best estimate)"], [0.3, "0.30"], [0.56, "0.56 (middle of range)"], [1.12, "1.12 (top of range)"]].forEach(([e, lab]) => {
       const p = peak(e), pr = rev(p.d, e), ar = rev(AVG / 100, e);
       const tr = document.createElement("tr"); tr.dataset.e = e;
       [lab, p.edge ? "30% or lower" : fP(p.d * 100), fM(pr) + (p.edge ? " or more" : ""), sgnM(pr - N0) + (p.edge ? " or more" : ""), sgn(100 * (enr(p.d, e) - 1)) + "%", fM(ar), sgn(100 * (enr(AVG / 100, e) - 1)) + "%"]
