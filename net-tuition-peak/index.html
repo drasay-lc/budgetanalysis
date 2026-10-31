@@ -93,6 +93,9 @@ button[aria-pressed="true"] { background: var(--ink); color: var(--panel); borde
 .ro.net { border-top-color: var(--net); }
 .ro.aid { border-top-color: var(--aid); }
 .ro.lost { border-top-color: var(--lost); }
+.ro.ret { border-top-color: var(--endow); }
+.sw-hollow { width: 10px; height: 10px; transform: rotate(45deg); border: 2px solid var(--cf); display: inline-block; background: var(--panel); }
+.sw-diamond { width: 10px; height: 10px; transform: rotate(45deg); background: var(--net); display: inline-block; }
 .say { font-size: 14.5px; margin: 14px 0 0; }
 
 .tbox { overflow-x: auto; margin: 10px 0; }
@@ -101,7 +104,7 @@ th, td { padding: 7px 10px; border-bottom: 1px solid var(--rule); text-align: ri
 th:first-child, td:first-child { text-align: left; }
 thead th { font-size: 12px; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--muted); }
 tr.sel td, tr.sel th { background: var(--grid); }
-td.src, th.src { text-align: left; white-space: normal; }
+td.src, th.src { text-align: left; white-space: normal; min-width: 18rem; }
 .src-table td, .src-table th { text-align: left; white-space: normal; }
 .src-table td:first-child { white-space: nowrap; font-weight: 600; }
 .foot { font-size: 13px; color: var(--muted); }
@@ -123,6 +126,7 @@ a { color: inherit; }
       <li><b>The trade-off:</b> giving back less raises what each student pays, but some students would then choose another school. Which effect wins depends on how price-sensitive students are.</li>
       <li><b>What 2015 to 2025 shows:</b> the price an entering student paid after scholarships fell 44% after inflation, yet the share of admitted students who enrolled went from 14.1% to 12.5%. The best estimate of price sensitivity from these classes is 0.00: no measurable effect. The estimate is uncertain; the realistic range runs from 0 to about 1.1.</li>
       <li><b>The answer:</b> if the best estimate holds, giving back less loses no students. At the period's own 45.9% average discount, FY2026 net tuition would be $100.4M, $17.0M more than today. At 0.56, the middle of the realistic range, net tuition peaks near a 37% discount at about $7M more than today, with about 22% fewer students. Only near the top of the range (about 1.1) is today's 55% close to the best choice.</li>
+      <li><b>What retention adds:</b> aid doubled, but the share of each class returning for a second year stayed between 81.5% and 86.3%, and the shares still enrolled in years three and four did not rise either. Each entrant is enrolled about 3.3 of the first four years, so an entering student is worth about $55,700 in net tuition over four years at the fall 2025 price, and the fall 2025 class about $28.8M. Because retention does not measurably respond to price, the four-year view gives the same peak as the one-year view.</li>
       <li><b>The catch:</b> aid rose while applications fell, which pulls the measured sensitivity toward zero. The true number is probably above 0, so the gains above are likely on the high side.</li>
     </ul>
   </section>
@@ -241,8 +245,107 @@ a { color: inherit; }
     </ul>
   </section>
 
+
   <section class="card" aria-labelledby="s7">
-    <h2 id="s7"><span class="n">STEP 7</span>Where every number comes from</h2>
+    <h2 id="s7"><span class="n">STEP 7</span>Does more aid keep students? What retention adds</h2>
+    <p>Yield tests whether aid gets students in the door. <span class="term">Retention</span> tests whether it keeps them: the share of an entering class that is back the next fall. The college publishes it for every CAS class in its factbook, along with the shares still enrolled in years three and four.</p>
+    <p>If aid were buying classes that fit the college better, those classes would stay longer, and retention would have climbed as aid doubled. The chart repeats Step 5 with retention instead of yield.</p>
+    <div class="chart-title" id="ret-title">Each entering class: price after aid vs share returning for year two</div>
+    <p class="chart-sub" id="ret-sub">Price after aid fell from $30,100 (fall 2015) to $16,800 (fall 2025 dollars). Retention stayed between 81.5% and 86.3%. The hollow point is the fall 2019 class, whose second year was the pandemic fall of 2020.</p>
+    <div class="chart" id="ret" role="img" aria-labelledby="ret-title" aria-describedby="ret-sub"></div>
+    <h3>From the dots to numbers</h3>
+    <p>The same regression as Step 5, run on retention: how many points of retention a class loses when its price after aid is 10% higher, holding the long-run drift steady.</p>
+    <div class="tbox">
+      <table>
+        <thead><tr><th scope="col">Measure</th><th scope="col">Classes</th><th scope="col">Points lost per 10% higher price</th><th scope="col">Standard error</th><th scope="col" class="src">What it means</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Returned for year two</th><td>10</td><td>0.4</td><td>0.4</td><td class="src">Not distinguishable from zero.</td></tr>
+          <tr><th scope="row">Still enrolled in year three</th><td>9</td><td>0.7</td><td>0.4</td><td class="src">Borderline; the pandemic class pulls it.</td></tr>
+          <tr><th scope="row">Still enrolled in year four</th><td>8</td><td>0.0</td><td>0.7</td><td class="src">Not distinguishable from zero.</td></tr>
+          <tr><th scope="row">Years enrolled, first four years</th><td>8</td><td>0.5% fewer years</td><td>0.6%</td><td class="src">About 0.5 points off each later year's share, give or take 0.6. Realistic range 0 to about 1.8.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>So on both margins the data agree. Doubling aid did not raise the share of admitted students who enroll, and it did not raise the share who stay. The scorecard below puts the two together: the share of admitted students still enrolled a year later, and what one entrant pays over two years.</p>
+    <div class="tbox">
+      <table>
+        <thead><tr><th scope="col">Entering class</th><th scope="col">Grant aid per entrant</th><th scope="col">Yield</th><th scope="col">Returned for year two</th><th scope="col">Admits still enrolled a year later</th><th scope="col">Two-year net tuition per entrant (2025 $)</th></tr></thead>
+        <tbody>
+<tr><th scope="row">Fall 2015</th><td>$22,614</td><td>14.1%</td><td>84.6%</td><td>11.9%</td><td>$55,500</td></tr>
+<tr><th scope="row">Fall 2016</th><td>$23,702</td><td>11.8%</td><td>82.6%</td><td>9.7%</td><td>$55,900</td></tr>
+<tr><th scope="row">Fall 2017</th><td>$25,883</td><td>11.7%</td><td>81.5%</td><td>9.5%</td><td>$54,200</td></tr>
+<tr><th scope="row">Fall 2018</th><td>$28,298</td><td>12.4%</td><td>85.9%</td><td>10.7%</td><td>$53,100</td></tr>
+<tr><th scope="row">Fall 2019</th><td>$28,017</td><td>12.0%</td><td>78.5%</td><td>9.4%</td><td>$54,700</td></tr>
+<tr><th scope="row">Fall 2020</th><td>$33,483</td><td>11.4%</td><td>86.3%</td><td>9.8%</td><td>$49,500</td></tr>
+<tr><th scope="row">Fall 2021</th><td>$36,900</td><td>15.4%</td><td>86.1%</td><td>13.3%</td><td>$44,400</td></tr>
+<tr><th scope="row">Fall 2022</th><td>$37,826</td><td>13.7%</td><td>81.5%</td><td>11.2%</td><td>$42,800</td></tr>
+<tr><th scope="row">Fall 2023</th><td>$42,847</td><td>11.7%</td><td>86.1%</td><td>10.1%</td><td>$37,500</td></tr>
+<tr><th scope="row">Fall 2024</th><td>$47,351</td><td>9.7%</td><td>83.0%</td><td>8.1%</td><td>$32,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="foot">Two-year net tuition per entrant = price after aid × (1 + retention), holding the price flat in 2025 dollars. Aid and yield are for first-time, full-time students (Common Data Sets); retention is for the CAS cohort (factbook), which excludes a few students by federal definition.</p>
+    <h3>What retention cannot tell you</h3>
+    <p>The question that matters most is <i>who</i> leaves when the discount falls. If the students a lower discount would turn away are the same ones who leave after a year anyway, losing them costs much less than the model assumes, and today's aid is partly buying one-year stays. If instead the heavily aided students are the ones who persist, cutting need-based aid costs more than a uniform cut suggests. Public data cannot separate these. A table of retention by aid amount, and by merit versus need, is an internal admissions query and the first thing to ask for. Merit aid grew fastest after 2016, so whether merit recipients stay is the first row to read.</p>
+    <p class="foot">Cautions: ten classes with a 2.6-point spread is a small, noisy sample; the fall 2019 class (78.5%) had its second year in the pandemic; and a returning student's price depends on year-two aid, which is not published, so the entering price is only a rough stand-in.</p>
+  </section>
+
+  <section class="card" aria-labelledby="s8">
+    <h2 id="s8"><span class="n">STEP 8</span>The four-year view</h2>
+    <p>Steps 3 and 4 count one year of net tuition. A student who stays pays again. With Lewis &amp; Clark's rates since fall 2015, 83.6% of a class returns for year two, 75.5% is there in year three and 72.5% in year four, so each entrant is enrolled about <b>3.3 of the first four years</b>. At the fall 2025 price after aid ($16,803), that makes one entrant worth about <b>$55,700</b> in net tuition over four years, and the fall 2025 class of 517 about <b>$28.8M</b>.</p>
+    <div class="callout"><p class="mono" style="font-size:15px">Four-year net tuition = entrants × price after aid × years enrolled (1 + year 2 share + year 3 share + year 4 share)</p></div>
+    <p><b>Why this changes the stakes but not, by itself, the answer.</b> If every class faces the same discount, the college's net tuition in any year is just entrants times price times years enrolled. So the hill in Step 4 is already the four-year hill, as long as retention does not depend on price. If it does, a lower discount loses students twice, at the door and in later years, and the peak moves toward today. The second slider lets you try that. The measured response is about 0.5 points per 10% price rise, with a realistic range of 0 to about 1.8.</p>
+    <div class="controls">
+      <label for="rho">Retention points lost per 10% higher price</label>
+      <input type="range" id="rho" min="0" max="3" step="0.1" value="0.5">
+      <output id="rho-out" for="rho">0.5</output>
+    </div>
+    <div class="presets" role="group" aria-label="Retention response presets" id="rho-presets"></div>
+    <p class="say" style="margin:0 0 4px">Price sensitivity at the door (shared with the steps above):</p>
+    <div class="presets" role="group" aria-label="Sensitivity presets" data-sync></div>
+    <div class="split">
+      <div>
+        <div class="chart-title" id="hill4-title">FY2026 net tuition at each discount rate, $M, with retention responding to price</div>
+        <div class="legend" aria-hidden="true"><span><i class="sw" style="background:var(--net)"></i>Retention responds</span><span><i class="sw-dash"></i>Retention fixed (Step 4)</span><span><i class="sw-diamond"></i>Peak, responding</span><span><i class="sw-hollow"></i>Peak, fixed</span></div>
+        <div class="chart" id="hill4" role="img" aria-labelledby="hill4-title" aria-describedby="hill4-desc"></div>
+        <p class="say" id="hill4-desc" aria-live="polite"></p>
+      </div>
+      <div>
+        <div class="readouts">
+          <div class="ro net"><span class="k">Peak discount, retention fixed</span><span class="v" id="m4-fixed">…</span></div>
+          <div class="ro net"><span class="k">Peak discount, retention responds</span><span class="v" id="m4-peak">…</span></div>
+          <div class="ro ret"><span class="k">Years enrolled per entrant at that peak</span><span class="v" id="m4-years">…</span></div>
+          <div class="ro ret"><span class="k">Four-year net tuition per entrant at that peak</span><span class="v" id="m4-per">…</span></div>
+          <div class="ro net"><span class="k">Net tuition at that peak</span><span class="v" id="m4-rev">…</span></div>
+          <div class="ro net"><span class="k">vs today's $83.4M</span><span class="v" id="m4-diff">…</span></div>
+        </div>
+        <p class="say">Today: 3.32 years and $55,700 per entrant.</p>
+      </div>
+    </div>
+    <h3>Years enrolled and four-year value by class</h3>
+    <div class="tbox">
+      <table>
+        <thead><tr><th scope="col">Entering class</th><th scope="col">Cohort</th><th scope="col">Year two</th><th scope="col">Year three</th><th scope="col">Year four</th><th scope="col">Years enrolled of first four</th><th scope="col">Four-year net tuition per entrant (2025 $)</th></tr></thead>
+        <tbody>
+<tr><th scope="row">Fall 2015</th><td>654</td><td>84.6%</td><td>75.7%</td><td>73.9%</td><td>3.34</td><td>$100,500</td></tr>
+<tr><th scope="row">Fall 2016</th><td>506</td><td>82.6%</td><td>73.9%</td><td>72.7%</td><td>3.29</td><td>$100,800</td></tr>
+<tr><th scope="row">Fall 2017</th><td>525</td><td>81.5%</td><td>72.8%</td><td>68.2%</td><td>3.23</td><td>$96,400</td></tr>
+<tr><th scope="row">Fall 2018</th><td>562</td><td>85.9%</td><td>73.5%</td><td>74.2%</td><td>3.34</td><td>$95,300</td></tr>
+<tr><th scope="row">Fall 2019</th><td>507</td><td>78.5%</td><td>76.1%</td><td>72.8%</td><td>3.27</td><td>$100,300</td></tr>
+<tr><th scope="row">Fall 2020</th><td>510</td><td>86.3%</td><td>77.8%</td><td>73.9%</td><td>3.38</td><td>$89,800</td></tr>
+<tr><th scope="row">Fall 2021</th><td>677</td><td>86.1%</td><td>77.5%</td><td>73.7%</td><td>3.37</td><td>$80,400</td></tr>
+<tr><th scope="row">Fall 2022</th><td>623</td><td>81.5%</td><td>74.6%</td><td>70.6%</td><td>3.27</td><td>$77,000</td></tr>
+<tr><th scope="row">Fall 2023</th><td>553</td><td>86.1%</td><td>77.6%</td><td>not yet</td><td>not yet</td><td>not yet</td></tr>
+<tr><th scope="row">Fall 2024</th><td>482</td><td>83.0%</td><td>not yet</td><td>not yet</td><td>not yet</td><td>not yet</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="foot">Four-year net tuition per entrant = price after aid × years enrolled, holding the price flat in 2025 dollars. The fall 2015 to fall 2019 classes were each worth about $100,000 over four years; the fall 2022 class about $77,000, as aid per entrant rose from $22,600 to $37,800 while years enrolled stayed near 3.3. Students who take five or six years add a little beyond year four and are not counted.</p>
+    <p class="foot">Method: years enrolled at a discount = 3.316 − 3 × (points lost per 10%) × (price change ÷ 10%) ÷ 100, which takes the same points off each later year's share. Net tuition = gross tuition × (1 − discount) × enrollment relative to today × years enrolled relative to today. The retention rates are CAS first-year cohorts applied to the whole college, like the sensitivity. A change takes about four years to work through, one class at a time.</p>
+  </section>
+
+  <section class="card" aria-labelledby="s9">
+    <h2 id="s9"><span class="n">STEP 9</span>Where every number comes from</h2>
     <div class="tbox">
       <table class="src-table">
         <thead><tr><th scope="col">Input</th><th scope="col">Value</th><th scope="col">Source</th></tr></thead>
@@ -254,10 +357,12 @@ a { color: inherit; }
           <tr><td>Classes of fall 2015 to fall 2025</td><td class="mono">11 classes</td><td>Common Data Sets 2015-16 to 2025-26, items H2 and H2A (grant aid to first-time, full-time students) and C1 (fall 2025 admits and enrollees); IPEDS admissions for fall 2015 to 2024. Includes federal and state need-based grants. <a href="../data/#since2015">Data table</a> · <a href="../data/first_year_aid.csv" download>CSV</a></td></tr>
           <tr><td>Inflation</td><td class="mono">CPI-U</td><td>U.S. Bureau of Labor Statistics, annual averages; prices on the evidence chart are in 2025 dollars. <a href="../data/#inflation">Data table</a></td></tr>
           <tr><td>Entering class, fall 2025</td><td class="mono">517</td><td>Common Data Set 2025-26, item C1.</td></tr>
+          <tr><td>Retention to years two, three and four</td><td class="mono">83.6% / 75.5% / 72.5%</td><td>CAS Trends factbook, AY 2025-26, "10-Year History: Retention and Graduation Rates of First-Time, First-Year Cohorts," fall 2015 to fall 2024 classes; averages over the classes with data. <a href="../data/#retention-years">Data table</a> · <a href="../data/retention_by_year.csv" download>CSV</a></td></tr>
+          <tr><td>Two-year and four-year value per entrant</td><td class="mono">computed</td><td>Price after aid from the Common Data Sets times (1 + retention) or times years enrolled. <a href="../data/cohort_value.csv" download>CSV</a></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="foot">Method: the demand line is n = 1 − e × (p − 1), where n is enrollment relative to today, p is price after aid relative to today and e is the sensitivity, so the sensitivity equals e exactly at today's discount. Net tuition = gross tuition × (1 − discount) × n. The peak is where (1 − discount) = (1 − 0.5503) × (1 + e) ÷ (2e). All dollar figures are FY2026 nominal. See also <a href="../discount-since-2015/">What the Discount Bought</a> for the year-by-year history.</p>
+    <p class="foot">Method: the demand line is n = 1 − e × (p − 1), where n is enrollment relative to today, p is price after aid relative to today and e is the sensitivity, so the sensitivity equals e exactly at today's discount. Net tuition = gross tuition × (1 − discount) × n. The peak is where (1 − discount) = (1 − 0.5503) × (1 + e) ÷ (2e). All dollar figures are FY2026 nominal. Retention response: each later year's share was regressed on log price after aid and a time trend; years enrolled through year four falls 0.016 years per 10% price rise (standard error 0.019), about 0.5 points per year. See also <a href="../discount-since-2015/">What the Discount Bought</a> for the year-by-year history.</p>
   </section>
 </main>
 
@@ -267,6 +372,10 @@ a { color: inherit; }
   const NEW = [{"fall":2015,"net":30065,"yld":14.1},{"fall":2016,"net":30632,"yld":11.8},{"fall":2017,"net":29879,"yld":11.7},{"fall":2018,"net":28565,"yld":12.4},{"fall":2019,"net":30642,"yld":12.0},{"fall":2020,"net":26562,"yld":11.4},{"fall":2021,"net":23849,"yld":15.4},{"fall":2022,"net":23573,"yld":13.7},{"fall":2023,"net":20152,"yld":11.7},{"fall":2024,"net":17495,"yld":9.7},{"fall":2025,"net":16803,"yld":12.5}];
   const G = 185.4998, D0 = 0.5503, N0 = G * (1 - D0), K0 = 100 * (1 - D0), AVG = 45.85, CLS = 517;
   const DMIN = 0.30, DMAX = 0.65;
+  const RET = [{"fall":2015,"net":30065,"y2":84.6},{"fall":2016,"net":30632,"y2":82.6},{"fall":2017,"net":29879,"y2":81.5},{"fall":2018,"net":28565,"y2":85.9},{"fall":2019,"net":30642,"y2":78.5},{"fall":2020,"net":26562,"y2":86.3},{"fall":2021,"net":23849,"y2":86.1},{"fall":2022,"net":23573,"y2":81.5},{"fall":2023,"net":20152,"y2":86.1},{"fall":2024,"net":17495,"y2":83.0}];
+  const R2 = 0.836, R3 = 0.755, R4 = 0.725, M0 = 1 + R2 + R3 + R4, P25 = 16803;
+  const RPRESETS = [[0, "0.0 · none"], [0.5, "0.5 · best estimate"], [1.8, "1.8 · top of range"], [3, "3.0 · beyond the data"]];
+  let RHO = 0.5;
   const PRESETS = [[0, "0.00 · best estimate"], [0.3, "0.30"], [0.56, "0.56 · middle of range"], [1.12, "1.12 · top of range"]];
   let E = 0, D = D0;
   const $ = (id) => document.getElementById(id);
@@ -394,7 +503,7 @@ a { color: inherit; }
     HL.enrP.attr("d", d3.line().x(d => x(d * 100)).y(d => y2(Math.max(-60, Math.min(40, 100 * (enr(d, E) - 1)))))(ds));
     const p = peak(E), pr = rev(p.d, E), px = x(p.d * 100), py = y(Math.min(140, pr));
     HL.pk.attr("d", `M${px},${py - 8}L${px + 7},${py}L${px},${py + 8}L${px - 7},${py}Z`);
-    HL.pkL.attr("x", Math.max(60, px)).attr("y", py - 13).text("Peak " + (p.edge ? "≤ " : "") + fP(p.d * 100));
+    if (p.edge) HL.pkL.attr("x", px + 11).attr("y", py + 4).attr("text-anchor", "start").text("Peak at 30% or lower"); else HL.pkL.attr("x", px).attr("y", py - 13).attr("text-anchor", "middle").text("Peak " + fP(p.d * 100));
     // one-point step from today
     const d1 = D0 - 0.01, priceUp = 100 * ((1 - d1) / (1 - D0) - 1), lost = 100 * (1 - enr(d1, E)), dr = rev(d1, E) - N0;
     $("hill-desc").textContent = "At sensitivity " + d3.format(".2f")(E) + ", net tuition peaks at " + (p.edge ? "30% or lower" : "a " + fP(p.d * 100) + " discount") + ", with " + fM(pr) + (p.edge ? " or more" : "") + " (" + sgnM(pr - N0) + (p.edge ? " or more" : "") + " vs today) and " + (Math.abs(enr(p.d, E) - 1) < 0.005 ? "the same number of students" : d3.format(".0f")(Math.abs(100 * (enr(p.d, E) - 1))) + "% " + (enr(p.d, E) < 1 ? "fewer" : "more") + " students") + ". " +
@@ -446,11 +555,98 @@ a { color: inherit; }
     document.querySelectorAll("[data-sync] button").forEach(b => b.setAttribute("aria-pressed", String(Math.abs(Number(b.dataset.e) - E) < 0.001)));
     document.querySelectorAll("#scen tbody tr").forEach(tr => tr.classList.toggle("sel", Math.abs(Number(tr.dataset.e) - E) < 0.001));
   }
-  function drawAll() { drawDots(); drawDemand(); drawHill(); syncUi(); }
-  function rebuild() { buildDemand(); buildHill(); buildEv(); drawAll(); drawEv(); }
+  // ---------- step 7: retention evidence ----------
+  let RV = null;
+  function buildRet() {
+    const el = $("ret"); el.textContent = "";
+    const W = Math.max(300, el.clientWidth), narrow = W < 520;
+    const H = Math.round(Math.max(230, Math.min(300, W * 0.4)));
+    const m = { t: 14, r: 18, b: 40, l: 44 };
+    const x = d3.scaleLinear([15000, 32000], [m.l, W - m.r]);
+    const y = d3.scaleLinear([70, 90], [H - m.b, m.t]);
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    [70, 75, 80, 85, 90].forEach(v => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text(v + "%");
+    });
+    (narrow ? [16000, 24000, 32000] : [16000, 20000, 24000, 28000, 32000]).forEach(v => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - m.b + 16).attr("text-anchor", "middle").text("$" + v / 1000 + "K"));
+    svg.append("text").attr("class", "lbl-note").attr("x", (m.l + W - m.r) / 2).attr("y", H - 4).attr("text-anchor", "middle").text("Price after aid for an entering student, 2025 dollars");
+    svg.append("text").attr("class", "lbl").attr("x", m.l + 4).attr("y", m.t).attr("dy", "0.7em").text("Returned for year two");
+    svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(83.6)).attr("y2", y(83.6)).attr("stroke", "var(--cf)").attr("stroke-dasharray", "5 4");
+    svg.append("text").attr("class", "lbl").attr("x", x(19500)).attr("y", y(83.6) + 12).text("average 83.6%");
+    const gs = svg.append("g").selectAll("g").data(RET).join("g");
+    gs.append("circle").attr("cx", d => x(d.net)).attr("cy", d => y(d.y2)).attr("r", 6).attr("fill", d => d.fall === 2019 ? "var(--panel)" : "var(--endow)").attr("fill-opacity", 0.85).attr("stroke", d => d.fall === 2019 ? "var(--endow)" : "var(--panel)").attr("stroke-width", 1.5);
+    gs.append("text").attr("class", "lbl").attr("x", d => x(d.net) + 8).attr("y", d => y(d.y2) - 6).text(d => "F" + String(d.fall).slice(2));
+    RV = true;
+  }
+
+  // ---------- step 8: four-year view ----------
+  const years = (d, rho) => Math.max(1, M0 - 3 * rho * (((1 - d) / (1 - D0) - 1) / 0.1) / 100);
+  const rev4 = (d, e, rho) => rev(d, e) * years(d, rho) / M0;
+  function peak4(e, rho) {
+    let best = DMIN, bv = -1;
+    for (let d = DMIN; d <= DMAX + 1e-9; d += 0.0025) { const v = rev4(d, e, rho); if (v > bv) { bv = v; best = d; } }
+    return { d: best, v: bv, edge: best <= DMIN + 1e-9 };
+  }
+  let H4 = null;
+  function buildHill4() {
+    const el = $("hill4"); el.textContent = "";
+    const W = Math.max(300, el.clientWidth), narrow = W < 480;
+    const H = Math.round(Math.max(260, Math.min(360, W * 0.6)));
+    const m = { t: 22, r: 16, b: 38, l: 46 };
+    const x = d3.scaleLinear([DMIN * 100, DMAX * 100], [m.l, W - m.r]);
+    const y = d3.scaleLinear([40, 140], [H - m.b, m.t]);
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    [40, 60, 80, 100, 120, 140].forEach(v => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text("$" + v);
+    });
+    (narrow ? [30, 40, 50, 60] : [30, 35, 40, 45, 50, 55, 60, 65]).forEach(v => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - m.b + 16).attr("text-anchor", "middle").text(v + "%"));
+    svg.append("text").attr("class", "lbl-note").attr("x", (m.l + W - m.r) / 2).attr("y", H - 2).attr("text-anchor", "middle").text("Discount rate");
+    const fixedP = svg.append("path").attr("fill", "none").attr("stroke", "var(--cf)").attr("stroke-width", 1.5).attr("stroke-dasharray", "5 4");
+    const respP = svg.append("path").attr("fill", "none").attr("stroke", "var(--net)").attr("stroke-width", 2.6);
+    svg.append("circle").attr("r", 6).attr("fill", "var(--muted)").attr("stroke", "var(--panel)").attr("stroke-width", 2).attr("cx", x(D0 * 100)).attr("cy", y(N0));
+    svg.append("text").attr("class", "lbl-strong").attr("fill", "var(--ink)").attr("text-anchor", "middle").attr("x", x(D0 * 100)).attr("y", y(N0) + 20).text("Today");
+    const pkF = svg.append("path").attr("fill", "var(--panel)").attr("stroke", "var(--cf)").attr("stroke-width", 2);
+    const pkR = svg.append("path").attr("fill", "var(--net)").attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
+    const pkL = svg.append("text").attr("class", "lbl-strong").attr("fill", "var(--net)").attr("text-anchor", "middle");
+    H4 = { x, y, fixedP, respP, pkF, pkR, pkL };
+  }
+  function drawHill4() {
+    if (!H4) return;
+    const { x, y } = H4;
+    const ds = d3.range(DMIN, DMAX + 1e-9, 0.0025);
+    const clamp = v => Math.max(40, Math.min(140, v));
+    H4.fixedP.attr("d", d3.line().x(d => x(d * 100)).y(d => y(clamp(rev(d, E))))(ds));
+    H4.respP.attr("d", d3.line().x(d => x(d * 100)).y(d => y(clamp(rev4(d, E, RHO))))(ds));
+    const pf = peak4(E, 0), pr = peak4(E, RHO);
+    const dia = (px, py) => `M${px},${py - 8}L${px + 7},${py}L${px},${py + 8}L${px - 7},${py}Z`;
+    H4.pkF.attr("d", dia(x(pf.d * 100), y(clamp(pf.v))));
+    H4.pkR.attr("d", dia(x(pr.d * 100), y(clamp(pr.v))));
+    if (pr.edge) H4.pkL.attr("x", x(pr.d * 100) + 11).attr("y", y(clamp(pr.v)) + 4).attr("text-anchor", "start").text("Peak at 30% or lower"); else H4.pkL.attr("x", x(pr.d * 100)).attr("y", y(clamp(pr.v)) - 13).attr("text-anchor", "middle").text("Peak " + fP(pr.d * 100));
+    const yrs = years(pr.d, RHO), per = P25 * (1 - pr.d) / (1 - D0) * yrs;
+    $("rho-out").textContent = d3.format(".1f")(RHO);
+    $("m4-fixed").textContent = (pf.edge ? "≤ " : "") + fP(pf.d * 100);
+    $("m4-peak").textContent = (pr.edge ? "≤ " : "") + fP(pr.d * 100);
+    $("m4-years").textContent = d3.format(".2f")(yrs);
+    $("m4-per").textContent = "$" + d3.format(",.0f")(Math.round(per / 100) * 100);
+    $("m4-rev").textContent = (pr.edge ? "≥ " : "") + fM(pr.v);
+    $("m4-diff").textContent = (pr.edge ? "≥ " : "") + sgnM(pr.v - N0);
+    const moved = Math.abs(pr.d - pf.d) < 0.001;
+    $("hill4-desc").textContent = "At sensitivity " + d3.format(".2f")(E) + " and " + d3.format(".1f")(RHO) + " retention points lost per 10% price rise, " +
+      (RHO < 0.05 ? "the four-year hill is the one-year hill from Step 4: same shape, same peak at " + (pr.edge ? "30% or lower" : fP(pr.d * 100)) + "." : moved ? "the peak stays at " + (pr.edge ? "30% or lower" : fP(pr.d * 100)) + ": the lost retention lowers the hill but does not move its top." :
+        "the peak moves from " + (pf.edge ? "30% or lower" : fP(pf.d * 100)) + " to " + (pr.edge ? "30% or lower" : fP(pr.d * 100)) + ", because students lost in later years count against a lower discount too.") +
+      " At that peak each entrant is enrolled " + d3.format(".2f")(yrs) + " of the first four years, against 3.32 today.";
+    document.querySelectorAll("#rho-presets button").forEach(b => b.setAttribute("aria-pressed", String(Math.abs(Number(b.dataset.r) - RHO) < 0.001)));
+  }
+  RPRESETS.forEach(([r, lab]) => { const b = document.createElement("button"); b.type = "button"; b.dataset.r = r; b.textContent = lab; b.addEventListener("click", () => { RHO = r; $("rho").value = String(r); drawHill4(); }); $("rho-presets").appendChild(b); });
+  $("rho").addEventListener("input", (ev) => { RHO = Number(ev.target.value); drawHill4(); });
+
+  function drawAll() { drawDots(); drawDemand(); drawHill(); drawHill4(); syncUi(); }
+  function rebuild() { buildDemand(); buildHill(); buildEv(); buildRet(); buildHill4(); drawAll(); drawEv(); }
   let rz = 0;
   const ro = new ResizeObserver(() => { cancelAnimationFrame(rz); rz = requestAnimationFrame(rebuild); });
-  ["dem", "hill", "ev"].forEach(id => ro.observe($(id)));
+  ["dem", "hill", "ev", "ret", "hill4"].forEach(id => ro.observe($(id)));
   buildTable();
   rebuild();
 })();
