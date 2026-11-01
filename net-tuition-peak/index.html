@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex">
 <style>body { margin: 0; }</style>
 <title>Where Net Tuition Peaks</title>
-<meta name="description" content="A plain-language guide to Lewis & Clark's tuition discount, using FY2015 to FY2026 data only: how price sensitivity works, what the recent entering classes show, and which discount brings in the most net tuition in FY2026.">
+<meta name="description" content="A plain-language guide to Lewis & Clark's tuition discount, using FY2015 to FY2026 data only: how price sensitivity works, what the recent entering classes show, a scenario calculator for FY2026 net tuition, and what it would take to settle the question.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -117,17 +117,18 @@ a { color: inherit; }
   <p class="crumb"><a href="../">← Budget analysis</a> · <a href="../discount-since-2015/">What the Discount Bought</a></p>
   <div class="eyebrow">Lewis &amp; Clark College · FY2015 to FY2026 data · All schools</div>
   <h1>Where Net Tuition Peaks: A Plain-Language Guide</h1>
-  <p class="dek">The college gives back 55% of its list-price tuition as scholarships. Would it bring in more money by giving back less? This page walks through the answer one idea at a time, using only public data from FY2015 to FY2026 (the entering classes of fall 2015 to fall 2025). No economics background needed.</p>
+  <p class="dek">The college gives back 55% of its list-price tuition as scholarships. Would it bring in more money by giving back less? This page walks through the answer one idea at a time, using only public data from FY2015 to FY2026 (the entering classes of fall 2015 to fall 2025). No economics background needed. One caution up front: the answer turns on a single number that the public data cannot pin down, so what follows is a set of scenarios to reason with, not a measured optimum.</p>
 
   <section class="card bottom-line" aria-labelledby="bl">
     <h2 id="bl">The bottom line</h2>
     <ul>
       <li><b>Today:</b> in FY2026 the college listed $185.5M of tuition and fees, gave back $102.1M as scholarships (a 55.0% discount) and kept $83.4M.</li>
       <li><b>The trade-off:</b> giving back less raises what each student pays, but some students would then choose another school. Which effect wins depends on how price-sensitive students are.</li>
-      <li><b>What 2015 to 2025 shows:</b> the price an entering student paid after scholarships fell 44% after inflation, yet the share of admitted students who enrolled went from 14.1% to 12.5%. The best estimate of price sensitivity from these classes is 0.00: no measurable effect. The estimate is uncertain; the realistic range runs from 0 to about 1.1.</li>
-      <li><b>The answer:</b> if the best estimate holds, giving back less loses no students. At the period's own 45.9% average discount, FY2026 net tuition would be $100.4M, $17.0M more than today. At 0.56, the middle of the realistic range, net tuition peaks near a 37% discount at about $7M more than today, with about 22% fewer students. Only near the top of the range (about 1.1) is today's 55% close to the best choice.</li>
+      <li><b>What 2015 to 2025 shows:</b> the price an entering student paid after scholarships fell 44% after inflation, yet the share of admitted students who enrolled went from 14.1% to 12.5%. That is a real pattern that needs explaining. But the price sensitivity estimated from these eleven classes, 0.00 with a standard error of 0.56, is too imprecise to say what caused it: the 95% range runs from about −1.1 to +1.1, and the page uses 0 to about 1.1 only because values below 0 are not believable.</li>
+      <li><b>What the scenarios say:</b> the answer swings across that range. At 0.56, the central scenario, net tuition would peak near a 37% discount at about $7M more than today, with about 22% fewer students. At 0.00 (the point estimate) giving back less loses no students, and the period's own 45.9% average discount would bring in $100.4M, $17.0M more than today. Near the top of the range (about 1.1), today's 55% is close to the best choice. The data cannot tell you which of these is right.</li>
       <li><b>What retention adds:</b> aid doubled, but the share of each class returning for a second year stayed between 81.5% and 86.3%, and the shares still enrolled in years three and four did not rise either. Each entrant is enrolled about 3.3 of the first four years, so an entering student is worth about $55,700 in net tuition over four years at the fall 2025 price, and the fall 2025 class about $28.8M. Because retention does not measurably respond to price, the four-year view gives the same peak as the one-year view.</li>
-      <li><b>The catch:</b> aid rose while applications fell, which pulls the measured sensitivity toward zero. The true number is probably above 0, so the gains above are likely on the high side.</li>
+      <li><b>The catch:</b> aid rose while applications fell, which pulls the measured sensitivity toward zero. Aid may have cushioned a decline, may have underperformed, or may simply have moved alongside competitor prices, applicant mix and demographics; year-by-year data cannot tell these apart. The true number is probably above 0, so the larger gains above are likely on the high side. Net tuition is also not profit: costs, housing and dining revenue, and who the students are all change too.</li>
+      <li><b>What to do with this:</b> use it as a diagnostic and a source of hypotheses, not as a target. A safe discount decision needs student-level CAS data the college already holds; the <a href="#next">last section</a> says what to ask for.</li>
     </ul>
   </section>
 
@@ -146,8 +147,8 @@ a { color: inherit; }
     <p><span class="term">Price sensitivity</span> (economists call it <i>elasticity</i>) is the percent of students you lose when the price after scholarships goes up 1%. A sensitivity of 0.5 means a 10% price increase loses 5% of students. A sensitivity of 1.0 means it loses 10%.</p>
     <div class="controls">
       <label for="el1">Price sensitivity</label>
-      <input type="range" id="el1" min="0" max="1.5" step="0.01" value="0">
-      <output id="el1-out" for="el1">0.00</output>
+      <input type="range" id="el1" min="0" max="1.5" step="0.01" value="0.56">
+      <output id="el1-out" for="el1">0.56</output>
     </div>
     <div class="presets" role="group" aria-label="Sensitivity presets" data-sync></div>
     <div class="dots-wrap">
@@ -193,7 +194,7 @@ a { color: inherit; }
 
   <section class="card" aria-labelledby="s4">
     <h2 id="s4"><span class="n">STEP 4</span>Why net tuition has a peak</h2>
-    <p>Plot the box's area for every discount and, at most sensitivities, you get a hill. At a very low discount, the price is high but too few students come. At a very high discount, plenty of students come but each pays little. Somewhere in between is the top of the hill: the discount that brings in the most money. At a sensitivity of exactly 0 there is no hill: every point of discount cut is pure gain, because no students leave. That is why the uncertainty in Step 5 matters so much; try 0.56 or 1.12 to see the hill form.</p>
+    <p>Plot the box's area for every discount and, at most sensitivities, you get a hill. At a very low discount, the price is high but too few students come. At a very high discount, plenty of students come but each pays little. Somewhere in between is the top of the hill: the discount that brings in the most money. At a sensitivity of exactly 0 there is no hill: every point of discount cut is pure gain, because no students leave. That is why the uncertainty in Step 5 matters so much; try 0 to see the hill vanish and 1.12 to see its top move back toward today.</p>
     <div class="callout"><p><b>The rule for finding the top:</b> net tuition is at its peak when a 1% price increase loses exactly 1% of students. Below that point, raising the price gains more from students who stay than it loses from students who leave.</p></div>
     <div class="presets" role="group" aria-label="Sensitivity presets" data-sync></div>
     <div class="chart-title" id="hill-title">FY2026 net tuition at each discount rate, $M</div>
@@ -215,33 +216,36 @@ a { color: inherit; }
       <table>
         <thead><tr><th scope="col">Entering classes</th><th scope="col">Classes</th><th scope="col">Sensitivity</th><th scope="col">Standard error</th><th scope="col" class="src">What it means</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Fall 2015 to fall 2025</th><td>11</td><td>0.00</td><td>0.56</td><td class="src">No measurable response to price. Two standard errors either side is about −1.1 to 1.1. A value below 0 would mean higher prices attract more students, which is not believable, so the realistic range is 0 to about 1.1.</td></tr>
+          <tr><th scope="row">Fall 2015 to fall 2025</th><td>11</td><td>0.00</td><td>0.56</td><td class="src">Too imprecise to tell. Two standard errors either side is about −1.1 to 1.1, so the data are consistent with no response and with a strong one. A value below 0 would mean higher prices attract more students, which is not believable, so the page uses 0 to about 1.1. Cutting off the negative half is a judgment, not something the data showed.</td></tr>
         </tbody>
       </table>
     </div>
-    <p>Comparing yield alone with price, instead of class size, gives the same answer: no measurable effect. The page uses four values from the realistic range: 0.00 (the best estimate), 0.30, 0.56 (the middle of the range, one standard error above the estimate) and 1.12 (the top, two standard errors above).</p>
-    <h3>Why the true number is probably above zero</h3>
-    <p>Since 2015 the college raised aid steeply while demand was falling: applications dropped from 7,796 in fall 2016 to 5,804 in fall 2025. If aid went up <i>because</i> fewer students were interested, the extra aid and the weaker interest arrive together and hide each other in the data. That pulls the measured sensitivity toward zero even if aid does help. Eleven classes is also a small sample. So read 0.00 as "these years show no clear payoff from more aid," not as proof that students ignore price.</p>
+    <p>Comparing yield alone with price, instead of class size, gives the same answer: nothing measurable. The page uses four values from that range and labels them as assumptions: 0.00 (the point estimate), 0.30 (low), 0.56 (central, one standard error above the estimate) and 1.12 (conservative, two standard errors above). Eleven classes with three things held steady leave about seven degrees of freedom, which is why the range is so wide. The gradual drift the regression allows for is a straight line, so it cannot soak up the pandemic years or any other break. And holding admits steady answers only a narrow question, whether aid changes yield; it says nothing about whether aid changes who applies, who is admitted, or what the entering class looks like.</p>
+    <h3>Why the true number is probably above zero, and why the data cannot say by how much</h3>
+    <p>Since 2015 the college raised aid steeply while demand was falling: applications dropped from 7,796 in fall 2016 to 5,804 in fall 2025. If aid went up <i>because</i> fewer students were interested, the extra aid and the weaker interest arrive together and hide each other in the data. That pulls the measured sensitivity toward zero even if aid does help. Three stories fit the same decade: aid cushioned a decline that would otherwise have been worse; aid underperformed and yield slipped anyway; or competitor prices, applicant mix, recruiting and demographics moved alongside aid and the trend confounds them all. Watching the years go by cannot separate these. So read 0.00 as "these years show no clear payoff from more aid," not as proof that students ignore price, and not as a number to build policy on.</p>
   </section>
 
   <section class="card" aria-labelledby="s6">
-    <h2 id="s6"><span class="n">STEP 6</span>Results</h2>
-    <p>All figures are FY2026 (the year ending May 31, 2026) in that year's dollars, starting from today's 55.0% discount and $83.4M of net tuition. The 45.9% column is the college's own average discount from FY2015 to FY2026.</p>
+    <h2 id="s6"><span class="n">STEP 6</span>Scenario results</h2>
+    <p>All figures are FY2026 (the year ending May 31, 2026) in that year's dollars, starting from today's 55.0% discount and $83.4M of net tuition. The 45.9% column is the college's own average discount from FY2015 to FY2026. Each row is what the model says <i>if</i> that sensitivity is right; the table is a scenario calculator, not a ranking of likely outcomes.</p>
     <div class="tbox">
       <table id="scen">
-        <thead><tr><th scope="col">Price sensitivity</th><th scope="col">Peak discount</th><th scope="col">Net tuition at peak</th><th scope="col">vs today</th><th scope="col">Students at peak</th><th scope="col">Net at 45.9%</th><th scope="col">Students at 45.9%</th></tr></thead>
+        <thead><tr><th scope="col">Assumed price sensitivity</th><th scope="col">Peak discount</th><th scope="col">Net tuition at peak</th><th scope="col">vs today</th><th scope="col">Students at peak</th><th scope="col">Net at 45.9%</th><th scope="col">Students at 45.9%</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
     <p class="foot">"30% or lower" means the peak falls below the range this simple model covers, so the dollar figures shown are at 30% and the true peak would be higher; the model should not be trusted that far from today. Student changes apply to the whole college; the entering-class count applies them to the fall 2025 class of 517.</p>
     <h3>What the model leaves out</h3>
     <ul style="max-width:68ch;padding-left:1.15em">
-      <li><b>Costs.</b> Fewer students also means lower costs, which would favor a lower discount. It also means less housing and dining revenue, which would favor a higher one. The model counts tuition only.</li>
-      <li><b>Who gets the aid.</b> The model treats the discount as one number. In practice, cutting merit awards would likely lose students faster than cutting need-based aid.</li>
+      <li><b>Costs.</b> Fewer students also means lower costs, which would favor a lower discount. It also means less housing and dining revenue, which would favor a higher one. The model counts tuition only, so the most net tuition is not the same as the most money left after costs.</li>
+      <li><b>Who gets the aid.</b> The model treats the discount as one number and every student as equally price-sensitive. In practice sensitivity likely differs by need, income, merit, geography and competing offers, and cutting merit awards would likely lose students faster than cutting need-based aid.</li>
+      <li><b>Who the students are.</b> The model holds the entering class's makeup fixed. A change in aid policy changes who applies, who is admitted and who enrolls, and with them academic profile, need and retention.</li>
+      <li><b>Averages.</b> The price after aid is an average. It hides the spread of what families actually pay, and a straight line through averages can miss the price points where particular families drop out.</li>
       <li><b>Time.</b> A change reaches one entering class a year, so the full effect takes about four years.</li>
       <li><b>Shape.</b> The model assumes a straight demand line. That is reasonable near today's discount and less reliable far from it, which is why the range stops at 30% and 65%.</li>
-      <li><b>One sensitivity for everyone.</b> It is measured on first-year undergraduates and applied to the whole college, including Law and the Graduate School, which discount far less.</li>
+      <li><b>One sensitivity for everyone.</b> It is measured on first-year undergraduates and applied to the whole college, including Law and the Graduate School, which are different markets and discount far less. The 55% discount is a whole-college figure, not a CAS one.</li>
       <li><b>Few years.</b> Eleven entering classes is a short record, which is why the realistic range is wide.</li>
+      <li><b>Cause and effect.</b> Aid was not changed at random, so the years cannot show what would have happened without the extra aid. See Step 5.</li>
     </ul>
   </section>
 
@@ -294,7 +298,7 @@ a { color: inherit; }
     <h2 id="s8"><span class="n">STEP 8</span>The four-year view</h2>
     <p>Steps 3 and 4 count one year of net tuition. A student who stays pays again. With Lewis &amp; Clark's rates since fall 2015, 83.6% of a class returns for year two, 75.5% is there in year three and 72.5% in year four, so each entrant is enrolled about <b>3.3 of the first four years</b>. At the fall 2025 price after aid ($16,803), that makes one entrant worth about <b>$55,700</b> in net tuition over four years, and the fall 2025 class of 517 about <b>$28.8M</b>.</p>
     <div class="callout"><p class="mono" style="font-size:15px">Four-year net tuition = entrants × price after aid × years enrolled (1 + year 2 share + year 3 share + year 4 share)</p></div>
-    <p><b>Why this changes the stakes but not, by itself, the answer.</b> If every class faces the same discount, the college's net tuition in any year is just entrants times price times years enrolled. So the hill in Step 4 is already the four-year hill, as long as retention does not depend on price. If it does, a lower discount loses students twice, at the door and in later years, and the peak moves toward today. The second slider lets you try that. The measured response is about 0.5 points per 10% price rise, with a realistic range of 0 to about 1.8.</p>
+    <p><b>Why this changes the stakes but not, by itself, the answer.</b> If every class faces the same discount, the college's net tuition in any year is just entrants times price times years enrolled. So the hill in Step 4 is already the four-year hill, as long as retention does not depend on price. If it does, a lower discount loses students twice, at the door and in later years, and the peak moves toward today. The second slider lets you try that. The measured response is about 0.5 points per 10% price rise, with a realistic range of 0 to about 1.8; like the sensitivity at the door, it is an assumption to try, not a settled number.</p>
     <div class="controls">
       <label for="rho">Retention points lost per 10% higher price</label>
       <input type="range" id="rho" min="0" max="3" step="0.1" value="0.5">
@@ -344,6 +348,19 @@ a { color: inherit; }
     <p class="foot">Method: years enrolled at a discount = 3.316 − 3 × (points lost per 10%) × (price change ÷ 10%) ÷ 100, which takes the same points off each later year's share. Net tuition = gross tuition × (1 − discount) × enrollment relative to today × years enrolled relative to today. The retention rates are CAS first-year cohorts applied to the whole college, like the sensitivity. A change takes about four years to work through, one class at a time.</p>
   </section>
 
+  <section class="card" aria-labelledby="next" id="next">
+    <h2 id="next-h"><span class="n">BEFORE ACTING</span>What would settle it</h2>
+    <p>The better question is not "what discount rate is optimal?" but "which aid investments work, for whom, and over what time horizon?" Public data cannot answer that. The college's own records can, and most of what is needed already exists:</p>
+    <ul style="max-width:68ch;padding-left:1.15em">
+      <li><b>Where the funnel broke.</b> Applications, admits, deposits, yield and enrollment by segment, recruiting channel and year, to see whether the decline came from fewer applicants, weaker yield, or both.</li>
+      <li><b>Who gets aid, and at what price.</b> Student-level aid offers with need and merit indicators and the funding source, reported as medians and quartiles rather than one mean, and a CAS-only bridge from list tuition to the college's own grant expense.</li>
+      <li><b>What the offer causes.</b> Comparisons of similar students who received different offers, and scholarship thresholds or policy changes that act as natural experiments, keeping the effect on applications separate from the effect on enrollment.</li>
+      <li><b>What happens after.</b> Retention, credit progress, graduation and aid renewal by aid amount and by merit versus need, so that four-year contribution, not first-year net tuition, is the measure.</li>
+      <li><b>Guardrails first.</b> Minimum enrollment, maximum unmet need, and no slide in persistence for high-need students, agreed before any scenario is run.</li>
+    </ul>
+    <p>Until that work is done, a reasonable reading of this page is: the decade's pattern is real and deserves investigation, the sliders show how much the answer depends on one unknown, and an across-the-board discount cut is not something these numbers can justify. The first deliverable should be a data-quality and feasibility memo, not an optimization.</p>
+  </section>
+
   <section class="card" aria-labelledby="s9">
     <h2 id="s9"><span class="n">STEP 9</span>Where every number comes from</h2>
     <div class="tbox">
@@ -374,10 +391,10 @@ a { color: inherit; }
   const DMIN = 0.30, DMAX = 0.65;
   const RET = [{"fall":2015,"net":30065,"y2":84.6},{"fall":2016,"net":30632,"y2":82.6},{"fall":2017,"net":29879,"y2":81.5},{"fall":2018,"net":28565,"y2":85.9},{"fall":2019,"net":30642,"y2":78.5},{"fall":2020,"net":26562,"y2":86.3},{"fall":2021,"net":23849,"y2":86.1},{"fall":2022,"net":23573,"y2":81.5},{"fall":2023,"net":20152,"y2":86.1},{"fall":2024,"net":17495,"y2":83.0}];
   const R2 = 0.836, R3 = 0.755, R4 = 0.725, M0 = 1 + R2 + R3 + R4, P25 = 16803;
-  const RPRESETS = [[0, "0.0 · none"], [0.5, "0.5 · best estimate"], [1.8, "1.8 · top of range"], [3, "3.0 · beyond the data"]];
+  const RPRESETS = [[0, "0.0 · none"], [0.5, "0.5 · point estimate"], [1.8, "1.8 · conservative"], [3, "3.0 · beyond the data"]];
   let RHO = 0.5;
-  const PRESETS = [[0, "0.00 · best estimate"], [0.3, "0.30"], [0.56, "0.56 · middle of range"], [1.12, "1.12 · top of range"]];
-  let E = 0, D = D0;
+  const PRESETS = [[0, "0.00 · point estimate"], [0.3, "0.30 · low"], [0.56, "0.56 · central"], [1.12, "1.12 · conservative"]];
+  let E = 0.56, D = D0;
   const $ = (id) => document.getElementById(id);
   const fM = (v) => "$" + d3.format(".1f")(v) + "M";
   const fP = (v, p = 1) => d3.format("." + p + "f")(v) + "%";
@@ -506,7 +523,7 @@ a { color: inherit; }
     if (p.edge) HL.pkL.attr("x", px + 11).attr("y", py + 4).attr("text-anchor", "start").text("Peak at 30% or lower"); else HL.pkL.attr("x", px).attr("y", py - 13).attr("text-anchor", "middle").text("Peak " + fP(p.d * 100));
     // one-point step from today
     const d1 = D0 - 0.01, priceUp = 100 * ((1 - d1) / (1 - D0) - 1), lost = 100 * (1 - enr(d1, E)), dr = rev(d1, E) - N0;
-    $("hill-desc").textContent = "At sensitivity " + d3.format(".2f")(E) + ", net tuition peaks at " + (p.edge ? "30% or lower" : "a " + fP(p.d * 100) + " discount") + ", with " + fM(pr) + (p.edge ? " or more" : "") + " (" + sgnM(pr - N0) + (p.edge ? " or more" : "") + " vs today) and " + (Math.abs(enr(p.d, E) - 1) < 0.005 ? "the same number of students" : d3.format(".0f")(Math.abs(100 * (enr(p.d, E) - 1))) + "% " + (enr(p.d, E) < 1 ? "fewer" : "more") + " students") + ". " +
+    $("hill-desc").textContent = "Assuming sensitivity " + d3.format(".2f")(E) + ", net tuition peaks at " + (p.edge ? "30% or lower" : "a " + fP(p.d * 100) + " discount") + ", with " + fM(pr) + (p.edge ? " or more" : "") + " (" + sgnM(pr - N0) + (p.edge ? " or more" : "") + " vs today) and " + (Math.abs(enr(p.d, E) - 1) < 0.005 ? "the same number of students" : d3.format(".0f")(Math.abs(100 * (enr(p.d, E) - 1))) + "% " + (enr(p.d, E) < 1 ? "fewer" : "more") + " students") + ". " +
       "Check the rule from today: cutting the discount one point, to 54.0%, raises the price after aid " + d3.format(".1f")(priceUp) + "% and " + (lost < 0.05 ? "loses no students" : "loses about " + d3.format(".1f")(lost) + "% of students") + ", so net tuition changes by " + sgnM(dr) + ".";
   }
 
@@ -543,7 +560,7 @@ a { color: inherit; }
   // ---------- step 6: table ----------
   function buildTable() {
     const tb = document.querySelector("#scen tbody"); tb.textContent = "";
-    [[0, "0.00 (best estimate)"], [0.3, "0.30"], [0.56, "0.56 (middle of range)"], [1.12, "1.12 (top of range)"]].forEach(([e, lab]) => {
+    [[0, "0.00 (point estimate, imprecise)"], [0.3, "0.30 (low)"], [0.56, "0.56 (central)"], [1.12, "1.12 (conservative)"]].forEach(([e, lab]) => {
       const p = peak(e), pr = rev(p.d, e), ar = rev(AVG / 100, e);
       const tr = document.createElement("tr"); tr.dataset.e = e;
       [lab, p.edge ? "30% or lower" : fP(p.d * 100), fM(pr) + (p.edge ? " or more" : ""), sgnM(pr - N0) + (p.edge ? " or more" : ""), sgn(100 * (enr(p.d, e) - 1)) + "%", fM(ar), sgn(100 * (enr(AVG / 100, e) - 1)) + "%"]

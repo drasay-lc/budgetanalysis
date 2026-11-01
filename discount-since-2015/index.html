@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex">
 <style>body { margin: 0; }</style>
 <title>What the Discount Bought (all schools)</title>
-<meta name="description" content="Lewis & Clark's tuition discount, FY2015 to FY2026: the yearly climb, net tuition at the period average, what deeper first-year aid did to yield, and where net tuition peaks.">
+<meta name="description" content="Lewis & Clark's tuition discount, FY2015 to FY2026: the yearly climb, net tuition at the period average, what deeper first-year aid did to yield, and a scenario calculator for FY2026 net tuition under assumed price sensitivities.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -146,7 +146,7 @@ tr.sel td { background: var(--grid); font-weight: 600; }
   <header>
     <div class="eyebrow">Lewis &amp; Clark College · FY2015 to FY2026</div>
     <h1>What the Discount Bought (all schools and CAS)</h1>
-    <p class="dek">Since FY2015 the discount has risen every single year. Aid per entering student more than doubled and the real price a first-year pays fell 44%, yet the share of admitted students who enroll did not rise. Press play to watch it year by year, then use the model below to see where net tuition peaks.</p>
+    <p class="dek">Since FY2015 the discount has risen every single year. Aid per entering student more than doubled and the real price a first-year pays fell 44%, yet the share of admitted students who enroll did not rise. Press play to watch it year by year, then use the scenario calculator below to see what FY2026 net tuition would be under different assumptions about how students respond to price. The decade shows a real pattern worth explaining; it does not show that a lower discount would be safe. Read the <a href="#caveats">cautions</a> before drawing conclusions.</p>
     <a class="btn-link" href="https://docs.google.com/document/d/1LVIZs2gOYBI4fsIkTLDl7o_eDag4pbWvtyV4g1WgRdI/edit" target="_blank" rel="noopener">The Treat Jar: this analysis for young readers and good dogs <span aria-hidden="true">↗</span></a>
   </header>
 
@@ -154,7 +154,7 @@ tr.sel td { background: var(--grid); font-weight: 600; }
     <div class="kpi"><span class="k">Average discount, FY2015 to FY2026</span><span class="v" id="k-avg">…</span><span class="s">36.4% in FY2015 to 55.0% in FY2026, up every year</span></div>
     <div class="kpi"><span class="k">FY2026 net tuition at that average</span><span class="v" id="k-cf">…</span><span class="s" id="k-cf-s">…</span></div>
     <div class="kpi"><span class="k" id="k-price-k">First-year net price, fall 2015 to fall 2025</span><span class="v" id="k-price">…</span><span class="s" id="k-price-s">…</span></div>
-    <div class="kpi"><span class="k">Enrollment response to price since FY2015</span><span class="v">≈ 0</span><span class="s">No measurable effect (estimate 0.00, standard error 0.56)</span></div>
+    <div class="kpi"><span class="k">Enrollment response to price since FY2015</span><span class="v">0.00 ± 0.56</span><span class="s">Too imprecise to pin down: the 95% range is about −1.1 to +1.1, from eleven classes</span></div>
   </div>
 
   <section class="stage" aria-label="Animated discount chart">
@@ -235,19 +235,19 @@ tr.sel td { background: var(--grid); font-weight: 600; }
 
   <section class="stage" id="model" aria-label="Net tuition model">
     <div class="model-head">
-      <h2>Where FY2026 net tuition peaks</h2>
-      <p>A lower discount raises the price each student pays but loses some students. How many depends on price sensitivity: the percent of enrollment lost for each 1% rise in net price. Pick a value to see FY2026 net tuition at every discount from 30% to 65%. New to this? <a href="../net-tuition-peak/">Read the plain-language guide</a>.</p>
+      <h2>Scenario calculator: FY2026 net tuition at an assumed price sensitivity</h2>
+      <p>A lower discount raises the price each student pays but loses some students. How many depends on price sensitivity: the percent of enrollment lost for each 1% rise in net price. No estimate here is precise: the fall 2015 to fall 2025 classes give 0.00 with a standard error of 0.56 (a 95% range of about −1.1 to +1.1), and the longer fall 2001 to fall 2021 record gives 0.64, used as the default. Pick a sensitivity to see FY2026 net tuition at every discount from 30% to 65%. Every result is conditional on that assumption; none is a measured optimum. New to this? <a href="../net-tuition-peak/">Read the plain-language guide</a>.</p>
     </div>
     <div class="controls">
-      <label for="el">Price sensitivity</label>
+      <label for="el">Assumed price sensitivity</label>
       <input type="range" id="el" min="0" max="1.2" step="0.01" value="0.64">
       <output id="el-out" for="el">0.64</output>
     </div>
     <div class="presets" role="group" aria-label="Sensitivity presets">
-      <button type="button" data-e="0">0.00 · measured since FY2015</button>
+      <button type="button" data-e="0">0.00 · FY2015 to FY2026 point estimate</button>
       <button type="button" data-e="0.3">0.30 · low</button>
       <button type="button" data-e="0.64">0.64 · L&amp;C FY2000 to FY2021</button>
-      <button type="button" data-e="1">1.00 · high</button>
+      <button type="button" data-e="1">1.00 · conservative</button>
     </div>
     <div class="model-grid">
       <div>
@@ -262,7 +262,7 @@ tr.sel td { background: var(--grid); font-weight: 600; }
         <p class="sr-only" id="model-desc" aria-live="polite"></p>
       </div>
       <div class="cards" aria-live="polite">
-        <div class="card"><span class="k">Revenue-maximizing discount</span><span class="v" id="m-peak">…</span><span class="s">Today: 55.0%</span></div>
+        <div class="card"><span class="k">Peak discount in this scenario</span><span class="v" id="m-peak">…</span><span class="s">Today: 55.0%</span></div>
         <div class="card"><span class="k">Net tuition at that discount</span><span class="v" id="m-rev">…</span><span class="s" id="m-rev-s">…</span></div>
         <div class="card"><span class="k">Enrollment at that discount</span><span class="v" id="m-stu">…</span><span class="s" id="m-stu-s">…</span></div>
         <div class="card"><span class="k">At the 45.9% FY2015 to FY2026 average</span><span class="v" id="m-avg">…</span><span class="s" id="m-avg-s">…</span></div>
@@ -271,25 +271,32 @@ tr.sel td { background: var(--grid); font-weight: 600; }
     <p class="chart-title" style="margin:0" id="scen-title">Scenarios for FY2026</p>
     <div class="tbox">
       <table id="scen" aria-label="Scenarios for FY2026">
-        <thead><tr><th scope="col">Price sensitivity</th><th scope="col">Peak discount</th><th scope="col">Net at peak</th><th scope="col">vs today</th><th scope="col">Enrollment at peak</th><th scope="col">Net at 45.9% average</th><th scope="col">Enrollment at average</th></tr></thead>
+        <thead><tr><th scope="col">Assumed price sensitivity</th><th scope="col">Peak discount</th><th scope="col">Net at peak</th><th scope="col">vs today</th><th scope="col">Enrollment at peak</th><th scope="col">Net at 45.9% average</th><th scope="col">Enrollment at average</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
     <p class="mnote">Linear demand, set so the chosen sensitivity holds at today's 55.0% discount. When the peak falls at the 30% edge, the true peak is lower but outside the range this simple model can stand behind. Entering-student counts apply the change to the fall 2025 class of 517.</p>
+    <p class="mnote">What the calculator leaves out: one sensitivity for every student, when response likely differs by need, merit, geography and competing offers; a straight demand line, which can miss affordability cliffs; a fixed entering-class mix, when aid policy changes who applies, is admitted and enrolls; and one year of net tuition, not contribution margin after the costs and housing and dining revenue that move with enrollment, nor the four or more years a student stays. The "today" row of each scenario is the only measured point.</p>
   </section>
 
   <p style="margin:22px 0 0;font-size:14px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline"><a href="../data/#since2015" style="color:var(--ink);font-weight:600">Data tables and sources for these charts →</a><span style="color:var(--muted);font-size:13px">Every value with its citation, plus CSV downloads.</span></p>
-  <div class="notes">
+  <div class="notes" id="caveats">
     <div>
       <h2>What the measures mean</h2>
       <p><b>Discount rate</b> is scholarships divided by gross tuition and fees for the whole college (CAS, Law and the Graduate School). <b>Net at 45.9% average</b> applies the FY2015 to FY2026 average discount to that year's gross tuition, holding enrollment fixed.</p>
       <p><b>Dollars.</b> FY2025 dollars use CPI-U, fiscal-year weighted, as on the other pages; FY2026 uses an estimated factor of 0.9739 (2026 CPI assumed 2.7% above 2025). First-year aid and price use calendar-year CPI-U for the fall the class entered, in 2025 dollars. Nominal shows each year's own dollars.</p>
       <p><b>Grant aid per entrant</b> is grant aid to the CAS first-time, full-time class divided by the class size: need-based grants (Common Data Set H2, lines e and k) plus institutional non-need grants to students without need (H2A, lines n and o). It includes federal and state need-based grants, which put it about 4% above IPEDS institutional grant aid, on average, for the fall 2015 to fall 2021 classes. <b>Net price</b> is list tuition less that aid, in 2025 dollars. <b>Yield</b> is enrolled divided by admitted.</p>
+      <p><b>What these measures hide.</b> The discount rate covers three different markets; a whole-college rate is not a clean proxy for CAS undergraduate pricing. Aid per entrant and net price are averages, and averages conceal the spread across family resources, need, merit, geography and competing offers, which is where the real trade-offs sit. Aid per entrant also mixes federal and state grants with the college's own, while the discount rate counts only institutional scholarships. A CAS-only bridge from published tuition to institutional grant expense and student-level net price, reported as medians and quartiles, would fix all three.</p>
     </div>
     <div>
-      <h2>How sensitivity was measured</h2>
+      <h2>How sensitivity was measured, and why it cannot settle the question</h2>
       <p>For the fall 2015 to fall 2025 classes, log enrolled first-years were regressed on log real net price, log admits and a time trend. The price effect is 0.00 (standard error 0.56); yield on price gives a similar result. Real net price fell 44% while yield stayed between 9.7% and 15.4%.</p>
-      <p>This does not prove aid has no effect. Applications fell 21% over the same years, and if aid was raised to offset falling demand, the measured effect is pulled toward zero. The same method on fall 2001 to fall 2021 gave 0.64, used here as the conservative default.</p>
+      <p>Read 0.00 as imprecision, not as proof that students ignore price. Eleven observations with three predictors leave about seven degrees of freedom, so the 95% range is about −1.1 to +1.1. The calculator cuts off the negative half because a higher price attracting students is not believable; that is a modeling choice, not a statistical result. A linear time trend cannot absorb the pandemic years or other breaks, and holding admits fixed answers only a yield question: it says nothing about how aid affects who applies, who is admitted, or who the entering class turns out to be. The same method on fall 2001 to fall 2021 gave 0.64, used here as the default; it rests on more years but carries the same limits.</p>
+      <p>The deeper problem is that aid is not set at random. Three stories fit the same decade. Aid may have cushioned a decline: applications fell 21% over these years, and if aid was raised because demand was weakening, the extra aid and the weaker interest arrive together and hide each other, pulling the estimate toward zero. Aid may have underperformed, with yield slipping anyway. Or competitor prices, applicant mix, recruiting and demographics may have moved alongside aid. Year-by-year co-movement cannot tell these apart; only a credible comparison group can.</p>
+    </div>
+    <div>
+      <h2>What would settle it</h2>
+      <p>The useful question is not "what discount rate is optimal?" but "which aid investments work, for whom, and over what horizon?" That takes a CAS-specific, student-level analysis on data the college already holds: applicant, admit, deposit and enrollment records; aid offers with need and merit indicators; net price per student; retention and graduation; and a tuition and institutional grant ledger. Separate the effect on applications from the effect on enrollment, use scholarship thresholds or policy changes as natural experiments where they exist, and judge any policy on four-year contribution, enrollment, persistence and access together, not first-year net tuition alone. Until that work is done, treat this page as a diagnostic and a source of hypotheses, not as a policy target.</p>
     </div>
     <div>
       <h2>Sources</h2>
@@ -619,13 +626,13 @@ tr.sel td { background: var(--grid); font-weight: 600; }
     $("m-stu-s").textContent = "About " + d3.format(",")(Math.abs(Math.round(pe * CLS))) + " of 517 entering students " + (pe < 0 ? "lost" : "gained");
     $("m-avg").textContent = fM(ar);
     $("m-avg-s").textContent = sgnM(ar - N0) + " vs today; enrollment " + sgn(100 * ae, 0) + "%";
-    $("model-desc").textContent = "At sensitivity " + d3.format(".2f")(E) + ", net tuition peaks at a " + fP(p.d * 100) + " discount with " + fM(pr) + ", compared with " + fM(N0) + " today.";
+    $("model-desc").textContent = "Assuming sensitivity " + d3.format(".2f")(E) + ", net tuition peaks at a " + fP(p.d * 100) + " discount with " + fM(pr) + ", compared with " + fM(N0) + " today.";
     document.querySelectorAll(".presets button").forEach(b => b.setAttribute("aria-pressed", String(Math.abs(Number(b.dataset.e) - E) < 0.001)));
     document.querySelectorAll("#scen tbody tr").forEach(tr => tr.classList.toggle("sel", Math.abs(Number(tr.dataset.e) - E) < 0.001));
   }
   function buildTable() {
     const tb = document.querySelector("#scen tbody"); tb.textContent = "";
-    [[0, "0.00 (measured since FY2015)"], [0.3, "0.30 (low)"], [0.64, "0.64 (L&C FY2000 to FY2021)"], [1, "1.00 (high)"]].forEach(([e, lab]) => {
+    [[0, "0.00 (FY2015 to FY2026 point estimate)"], [0.3, "0.30 (low)"], [0.64, "0.64 (L&C FY2000 to FY2021)"], [1, "1.00 (conservative)"]].forEach(([e, lab]) => {
       const p = peak(e), pr = rev(p.d, e), ar = rev(AVG / 100, e);
       const tr = document.createElement("tr"); tr.dataset.e = e;
       [lab, (p.edge ? "≤ " : "") + fP(p.d * 100), fM(pr), sgnM(pr - N0), sgn(100 * (enr(p.d, e) - 1), 0) + "%", fM(ar), sgn(100 * (enr(AVG / 100, e) - 1), 0) + "%"]
