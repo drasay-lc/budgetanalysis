@@ -4,7 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<style>body { margin: 0; }</style>
+<style>body { margin: 0; }
+.made { font-size: 12.5px; color: var(--muted); margin: -4px 0 12px; }
+.made a { color: inherit; }
+</style>
 <title>Discount Rate Trends by School</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,6 +85,7 @@ tbody tr:nth-child(even) { background: var(--zebra); }
   <header>
     <div class="eyebrow">Lewis &amp; Clark College · discount rate by school</div>
     <h1>Discount Rate Trends by School</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5 (high effort), October 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
     <p class="dek">Scholarships as a share of gross tuition and fees for each program, FY2024 to FY2026 from audited note 15, with a straight-line least-squares fit for each. The fitted lines are extended five years back (to FY2019) and five years forward (to FY2031).</p>
   </header>
 

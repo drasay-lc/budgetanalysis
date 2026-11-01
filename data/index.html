@@ -66,6 +66,9 @@ td:last-child { font-family: var(--f-body); }
 .sources a { color: var(--muted); word-break: break-all; display: block; font-family: var(--f-data); font-size: 12px; margin-left: 2.6rem; grid-column: 1 / -1; }
 .sources li { grid-template-columns: 2.6rem 1fr; }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.made { font-size: 12.5px; color: var(--muted); margin: -4px 0 12px; }
+.made a { color: inherit; }
 </style>
 </head>
 <body>
@@ -73,6 +76,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   <p class="crumb"><a href="../">← Budget analysis</a></p>
   <p class="eyebrow">Lewis &amp; Clark College · FY2000 to FY2025</p>
   <h1>Data Behind the Charts</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5 (high effort), October 2026; retention tables added with Claude Fable 5.1 (high effort), October 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
   <p class="dek">Every number drawn in the budget analysis animations, with the source for each row. Numbers in brackets link to the full citation at the bottom of the page. Each table can be downloaded as a CSV.</p>
   <ul class="toc">
     <li><a href="#summary">Summary of sources</a></li>
