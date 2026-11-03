@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Lewis &amp; Clark College long-term investment pool by asset class and liquidity, FY2020 to FY2026, from the audited financial statements.">
+<title>Endowment by Asset Class and Liquidity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Libre+Franklin:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+
+/* Layout: one column ledger. Year ticker and totals on top, liquidity filter, ranked bars as the stage, stacked-area timeline (most liquid at the bottom) as the scrubber, then sources. */
+:root {
+  --bg: #f7f7f5;
+  --panel: #ffffff;
+  --ink: #17191a;
+  --muted: #5f6466;
+  --rule: #d9dbd8;
+  --accent: #c2410c;      /* L&C orange, used for the playhead and active year only */
+  --up: #276749;
+  --down: #9b2c2c;
+  /* asset colors, one hue family per liquidity tier: greys = within days, blues = within a quarter, violets = after a lockup, warm = no redemption */
+  --dir: #5e676c; --tsy: #a9b2b6;
+  --deq: #24507f; --bnd: #5f8fc4; --hfq: #a9c7e6;
+  --ieq: #4b3a7a; --hfl: #9a86c4;
+  --vc: #b45309; --pe: #e3a35a; --ra: #8a3b1f;
+  --display: "Spectral", Georgia, "Times New Roman", serif;
+  --body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141617; --panel: #1c1f20; --ink: #eceeed; --muted: #a2a8aa; --rule: #33393b;
+  --accent: #f08a4b; --up: #6fcf97; --down: #f08b8b;
+  --dir: #8a9499; --tsy: #5c6569;
+  --deq: #4f86c6; --bnd: #8db6e3; --hfq: #c9ddf2;
+  --ieq: #9d86d8; --hfl: #c7b8ea;
+  --vc: #e08a2e; --pe: #f2c48a; --ra: #d0704a;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #141617; --panel: #1c1f20; --ink: #eceeed; --muted: #a2a8aa; --rule: #33393b;
+  --accent: #f08a4b; --up: #6fcf97; --down: #f08b8b;
+  --dir: #8a9499; --tsy: #5c6569;
+  --deq: #4f86c6; --bnd: #8db6e3; --hfq: #c9ddf2;
+  --ieq: #9d86d8; --hfl: #c7b8ea;
+  --vc: #e08a2e; --pe: #f2c48a; --ra: #d0704a;
+  color-scheme: dark; }
+
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 880px; margin: 0 auto; padding-block: 28px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 22px; }
+.wrap > * { min-width: 0; }
+header { display: grid; gap: 6px; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(26px, 5vw, 38px); line-height: 1.12; margin: 0; text-wrap: balance; }
+.lede { margin: 0; color: var(--muted); max-width: 62ch; }
+.made { font-size: 12.5px; color: var(--muted); margin: 0 0 4px; }
+.made a { color: inherit; }
+.crumb { margin: 0; font-size: 13px; }
+.crumb a { color: var(--muted); }
+
+.stage { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 18px 14px; display: grid; gap: 16px; min-width: 0; }
+.ticker { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 28px; }
+.fy { font-family: var(--display); font-weight: 600; font-size: clamp(44px, 10vw, 68px); line-height: .9; font-variant-numeric: tabular-nums; }
+.fy small { display: block; font-family: var(--body); font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: .04em; margin-top: 6px; }
+.stat { display: grid; gap: 2px; }
+.k { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.stat .v { font-family: var(--mono); font-size: 20px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.stat .d { font-family: var(--mono); font-size: 12px; font-variant-numeric: tabular-nums; }
+.pos { color: var(--up); } .neg { color: var(--down); }
+
+.liq { display: grid; gap: 8px; }
+.liq-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.liq-head .hint { font-size: 12px; color: var(--muted); }
+.chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.chip { text-align: left; display: grid; gap: 3px; align-content: start; padding: 9px 11px; border-radius: 5px; background: var(--bg); font-weight: 500; }
+.chip[aria-pressed="true"] { border-color: var(--ink); background: var(--panel); }
+.chip[aria-pressed="false"] { border-style: dashed; color: var(--muted); }
+.chip[aria-pressed="false"] .pips i.on { background: var(--muted); }
+.chip .top { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; }
+.chip .cv { font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.chip .cd { font-size: 11.5px; color: var(--muted); line-height: 1.3; font-weight: 400; }
+.pips { display: inline-flex; gap: 2px; flex: none; }
+.pips i { width: 5px; height: 11px; border-radius: 1px; background: var(--rule); }
+.pips i.on { background: var(--ink); }
+button.link { border: none; padding: 0; background: none; font-size: 12px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+button.link:hover { color: var(--ink); }
+
+.bars { position: relative; min-width: 0; transition: height .35s ease; }
+.axis { position: absolute; inset: 0; pointer-events: none; }
+.axis .g { position: absolute; top: 0; bottom: 22px; border-left: 1px dashed var(--rule); }
+.axis .g span { position: absolute; bottom: -18px; transform: translateX(-50%); font-family: var(--mono); font-size: 10.5px; color: var(--muted); white-space: nowrap; }
+.row { position: absolute; left: 0; right: 0; height: 34px; display: grid; grid-template-columns: var(--lab) 1fr; align-items: center; gap: 10px; will-change: transform; transition: opacity .3s ease; }
+.row.off { opacity: 0; pointer-events: none; }
+.row .lab { font-size: 13px; font-weight: 500; text-align: right; line-height: 1.15; display: flex; justify-content: flex-end; align-items: center; gap: 7px; min-width: 0; }
+.row .track { position: relative; height: 22px; }
+.row .bar { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 0 3px 3px 0; }
+.row .val { position: absolute; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.row .val i { font-style: normal; margin-left: 6px; font-size: 11px; }
+
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+button { font: 600 13px var(--body); color: var(--ink); background: transparent; border: 1px solid var(--rule); border-radius: 4px; padding: 6px 12px; cursor: pointer; }
+button:hover { border-color: var(--ink); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.years { display: flex; flex-wrap: wrap; gap: 4px; }
+.years button { font-family: var(--mono); font-weight: 500; font-size: 12px; padding: 5px 8px; }
+.years button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+
+.timeline { min-width: 0; }
+.timeline svg { display: block; width: 100%; height: auto; cursor: pointer; touch-action: none; }
+.timeline text { font-family: var(--mono); font-size: 10px; fill: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--muted); margin-top: 6px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; transition: opacity .3s; }
+.legend span.off { opacity: .35; }
+.legend b { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.legend .line { width: 16px; height: 0; border-top: 2px dashed var(--ink); border-radius: 0; }
+
+section h2 { font-family: var(--display); font-weight: 600; font-size: 21px; margin: 0 0 8px; }
+.notes { display: grid; gap: 10px; color: var(--ink); max-width: 68ch; }
+.notes p { margin: 0; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th, td { padding: 7px 10px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--rule); transition: opacity .3s; }
+th:first-child, td:first-child { text-align: left; position: sticky; left: 0; background: var(--panel); }
+thead th { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+td { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+td:first-child, td.tc { font-family: var(--body); }
+td.tc { text-align: left; color: var(--muted); }
+tr.off td { opacity: .4; }
+tr.tier td { font-weight: 500; }
+tr.tier.first td { border-top: 1px solid var(--ink); }
+tr.sum td { font-weight: 600; border-top: 1px solid var(--ink); }
+tr.ref td { color: var(--muted); }
+tfoot td { font-family: var(--body); color: var(--muted); font-size: 11.5px; white-space: normal; text-align: left; }
+@media (max-width: 560px) { .row .lab { font-size: 11.5px; } .row .pips { display: none; } .stat .v { font-size: 17px; } }
+@media (prefers-reduced-motion: reduce) { .row, .bars, .legend span, th, td { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Budget analysis</a></p>
+  <header>
+    <div class="eyebrow">Lewis &amp; Clark College · Audited financial statements</div>
+    <h1>Where the endowment is invested, year by year</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5 (high effort), October 2026; liquidity filter added with Claude Opus 5.5 (high effort), November 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="lede" id="lede"></p>
+  </header>
+
+  <div class="stage" aria-label="Animated chart of the long-term investment pool by asset class">
+    <div class="ticker">
+      <div class="fy" id="fy">FY2026<small>Fiscal year ended May 31</small></div>
+      <div class="stat"><span class="k">Long-term investment pool</span><span class="v" id="tot">$0</span><span class="d" id="totd"></span></div>
+      <div class="stat"><span class="k">Endowment net assets</span><span class="v" id="end">$0</span><span class="d" id="endd"></span></div>
+      <div class="stat" id="selstat" hidden><span class="k">Selected liquidity</span><span class="v" id="sel">$0</span><span class="d" id="seld"></span></div>
+    </div>
+    <div class="liq" role="group" aria-labelledby="liqlab">
+      <div class="liq-head">
+        <span class="k" id="liqlab">Filter by liquidity</span>
+        <span class="hint">How fast each holding can be turned into cash <button class="link" id="liqall" type="button" hidden style="margin-left:8px">Show all</button></span>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="bars" id="bars"><div class="axis" id="axis"></div></div>
+    <div class="controls">
+      <button class="primary" id="play" type="button">Pause</button>
+      <button id="replay" type="button">Replay</button>
+      <div class="years" id="years" role="group" aria-label="Jump to fiscal year"></div>
+    </div>
+    <div class="timeline">
+      <svg id="tl" viewBox="0 0 640 170" role="img" aria-label="Stacked area of the pool by asset class, most liquid at the bottom, with endowment net assets as a dashed line"></svg>
+      <div class="legend" id="legend"></div>
+    </div>
+  </div>
+
+  <section>
+    <h2>How these numbers were built</h2>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <section>
+    <h2>Values by year ($ millions)</h2>
+    <div class="tablewrap"><table id="tbl"></table></div>
+  </section>
+</div>
+
+<script>
+const D = {"years": [2020, 2021, 2022, 2023, 2024, 2025, 2026], "cats": [{"name": "Directly held securities and cash", "color": "dir", "tier": 1, "values": [45045442, 28927963, 45341712, 27813402, 30406669, 32624998, 56788098]}, {"name": "Pooled Treasuries", "color": "tsy", "tier": 1, "values": [12968487, 15428166, 14275592, 17013893, 18568223, 19504899, 0]}, {"name": "Domestic equity", "color": "deq", "tier": 2, "values": [29485013, 33840418, 30294428, 38077702, 48495440, 52194205, 57873684]}, {"name": "Pooled bonds", "color": "bnd", "tier": 2, "values": [0, 10690726, 10619149, 10895566, 11838513, 12861337, 13891985]}, {"name": "Hedge funds, no lockup", "color": "hfq", "tier": 2, "values": [0, 0, 7291509, 8033417, 9356790, 7159280, 9549264]}, {"name": "International equity", "color": "ieq", "tier": 3, "values": [51673268, 75705897, 62763751, 63258413, 72088019, 74269866, 87434467]}, {"name": "Hedge funds, with lockup", "color": "hfl", "tier": 3, "values": [30661134, 34188556, 25271967, 30377994, 27134058, 25694863, 30471356]}, {"name": "Venture capital", "color": "vc", "tier": 4, "values": [45941622, 67168819, 91792464, 74834499, 72829027, 71344372, 75639186]}, {"name": "Private equity", "color": "pe", "tier": 4, "values": [19517996, 22639235, 29413983, 32142126, 25720308, 29108797, 40521220]}, {"name": "Real assets", "color": "ra", "tier": 4, "values": [12790838, 13310382, 15850112, 17763142, 17401601, 15492002, 13048578]}], "pool": [248083800, 301900161, 332914667, 320210154, 333838648, 340254619, 385217838], "endow": [240342122, 302258210, 322345847, 312222660, 326109583, 331958818, 374909261], "tiers": [{"id": 1, "name": "Within days", "short": "Cash, direct holdings, Treasury fund"}, {"id": 2, "name": "Within a quarter", "short": "Equity and bond trusts, sector hedge funds"}, {"id": 3, "name": "After a lockup", "short": "International equity, most hedge funds"}, {"id": 4, "name": "No redemption", "short": "Venture, private equity, real assets"}], "stackOrder": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], "lede": "How the college's long-term investment pool, which holds the endowment, was split across asset classes at each fiscal year end from FY2020 to FY2026. Press Play to watch it change, tap a year, or filter by how quickly each holding can be turned into cash.", "notes": ["Source: the Fair Value Measurements note in Lewis &amp; Clark's audited financial statements, FY2021 through FY2026. Each year uses the most recent statement that reports it, since later statements sometimes reclassify the prior year.", "The statements do not break out the endowment by itself. They itemize the college's total long-term investments, and the endowment makes up most of that pool. The chart shows that pool, with endowment net assets (from the endowment note) drawn as a dashed line for comparison.", "Asset classes are grouped from the statements' table of funds valued at net asset value: commingled international and domestic equity trusts, a pooled Treasury fund, a pooled bond fund (collateralized debt securities), hedge funds, private equity (domestic and international), venture capital, and natural resources and real estate funds. Real assets also include a small amount the statements carry at cost.", "Directly held securities and cash is the rest of the pool: mutual funds, bonds and Treasuries the college holds directly, plus cash held for investment. Charitable remainder trust assets are left out because they are not endowment. From FY2024 on, the statements separate operating investments and exclude them from total investments, as earlier years already did.", "<strong>Liquidity tiers</strong> come from the redemption terms each statement prints for its funds. <em>Within days</em>: cash and publicly traded securities the college holds directly, and the pooled Treasury fund (daily redemption, 2 to 5 days notice). <em>Within a quarter</em>: the domestic equity and bond trusts and the sector-focused hedge funds (monthly or quarterly redemption, up to 90 days notice, no lockup). <em>After a lockup</em>: the international equity trust (a 3-year lockup in the FY2021 to FY2024 statements, a rolling 12-month lockup in FY2025 and FY2026) and the other hedge funds (rolling lockups of 12 months to 2 years). <em>No redemption</em>: venture capital, private equity, natural resources and real estate funds, which the statements say cannot be redeemed; cash comes back only as the funds sell holdings and distribute.", "The tiers rank relative liquidity, not exact timing. The statements give terms for each category as a whole, so a lockup may cover only some of the funds in it. A $19,059 global macro hedge fund held in FY2020 and FY2021 (daily to quarterly redemption) is counted with the locked hedge funds. The tiers also leave out unfunded commitments, which are future calls on cash: $33,990,162 owed to the private funds at May 31, 2026.", "Two printed figures disagree by small amounts between statements: FY2021 international equity is $75,705,896 in one statement and $75,705,897 in the next (the later figure is used), and the FY2024 statement prints FY2023 total investments at fair value as $325,605,691 where its rows sum to $325,605,961."], "sourceLine": "Whole-dollar figures from the audited statements, shown in millions. Pool excludes charitable remainder trusts and operating investments. FY2020 from the FY2021 statement; FY2021 from FY2022; FY2022 from FY2023; FY2023 from FY2024; FY2024 from FY2025; FY2025 and FY2026 from FY2026."};
+
+const fmtM = v => "$" + (v / 1e6).toFixed(1) + "M";
+const fmtD = v => (v >= 0 ? "+" : "−") + "$" + Math.abs(v / 1e6).toFixed(1) + "M";
+const sgn = (v, dp) => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(dp);
+const pct = (a, b) => b ? ((a / b - 1) * 100) : 0;
+const years = D.years, cats = D.cats, tiers = D.tiers, N = years.length;
+const rowH = 36;
+let sel = new Set(tiers.map(tr => tr.id));
+const isOn = c => sel.has(c.tier);
+const pips = id => `<span class="pips" aria-hidden="true">${[1, 2, 3, 4].map(k => `<i class="${k <= 5 - id ? "on" : ""}"></i>`).join("")}</span>`;
+const tierName = id => tiers.find(tr => tr.id === id).name;
+
+// --- bars
+const barsEl = document.getElementById("bars"), axisEl = document.getElementById("axis");
+const narrow = () => barsEl.clientWidth < 520;
+const rows = cats.map((c, i) => {
+  const r = document.createElement("div"); r.className = "row";
+  r.innerHTML = `<div class="lab">${pips(c.tier)}<span class="nm"></span></div><div class="track"><div class="bar"></div><div class="val"></div></div>`;
+  r.querySelector(".lab .nm").textContent = c.name;
+  r.querySelector(".lab").title = c.name + " · " + tierName(c.tier);
+  r.querySelector(".bar").style.background = `var(--${c.color})`;
+  barsEl.appendChild(r);
+  return { el: r, bar: r.querySelector(".bar"), val: r.querySelector(".val"), rank: i, targetRank: i };
+});
+const maxV = Math.max(...cats.flatMap(c => c.values));
+const scaleMax = Math.ceil(maxV / 25e6) * 25e6 + 25e6; // room for labels
+const labW = () => narrow() ? 112 : 196;
+function drawAxis() {
+  const lab = labW();
+  barsEl.style.setProperty("--lab", lab + "px");
+  axisEl.innerHTML = "";
+  const tw = barsEl.clientWidth - lab - 10;
+  for (let v = 0; v <= scaleMax; v += 25e6) {
+    if (narrow() && (v / 25e6) % 2) continue;
+    const g = document.createElement("div"); g.className = "g";
+    g.style.left = (lab + 10 + tw * v / scaleMax) + "px";
+    g.innerHTML = `<span>$${v / 1e6}M</span>`;
+    axisEl.appendChild(g);
+  }
+}
+const sizeBars = () => barsEl.style.height = (cats.filter(isOn).length * rowH + 22) + "px";
+
+// --- state
+let t = N - 1;           // continuous position: 0..N-1
+let playing = false, last = 0, rafOn = false, snap = true;
+const SEG = 2400, HOLD = 0.35;   // ms per year step, fraction of it spent holding
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+function valAt(arr, tt) {
+  const i = Math.min(Math.floor(tt), N - 2), f = tt - i;
+  const k = f < HOLD ? 0 : ease((f - HOLD) / (1 - HOLD));
+  return arr[i] + (arr[i + 1] - arr[i]) * k;
+}
+function shownYear(tt) { const i = Math.min(Math.floor(tt), N - 2), f = tt - i; return f < HOLD + (1 - HOLD) / 2 ? i : i + 1; }
+const easedT = tt => { const i = Math.min(Math.floor(tt), N - 2), f = tt - i; return i + (f < HOLD ? 0 : ease((f - HOLD) / (1 - HOLD))); };
+const selAt = i => cats.reduce((s, c) => s + (isOn(c) ? c.values[i] : 0), 0);
+
+function render() {
+  const lab = labW(), tw = barsEl.clientWidth - lab - 10;
+  const vals = cats.map(c => valAt(c.values, t));
+  const yi = shownYear(t);
+  const order = vals.map((v, i) => [v, i]).sort((a, b) => b[0] - a[0]);
+  const vis = order.filter(([, i]) => isOn(cats[i])), hid = order.filter(([, i]) => !isOn(cats[i]));
+  vis.concat(hid).forEach(([, i], r) => { rows[i].targetRank = r; });
+  const k = snap || reduce ? 1 : 0.18; snap = false;
+  rows.forEach((row, i) => {
+    row.rank += (row.targetRank - row.rank) * k;
+    row.el.style.transform = `translateY(${row.rank * rowH}px)`;
+    const w = Math.max(2, tw * vals[i] / scaleMax);
+    row.bar.style.width = w + "px";
+    row.val.style.left = (w + 6) + "px";
+    const prev = yi > 0 ? cats[i].values[yi - 1] : null;
+    const d = prev == null ? "" : `<i class="${cats[i].values[yi] - prev >= 0 ? "pos" : "neg"}">${fmtD(cats[i].values[yi] - prev)}</i>`;
+    row.val.innerHTML = fmtM(vals[i]) + (narrow() ? "" : d);
+  });
+  const tot = valAt(D.pool, t), en = valAt(D.endow, t);
+  document.getElementById("fy").firstChild.nodeValue = "FY" + years[yi];
+  document.getElementById("tot").textContent = fmtM(tot);
+  document.getElementById("end").textContent = fmtM(en);
+  const td = document.getElementById("totd"), ed = document.getElementById("endd");
+  if (yi > 0) {
+    const p1 = pct(D.pool[yi], D.pool[yi - 1]), p2 = pct(D.endow[yi], D.endow[yi - 1]);
+    td.textContent = `${sgn(p1, 1)}% vs FY${years[yi - 1]}`; td.className = "d " + (p1 >= 0 ? "pos" : "neg");
+    ed.textContent = `${sgn(p2, 1)}% vs FY${years[yi - 1]}`; ed.className = "d " + (p2 >= 0 ? "pos" : "neg");
+  } else { td.textContent = "Starting year"; td.className = "d"; ed.textContent = "Starting year"; ed.className = "d"; }
+  // liquidity tiers
+  tiers.forEach(tr => {
+    const v = cats.reduce((s, c, i) => s + (c.tier === tr.id ? vals[i] : 0), 0);
+    tr.cv.textContent = `${fmtM(v)} · ${(v / tot * 100).toFixed(1)}%`;
+  });
+  const all = sel.size === tiers.length;
+  document.getElementById("selstat").hidden = all;
+  if (!all) {
+    const sv = vals.reduce((s, v, i) => s + (isOn(cats[i]) ? v : 0), 0);
+    let txt = `${(sv / tot * 100).toFixed(1)}% of pool`;
+    if (yi > 0) {
+      const dp = (selAt(yi) / D.pool[yi] - selAt(yi - 1) / D.pool[yi - 1]) * 100;
+      txt += `, ${sgn(dp, 1)} pts`;
+    }
+    document.getElementById("sel").textContent = fmtM(sv);
+    document.getElementById("seld").textContent = txt;
+  }
+  document.querySelectorAll("#years button").forEach((b, i) => b.setAttribute("aria-pressed", i === yi));
+  const ph = document.getElementById("ph");
+  if (ph) { const x = X(easedT(t)); ph.setAttribute("x1", x); ph.setAttribute("x2", x); }
+}
+
+function loop(now) {
+  if (playing) {
+    const dt = Math.min(64, now - last); last = now;
+    t += dt / SEG;
+    if (t >= N - 1) { t = N - 1; playing = false; playBtn.textContent = "Play from FY" + years[0]; }
+  }
+  render();
+  const moving = rows.some(r => Math.abs(r.rank - r.targetRank) > 0.004);
+  if (playing || moving) requestAnimationFrame(loop); else rafOn = false;
+}
+function kick() { if (!rafOn) { rafOn = true; last = performance.now(); requestAnimationFrame(loop); } }
+const playBtn = document.getElementById("play");
+function setPlaying(p) {
+  playing = p; playBtn.textContent = p ? "Pause" : (t >= N - 1 ? "Play from FY" + years[0] : "Play");
+  if (p) { if (t >= N - 1) t = 0; last = performance.now(); kick(); }
+}
+playBtn.onclick = () => setPlaying(!playing);
+document.getElementById("replay").onclick = () => { t = 0; setPlaying(true); };
+function jump(i) { playing = false; t = i; playBtn.textContent = "Play"; kick(); }
+const yb = document.getElementById("years");
+years.forEach((y, i) => { const b = document.createElement("button"); b.type = "button"; b.textContent = "FY" + String(y).slice(2); b.onclick = () => jump(i); yb.appendChild(b); });
+
+// --- liquidity filter
+const chipsEl = document.getElementById("chips"), allBtn = document.getElementById("liqall");
+tiers.forEach(tr => {
+  const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.id = "tier-" + tr.id;
+  b.setAttribute("aria-pressed", "true");
+  b.innerHTML = `<span class="top">${pips(tr.id)}${tr.name}</span><span class="cv"></span><span class="cd">${tr.short}</span>`;
+  b.onclick = () => { if (sel.has(tr.id)) { if (sel.size === 1) return; sel.delete(tr.id); } else sel.add(tr.id); applyFilter(); };
+  chipsEl.appendChild(b); tr.btn = b; tr.cv = b.querySelector(".cv");
+});
+allBtn.onclick = () => { sel = new Set(tiers.map(tr => tr.id)); applyFilter(); };
+function applyFilter() {
+  tiers.forEach(tr => tr.btn.setAttribute("aria-pressed", sel.has(tr.id)));
+  rows.forEach((r, i) => r.el.classList.toggle("off", !isOn(cats[i])));
+  document.querySelectorAll("#tbl tr[data-tier]").forEach(r => r.classList.toggle("off", !sel.has(+r.dataset.tier)));
+  allBtn.hidden = sel.size === tiers.length;
+  sizeBars(); drawTimeline(); kick();
+}
+
+// --- timeline (stacked area, most liquid at the bottom)
+const tl = document.getElementById("tl"), W = 640, H = 170, L = 44, R = 12, T = 10, B = 24;
+const X = i => L + (W - L - R) * i / (N - 1);
+const yTop = Math.ceil(Math.max(...D.pool, ...D.endow) / 100e6) * 100e6;
+const Y = v => T + (H - T - B) * (1 - v / yTop);
+function drawTimeline() {
+  let svg = "";
+  for (let v = 0; v <= yTop; v += 100e6) svg += `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--rule)" stroke-width="1"/><text x="${L - 6}" y="${Y(v) + 3}" text-anchor="end">$${v / 1e6}M</text>`;
+  const base = new Array(N).fill(0);
+  D.stackOrder.forEach(ci => {
+    const c = cats[ci]; if (!isOn(c)) return;
+    const lo = base.slice(), hi = base.map((b, i) => b + c.values[i]);
+    const pts = hi.map((v, i) => `${X(i)},${Y(v)}`).concat(lo.map((v, i) => `${X(i)},${Y(v)}`).reverse()).join(" ");
+    svg += `<polygon points="${pts}" fill="var(--${c.color})" stroke="var(--panel)" stroke-width=".6"><title>${c.name}</title></polygon>`;
+    hi.forEach((v, i) => base[i] = v);
+  });
+  svg += `<polyline points="${D.endow.map((v, i) => `${X(i)},${Y(v)}`).join(" ")}" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="5 3"/>`;
+  years.forEach((y, i) => svg += `<text x="${X(i)}" y="${H - 6}" text-anchor="middle">FY${String(y).slice(2)}</text>`);
+  const x = X(easedT(t));
+  svg += `<line id="ph" x1="${x}" x2="${x}" y1="${T - 4}" y2="${H - B + 2}" stroke="var(--accent)" stroke-width="2"/>`;
+  tl.innerHTML = svg;
+  document.getElementById("legend").innerHTML = D.stackOrder.map(ci => `<span class="${isOn(cats[ci]) ? "" : "off"}"><b style="background:var(--${cats[ci].color})"></b>${cats[ci].name}</span>`).join("") + `<span><b class="line"></b>Endowment net assets</span>`;
+}
+function scrub(e) {
+  const r = tl.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * W;
+  const i = Math.max(0, Math.min(N - 1, (x - L) / (W - L - R) * (N - 1)));
+  jump(Math.round(i));
+}
+let dragging = false;
+tl.addEventListener("pointerdown", e => { dragging = true; tl.setPointerCapture(e.pointerId); scrub(e); });
+tl.addEventListener("pointermove", e => { if (dragging) scrub(e); });
+tl.addEventListener("pointerup", () => dragging = false);
+
+// --- text and table
+document.getElementById("lede").textContent = D.lede;
+document.getElementById("notes").innerHTML = D.notes.map(n => `<p>${n}</p>`).join("");
+const m = v => (v / 1e6).toFixed(1);
+const chg = (a, cls) => `<td class="${cls ? (a >= 0 ? "pos" : "neg") : ""}">${sgn(a / 1e6, 1)}</td>`;
+let th = `<thead><tr><th>Asset class</th><th style="text-align:left">Liquidity</th>${years.map(y => `<th>FY${y}</th>`).join("")}<th>Change</th></tr></thead><tbody>`;
+cats.forEach(c => { th += `<tr data-tier="${c.tier}"><td>${c.name}</td><td class="tc">${tierName(c.tier)}</td>${c.values.map(v => `<td>${m(v)}</td>`).join("")}${chg(c.values[N - 1] - c.values[0], true)}</tr>`; });
+tiers.forEach((tr, j) => {
+  const v = years.map((_, i) => cats.reduce((s, c) => s + (c.tier === tr.id ? c.values[i] : 0), 0));
+  th += `<tr class="tier${j ? "" : " first"}" data-tier="${tr.id}"><td>${tr.name}</td><td class="tc">${(v[0] / D.pool[0] * 100).toFixed(0)}% → ${(v[N - 1] / D.pool[N - 1] * 100).toFixed(0)}% of pool</td>${v.map(x => `<td>${m(x)}</td>`).join("")}${chg(v[N - 1] - v[0], true)}</tr>`;
+});
+th += `<tr class="sum"><td>Long-term pool (excl. trusts)</td><td></td>${D.pool.map(v => `<td>${m(v)}</td>`).join("")}${chg(D.pool[N - 1] - D.pool[0], true)}</tr>`;
+th += `<tr class="ref"><td>Endowment net assets</td><td></td>${D.endow.map(v => `<td>${m(v)}</td>`).join("")}${chg(D.endow[N - 1] - D.endow[0], false)}</tr>`;
+th += `</tbody><tfoot><tr><td colspan="${N + 3}">${D.sourceLine}</td></tr></tfoot>`;
+document.getElementById("tbl").innerHTML = th;
+
+// --- start
+drawAxis(); sizeBars(); drawTimeline();
+if (reduce) { t = N - 1; render(); playBtn.textContent = "Play"; }
+else { t = 0; render(); setTimeout(() => setPlaying(true), 600); }
+addEventListener("resize", () => { drawAxis(); render(); });
+</script>
+</body>
+</html>

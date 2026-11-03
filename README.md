@@ -1,6 +1,6 @@
 # Lewis & Clark budget analysis
 
-Animated views of Lewis & Clark College tuition, discounting, operating results and first-year retention, FY2000 to FY2026, built from public sources (IPEDS, audited financial statements, and the college's CAS Trends factbook and Common Data Sets). Published with GitHub Pages from the `main` branch.
+Animated views of Lewis & Clark College tuition, discounting, operating results, first-year retention and endowment investments, FY2000 to FY2026, built from public sources (IPEDS, audited financial statements, and the college's CAS Trends factbook and Common Data Sets). Published with GitHub Pages from the `main` branch.
 
 Site: https://drasay-lc.github.io/budgetanalysis/
 
@@ -13,6 +13,7 @@ Site: https://drasay-lc.github.io/budgetanalysis/
 | `discount-2015-data/` | [What the Discount Bought, 2015 Data Only (all schools and CAS)](https://drasay-lc.github.io/budgetanalysis/discount-2015-data/): the same page with its calculator built only on FY2015 to FY2026 data (sensitivity from the fall 2015 to fall 2025 classes, estimated at 0.00 with a standard error of 0.56). |
 | `net-tuition-peak/` | [Where Net Tuition Peaks: A Plain-Language Guide](https://drasay-lc.github.io/budgetanalysis/net-tuition-peak/): price sensitivity and demand explained step by step with interactive charts, the evidence from the fall 2015 to fall 2025 entering classes, what second-year retention adds, a four-year view with retention as its own slider, scenarios for FY2026 net tuition, and the student-level data that would settle the question, using FY2015 to FY2026 data only. |
 | `discount-trends/` | [Discount Rate Trends by School](https://drasay-lc.github.io/budgetanalysis/discount-trends/): discount rate by program from audited note 15, FY2024 to FY2026, with linear trend equations, R² and projections to FY2019 and FY2031. |
+| `endowment-asset-class/` | [Endowment by Asset Class and Liquidity](https://drasay-lc.github.io/budgetanalysis/endowment-asset-class/): the long-term investment pool that holds the endowment, FY2020 to FY2026, by asset class from the audited fair value notes, with endowment net assets for comparison and a filter by liquidity tier based on each fund category's redemption terms. |
 | `data/` | [Data behind the charts](https://drasay-lc.github.io/budgetanalysis/data/): every charted value in tables with row-level citations, plus a CSV per table. |
 
 ## Adding a page
