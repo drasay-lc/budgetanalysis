@@ -80,9 +80,9 @@ h1 { font-family: var(--display); font-weight: 600; font-size: clamp(26px, 5vw, 
 .liq-head .hint { font-size: 12px; color: var(--muted); }
 .chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
 .chip { text-align: left; display: grid; gap: 3px; align-content: start; padding: 9px 11px; border-radius: 5px; background: var(--bg); font-weight: 500; }
-.chip[aria-pressed="true"] { border-color: var(--ink); background: var(--panel); }
-.chip[aria-pressed="false"] { border-style: dashed; color: var(--muted); }
-.chip[aria-pressed="false"] .pips i.on { background: var(--muted); }
+.chip[aria-pressed="true"] { border-color: var(--ink); background: var(--panel); box-shadow: inset 0 0 0 1px var(--ink); }
+.chips.filtering .chip[aria-pressed="false"] { border-style: dashed; color: var(--muted); }
+.chips.filtering .chip[aria-pressed="false"] .pips i.on { background: var(--muted); }
 .chip .top { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; }
 .chip .cv { font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; }
 .chip .cd { font-size: 11.5px; color: var(--muted); line-height: 1.3; font-weight: 400; }
@@ -163,7 +163,7 @@ tfoot td { font-family: var(--body); color: var(--muted); font-size: 11.5px; whi
     <div class="liq" role="group" aria-labelledby="liqlab">
       <div class="liq-head">
         <span class="k" id="liqlab">Filter by liquidity</span>
-        <span class="hint">How fast each holding can be turned into cash <button class="link" id="liqall" type="button" hidden style="margin-left:8px">Show all</button></span>
+        <span class="hint">How fast each holding can be turned into cash. Pick one or more to show only those. <button class="link" id="liqall" type="button" hidden style="margin-left:8px">Clear filter</button></span>
       </div>
       <div class="chips" id="chips"></div>
     </div>
@@ -199,8 +199,10 @@ const sgn = (v, dp) => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(dp);
 const pct = (a, b) => b ? ((a / b - 1) * 100) : 0;
 const years = D.years, cats = D.cats, tiers = D.tiers, N = years.length;
 const rowH = 36;
-let sel = new Set(tiers.map(tr => tr.id));
-const isOn = c => sel.has(c.tier);
+let sel = new Set();   // picked tiers; none picked shows every tier
+const filtering = () => sel.size > 0 && sel.size < tiers.length;
+const tierOn = id => !filtering() || sel.has(id);
+const isOn = c => tierOn(c.tier);
 const pips = id => `<span class="pips" aria-hidden="true">${[1, 2, 3, 4].map(k => `<i class="${k <= 5 - id ? "on" : ""}"></i>`).join("")}</span>`;
 const tierName = id => tiers.find(tr => tr.id === id).name;
 
@@ -283,7 +285,7 @@ function render() {
     const v = cats.reduce((s, c, i) => s + (c.tier === tr.id ? vals[i] : 0), 0);
     tr.cv.textContent = `${fmtM(v)} · ${(v / tot * 100).toFixed(1)}%`;
   });
-  const all = sel.size === tiers.length;
+  const all = !filtering();
   document.getElementById("selstat").hidden = all;
   if (!all) {
     const sv = vals.reduce((s, v, i) => s + (isOn(cats[i]) ? v : 0), 0);
@@ -326,17 +328,18 @@ years.forEach((y, i) => { const b = document.createElement("button"); b.type = "
 const chipsEl = document.getElementById("chips"), allBtn = document.getElementById("liqall");
 tiers.forEach(tr => {
   const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.id = "tier-" + tr.id;
-  b.setAttribute("aria-pressed", "true");
+  b.setAttribute("aria-pressed", "false");
   b.innerHTML = `<span class="top">${pips(tr.id)}${tr.name}</span><span class="cv"></span><span class="cd">${tr.short}</span>`;
-  b.onclick = () => { if (sel.has(tr.id)) { if (sel.size === 1) return; sel.delete(tr.id); } else sel.add(tr.id); applyFilter(); };
+  b.onclick = () => { if (sel.has(tr.id)) sel.delete(tr.id); else sel.add(tr.id); applyFilter(); };
   chipsEl.appendChild(b); tr.btn = b; tr.cv = b.querySelector(".cv");
 });
-allBtn.onclick = () => { sel = new Set(tiers.map(tr => tr.id)); applyFilter(); };
+allBtn.onclick = () => { sel = new Set(); applyFilter(); };
 function applyFilter() {
   tiers.forEach(tr => tr.btn.setAttribute("aria-pressed", sel.has(tr.id)));
   rows.forEach((r, i) => r.el.classList.toggle("off", !isOn(cats[i])));
-  document.querySelectorAll("#tbl tr[data-tier]").forEach(r => r.classList.toggle("off", !sel.has(+r.dataset.tier)));
-  allBtn.hidden = sel.size === tiers.length;
+  document.querySelectorAll("#tbl tr[data-tier]").forEach(r => r.classList.toggle("off", !tierOn(+r.dataset.tier)));
+  chipsEl.classList.toggle("filtering", filtering());
+  allBtn.hidden = sel.size === 0;
   sizeBars(); drawTimeline(); kick();
 }
 
