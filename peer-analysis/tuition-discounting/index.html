@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Peer Undergraduate Tuition Discounting</title>
+<meta name="description" content="Undergraduate gross tuition, net tuition and discount rate for Lewis & Clark and its comparison group peers, from audited financial statements.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../peer.css">
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Peer analysis</a></p>
+  <header>
+    <div class="eyebrow">Peer group 1 · L&amp;C comparison group · audited statements</div>
+    <h1>Peer Undergraduate Tuition Discounting</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5 (high effort), November 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="dek">Undergraduate gross tuition, net tuition after institutional aid, and the tuition discount rate by fiscal year for the comparison group schools whose audited financial statements isolate undergraduate tuition. Only figures printed in the statements are used; missing years are gaps, not estimates.</p>
+    <p class="find" id="find"></p>
+  </header>
+
+  <div class="controls">
+    <label for="pick">Highlight a peer</label>
+    <select id="pick"></select>
+  </div>
+
+  <section class="card" aria-labelledby="h-rate">
+    <h2 id="h-rate">Tuition discount rate</h2>
+    <p class="note">Institutional aid as a share of gross tuition and fees. Hover or tap the chart to read every school for a year.</p>
+    <div class="key" aria-hidden="true">
+      <span><i style="background: var(--gross)"></i>Lewis &amp; Clark (undergraduate)</span>
+      <span id="pick-key" hidden><i style="background: var(--aid)"></i><span id="pick-name"></span></span>
+      <span><i style="background: var(--other)"></i>Other peers</span>
+    </div>
+    <div class="chart" id="c-rate" data-h="340" role="img" aria-label="Undergraduate tuition discount rate by school and fiscal year"></div>
+  </section>
+
+  <div class="pair">
+    <section class="card" aria-labelledby="h-gross">
+      <h2 id="h-gross">Gross tuition</h2>
+      <p class="note">Tuition and fees before institutional aid, excluding room and board.</p>
+      <div class="chart" id="c-gross" role="img" aria-label="Gross tuition by school and fiscal year"></div>
+    </section>
+    <section class="card" aria-labelledby="h-net">
+      <h2 id="h-net">Net tuition</h2>
+      <p class="note">Gross tuition and fees less institutional aid.</p>
+      <div class="chart" id="c-net" role="img" aria-label="Net tuition by school and fiscal year"></div>
+    </section>
+  </div>
+
+  <section class="card" aria-labelledby="h-table">
+    <h2 id="h-table">Figures by school and fiscal year</h2>
+    <p class="note">Dollars as printed in the statements. Every row reconciles to a net total printed in the same statement.</p>
+    <div class="tbox">
+      <table>
+        <thead><tr><th scope="col">School</th><th scope="col" class="n">Fiscal year</th><th scope="col" class="n">Gross tuition</th><th scope="col" class="n">Institutional aid</th><th scope="col" class="n">Net tuition</th><th scope="col" class="n">Discount rate</th><th scope="col">Basis</th></tr></thead>
+        <tbody id="t-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <p class="data-link"><a href="peer_undergraduate_tuition.csv" download>Download the data (CSV) →</a><span>One row per school and fiscal year, with the statement each figure came from.</span></p>
+  <div class="notes">
+    <div>
+      <h3>Who is included</h3>
+      <ul>
+        <li>Kenyon, St. Olaf, Whitman, Union, Skidmore and Kalamazoo enroll undergraduates only (Skidmore has had a handful of graduate students), so their statement figures are undergraduate figures.</li>
+        <li>Reed, Occidental and Rhodes are about 99% undergraduate. Their figures are institution-wide and include a very small graduate program.</li>
+        <li>Gonzaga, Portland, Puget Sound, Willamette, Gettysburg and Sarah Lawrence are left out because their statements do not separate undergraduate tuition.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Lewis &amp; Clark</h3>
+      <p>Lewis &amp; Clark's statements separate undergraduate tuition, fees and scholarships only from fiscal year 2024 (note 15 of the FY2025 and FY2026 audited statements). Earlier years combine the law and graduate programs and are left out here; the <a href="../carnegie-discounting/">Carnegie peer page</a> shows the college-wide figures.</p>
+    </div>
+    <div>
+      <h3>How to read the figures</h3>
+      <ul>
+        <li>Net tuition is gross tuition less aid. Where a statement prints only net tuition and the aid amount (Whitman from 2020, Reed from 2019, Skidmore from 2019, Kalamazoo in 2025), gross is their sum. St. Olaf's aid is its funded plus unfunded scholarships, and its gross figure is tuition without other fees.</li>
+        <li>Skidmore, Kalamazoo and Rhodes come from the audited statements inside their federal single audit filings. From 2019 Skidmore prints aid to the nearest thousand dollars.</li>
+        <li>Older statements for Kenyon and St. Olaf are scanned images that could not be read, and several Reed years are not posted.</li>
+        <li>Aid definitions differ by school, so levels are less comparable than each school's own trend. Fiscal year 2021 reflects pandemic operations at several schools.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="../lines.js"></script>
+<script>
+PeerLines({
+  csv: "peer_undergraduate_tuition.csv",
+  lc: "Lewis & Clark (undergraduate)",
+  order: ["Lewis & Clark (undergraduate)", "Kenyon", "Kalamazoo", "Occidental", "Reed", "Rhodes", "Skidmore", "St. Olaf", "Union", "Whitman"]
+});
+</script>
+</body>
+</html>

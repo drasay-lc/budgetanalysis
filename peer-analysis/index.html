@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lewis &amp; Clark Peer Analysis</title>
+<meta name="description" content="Lewis & Clark College compared with three peer groups: tuition discounting from audited statements and foreign language graduation requirements from catalogs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="peer.css">
+<style>
+.wrap { max-width: 56rem; padding-block: 40px 56px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: 16px; }
+a.card { display: grid; gap: 10px; color: inherit; text-decoration: none; transition: border-color .15s; padding: 20px 22px; }
+a.card + a.card { margin-top: 0; }
+a.card:hover { border-color: var(--muted); }
+a.card h2 { font-family: var(--f-display); font-weight: 500; font-size: 24px; margin: 0; line-height: 1.2; }
+a.card p { margin: 0; color: var(--muted); font-size: 14.5px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12.5px; color: var(--muted); }
+.chips span { display: inline-flex; align-items: center; gap: 6px; }
+.chips i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+.go { font-family: var(--f-data); font-size: 13px; color: var(--ink); }
+.groups { margin-top: 32px; }
+.groups h2 { font-family: var(--f-display); font-weight: 500; font-size: 24px; margin: 0 0 6px; }
+.groups > p { color: var(--muted); margin: 0 0 14px; max-width: 64ch; }
+.groups table { font-size: 13.5px; }
+.groups td:first-child { white-space: nowrap; font-weight: 600; }
+.groups td p { margin: 0 0 4px; }
+.groups td .m { color: var(--muted); font-size: 12.5px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <p class="crumb"><a href="../">← Budget analysis</a></p>
+  <header>
+    <p class="eyebrow">Lewis &amp; Clark College · peer benchmarking</p>
+    <h1>Peer Analysis</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5 (high effort), November 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="dek">Lewis &amp; Clark compared with three groups of peer institutions. Tuition figures come only from audited financial statements; language requirements come from each school's current catalog. Nothing is estimated.</p>
+  </header>
+
+  <div class="cards">
+    <a class="card" href="language-requirements/">
+      <h2>Foreign Language Requirements</h2>
+      <p>Which of 33 peers require a year or more of a language to graduate, who it applies to and how to test out, in six segments from more than one year for all students to no requirement, with the catalog citation for every school.</p>
+      <div class="chips"><span><i style="background: var(--gross)"></i>All students</span><span><i style="background: var(--aid)"></i>Some students</span><span><i style="background: var(--other)"></i>One option</span></div>
+      <span class="go">Open chart →</span>
+    </a>
+    <a class="card" href="tuition-discounting/">
+      <h2>Undergraduate Tuition Discounting (Group 1)</h2>
+      <p>Undergraduate gross tuition, net tuition and discount rate for the comparison group schools whose audited statements isolate undergraduate tuition, back to fiscal year 2004 for some.</p>
+      <div class="chips"><span><i style="background: var(--gross)"></i>Lewis &amp; Clark</span><span><i style="background: var(--aid)"></i>Chosen peer</span><span><i style="background: var(--other)"></i>Other peers</span></div>
+      <span class="go">Open chart →</span>
+    </a>
+    <a class="card" href="carnegie-discounting/">
+      <h2>Carnegie Peer Tuition Discounting (Group 2)</h2>
+      <p>The same measures for schools in Lewis &amp; Clark's Carnegie class, college-wide for every school and undergraduate only where a statement prints the split.</p>
+      <div class="chips"><span><i style="background: var(--gross)"></i>Lewis &amp; Clark</span><span><i style="background: var(--aid)"></i>Chosen peer</span><span><i style="background: var(--other)"></i>Other peers</span></div>
+      <span class="go">Open chart →</span>
+    </a>
+  </div>
+
+  <section class="groups" aria-labelledby="h-groups">
+    <h2 id="h-groups">How the peer groups were chosen</h2>
+    <p>The same three groups are used throughout the peer benchmarking work on tuition, endowment, enrollment, majors and minors, and language requirements.</p>
+    <div class="tbox" style="max-height:none">
+      <table>
+        <thead><tr><th scope="col">Group</th><th scope="col">Selection criterion and members</th></tr></thead>
+        <tbody>
+          <tr><td>Group 1<br>L&amp;C comparison group</td><td><p>The institutions Lewis &amp; Clark's Office of Institutional Research uses in its College of Arts and Sciences comparison reports: regional peers in Oregon and Washington plus national liberal arts colleges, taken as published without additions or removals.</p><p class="m">Gettysburg, Gonzaga, Kalamazoo, Kenyon, Occidental, Reed, Rhodes, Sarah Lawrence, Skidmore, St. Olaf, Union, University of Portland, University of Puget Sound, Whitman, Willamette.</p></td></tr>
+          <tr><td>Group 2<br>Carnegie class</td><td><p>Private institutions that share Lewis &amp; Clark's 2025 Carnegie classification, Mixed Undergraduate/Graduate-Doctorate, Small (a liberal arts college with law and graduate schools), or sit in the adjacent Medium band, with endowments closer to Lewis &amp; Clark's than most of group 1, and with audited statements or federal single audit filings available.</p><p class="m">Clark, Drew, Loyola New Orleans, Lynchburg, Pacific University, Seattle Pacific, Seattle University, Stetson, Willamette (also in group 1, and counted there on the language page).</p></td></tr>
+          <tr><td>Group 3<br>Smaller endowment</td><td><p>Private institutions with a liberal arts core plus professional or graduate programs, endowments of roughly $70 million to $300 million at fiscal year 2025, and audited statements available.</p><p class="m">Capital, Goucher, Hamline, John Carroll, Ohio Northern, Pacific Lutheran, Roger Williams, Saint Mary's College of California, University of La Verne, University of Redlands.</p></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="notes" style="display:block;max-width:64ch">
+    <h3>About the data</h3>
+    <p>Tuition, aid and the discount rate come from each school's audited statement of activities and tuition notes, or the audited statements inside its federal single audit filing. Schools whose statements do not separate undergraduate tuition are left out of the undergraduate page rather than estimated.</p>
+    <p>Each page offers its data as a CSV download with the source of every row.</p>
+  </section>
+</main>
+</body>
+</html>

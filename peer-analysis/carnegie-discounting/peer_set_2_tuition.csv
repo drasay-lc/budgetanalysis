@@ -1,0 +1,132 @@
+key,school,level,fiscal_year,gross_tuition,institutional_aid,net_tuition,discount_rate,basis
+Lewis & Clark All levels FY2021,Lewis & Clark,All levels,2021,143390774,67401612,75989162,0.4701,Net tuition and aid printed; gross is their sum
+Lewis & Clark All levels FY2022,Lewis & Clark,All levels,2022,168164425,83073256,85091169,0.494,Net tuition and aid printed; gross is their sum
+Lewis & Clark All levels FY2023,Lewis & Clark,All levels,2023,178101366,89769741,88331625,0.504,Net tuition and aid printed; gross is their sum
+Lewis & Clark All levels FY2024,Lewis & Clark,All levels,2024,182469569,94063847,88405722,0.5155,Net tuition and aid printed; gross is their sum
+Lewis & Clark All levels FY2025,Lewis & Clark,All levels,2025,184481258,98998984,85482274,0.5366,Net tuition and aid printed; gross is their sum
+Lewis & Clark All levels FY2026,Lewis & Clark,All levels,2026,185499779,102083195,83416584,0.5503,Net tuition and aid printed; gross is their sum
+Lewis & Clark Undergraduate FY2024,Lewis & Clark,Undergraduate,2024,135825405,78769510,57055895,0.5799,Gross tuition and aid printed
+Lewis & Clark Undergraduate FY2025,Lewis & Clark,Undergraduate,2025,137156381,83100365,54056016,0.6059,Gross tuition and aid printed
+Lewis & Clark Undergraduate FY2026,Lewis & Clark,Undergraduate,2026,134996809,85222439,49774370,0.6313,Gross tuition and aid printed
+Willamette All levels FY2020,Willamette,All levels,2020,99793000,49010000,50783000,0.4911,Gross tuition and aid printed
+Willamette All levels FY2021,Willamette,All levels,2021,92797000,48381000,44416000,0.5214,Gross tuition and aid printed
+Willamette All levels FY2022,Willamette,All levels,2022,96215000,44975000,51240000,0.4674,Gross tuition and aid printed
+Willamette All levels FY2023,Willamette,All levels,2023,105002000,56621000,48381000,0.5392,Gross tuition and aid printed
+Willamette All levels FY2024,Willamette,All levels,2024,123147000,71080000,52067000,0.5772,Gross tuition and aid printed
+Willamette All levels FY2025,Willamette,All levels,2025,133015000,79758000,53257000,0.5996,Gross tuition and aid printed
+Clark All levels FY2014,Clark,All levels,2014,117347000,55086000,62261000,0.4694,Gross tuition and aid printed
+Clark All levels FY2015,Clark,All levels,2015,120476000,56296000,64180000,0.4673,Gross tuition and aid printed
+Clark All levels FY2016,Clark,All levels,2016,125857000,59360000,66497000,0.4716,Gross tuition and aid printed
+Clark All levels FY2017,Clark,All levels,2017,121657000,58173000,63484000,0.4782,Gross tuition and aid printed
+Clark All levels FY2018,Clark,All levels,2018,124459000,60607000,63852000,0.487,Gross tuition and aid printed
+Clark All levels FY2019,Clark,All levels,2019,132292000,66440000,65852000,0.5022,Gross tuition and aid printed
+Clark All levels FY2020,Clark,All levels,2020,149430000,72712000,76718000,0.4866,Gross tuition and aid printed
+Clark All levels FY2021,Clark,All levels,2021,146382000,73467000,72915000,0.5019,Gross tuition and aid printed
+Clark All levels FY2022,Clark,All levels,2022,151142000,80476000,70666000,0.5325,Gross tuition and aid printed
+Clark All levels FY2023,Clark,All levels,2023,167536000,87226000,80310000,0.5206,Gross tuition and aid printed
+Clark All levels FY2024,Clark,All levels,2024,180588000,93480000,87108000,0.5176,Gross tuition and aid printed
+Clark All levels FY2025,Clark,All levels,2025,175423000,93676000,81747000,0.534,Gross tuition and aid printed
+Drew All levels FY2015,Drew,All levels,2015,70451000,36020000,34431000,0.5113,Tuition note by school: gross tuition less institutional and externally funded discounts
+Drew All levels FY2016,Drew,All levels,2016,72722000,39791000,32931000,0.5472,Tuition note by school: gross tuition less institutional and externally funded discounts
+Drew All levels FY2017,Drew,All levels,2017,75716000,42998000,32718000,0.5679,Tuition note by school: gross tuition less institutional and externally funded discounts
+Drew All levels FY2018,Drew,All levels,2018,77757000,44591000,33166000,0.5735,Tuition note by school: gross tuition less institutional and externally funded discounts
+Drew All levels FY2019,Drew,All levels,2019,68764000,35278000,33486000,0.513,Tuition note by school: gross tuition less institutional and externally funded discounts
+Drew All levels FY2020,Drew,All levels,2020,72339000,36879000,35460000,0.5098,Tuition note by school: gross tuition less institutional and externally funded discounts
+Drew All levels FY2021,Drew,All levels,2021,70640000,34986000,35654000,0.4953,Tuition note by school: gross tuition less institutional and externally funded discounts
+Drew All levels FY2022,Drew,All levels,2022,74407000,37563000,36844000,0.5048,Tuition note by school: gross tuition less institutional and externally funded discounts
+Drew All levels FY2023,Drew,All levels,2023,74504000,38626000,35878000,0.5184,Tuition note by school: gross tuition less institutional and externally funded discounts
+Drew All levels FY2024,Drew,All levels,2024,77854000,44171000,33683000,0.5674,Tuition note by school: gross tuition less institutional and externally funded discounts
+Drew All levels FY2025,Drew,All levels,2025,81404000,44949000,36455000,0.5522,Tuition note by school: gross tuition less institutional and externally funded discounts
+Drew Undergraduate FY2015,Drew,Undergraduate,2015,61098000,30491000,30607000,0.4991,Tuition note by school: gross tuition less institutional and externally funded discounts (College of Liberal Arts)
+Drew Undergraduate FY2016,Drew,Undergraduate,2016,64352000,34600000,29752000,0.5377,Tuition note by school: gross tuition less institutional and externally funded discounts (College of Liberal Arts)
+Drew Undergraduate FY2017,Drew,Undergraduate,2017,67752000,37427000,30325000,0.5524,Tuition note by school: gross tuition less institutional and externally funded discounts (College of Liberal Arts)
+Drew Undergraduate FY2018,Drew,Undergraduate,2018,69790000,39246000,30544000,0.5623,Tuition note by school: gross tuition less institutional and externally funded discounts (College of Liberal Arts)
+Drew Undergraduate FY2019,Drew,Undergraduate,2019,61674000,31514000,30160000,0.511,Tuition note by school: gross tuition less institutional and externally funded discounts (College of Liberal Arts)
+Drew Undergraduate FY2020,Drew,Undergraduate,2020,64662000,32694000,31968000,0.5056,Tuition note by school: gross tuition less institutional and externally funded discounts (College of Liberal Arts)
+Drew Undergraduate FY2021,Drew,Undergraduate,2021,63421000,30841000,32580000,0.4863,Tuition note by school: gross tuition less institutional and externally funded discounts (College of Liberal Arts)
+Drew Undergraduate FY2022,Drew,Undergraduate,2022,66644000,33074000,33570000,0.4963,Tuition note by school: gross tuition less institutional and externally funded discounts (College of Liberal Arts)
+Drew Undergraduate FY2023,Drew,Undergraduate,2023,67360000,34067000,33293000,0.5057,Tuition note by school: gross tuition less institutional and externally funded discounts (College of Liberal Arts)
+Drew Undergraduate FY2024,Drew,Undergraduate,2024,70048000,39900000,30148000,0.5696,Tuition note by school: gross tuition less institutional and externally funded discounts (College of Liberal Arts)
+Drew Undergraduate FY2025,Drew,Undergraduate,2025,73430000,40641000,32789000,0.5535,Tuition note by school: gross tuition less institutional and externally funded discounts (College of Liberal Arts)
+Seattle Pacific All levels FY2015,Seattle Pacific,All levels,2015,132465000,52676000,79789000,0.3977,Gross tuition and aid printed
+Seattle Pacific All levels FY2016,Seattle Pacific,All levels,2016,134409000,55153000,79256000,0.4103,Gross tuition and aid printed
+Seattle Pacific All levels FY2017,Seattle Pacific,All levels,2017,137442000,59226000,78216000,0.4309,Gross tuition and aid printed
+Seattle Pacific All levels FY2018,Seattle Pacific,All levels,2018,133566000,58420000,75146000,0.4374,Gross tuition and aid printed
+Seattle Pacific All levels FY2019,Seattle Pacific,All levels,2019,137329000,62764000,74565000,0.457,Gross tuition and aid printed
+Seattle Pacific All levels FY2020,Seattle Pacific,All levels,2020,136687000,65237000,71450000,0.4773,Gross tuition and aid printed
+Seattle Pacific All levels FY2021,Seattle Pacific,All levels,2021,142112000,71341000,70771000,0.502,Gross tuition and aid printed
+Seattle Pacific All levels FY2022,Seattle Pacific,All levels,2022,107115000,46233000,60882000,0.4316,Gross tuition and aid printed
+Seattle Pacific All levels FY2023,Seattle Pacific,All levels,2023,102117000,47910000,54207000,0.4692,Gross tuition and aid printed
+Seattle Pacific All levels FY2024,Seattle Pacific,All levels,2024,89181000,45484000,43697000,0.51,Gross tuition and aid printed
+Seattle Pacific All levels FY2025,Seattle Pacific,All levels,2025,78439000,42717000,35722000,0.5446,Gross tuition and aid printed
+Lynchburg All levels FY2015,Lynchburg,All levels,2015,71188142,31030230,40157912,0.4359,Gross tuition and aid printed
+Lynchburg All levels FY2016,Lynchburg,All levels,2016,74268637,32988758,41279879,0.4442,Gross tuition and aid printed
+Lynchburg All levels FY2017,Lynchburg,All levels,2017,76620736,35238407,41382329,0.4599,Gross tuition and aid printed
+Lynchburg All levels FY2018,Lynchburg,All levels,2018,82471146,37913024,44558122,0.4597,Gross tuition and aid printed
+Lynchburg All levels FY2019,Lynchburg,All levels,2019,90500199,40402309,50097890,0.4464,Gross tuition and aid printed
+Lynchburg All levels FY2020,Lynchburg,All levels,2020,89230644,40658241,48572403,0.4557,Gross tuition and aid printed
+Lynchburg All levels FY2021,Lynchburg,All levels,2021,90414106,40205568,50208538,0.4447,Gross tuition and aid printed
+Lynchburg All levels FY2022,Lynchburg,All levels,2022,71898059,26369872,45528187,0.3668,Gross tuition and aid printed
+Lynchburg All levels FY2023,Lynchburg,All levels,2023,70167787,27252711,42915076,0.3884,Gross tuition and aid printed
+Lynchburg All levels FY2024,Lynchburg,All levels,2024,75373405,31832027,43541378,0.4223,Net tuition and aid printed; gross is their sum
+Lynchburg All levels FY2025,Lynchburg,All levels,2025,74085024,32088604,41996420,0.4331,Net tuition and aid printed; gross is their sum
+Lynchburg Undergraduate FY2015,Lynchburg,Undergraduate,2015,63843646,30945065,32898581,0.4847,Tuition note: undergraduate tuition and fees less undergraduate financial aid
+Lynchburg Undergraduate FY2016,Lynchburg,Undergraduate,2016,65470989,32940421,32530568,0.5031,Tuition note: undergraduate tuition and fees less undergraduate financial aid
+Lynchburg Undergraduate FY2017,Lynchburg,Undergraduate,2017,66314482,35207474,31107008,0.5309,Tuition note: undergraduate tuition and fees less undergraduate financial aid
+Lynchburg Undergraduate FY2018,Lynchburg,Undergraduate,2018,68633736,37897524,30736212,0.5522,Tuition note: undergraduate tuition and fees less undergraduate financial aid
+Lynchburg Undergraduate FY2019,Lynchburg,Undergraduate,2019,72411830,40387914,32023916,0.5578,Tuition note: undergraduate tuition and fees less undergraduate financial aid
+Lynchburg Undergraduate FY2020,Lynchburg,Undergraduate,2020,70268816,40637441,29631375,0.5783,Tuition note: undergraduate tuition and fees less undergraduate financial aid
+Lynchburg Undergraduate FY2021,Lynchburg,Undergraduate,2021,69273670,40198368,29075302,0.5803,Tuition note: undergraduate tuition and fees less undergraduate financial aid
+Lynchburg Undergraduate FY2022,Lynchburg,Undergraduate,2022,50872772,26345372,24527400,0.5179,Tuition note: undergraduate tuition and fees less undergraduate financial aid
+Lynchburg Undergraduate FY2023,Lynchburg,Undergraduate,2023,50780508,27247211,23533297,0.5366,Tuition note: undergraduate tuition and fees less undergraduate financial aid
+Lynchburg Undergraduate FY2024,Lynchburg,Undergraduate,2024,55731187,31820527,23910660,0.571,Tuition note: undergraduate tuition and fees less undergraduate financial aid
+Lynchburg Undergraduate FY2025,Lynchburg,Undergraduate,2025,54666832,32085604,22581228,0.5869,Tuition note: undergraduate tuition and fees less undergraduate financial aid
+Stetson All levels FY2014,Stetson,All levels,2014,141468000,61927000,79541000,0.4377,Net tuition and aid printed; gross is their sum
+Stetson All levels FY2015,Stetson,All levels,2015,150578000,68530000,82048000,0.4551,Net tuition and aid printed; gross is their sum
+Stetson All levels FY2016,Stetson,All levels,2016,163284000,77897000,85387000,0.4771,Net tuition and aid printed; gross is their sum
+Stetson All levels FY2017,Stetson,All levels,2017,169573000,82795000,86778000,0.4883,Net tuition and aid printed; gross is their sum
+Stetson All levels FY2018,Stetson,All levels,2018,173590000,86902000,86688000,0.5006,Net tuition and aid printed; gross is their sum
+Stetson All levels FY2019,Stetson,All levels,2019,182686000,94155000,88531000,0.5154,Net tuition and aid printed; gross is their sum
+Stetson All levels FY2020,Stetson,All levels,2020,191311000,100437000,90874000,0.525,Net tuition and aid printed; gross is their sum
+Stetson All levels FY2021,Stetson,All levels,2021,196977000,110036000,86941000,0.5586,Net tuition and aid printed; gross is their sum
+Stetson All levels FY2022,Stetson,All levels,2022,186937000,107005000,79932000,0.5724,Net tuition and aid printed; gross is their sum
+Stetson All levels FY2023,Stetson,All levels,2023,177866000,105738000,72128000,0.5945,Net tuition and aid printed; gross is their sum
+Stetson All levels FY2024,Stetson,All levels,2024,174916000,108331000,66585000,0.6193,Net tuition and aid printed; gross is their sum
+Stetson All levels FY2025,Stetson,All levels,2025,187153000,115656000,71497000,0.618,Net tuition and aid printed; gross is their sum
+Stetson Undergraduate FY2018,Stetson,Undergraduate,2018,132008000,76005000,56003000,0.5758,Net tuition and aid printed; gross is their sum
+Stetson Undergraduate FY2019,Stetson,Undergraduate,2019,139531000,82191000,57340000,0.5891,Net tuition and aid printed; gross is their sum
+Stetson Undergraduate FY2020,Stetson,Undergraduate,2020,146104000,87220000,58884000,0.597,Net tuition and aid printed; gross is their sum
+Stetson Undergraduate FY2021,Stetson,Undergraduate,2021,147861000,94584000,53277000,0.6397,Net tuition and aid printed; gross is their sum
+Stetson Undergraduate FY2022,Stetson,Undergraduate,2022,136271000,89544000,46727000,0.6571,Net tuition and aid printed; gross is their sum
+Stetson Undergraduate FY2023,Stetson,Undergraduate,2023,125716000,85698000,40018000,0.6817,Net tuition and aid printed; gross is their sum
+Stetson Undergraduate FY2024,Stetson,Undergraduate,2024,120772000,86788000,33984000,0.7186,Net tuition and aid printed; gross is their sum
+Stetson Undergraduate FY2025,Stetson,Undergraduate,2025,127877000,93392000,34485000,0.7303,Net tuition and aid printed; gross is their sum
+Seattle University All levels FY2021,Seattle University,All levels,2021,280456000,108228000,172228000,0.3859,Gross tuition and aid printed
+Seattle University All levels FY2022,Seattle University,All levels,2022,293065000,119993000,173072000,0.4094,Gross tuition and aid printed
+Seattle University All levels FY2023,Seattle University,All levels,2023,296385000,117701000,178684000,0.3971,Gross tuition and aid printed
+Seattle University All levels FY2024,Seattle University,All levels,2024,314869000,132898000,181971000,0.4221,Gross tuition and aid printed
+Seattle University All levels FY2025,Seattle University,All levels,2025,326976000,136582000,190394000,0.4177,Gross tuition and aid printed
+Loyola New Orleans All levels FY2008,Loyola New Orleans,All levels,2008,91005764,30194318,60811446,0.3318,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2009,Loyola New Orleans,All levels,2009,95343735,34394149,60949586,0.3607,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2010,Loyola New Orleans,All levels,2010,107904853,41081801,66823052,0.3807,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2011,Loyola New Orleans,All levels,2011,117494083,45625021,71869062,0.3883,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2012,Loyola New Orleans,All levels,2012,130896402,51662305,79234097,0.3947,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2013,Loyola New Orleans,All levels,2013,136904925,54241414,82663511,0.3962,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2014,Loyola New Orleans,All levels,2014,132811692,52217729,80593963,0.3932,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2015,Loyola New Orleans,All levels,2015,125690000,53216000,72474000,0.4234,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2016,Loyola New Orleans,All levels,2016,119556000,55500000,64056000,0.4642,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2017,Loyola New Orleans,All levels,2017,110815000,53581000,57234000,0.4835,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2018,Loyola New Orleans,All levels,2018,119528000,59615000,55737000,0.4988,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2019,Loyola New Orleans,All levels,2019,130441000,64788000,59991000,0.4967,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2020,Loyola New Orleans,All levels,2020,138875000,72064000,62105000,0.5189,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2021,Loyola New Orleans,All levels,2021,149116000,80349000,64371000,0.5388,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2022,Loyola New Orleans,All levels,2022,159763000,87979000,67091000,0.5507,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2023,Loyola New Orleans,All levels,2023,169113000,90089000,73354000,0.5327,Fact book extract of audited statement of activities
+Loyola New Orleans All levels FY2024,Loyola New Orleans,All levels,2024,,,76296000,,Fact book extract of audited statement of activities; only net tuition printed
+Loyola New Orleans All levels FY2025,Loyola New Orleans,All levels,2025,,,78813000,,Fact book extract of audited statement of activities; only net tuition printed
+Pacific University All levels FY2020,Pacific University,All levels,2020,146291760,42694858,103596902,0.2918,Gross tuition and aid printed
+Pacific University All levels FY2021,Pacific University,All levels,2021,147462180,44244225,103217955,0.3,Gross tuition and aid printed
+Pacific University All levels FY2022,Pacific University,All levels,2022,147546698,42689904,104856794,0.2893,Gross tuition and aid printed
+Pacific University All levels FY2023,Pacific University,All levels,2023,145374761,43653818,101720943,0.3003,Gross tuition and aid printed
+Pacific University All levels FY2024,Pacific University,All levels,2024,147785559,46859561,100925998,0.3171,Gross tuition and aid printed
+Pacific University All levels FY2025,Pacific University,All levels,2025,148664898,49078667,99586231,0.3301,Gross tuition and aid printed
