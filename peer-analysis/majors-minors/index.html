@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Peer Majors and Minors Comparison</title>
+<meta name="description" content="How many of Lewis & Clark's majors and minors each of 33 peer institutions also offers, from each school's current catalog.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../peer.css">
+<style>
+.toc { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; margin: 0 0 16px; padding: 0; list-style: none; }
+.toc a { color: var(--muted); }
+section.card { scroll-margin-top: 12px; }
+.mx { border-collapse: separate; border-spacing: 2px; width: auto; font-size: 12px; }
+.mx th, .mx td { border: 0; padding: 0; }
+.mx thead th { position: sticky; top: 0; background: var(--panel); height: 128px; vertical-align: bottom; padding: 0 0 4px; z-index: 2; }
+.mx thead th span { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-weight: 500; color: var(--muted); font-size: 11.5px; }
+.mx thead th.corner { left: 0; z-index: 3; text-align: left; vertical-align: bottom; writing-mode: horizontal-tb; }
+.mx tbody th { position: sticky; left: 0; background: var(--panel); text-align: left; font-weight: 500; white-space: nowrap; padding: 0 8px 0 0; font-size: 12px; z-index: 1; max-width: 15rem; overflow: hidden; text-overflow: ellipsis; }
+.mx tbody tr.sep th { padding-top: 10px; font-weight: 600; color: var(--ink); text-transform: uppercase; letter-spacing: .06em; font-size: 11px; }
+.mx td { width: 16px; height: 16px; min-width: 16px; border-radius: 3px; background: var(--zebra); outline: 1px solid var(--rule); outline-offset: -1px; }
+.mx td.y { background: var(--gross); outline: none; }
+.mx td.cnt { width: auto; background: none; outline: none; font-family: var(--f-data); color: var(--muted); padding-left: 8px; white-space: nowrap; }
+.mx tbody tr:nth-child(even) { background: none; }
+.mx tbody tr:hover th { color: var(--ink); text-decoration: underline; }
+.pill { display: inline-block; border-radius: 999px; padding: 0 8px; font-size: 12px; white-space: nowrap; border: 1px solid var(--rule); }
+.pill.same { background: color-mix(in srgb, var(--net) 18%, var(--panel)); border-color: var(--net); }
+.pill.other { background: color-mix(in srgb, var(--aid) 18%, var(--panel)); border-color: var(--aid); }
+.ex-head { display: grid; gap: 4px; margin: 6px 0 12px; }
+.ex-head .big { font-family: var(--f-display); font-size: 22px; }
+.ex-stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px; }
+.ex-stats b { font-family: var(--f-data); font-weight: 500; }
+.gaps { columns: 2 14rem; font-size: 13px; color: var(--ink); margin: 0; padding-left: 1.1em; }
+.gaps li { break-inside: avoid; margin-bottom: 2px; }
+.gaps li span { color: var(--muted); font-size: 12px; }
+#ex-table td:nth-child(2) { font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Peer analysis</a></p>
+  <header>
+    <div class="eyebrow">All three peer groups · undergraduate catalogs, 2025-26 and 2026-27</div>
+    <h1>Peer Majors and Minors Comparison</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5 (high effort), November 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="dek">How much of Lewis &amp; Clark's College of Arts and Sciences curriculum each peer also offers. Every peer program was matched to a Lewis &amp; Clark major or minor by name and common synonyms; coverage is the share of Lewis &amp; Clark's programs a school offers at the same level.</p>
+    <p class="find" id="find"></p>
+  </header>
+
+  <ul class="toc">
+    <li><a href="#coverage">Coverage by institution</a></li>
+    <li><a href="#programs">Lewis &amp; Clark programs at peers</a></li>
+    <li><a href="#grid">Program by school grid</a></li>
+    <li><a href="#explore">Look up a school</a></li>
+    <li><a href="#method">How matching works</a></li>
+  </ul>
+
+  <div class="tiles">
+    <div class="tile"><b id="k-nmaj">&nbsp;</b><span>Lewis &amp; Clark majors</span></div>
+    <div class="tile"><b id="k-nmin">&nbsp;</b><span>Lewis &amp; Clark minors</span></div>
+    <div class="tile"><b id="k-cmaj">&nbsp;</b><span>Median coverage of L&amp;C majors (shown peers)</span></div>
+    <div class="tile"><b id="k-cmin">&nbsp;</b><span>Median coverage of L&amp;C minors (shown peers)</span></div>
+    <div class="tile"><b id="k-call">&nbsp;</b><span>Median coverage of all L&amp;C programs</span></div>
+    <div class="tile"><b id="k-75">&nbsp;</b><span>Peers offering at least 75% of L&amp;C programs</span></div>
+  </div>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Peer group">
+      <button type="button" data-group="" aria-pressed="true">All groups</button>
+      <button type="button" data-group="Group 1" aria-pressed="false">Group 1</button>
+      <button type="button" data-group="Group 2" aria-pressed="false">Group 2</button>
+      <button type="button" data-group="Group 3" aria-pressed="false">Group 3</button>
+    </div>
+    <div class="seg" role="group" aria-label="Programs">
+      <button type="button" data-metric="all" aria-pressed="true">Majors and minors</button>
+      <button type="button" data-metric="majors" aria-pressed="false">Majors</button>
+      <button type="button" data-metric="minors" aria-pressed="false">Minors</button>
+    </div>
+  </div>
+
+  <section class="card" id="coverage" aria-labelledby="h-cov">
+    <h2 id="h-cov">Coverage of Lewis &amp; Clark programs, by institution</h2>
+    <p class="note">Share of Lewis &amp; Clark's programs the school offers at the same level (a major as a major, a minor as a minor). The dashed line is the median of the schools shown. Hover or tap a bar for counts; click to open the school below.</p>
+    <div class="key" aria-hidden="true">
+      <span><i class="sq" style="background:var(--gross)"></i>Group 1</span>
+      <span><i class="sq" style="background:var(--aid)"></i>Group 2</span>
+      <span><i class="sq" style="background:var(--other)"></i>Group 3</span>
+      <span><i class="ref"></i>Median</span>
+    </div>
+    <div class="chart" id="c-cov" role="img" aria-label="Coverage of Lewis and Clark programs by peer institution"></div>
+  </section>
+
+  <section class="card" id="programs" aria-labelledby="h-prog">
+    <h2 id="h-prog">How many peers offer each Lewis &amp; Clark program</h2>
+    <p class="note">Number of the peers shown that offer the program at the same level. Programs few peers offer are the most distinctive parts of the Lewis &amp; Clark curriculum.</p>
+    <div class="chart" id="c-prog" role="img" aria-label="Number of peers offering each Lewis and Clark program"></div>
+  </section>
+
+  <section class="card" id="grid" aria-labelledby="h-grid">
+    <h2 id="h-grid">Program by school grid</h2>
+    <p class="note">A filled square means the school offers that Lewis &amp; Clark program at the same level. Columns follow the peer group filter; the count on the right is out of the schools shown.</p>
+    <div class="tbox" style="max-height:44rem"><table class="mx" id="mx"></table></div>
+  </section>
+
+  <section class="card" id="explore" aria-labelledby="h-ex">
+    <h2 id="h-ex">Look up a school</h2>
+    <p class="note">Every program in the school's catalog with its Lewis &amp; Clark match, and the Lewis &amp; Clark programs it does not offer.</p>
+    <div class="controls" style="margin-bottom:6px">
+      <label for="ex-pick">School</label><select id="ex-pick"></select>
+      <div class="seg" role="group" aria-label="Show">
+        <button type="button" data-ov="" aria-pressed="true">All programs</button>
+        <button type="button" data-ov="Same level" aria-pressed="false">Same level</button>
+        <button type="button" data-ov="Other level only" aria-pressed="false">Other level only</button>
+        <button type="button" data-ov="No L&amp;C equivalent" aria-pressed="false">No equivalent</button>
+      </div>
+    </div>
+    <div class="ex-head">
+      <div class="big" id="ex-name"></div>
+      <div class="ex-stats" id="ex-stats"></div>
+      <div class="tnote" id="ex-note" style="margin:0"></div>
+    </div>
+    <div class="tbox" style="max-height:30rem">
+      <table id="ex-table" style="min-width:48rem">
+        <thead><tr><th scope="col">Type</th><th scope="col">Program (as the catalog names it)</th><th scope="col">Degree</th><th scope="col">Overlap</th><th scope="col">Lewis &amp; Clark equivalent</th><th scope="col">Catalog note</th></tr></thead>
+        <tbody id="ex-body"></tbody>
+      </table>
+    </div>
+    <h3 style="font-size:14px;margin:16px 0 6px">Lewis &amp; Clark programs not offered at the same level</h3>
+    <ul class="gaps" id="ex-gaps"></ul>
+  </section>
+
+  <p class="data-link"><a href="../data/#majors">Data tables and sources for this page →</a><span>Coverage by school with the catalog each list came from.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="majors_minors_summary.csv" download>Coverage by school (CSV)</a><a href="peer_programs.csv" download>Every peer program (CSV)</a><a href="lc_program_coverage.csv" download>L&amp;C program by school (CSV)</a><a href="lc_programs.csv" download>L&amp;C programs (CSV)</a></p>
+  <div class="notes" id="method">
+    <div>
+      <h3>How matching works</h3>
+      <p>Each school's majors and minors were read from its current undergraduate catalog and matched to Lewis &amp; Clark's 2026-27 College of Arts and Sciences majors and minors by program name and common synonyms, for example Spanish to Hispanic Studies, Communication to Rhetoric and Media Studies, and Sociology or Anthropology to Sociology and Anthropology.</p>
+      <p>Same level means a major matched to a Lewis &amp; Clark major or a minor to a minor. Other level only means the program matches a Lewis &amp; Clark program offered only at the other level.</p>
+    </div>
+    <div>
+      <h3>Two ways to read overlap</h3>
+      <ul>
+        <li><b>Coverage</b> (the charts): of Lewis &amp; Clark's programs, the share the school also offers. This is the institution-level measure.</li>
+        <li><b>Share of the school's programs</b> (the look-up panel): of the programs the school lists, the share with a Lewis &amp; Clark equivalent. Schools with many professional programs score low here even when they offer everything Lewis &amp; Clark does.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Cautions</h3>
+      <ul>
+        <li>Schools that list each track, degree variant or interdepartmental combination as a separate program (Seattle Pacific, Stetson, Union, Loyola New Orleans, Capital, Seattle University) have inflated program counts.</li>
+        <li>Sarah Lawrence has no majors or minors in the usual sense; its listed areas of study are counted as majors, so its minor coverage is zero.</li>
+        <li>The matches are editable in the source Google Sheet ("LC Peer Majors and Minors Comparison"); this page reflects it as of November 4, 2026.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fP = d3.format(".1%"), fP0 = d3.format(".0%"), fD = d3.format(",");
+  const GC = { "Group 1": "var(--gross)", "Group 2": "var(--aid)", "Group 3": "var(--other)" };
+  const MET = { all: ["coverage_all", "Majors and minors"], majors: ["coverage_majors", "Majors"], minors: ["coverage_minors", "Minors"] };
+  const state = { group: "", metric: "all", pick: "", ov: "" };
+  let S = [], COV = [], LCP = [], PROGS = null;
+  const shown = () => S.filter((r) => !state.group || r.peer_group === state.group);
+
+  function tipFor(el) {
+    const tip = document.createElement("div"); tip.className = "tip"; el.append(tip);
+    return {
+      show(ev, lines) {
+        tip.replaceChildren();
+        lines.forEach(([t, cls]) => { const d = document.createElement("div"); if (cls) d.className = cls; d.textContent = t; tip.append(d); });
+        tip.style.opacity = 1;
+        const [px, py] = d3.pointer(ev, el), tw = tip.offsetWidth, th = tip.offsetHeight;
+        let left = px + 14; if (left + tw > el.clientWidth) left = Math.max(0, px - tw - 14);
+        let top = py + 12; if (top + th > el.clientHeight) top = Math.max(0, py - th - 8);
+        tip.style.left = left + "px"; tip.style.top = top + "px";
+      },
+      hide() { tip.style.opacity = 0; }
+    };
+  }
+  const nameW = (svg, names) => { const p = svg.append("text").attr("class", "nm"); const w = d3.max(names, (n) => { p.text(n); return p.node().getComputedTextLength(); }) || 80; p.remove(); return w; };
+
+  function summary() {
+    const rows = shown();
+    $("k-nmaj").textContent = fD(+S[0].lc_majors_total);
+    $("k-nmin").textContent = fD(+S[0].lc_minors_total);
+    $("k-cmaj").textContent = fP(d3.median(rows, (r) => r.coverage_majors));
+    $("k-cmin").textContent = fP(d3.median(rows, (r) => r.coverage_minors));
+    $("k-call").textContent = fP(d3.median(rows, (r) => r.coverage_all));
+    $("k-75").textContent = fD(rows.filter((r) => r.coverage_all >= 0.75).length) + " of " + fD(rows.length);
+    const s = rows.slice().sort((a, b) => b.coverage_all - a.coverage_all);
+    const total = +S[0].lc_majors_total + +S[0].lc_minors_total;
+    const scope = state.group ? "in " + state.group : "across all three groups";
+    $("find").textContent = `Peers ${scope} offer a median ${fP(d3.median(rows, (r) => r.coverage_all))} of Lewis & Clark's ${total} majors and minors at the same level. ${s[0].short} covers the most (${fP(s[0].coverage_all)}) and ${s[s.length - 1].short} the least (${fP(s[s.length - 1].coverage_all)}).`;
+  }
+
+  function coverageChart() {
+    const el = $("c-cov"); el.replaceChildren();
+    const [f, label] = MET[state.metric];
+    const rows = shown().slice().sort((a, b) => b[f] - a[f] || a.short.localeCompare(b.short));
+    const W = Math.max(300, el.clientWidth || 700), rowH = 20, top = 24, bottom = 26;
+    const H = top + rows.length * rowH + bottom;
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const ml = Math.min(W * 0.42, nameW(svg, rows.map((r) => r.short))) + 12, mr = 50;
+    const x = d3.scaleLinear([0, 1], [ml, W - mr]);
+    [0, .25, .5, .75, 1].forEach((t) => {
+      svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", top).attr("y2", H - bottom).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", H - bottom + 16).attr("text-anchor", "middle").text(fP0(t));
+    });
+    const tip = tipFor(el);
+    rows.forEach((r, i) => {
+      const y = top + i * rowH;
+      svg.append("text").attr("class", "nm").attr("x", ml - 10).attr("y", y + rowH / 2).attr("dy", "0.32em").attr("text-anchor", "end").text(r.short);
+      svg.append("rect").attr("x", x(0)).attr("y", y + 4).attr("width", Math.max(1, x(r[f]) - x(0))).attr("height", rowH - 8).attr("rx", 2).attr("fill", GC[r.peer_group]);
+      svg.append("text").attr("class", "lbl v").attr("x", x(r[f]) + 6).attr("y", y + rowH / 2).attr("dy", "0.32em").text(fP(r[f]));
+      svg.append("rect").attr("x", 0).attr("y", y).attr("width", W).attr("height", rowH).attr("fill", "transparent").style("cursor", "pointer")
+        .on("pointermove", (ev) => tip.show(ev, [[r.institution, "t"], [r.peer_group + " · catalog " + r.catalog_year, "h"],
+          ["Majors: " + r.lc_majors_offered + " of " + r.lc_majors_total + " L&C majors (" + fP(r.coverage_majors) + ")"],
+          ["Minors: " + r.lc_minors_offered + " of " + r.lc_minors_total + " L&C minors (" + fP(r.coverage_minors) + ")"],
+          ["Lists " + r.majors_listed + " majors and " + r.minors_listed + " minors", "h"]]))
+        .on("pointerleave", () => tip.hide())
+        .on("click", () => { state.pick = r.key; $("ex-pick").value = r.key; explore(); $("explore").scrollIntoView({ behavior: "smooth" }); });
+    });
+    const med = d3.median(rows, (r) => r[f]);
+    svg.append("line").attr("x1", x(med)).attr("x2", x(med)).attr("y1", top - 6).attr("y2", H - bottom).attr("stroke", "var(--ink)").attr("stroke-width", 1.5).attr("stroke-dasharray", "4 3").attr("pointer-events", "none");
+    const lab = svg.append("text").attr("class", "lbl").attr("x", x(med)).attr("y", top - 10).attr("text-anchor", "middle").attr("fill", "var(--ink)").text(label + " median " + fP(med));
+    if (x(med) + lab.node().getComputedTextLength() / 2 > W) lab.attr("text-anchor", "end").attr("x", W - 2);
+  }
+
+  function programChart() {
+    const el = $("c-prog"); el.replaceChildren();
+    const keys = new Set(shown().map((r) => r.key)), n = keys.size;
+    const levels = state.metric === "majors" ? ["Major"] : state.metric === "minors" ? ["Minor"] : ["Major", "Minor"];
+    const groups = levels.map((lvl) => [lvl, LCP.filter((p) => p.level === lvl).map((p) => ({ ...p, n: COV.filter((c) => c.level === lvl && c.lc_program === p.program && keys.has(c.key) && c.offered === "Yes").length })).sort((a, b) => b.n - a.n || a.program.localeCompare(b.program))]);
+    const W = Math.max(300, el.clientWidth || 700), rowH = 19, headH = 30, top = 4, bottom = 26;
+    const total = d3.sum(groups, (g) => g[1].length);
+    const H = top + groups.length * headH + total * rowH + bottom;
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const ml = Math.min(W * 0.48, nameW(svg, LCP.map((p) => p.program))) + 12, mr = 64;
+    const x = d3.scaleLinear([0, n], [ml, W - mr]);
+    const bottomY = H - bottom;
+    x.ticks(Math.min(n, 6)).filter((t) => Number.isInteger(t)).forEach((t) => {
+      svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", top).attr("y2", bottomY).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", bottomY + 16).attr("text-anchor", "middle").text(fD(t));
+    });
+    const tip = tipFor(el);
+    let y = top;
+    groups.forEach(([lvl, ps]) => {
+      svg.append("text").attr("class", "sg").attr("x", 0).attr("y", y + headH - 10).text("Lewis & Clark " + (lvl === "Major" ? "majors" : "minors"));
+      y += headH;
+      ps.forEach((p) => {
+        svg.append("text").attr("class", "nm").attr("x", ml - 10).attr("y", y + rowH / 2).attr("dy", "0.32em").attr("text-anchor", "end").text(p.program);
+        svg.append("rect").attr("x", x(0)).attr("y", y + 4).attr("width", Math.max(p.n ? 1 : 0, x(p.n) - x(0))).attr("height", rowH - 8).attr("rx", 2).attr("fill", "var(--gross)");
+        svg.append("text").attr("class", "lbl").attr("x", x(p.n) + 6).attr("y", y + rowH / 2).attr("dy", "0.32em").text(fD(p.n) + " of " + fD(n));
+        const yy = y;
+        svg.append("rect").attr("x", 0).attr("y", yy).attr("width", W).attr("height", rowH).attr("fill", "transparent")
+          .on("pointermove", (ev) => {
+            const at = COV.filter((c) => c.level === lvl && c.lc_program === p.program && keys.has(c.key) && c.offered === "Yes").map((c) => c.institution);
+            tip.show(ev, [[p.program + " (" + lvl.toLowerCase() + ")", "t"], [fD(at.length) + " of " + fD(n) + " peers", "h"], [at.length ? at.join(", ") : "No peer shown offers it", ""]]);
+          }).on("pointerleave", () => tip.hide());
+        y += rowH;
+      });
+    });
+  }
+
+  function grid() {
+    const t = $("mx"); t.replaceChildren();
+    const cols = shown().slice().sort((a, b) => b.coverage_all - a.coverage_all);
+    const thead = t.createTHead(), hr = thead.insertRow();
+    const c0 = document.createElement("th"); c0.className = "corner"; c0.textContent = "L&C program"; hr.append(c0);
+    cols.forEach((c) => { const th = document.createElement("th"); th.scope = "col"; th.title = c.institution; const s = document.createElement("span"); s.textContent = c.short; th.append(s); hr.append(th); });
+    const tb = t.createTBody();
+    const levels = state.metric === "majors" ? ["Major"] : state.metric === "minors" ? ["Minor"] : ["Major", "Minor"];
+    const idx = new Map(COV.map((c) => [c.level + "|" + c.lc_program + "|" + c.key, c]));
+    levels.forEach((lvl) => {
+      const sep = tb.insertRow(); sep.className = "sep"; const sh = document.createElement("th"); sh.textContent = lvl === "Major" ? "Majors" : "Minors"; sep.append(sh);
+      LCP.filter((p) => p.level === lvl).forEach((p) => {
+        const tr = tb.insertRow(); const th = document.createElement("th"); th.scope = "row"; th.textContent = p.program; th.title = p.program; tr.append(th);
+        let n = 0;
+        cols.forEach((c) => {
+          const cell = idx.get(lvl + "|" + p.program + "|" + c.key), td = document.createElement("td");
+          const yes = cell && cell.offered === "Yes"; if (yes) { td.className = "y"; n++; }
+          td.title = c.short + ": " + (yes ? "offers it (" + cell.matched_to + ")" : "does not offer it as a " + lvl.toLowerCase());
+          tr.append(td);
+        });
+        const ct = document.createElement("td"); ct.className = "cnt"; ct.textContent = fD(n) + " of " + fD(cols.length); tr.append(ct);
+      });
+    });
+  }
+
+  function pickList() {
+    const sel = $("ex-pick");
+    const rows = S.slice().sort((a, b) => a.short.localeCompare(b.short));
+    sel.replaceChildren(...rows.map((r) => new Option(r.short + " (" + r.peer_group + ")", r.key)));
+    if (!state.pick) state.pick = rows[0].key;
+    sel.value = state.pick;
+  }
+
+  function explore() {
+    const r = S.find((s) => s.key === state.pick);
+    if (!r) return;
+    $("ex-name").textContent = r.institution;
+    const st = $("ex-stats"); st.replaceChildren();
+    const share = (a, b) => (+b ? fP(a / b) : "n/a");
+    [["Peer group", r.peer_group], ["Catalog", r.catalog_year], ["L&C majors offered", r.lc_majors_offered + " of " + r.lc_majors_total + " (" + fP(r.coverage_majors) + ")"],
+      ["L&C minors offered", r.lc_minors_offered + " of " + r.lc_minors_total + " (" + fP(r.coverage_minors) + ")"],
+      ["Its majors with an L&C equivalent", r.majors_matched + " of " + r.majors_listed + " (" + share(r.majors_matched, r.majors_listed) + ")"],
+      ["Its minors with an L&C equivalent", r.minors_matched + " of " + r.minors_listed + " (" + share(r.minors_matched, r.minors_listed) + ")"]].forEach(([k, v]) => {
+      const s = document.createElement("span"); s.append(k + ": "); const b = document.createElement("b"); b.textContent = v; s.append(b); st.append(s);
+    });
+    const note = $("ex-note"); note.replaceChildren(r.degree_note + " ");
+    if (/^https?:\/\//.test(r.source_url)) { const a = document.createElement("a"); a.href = r.source_url; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Catalog source"; a.style.color = "var(--ink)"; note.append(a); }
+    const tb = $("ex-body"); tb.replaceChildren();
+    if (!PROGS) { const tr = tb.insertRow(); const td = tr.insertCell(); td.colSpan = 6; td.textContent = "Loading programs…"; }
+    else {
+      PROGS.filter((p) => p.key.split("|")[0] === r.key && (!state.ov || p.overlap === state.ov)).forEach((p) => {
+        const tr = tb.insertRow();
+        [p.level, p.program, p.degree].forEach((t) => { tr.insertCell().textContent = t; });
+        const oc = tr.insertCell(); const pill = document.createElement("span"); pill.className = "pill" + (p.overlap === "Same level" ? " same" : p.overlap === "Other level only" ? " other" : ""); pill.textContent = p.overlap; oc.append(pill);
+        tr.insertCell().textContent = p.lc_equivalent;
+        const nc = tr.insertCell(); nc.className = "w"; nc.textContent = p.note;
+      });
+    }
+    const gaps = $("ex-gaps"); gaps.replaceChildren();
+    COV.filter((c) => c.key === r.key && c.offered === "No").forEach((c) => {
+      const li = document.createElement("li"); li.append(c.lc_program + " "); const s = document.createElement("span"); s.textContent = "(" + c.level.toLowerCase() + ")"; li.append(s); gaps.append(li);
+    });
+  }
+
+  function draw() { summary(); coverageChart(); programChart(); grid(); }
+
+  Promise.all([d3.csv("majors_minors_summary.csv"), d3.csv("lc_program_coverage.csv"), d3.csv("lc_programs.csv")]).then(([s, c, l]) => {
+    S = s.map((r) => ({ ...r, coverage_all: +r.coverage_all, coverage_majors: +r.coverage_majors, coverage_minors: +r.coverage_minors }));
+    COV = c; LCP = l;
+    draw(); pickList(); explore();
+    d3.csv("peer_programs.csv").then((p) => { PROGS = p; explore(); });
+    document.querySelectorAll("[data-group]").forEach((b) => b.addEventListener("click", () => {
+      state.group = b.dataset.group; document.querySelectorAll("[data-group]").forEach((o) => o.setAttribute("aria-pressed", String(o === b))); draw();
+    }));
+    document.querySelectorAll("[data-metric]").forEach((b) => b.addEventListener("click", () => {
+      state.metric = b.dataset.metric; document.querySelectorAll("[data-metric]").forEach((o) => o.setAttribute("aria-pressed", String(o === b))); draw();
+    }));
+    document.querySelectorAll("[data-ov]").forEach((b) => b.addEventListener("click", () => {
+      state.ov = b.dataset.ov; document.querySelectorAll("[data-ov]").forEach((o) => o.setAttribute("aria-pressed", String(o === b))); explore();
+    }));
+    $("ex-pick").addEventListener("change", (e) => { state.pick = e.target.value; explore(); });
+    let t; window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(() => { coverageChart(); programChart(); }, 120); });
+  }).catch(() => { const p = document.createElement("p"); p.className = "fail"; p.textContent = "The data files did not load."; $("c-cov").append(p); });
+})();
+</script>
+</body>
+</html>

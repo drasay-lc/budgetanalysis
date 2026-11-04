@@ -1,0 +1,2245 @@
+lc_program,level,institution,key,peer_group,offered,matched_to
+Art (Studio),Major,Gonzaga,gonzaga,Group 1,Yes,Art
+Art History,Major,Gonzaga,gonzaga,Group 1,No,
+Biochemistry and Molecular Biology,Major,Gonzaga,gonzaga,Group 1,Yes,Biochemistry
+Biology,Major,Gonzaga,gonzaga,Group 1,Yes,Biology
+Chemistry,Major,Gonzaga,gonzaga,Group 1,Yes,Chemistry
+Classics,Major,Gonzaga,gonzaga,Group 1,Yes,Classical Civilizations
+Computer Science,Major,Gonzaga,gonzaga,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,Gonzaga,gonzaga,Group 1,No,
+Dance,Major,Gonzaga,gonzaga,Group 1,Yes,Dance
+Data Science,Major,Gonzaga,gonzaga,Group 1,Yes,Data Science
+Economics,Major,Gonzaga,gonzaga,Group 1,Yes,Economics
+English,Major,Gonzaga,gonzaga,Group 1,Yes,English
+Environmental Studies,Major,Gonzaga,gonzaga,Group 1,Yes,Environmental Science; Environmental Studies
+French Studies,Major,Gonzaga,gonzaga,Group 1,Yes,French
+German Studies,Major,Gonzaga,gonzaga,Group 1,No,
+Hispanic Studies,Major,Gonzaga,gonzaga,Group 1,Yes,Spanish
+History,Major,Gonzaga,gonzaga,Group 1,Yes,History
+International Affairs,Major,Gonzaga,gonzaga,Group 1,Yes,International Studies
+Mathematics,Major,Gonzaga,gonzaga,Group 1,Yes,Applied Mathematics; Mathematics
+Music,Major,Gonzaga,gonzaga,Group 1,Yes,Music
+Philosophy,Major,Gonzaga,gonzaga,Group 1,Yes,Philosophy
+Physics,Major,Gonzaga,gonzaga,Group 1,Yes,Physics
+Political Science,Major,Gonzaga,gonzaga,Group 1,Yes,Political Science
+Psychology,Major,Gonzaga,gonzaga,Group 1,Yes,Psychology
+Religious Studies,Major,Gonzaga,gonzaga,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Major,Gonzaga,gonzaga,Group 1,Yes,Communication Studies
+Sociology and Anthropology,Major,Gonzaga,gonzaga,Group 1,Yes,Sociology
+Theatre,Major,Gonzaga,gonzaga,Group 1,Yes,Theatre Arts
+World Languages,Major,Gonzaga,gonzaga,Group 1,No,
+Student-Designed Major,Major,Gonzaga,gonzaga,Group 1,No,
+Art and Art History,Minor,Gonzaga,gonzaga,Group 1,Yes,Art History; Art
+Artificial Intelligence,Minor,Gonzaga,gonzaga,Group 1,Yes,AI in Engineering and Applied Science
+Asian Studies,Minor,Gonzaga,gonzaga,Group 1,No,
+Chemistry,Minor,Gonzaga,gonzaga,Group 1,Yes,Chemistry
+Chinese,Minor,Gonzaga,gonzaga,Group 1,No,
+Classics,Minor,Gonzaga,gonzaga,Group 1,Yes,Classical Civilizations
+Computer Science,Minor,Gonzaga,gonzaga,Group 1,Yes,Computer Science
+Cybersecurity,Minor,Gonzaga,gonzaga,Group 1,Yes,Cybersecurity
+Dance,Minor,Gonzaga,gonzaga,Group 1,Yes,Dance
+Data Science,Minor,Gonzaga,gonzaga,Group 1,Yes,Data Science
+Earth System Science,Minor,Gonzaga,gonzaga,Group 1,No,
+Economics,Minor,Gonzaga,gonzaga,Group 1,Yes,Economics
+Education,Minor,Gonzaga,gonzaga,Group 1,Yes,Special Education
+English,Minor,Gonzaga,gonzaga,Group 1,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Gonzaga,gonzaga,Group 1,Yes,Entrepreneurship and Innovation; Hogan Entrepreneurial Leadership
+Environmental Studies,Minor,Gonzaga,gonzaga,Group 1,Yes,Environmental Studies
+Ethnic Studies,Minor,Gonzaga,gonzaga,Group 1,Yes,Critical Race and Ethnic Studies
+French Studies,Minor,Gonzaga,gonzaga,Group 1,Yes,French
+Gender Studies,Minor,Gonzaga,gonzaga,Group 1,Yes,"Women, Gender, and Sexuality Studies"
+German Studies,Minor,Gonzaga,gonzaga,Group 1,Yes,German
+Health Studies,Minor,Gonzaga,gonzaga,Group 1,Yes,Health Equity; Public Health
+Hispanic Studies,Minor,Gonzaga,gonzaga,Group 1,Yes,Spanish
+History,Minor,Gonzaga,gonzaga,Group 1,Yes,Asian History; History; Latin American History
+Japanese,Minor,Gonzaga,gonzaga,Group 1,No,
+Latin American and Latino Studies,Minor,Gonzaga,gonzaga,Group 1,No,
+Law and Policy,Minor,Gonzaga,gonzaga,Group 1,No,
+Mathematics,Minor,Gonzaga,gonzaga,Group 1,Yes,Applied Mathematics; Mathematics
+Middle East and North African Studies,Minor,Gonzaga,gonzaga,Group 1,No,
+Music,Minor,Gonzaga,gonzaga,Group 1,Yes,Jazz Performance; Music
+Neuroscience,Minor,Gonzaga,gonzaga,Group 1,No,
+Philosophy,Minor,Gonzaga,gonzaga,Group 1,Yes,Philosophy
+Physics,Minor,Gonzaga,gonzaga,Group 1,Yes,Physics
+Political Economy,Minor,Gonzaga,gonzaga,Group 1,No,
+Political Science,Minor,Gonzaga,gonzaga,Group 1,Yes,Political Science
+Religious Studies,Minor,Gonzaga,gonzaga,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Minor,Gonzaga,gonzaga,Group 1,Yes,Communication Studies
+Russian,Minor,Gonzaga,gonzaga,Group 1,No,
+Theatre,Minor,Gonzaga,gonzaga,Group 1,Yes,Theatre Arts
+Art (Studio),Major,Reed,reed,Group 1,Yes,Art
+Art History,Major,Reed,reed,Group 1,No,
+Biochemistry and Molecular Biology,Major,Reed,reed,Group 1,Yes,Biochemistry and Molecular Biology
+Biology,Major,Reed,reed,Group 1,Yes,Biology
+Chemistry,Major,Reed,reed,Group 1,Yes,Chemistry
+Classics,Major,Reed,reed,Group 1,Yes,"Greek, Latin, and Ancient Mediterranean Studies"
+Computer Science,Major,Reed,reed,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,Reed,reed,Group 1,Yes,Mathematics-Computer Science
+Dance,Major,Reed,reed,Group 1,Yes,Dance; Dance-Theatre
+Data Science,Major,Reed,reed,Group 1,No,
+Economics,Major,Reed,reed,Group 1,Yes,Economics
+English,Major,Reed,reed,Group 1,Yes,English
+Environmental Studies,Major,Reed,reed,Group 1,Yes,Environmental Studies
+French Studies,Major,Reed,reed,Group 1,Yes,French
+German Studies,Major,Reed,reed,Group 1,Yes,German
+Hispanic Studies,Major,Reed,reed,Group 1,Yes,Spanish
+History,Major,Reed,reed,Group 1,Yes,History
+International Affairs,Major,Reed,reed,Group 1,Yes,International Affairs & Public Policy
+Mathematics,Major,Reed,reed,Group 1,Yes,Mathematics
+Music,Major,Reed,reed,Group 1,Yes,Music
+Philosophy,Major,Reed,reed,Group 1,Yes,Philosophy
+Physics,Major,Reed,reed,Group 1,Yes,Physics
+Political Science,Major,Reed,reed,Group 1,Yes,Political Science
+Psychology,Major,Reed,reed,Group 1,Yes,Psychology
+Religious Studies,Major,Reed,reed,Group 1,Yes,Religion; Religion/Ancient Mediterranean Studies
+Rhetoric and Media Studies,Major,Reed,reed,Group 1,No,
+Sociology and Anthropology,Major,Reed,reed,Group 1,Yes,Anthropology; Sociology
+Theatre,Major,Reed,reed,Group 1,Yes,Theatre
+World Languages,Major,Reed,reed,Group 1,No,
+Student-Designed Major,Major,Reed,reed,Group 1,Yes,Ad hoc interdisciplinary major
+Art and Art History,Minor,Reed,reed,Group 1,No,
+Artificial Intelligence,Minor,Reed,reed,Group 1,No,
+Asian Studies,Minor,Reed,reed,Group 1,No,
+Chemistry,Minor,Reed,reed,Group 1,No,
+Chinese,Minor,Reed,reed,Group 1,Yes,Chinese
+Classics,Minor,Reed,reed,Group 1,Yes,Greek & Latin
+Computer Science,Minor,Reed,reed,Group 1,Yes,Computer Science
+Cybersecurity,Minor,Reed,reed,Group 1,No,
+Dance,Minor,Reed,reed,Group 1,Yes,Dance
+Data Science,Minor,Reed,reed,Group 1,No,
+Earth System Science,Minor,Reed,reed,Group 1,No,
+Economics,Minor,Reed,reed,Group 1,Yes,Economics
+Education,Minor,Reed,reed,Group 1,No,
+English,Minor,Reed,reed,Group 1,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Reed,reed,Group 1,No,
+Environmental Studies,Minor,Reed,reed,Group 1,No,
+Ethnic Studies,Minor,Reed,reed,Group 1,Yes,Comparative Race and Ethnicity Studies
+French Studies,Minor,Reed,reed,Group 1,Yes,French
+Gender Studies,Minor,Reed,reed,Group 1,No,
+German Studies,Minor,Reed,reed,Group 1,Yes,German
+Health Studies,Minor,Reed,reed,Group 1,No,
+Hispanic Studies,Minor,Reed,reed,Group 1,Yes,Spanish
+History,Minor,Reed,reed,Group 1,No,
+Japanese,Minor,Reed,reed,Group 1,No,
+Latin American and Latino Studies,Minor,Reed,reed,Group 1,No,
+Law and Policy,Minor,Reed,reed,Group 1,No,
+Mathematics,Minor,Reed,reed,Group 1,No,
+Middle East and North African Studies,Minor,Reed,reed,Group 1,No,
+Music,Minor,Reed,reed,Group 1,Yes,Music
+Neuroscience,Minor,Reed,reed,Group 1,No,
+Philosophy,Minor,Reed,reed,Group 1,No,
+Physics,Minor,Reed,reed,Group 1,No,
+Political Economy,Minor,Reed,reed,Group 1,No,
+Political Science,Minor,Reed,reed,Group 1,No,
+Religious Studies,Minor,Reed,reed,Group 1,Yes,Religion
+Rhetoric and Media Studies,Minor,Reed,reed,Group 1,No,
+Russian,Minor,Reed,reed,Group 1,Yes,Russian
+Theatre,Minor,Reed,reed,Group 1,Yes,Theatre
+Art (Studio),Major,U of Portland,university-of-portland,Group 1,No,
+Art History,Major,U of Portland,university-of-portland,Group 1,No,
+Biochemistry and Molecular Biology,Major,U of Portland,university-of-portland,Group 1,Yes,"Biochemistry; Cell, Molecular, and Biomedical Science"
+Biology,Major,U of Portland,university-of-portland,Group 1,Yes,"Biology; Ecology, Evolution, and Conservation Biology"
+Chemistry,Major,U of Portland,university-of-portland,Group 1,Yes,Chemistry
+Classics,Major,U of Portland,university-of-portland,Group 1,No,
+Computer Science,Major,U of Portland,university-of-portland,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,U of Portland,university-of-portland,Group 1,No,
+Dance,Major,U of Portland,university-of-portland,Group 1,No,
+Data Science,Major,U of Portland,university-of-portland,Group 1,No,
+Economics,Major,U of Portland,university-of-portland,Group 1,Yes,Economics; Economics
+English,Major,U of Portland,university-of-portland,Group 1,Yes,English
+Environmental Studies,Major,U of Portland,university-of-portland,Group 1,Yes,Environmental Science; Environmental Studies
+French Studies,Major,U of Portland,university-of-portland,Group 1,Yes,French Studies
+German Studies,Major,U of Portland,university-of-portland,Group 1,No,
+Hispanic Studies,Major,U of Portland,university-of-portland,Group 1,Yes,Spanish
+History,Major,U of Portland,university-of-portland,Group 1,Yes,History
+International Affairs,Major,U of Portland,university-of-portland,Group 1,No,
+Mathematics,Major,U of Portland,university-of-portland,Group 1,Yes,"Mathematics; Mathematics, Applied"
+Music,Major,U of Portland,university-of-portland,Group 1,Yes,Music
+Philosophy,Major,U of Portland,university-of-portland,Group 1,Yes,Philosophy
+Physics,Major,U of Portland,university-of-portland,Group 1,Yes,Physics
+Political Science,Major,U of Portland,university-of-portland,Group 1,Yes,Political Science and Global Affairs
+Psychology,Major,U of Portland,university-of-portland,Group 1,Yes,Psychology
+Religious Studies,Major,U of Portland,university-of-portland,Group 1,Yes,Theology and Religious Studies
+Rhetoric and Media Studies,Major,U of Portland,university-of-portland,Group 1,Yes,Communication; Media; Organizational Communication
+Sociology and Anthropology,Major,U of Portland,university-of-portland,Group 1,Yes,Sociology
+Theatre,Major,U of Portland,university-of-portland,Group 1,Yes,Musical Theatre; Theatre
+World Languages,Major,U of Portland,university-of-portland,Group 1,No,
+Student-Designed Major,Major,U of Portland,university-of-portland,Group 1,No,
+Art and Art History,Minor,U of Portland,university-of-portland,Group 1,Yes,Fine Arts
+Artificial Intelligence,Minor,U of Portland,university-of-portland,Group 1,Yes,Artificial Intelligence
+Asian Studies,Minor,U of Portland,university-of-portland,Group 1,No,
+Chemistry,Minor,U of Portland,university-of-portland,Group 1,Yes,Chemistry
+Chinese,Minor,U of Portland,university-of-portland,Group 1,No,
+Classics,Minor,U of Portland,university-of-portland,Group 1,No,
+Computer Science,Minor,U of Portland,university-of-portland,Group 1,Yes,Computer Science
+Cybersecurity,Minor,U of Portland,university-of-portland,Group 1,Yes,Cybersecurity
+Dance,Minor,U of Portland,university-of-portland,Group 1,No,
+Data Science,Minor,U of Portland,university-of-portland,Group 1,No,
+Earth System Science,Minor,U of Portland,university-of-portland,Group 1,No,
+Economics,Minor,U of Portland,university-of-portland,Group 1,Yes,Economics
+Education,Minor,U of Portland,university-of-portland,Group 1,Yes,Education
+English,Minor,U of Portland,university-of-portland,Group 1,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,U of Portland,university-of-portland,Group 1,Yes,Entrepreneurship; Innovation
+Environmental Studies,Minor,U of Portland,university-of-portland,Group 1,Yes,Environmental Policy; Environmental Science; Sustainability
+Ethnic Studies,Minor,U of Portland,university-of-portland,Group 1,Yes,Ethnic Studies
+French Studies,Minor,U of Portland,university-of-portland,Group 1,Yes,French
+Gender Studies,Minor,U of Portland,university-of-portland,Group 1,Yes,"Gender, Women, & Sexuality Studies"
+German Studies,Minor,U of Portland,university-of-portland,Group 1,Yes,German Studies
+Health Studies,Minor,U of Portland,university-of-portland,Group 1,Yes,Public Health & Wellness
+Hispanic Studies,Minor,U of Portland,university-of-portland,Group 1,Yes,Spanish
+History,Minor,U of Portland,university-of-portland,Group 1,Yes,History
+Japanese,Minor,U of Portland,university-of-portland,Group 1,No,
+Latin American and Latino Studies,Minor,U of Portland,university-of-portland,Group 1,Yes,Latin American Studies
+Law and Policy,Minor,U of Portland,university-of-portland,Group 1,No,
+Mathematics,Minor,U of Portland,university-of-portland,Group 1,Yes,Mathematics
+Middle East and North African Studies,Minor,U of Portland,university-of-portland,Group 1,No,
+Music,Minor,U of Portland,university-of-portland,Group 1,Yes,Music
+Neuroscience,Minor,U of Portland,university-of-portland,Group 1,Yes,Neuroscience Studies
+Philosophy,Minor,U of Portland,university-of-portland,Group 1,Yes,Philosophy
+Physics,Minor,U of Portland,university-of-portland,Group 1,Yes,Physics
+Political Economy,Minor,U of Portland,university-of-portland,Group 1,No,
+Political Science,Minor,U of Portland,university-of-portland,Group 1,Yes,Political Science & Global Affairs
+Religious Studies,Minor,U of Portland,university-of-portland,Group 1,Yes,Theology & Religious Studies
+Rhetoric and Media Studies,Minor,U of Portland,university-of-portland,Group 1,Yes,Communication
+Russian,Minor,U of Portland,university-of-portland,Group 1,No,
+Theatre,Minor,U of Portland,university-of-portland,Group 1,Yes,Theatre
+Art (Studio),Major,Puget Sound,puget-sound,Group 1,Yes,Studio Art
+Art History,Major,Puget Sound,puget-sound,Group 1,Yes,Art History
+Biochemistry and Molecular Biology,Major,Puget Sound,puget-sound,Group 1,Yes,Biochemistry; Molecular and Cellular Biology
+Biology,Major,Puget Sound,puget-sound,Group 1,Yes,Biology
+Chemistry,Major,Puget Sound,puget-sound,Group 1,Yes,Chemistry
+Classics,Major,Puget Sound,puget-sound,Group 1,Yes,"Greek, Latin, and Ancient Mediterranean Studies"
+Computer Science,Major,Puget Sound,puget-sound,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,Puget Sound,puget-sound,Group 1,No,
+Dance,Major,Puget Sound,puget-sound,Group 1,No,
+Data Science,Major,Puget Sound,puget-sound,Group 1,No,
+Economics,Major,Puget Sound,puget-sound,Group 1,Yes,Economics
+English,Major,Puget Sound,puget-sound,Group 1,Yes,English
+Environmental Studies,Major,Puget Sound,puget-sound,Group 1,No,
+French Studies,Major,Puget Sound,puget-sound,Group 1,Yes,French and Francophone Studies
+German Studies,Major,Puget Sound,puget-sound,Group 1,Yes,German Studies
+Hispanic Studies,Major,Puget Sound,puget-sound,Group 1,Yes,"Hispanic Studies (Language, Culture, and Literature)"
+History,Major,Puget Sound,puget-sound,Group 1,Yes,History
+International Affairs,Major,Puget Sound,puget-sound,Group 1,Yes,International Political Economy
+Mathematics,Major,Puget Sound,puget-sound,Group 1,Yes,Mathematics
+Music,Major,Puget Sound,puget-sound,Group 1,Yes,Music; Performance
+Philosophy,Major,Puget Sound,puget-sound,Group 1,Yes,Philosophy
+Physics,Major,Puget Sound,puget-sound,Group 1,Yes,Physics
+Political Science,Major,Puget Sound,puget-sound,Group 1,Yes,Politics and Government
+Psychology,Major,Puget Sound,puget-sound,Group 1,Yes,Psychology
+Religious Studies,Major,Puget Sound,puget-sound,Group 1,Yes,"Religion, Spirituality, and Society"
+Rhetoric and Media Studies,Major,Puget Sound,puget-sound,Group 1,Yes,Communication Studies
+Sociology and Anthropology,Major,Puget Sound,puget-sound,Group 1,Yes,Sociology and Anthropology
+Theatre,Major,Puget Sound,puget-sound,Group 1,Yes,Theatre Arts
+World Languages,Major,Puget Sound,puget-sound,Group 1,No,
+Student-Designed Major,Major,Puget Sound,puget-sound,Group 1,Yes,Special Interdisciplinary Major
+Art and Art History,Minor,Puget Sound,puget-sound,Group 1,Yes,Art History; Studio Art
+Artificial Intelligence,Minor,Puget Sound,puget-sound,Group 1,No,
+Asian Studies,Minor,Puget Sound,puget-sound,Group 1,Yes,Asian Studies
+Chemistry,Minor,Puget Sound,puget-sound,Group 1,Yes,Chemistry
+Chinese,Minor,Puget Sound,puget-sound,Group 1,Yes,Chinese Language and Culture
+Classics,Minor,Puget Sound,puget-sound,Group 1,Yes,"Greek, Latin, and Ancient Mediterranean Studies"
+Computer Science,Minor,Puget Sound,puget-sound,Group 1,Yes,Computer Science
+Cybersecurity,Minor,Puget Sound,puget-sound,Group 1,No,
+Dance,Minor,Puget Sound,puget-sound,Group 1,No,
+Data Science,Minor,Puget Sound,puget-sound,Group 1,Yes,Data Analytics
+Earth System Science,Minor,Puget Sound,puget-sound,Group 1,No,
+Economics,Minor,Puget Sound,puget-sound,Group 1,Yes,Economics
+Education,Minor,Puget Sound,puget-sound,Group 1,Yes,Education Studies
+English,Minor,Puget Sound,puget-sound,Group 1,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Puget Sound,puget-sound,Group 1,No,
+Environmental Studies,Minor,Puget Sound,puget-sound,Group 1,No,
+Ethnic Studies,Minor,Puget Sound,puget-sound,Group 1,No,
+French Studies,Minor,Puget Sound,puget-sound,Group 1,Yes,French
+Gender Studies,Minor,Puget Sound,puget-sound,Group 1,No,
+German Studies,Minor,Puget Sound,puget-sound,Group 1,Yes,German Studies
+Health Studies,Minor,Puget Sound,puget-sound,Group 1,No,
+Hispanic Studies,Minor,Puget Sound,puget-sound,Group 1,Yes,Spanish
+History,Minor,Puget Sound,puget-sound,Group 1,Yes,History
+Japanese,Minor,Puget Sound,puget-sound,Group 1,Yes,Japanese Language and Culture
+Latin American and Latino Studies,Minor,Puget Sound,puget-sound,Group 1,Yes,Latin American Studies; Latina/o Studies
+Law and Policy,Minor,Puget Sound,puget-sound,Group 1,No,
+Mathematics,Minor,Puget Sound,puget-sound,Group 1,Yes,Mathematics
+Middle East and North African Studies,Minor,Puget Sound,puget-sound,Group 1,No,
+Music,Minor,Puget Sound,puget-sound,Group 1,Yes,Music
+Neuroscience,Minor,Puget Sound,puget-sound,Group 1,Yes,Neuroscience
+Philosophy,Minor,Puget Sound,puget-sound,Group 1,Yes,Philosophy
+Physics,Minor,Puget Sound,puget-sound,Group 1,Yes,Physics
+Political Economy,Minor,Puget Sound,puget-sound,Group 1,No,
+Political Science,Minor,Puget Sound,puget-sound,Group 1,Yes,Politics and Government
+Religious Studies,Minor,Puget Sound,puget-sound,Group 1,Yes,"Religion, Spirituality, and Society"
+Rhetoric and Media Studies,Minor,Puget Sound,puget-sound,Group 1,Yes,Communication Studies
+Russian,Minor,Puget Sound,puget-sound,Group 1,No,
+Theatre,Minor,Puget Sound,puget-sound,Group 1,Yes,Theatre Arts
+Art (Studio),Major,Whitman,whitman,Group 1,Yes,Art
+Art History,Major,Whitman,whitman,Group 1,Yes,Art History
+Biochemistry and Molecular Biology,Major,Whitman,whitman,Group 1,Yes,"Biochemistry, Biophysics, and Molecular Biology"
+Biology,Major,Whitman,whitman,Group 1,Yes,Biology
+Chemistry,Major,Whitman,whitman,Group 1,Yes,Chemistry
+Classics,Major,Whitman,whitman,Group 1,Yes,Classics; Classical Studies
+Computer Science,Major,Whitman,whitman,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,Whitman,whitman,Group 1,Yes,Computer Science-Mathematics
+Dance,Major,Whitman,whitman,Group 1,No,
+Data Science,Major,Whitman,whitman,Group 1,No,
+Economics,Major,Whitman,whitman,Group 1,Yes,Economics
+English,Major,Whitman,whitman,Group 1,Yes,English
+Environmental Studies,Major,Whitman,whitman,Group 1,Yes,Environmental Humanities
+French Studies,Major,Whitman,whitman,Group 1,Yes,French and Francophone Studies
+German Studies,Major,Whitman,whitman,Group 1,Yes,German Studies
+Hispanic Studies,Major,Whitman,whitman,Group 1,Yes,Hispanic Studies
+History,Major,Whitman,whitman,Group 1,Yes,History
+International Affairs,Major,Whitman,whitman,Group 1,No,
+Mathematics,Major,Whitman,whitman,Group 1,Yes,Mathematics; Mathematics-Statistics
+Music,Major,Whitman,whitman,Group 1,Yes,Music
+Philosophy,Major,Whitman,whitman,Group 1,Yes,Philosophy
+Physics,Major,Whitman,whitman,Group 1,Yes,Physics; Physics-Astronomy
+Political Science,Major,Whitman,whitman,Group 1,Yes,Politics
+Psychology,Major,Whitman,whitman,Group 1,Yes,Psychology
+Religious Studies,Major,Whitman,whitman,Group 1,Yes,Religion
+Rhetoric and Media Studies,Major,Whitman,whitman,Group 1,Yes,"Rhetoric, Writing, and Public Discourse"
+Sociology and Anthropology,Major,Whitman,whitman,Group 1,Yes,Anthropology; Sociology
+Theatre,Major,Whitman,whitman,Group 1,Yes,Theater
+World Languages,Major,Whitman,whitman,Group 1,No,
+Student-Designed Major,Major,Whitman,whitman,Group 1,Yes,Individually Planned Major
+Art and Art History,Minor,Whitman,whitman,Group 1,Yes,Art; Art History
+Artificial Intelligence,Minor,Whitman,whitman,Group 1,No,
+Asian Studies,Minor,Whitman,whitman,Group 1,No,
+Chemistry,Minor,Whitman,whitman,Group 1,Yes,Chemistry
+Chinese,Minor,Whitman,whitman,Group 1,Yes,Chinese
+Classics,Minor,Whitman,whitman,Group 1,Yes,Classical Studies
+Computer Science,Minor,Whitman,whitman,Group 1,Yes,Computer Science
+Cybersecurity,Minor,Whitman,whitman,Group 1,No,
+Dance,Minor,Whitman,whitman,Group 1,Yes,Dance
+Data Science,Minor,Whitman,whitman,Group 1,Yes,Data Science
+Earth System Science,Minor,Whitman,whitman,Group 1,Yes,Geology
+Economics,Minor,Whitman,whitman,Group 1,Yes,Economics
+Education,Minor,Whitman,whitman,Group 1,No,
+English,Minor,Whitman,whitman,Group 1,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Whitman,whitman,Group 1,No,
+Environmental Studies,Minor,Whitman,whitman,Group 1,No,
+Ethnic Studies,Minor,Whitman,whitman,Group 1,No,
+French Studies,Minor,Whitman,whitman,Group 1,Yes,French and Francophone Studies
+Gender Studies,Minor,Whitman,whitman,Group 1,Yes,Gender Studies
+German Studies,Minor,Whitman,whitman,Group 1,Yes,German Studies
+Health Studies,Minor,Whitman,whitman,Group 1,No,
+Hispanic Studies,Minor,Whitman,whitman,Group 1,Yes,Hispanic Studies
+History,Minor,Whitman,whitman,Group 1,Yes,History
+Japanese,Minor,Whitman,whitman,Group 1,Yes,Japanese
+Latin American and Latino Studies,Minor,Whitman,whitman,Group 1,Yes,Latin American Studies
+Law and Policy,Minor,Whitman,whitman,Group 1,No,
+Mathematics,Minor,Whitman,whitman,Group 1,Yes,Mathematics
+Middle East and North African Studies,Minor,Whitman,whitman,Group 1,No,
+Music,Minor,Whitman,whitman,Group 1,Yes,Music
+Neuroscience,Minor,Whitman,whitman,Group 1,No,
+Philosophy,Minor,Whitman,whitman,Group 1,Yes,Philosophy
+Physics,Minor,Whitman,whitman,Group 1,Yes,Physics
+Political Economy,Minor,Whitman,whitman,Group 1,No,
+Political Science,Minor,Whitman,whitman,Group 1,Yes,Politics
+Religious Studies,Minor,Whitman,whitman,Group 1,Yes,Religion
+Rhetoric and Media Studies,Minor,Whitman,whitman,Group 1,Yes,"Rhetoric, Writing, and Public Discourse"
+Russian,Minor,Whitman,whitman,Group 1,No,
+Theatre,Minor,Whitman,whitman,Group 1,Yes,Theater
+Art (Studio),Major,Willamette,willamette,Group 1,Yes,Studio Art; Studio Arts
+Art History,Major,Willamette,willamette,Group 1,Yes,Art History
+Biochemistry and Molecular Biology,Major,Willamette,willamette,Group 1,Yes,Biochemistry and Molecular Biology
+Biology,Major,Willamette,willamette,Group 1,Yes,Biology
+Chemistry,Major,Willamette,willamette,Group 1,Yes,Chemistry
+Classics,Major,Willamette,willamette,Group 1,Yes,Classical Studies; Classical Civilizations
+Computer Science,Major,Willamette,willamette,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,Willamette,willamette,Group 1,No,
+Dance,Major,Willamette,willamette,Group 1,No,
+Data Science,Major,Willamette,willamette,Group 1,Yes,Data Science
+Economics,Major,Willamette,willamette,Group 1,Yes,Economics; Quantitative Economics
+English,Major,Willamette,willamette,Group 1,Yes,English
+Environmental Studies,Major,Willamette,willamette,Group 1,Yes,Environmental Science
+French Studies,Major,Willamette,willamette,Group 1,No,
+German Studies,Major,Willamette,willamette,Group 1,No,
+Hispanic Studies,Major,Willamette,willamette,Group 1,Yes,Spanish
+History,Major,Willamette,willamette,Group 1,Yes,History
+International Affairs,Major,Willamette,willamette,Group 1,Yes,International Studies
+Mathematics,Major,Willamette,willamette,Group 1,Yes,Mathematics
+Music,Major,Willamette,willamette,Group 1,Yes,Music
+Philosophy,Major,Willamette,willamette,Group 1,Yes,Philosophy
+Physics,Major,Willamette,willamette,Group 1,Yes,Physics
+Political Science,Major,Willamette,willamette,Group 1,Yes,"Politics, Policy, Law, and Ethics"
+Psychology,Major,Willamette,willamette,Group 1,Yes,Psychology
+Religious Studies,Major,Willamette,willamette,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Major,Willamette,willamette,Group 1,No,
+Sociology and Anthropology,Major,Willamette,willamette,Group 1,Yes,Sociology
+Theatre,Major,Willamette,willamette,Group 1,Yes,Musical Theatre; Theatre
+World Languages,Major,Willamette,willamette,Group 1,No,
+Student-Designed Major,Major,Willamette,willamette,Group 1,Yes,Individually Designed Major
+Art and Art History,Minor,Willamette,willamette,Group 1,Yes,"Art History: WC; Art History: PNCA; Studio Art, WC"
+Artificial Intelligence,Minor,Willamette,willamette,Group 1,No,
+Asian Studies,Minor,Willamette,willamette,Group 1,Yes,Asian Studies
+Chemistry,Minor,Willamette,willamette,Group 1,Yes,Chemistry
+Chinese,Minor,Willamette,willamette,Group 1,Yes,Chinese Studies
+Classics,Minor,Willamette,willamette,Group 1,Yes,Classical Studies
+Computer Science,Minor,Willamette,willamette,Group 1,Yes,Computer Science
+Cybersecurity,Minor,Willamette,willamette,Group 1,No,
+Dance,Minor,Willamette,willamette,Group 1,No,
+Data Science,Minor,Willamette,willamette,Group 1,Yes,Data Science
+Earth System Science,Minor,Willamette,willamette,Group 1,No,
+Economics,Minor,Willamette,willamette,Group 1,Yes,Economics
+Education,Minor,Willamette,willamette,Group 1,No,
+English,Minor,Willamette,willamette,Group 1,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Willamette,willamette,Group 1,No,
+Environmental Studies,Minor,Willamette,willamette,Group 1,Yes,Environmental Science; Sustainability
+Ethnic Studies,Minor,Willamette,willamette,Group 1,Yes,American Ethnic Studies
+French Studies,Minor,Willamette,willamette,Group 1,Yes,French and Francophone Studies
+Gender Studies,Minor,Willamette,willamette,Group 1,Yes,Women's and Gender Studies
+German Studies,Minor,Willamette,willamette,Group 1,Yes,German Studies
+Health Studies,Minor,Willamette,willamette,Group 1,Yes,Public Health
+Hispanic Studies,Minor,Willamette,willamette,Group 1,Yes,Spanish
+History,Minor,Willamette,willamette,Group 1,Yes,History
+Japanese,Minor,Willamette,willamette,Group 1,Yes,Japanese
+Latin American and Latino Studies,Minor,Willamette,willamette,Group 1,Yes,Latin American Studies
+Law and Policy,Minor,Willamette,willamette,Group 1,No,
+Mathematics,Minor,Willamette,willamette,Group 1,Yes,Mathematics; Mathematics: Applied
+Middle East and North African Studies,Minor,Willamette,willamette,Group 1,No,
+Music,Minor,Willamette,willamette,Group 1,Yes,Music
+Neuroscience,Minor,Willamette,willamette,Group 1,No,
+Philosophy,Minor,Willamette,willamette,Group 1,Yes,Philosophy
+Physics,Minor,Willamette,willamette,Group 1,Yes,Physics
+Political Economy,Minor,Willamette,willamette,Group 1,No,
+Political Science,Minor,Willamette,willamette,Group 1,Yes,"Politics, Policy, Law, and Ethics"
+Religious Studies,Minor,Willamette,willamette,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Minor,Willamette,willamette,Group 1,No,
+Russian,Minor,Willamette,willamette,Group 1,Yes,Russian Studies
+Theatre,Minor,Willamette,willamette,Group 1,Yes,Theatre
+Art (Studio),Major,Gettysburg,gettysburg,Group 1,Yes,Art Studio
+Art History,Major,Gettysburg,gettysburg,Group 1,Yes,Art History
+Biochemistry and Molecular Biology,Major,Gettysburg,gettysburg,Group 1,Yes,Biochemistry and Molecular Biology
+Biology,Major,Gettysburg,gettysburg,Group 1,Yes,Biology
+Chemistry,Major,Gettysburg,gettysburg,Group 1,Yes,Chemistry
+Classics,Major,Gettysburg,gettysburg,Group 1,Yes,Ancient Greek and Roman Studies
+Computer Science,Major,Gettysburg,gettysburg,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,Gettysburg,gettysburg,Group 1,No,
+Dance,Major,Gettysburg,gettysburg,Group 1,No,
+Data Science,Major,Gettysburg,gettysburg,Group 1,No,
+Economics,Major,Gettysburg,gettysburg,Group 1,Yes,Economics; Mathematical Economics
+English,Major,Gettysburg,gettysburg,Group 1,Yes,English
+Environmental Studies,Major,Gettysburg,gettysburg,Group 1,Yes,Environmental Studies; Environmental Science
+French Studies,Major,Gettysburg,gettysburg,Group 1,Yes,French
+German Studies,Major,Gettysburg,gettysburg,Group 1,Yes,German Studies
+Hispanic Studies,Major,Gettysburg,gettysburg,Group 1,Yes,"Spanish/Latin American, Caribbean, and Latino Studies; Spanish"
+History,Major,Gettysburg,gettysburg,Group 1,Yes,History
+International Affairs,Major,Gettysburg,gettysburg,Group 1,Yes,International and Global Studies
+Mathematics,Major,Gettysburg,gettysburg,Group 1,Yes,Mathematics
+Music,Major,Gettysburg,gettysburg,Group 1,Yes,Music; Performance
+Philosophy,Major,Gettysburg,gettysburg,Group 1,Yes,Philosophy
+Physics,Major,Gettysburg,gettysburg,Group 1,Yes,Physics
+Political Science,Major,Gettysburg,gettysburg,Group 1,Yes,Political Science
+Psychology,Major,Gettysburg,gettysburg,Group 1,Yes,Psychology
+Religious Studies,Major,Gettysburg,gettysburg,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Major,Gettysburg,gettysburg,Group 1,Yes,Communication Studies
+Sociology and Anthropology,Major,Gettysburg,gettysburg,Group 1,Yes,Anthropology; Sociology
+Theatre,Major,Gettysburg,gettysburg,Group 1,Yes,Theatre Arts
+World Languages,Major,Gettysburg,gettysburg,Group 1,No,
+Student-Designed Major,Major,Gettysburg,gettysburg,Group 1,Yes,Individual Major Program
+Art and Art History,Minor,Gettysburg,gettysburg,Group 1,Yes,Art Studio; Art History
+Artificial Intelligence,Minor,Gettysburg,gettysburg,Group 1,No,
+Asian Studies,Minor,Gettysburg,gettysburg,Group 1,No,
+Chemistry,Minor,Gettysburg,gettysburg,Group 1,Yes,Chemistry
+Chinese,Minor,Gettysburg,gettysburg,Group 1,Yes,Chinese Culture; Chinese Language
+Classics,Minor,Gettysburg,gettysburg,Group 1,Yes,Ancient Greek and Roman Studies; Greek; Latin
+Computer Science,Minor,Gettysburg,gettysburg,Group 1,Yes,Computer Science
+Cybersecurity,Minor,Gettysburg,gettysburg,Group 1,No,
+Dance,Minor,Gettysburg,gettysburg,Group 1,No,
+Data Science,Minor,Gettysburg,gettysburg,Group 1,Yes,Data Science
+Earth System Science,Minor,Gettysburg,gettysburg,Group 1,No,
+Economics,Minor,Gettysburg,gettysburg,Group 1,Yes,Economics
+Education,Minor,Gettysburg,gettysburg,Group 1,Yes,Educational Studies
+English,Minor,Gettysburg,gettysburg,Group 1,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Gettysburg,gettysburg,Group 1,No,
+Environmental Studies,Minor,Gettysburg,gettysburg,Group 1,Yes,Environmental Studies
+Ethnic Studies,Minor,Gettysburg,gettysburg,Group 1,No,
+French Studies,Minor,Gettysburg,gettysburg,Group 1,Yes,French
+Gender Studies,Minor,Gettysburg,gettysburg,Group 1,Yes,"Women, Gender, and Sexuality Studies"
+German Studies,Minor,Gettysburg,gettysburg,Group 1,Yes,German Studies
+Health Studies,Minor,Gettysburg,gettysburg,Group 1,No,
+Hispanic Studies,Minor,Gettysburg,gettysburg,Group 1,Yes,Spanish
+History,Minor,Gettysburg,gettysburg,Group 1,Yes,History; Public History
+Japanese,Minor,Gettysburg,gettysburg,Group 1,Yes,Japanese Culture; Japanese Language
+Latin American and Latino Studies,Minor,Gettysburg,gettysburg,Group 1,Yes,"Latin American, Caribbean, and Latino Studies"
+Law and Policy,Minor,Gettysburg,gettysburg,Group 1,No,
+Mathematics,Minor,Gettysburg,gettysburg,Group 1,Yes,Mathematics
+Middle East and North African Studies,Minor,Gettysburg,gettysburg,Group 1,Yes,Middle East and Islamic Studies
+Music,Minor,Gettysburg,gettysburg,Group 1,Yes,Music
+Neuroscience,Minor,Gettysburg,gettysburg,Group 1,Yes,Neuroscience
+Philosophy,Minor,Gettysburg,gettysburg,Group 1,Yes,Philosophy
+Physics,Minor,Gettysburg,gettysburg,Group 1,Yes,Physics
+Political Economy,Minor,Gettysburg,gettysburg,Group 1,No,
+Political Science,Minor,Gettysburg,gettysburg,Group 1,Yes,Political Science
+Religious Studies,Minor,Gettysburg,gettysburg,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Minor,Gettysburg,gettysburg,Group 1,Yes,Communication Studies
+Russian,Minor,Gettysburg,gettysburg,Group 1,No,
+Theatre,Minor,Gettysburg,gettysburg,Group 1,Yes,Theatre Arts
+Art (Studio),Major,Kalamazoo,kalamazoo,Group 1,Yes,Art - Studio Art
+Art History,Major,Kalamazoo,kalamazoo,Group 1,Yes,Art History
+Biochemistry and Molecular Biology,Major,Kalamazoo,kalamazoo,Group 1,Yes,Biochemistry
+Biology,Major,Kalamazoo,kalamazoo,Group 1,Yes,Biology
+Chemistry,Major,Kalamazoo,kalamazoo,Group 1,Yes,Chemistry
+Classics,Major,Kalamazoo,kalamazoo,Group 1,Yes,Greek and Roman Cultures; Greek and Roman Languages
+Computer Science,Major,Kalamazoo,kalamazoo,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,Kalamazoo,kalamazoo,Group 1,No,
+Dance,Major,Kalamazoo,kalamazoo,Group 1,No,
+Data Science,Major,Kalamazoo,kalamazoo,Group 1,No,
+Economics,Major,Kalamazoo,kalamazoo,Group 1,Yes,Economics; Quantitative Economics
+English,Major,Kalamazoo,kalamazoo,Group 1,Yes,English
+Environmental Studies,Major,Kalamazoo,kalamazoo,Group 1,No,
+French Studies,Major,Kalamazoo,kalamazoo,Group 1,Yes,French
+German Studies,Major,Kalamazoo,kalamazoo,Group 1,Yes,German
+Hispanic Studies,Major,Kalamazoo,kalamazoo,Group 1,Yes,Spanish
+History,Major,Kalamazoo,kalamazoo,Group 1,Yes,History
+International Affairs,Major,Kalamazoo,kalamazoo,Group 1,Yes,International and Area Studies
+Mathematics,Major,Kalamazoo,kalamazoo,Group 1,Yes,Mathematics
+Music,Major,Kalamazoo,kalamazoo,Group 1,Yes,Music
+Philosophy,Major,Kalamazoo,kalamazoo,Group 1,Yes,Philosophy
+Physics,Major,Kalamazoo,kalamazoo,Group 1,Yes,Physics
+Political Science,Major,Kalamazoo,kalamazoo,Group 1,Yes,Political Science
+Psychology,Major,Kalamazoo,kalamazoo,Group 1,Yes,Psychology
+Religious Studies,Major,Kalamazoo,kalamazoo,Group 1,Yes,Religion
+Rhetoric and Media Studies,Major,Kalamazoo,kalamazoo,Group 1,No,
+Sociology and Anthropology,Major,Kalamazoo,kalamazoo,Group 1,Yes,Anthropology and Sociology
+Theatre,Major,Kalamazoo,kalamazoo,Group 1,Yes,Theatre Arts
+World Languages,Major,Kalamazoo,kalamazoo,Group 1,No,
+Student-Designed Major,Major,Kalamazoo,kalamazoo,Group 1,Yes,Independent Interdisciplinary Major
+Art and Art History,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Art - Studio Art; Art History
+Artificial Intelligence,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Asian Studies,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Chemistry,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Chinese,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Chinese
+Classics,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Greek and Roman Cultures; Greek and Roman Languages
+Computer Science,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Computer Science
+Cybersecurity,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Dance,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Data Science,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Earth System Science,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Economics,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Education,Minor,Kalamazoo,kalamazoo,Group 1,No,
+English,Minor,Kalamazoo,kalamazoo,Group 1,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Environmental Studies,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Environmental Studies
+Ethnic Studies,Minor,Kalamazoo,kalamazoo,Group 1,No,
+French Studies,Minor,Kalamazoo,kalamazoo,Group 1,Yes,French
+Gender Studies,Minor,Kalamazoo,kalamazoo,Group 1,Yes,"Women, Gender, and Sexuality"
+German Studies,Minor,Kalamazoo,kalamazoo,Group 1,Yes,German
+Health Studies,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Community and Global Health
+Hispanic Studies,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Spanish
+History,Minor,Kalamazoo,kalamazoo,Group 1,Yes,History
+Japanese,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Japanese
+Latin American and Latino Studies,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Law and Policy,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Mathematics,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Mathematics
+Middle East and North African Studies,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Music,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Music
+Neuroscience,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Neuroscience
+Philosophy,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Philosophy
+Physics,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Physics
+Political Economy,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Political Science,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Political Science
+Religious Studies,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Religion
+Rhetoric and Media Studies,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Russian,Minor,Kalamazoo,kalamazoo,Group 1,No,
+Theatre,Minor,Kalamazoo,kalamazoo,Group 1,Yes,Theatre Arts
+Art (Studio),Major,Kenyon,kenyon,Group 1,Yes,Studio Art
+Art History,Major,Kenyon,kenyon,Group 1,Yes,Art History
+Biochemistry and Molecular Biology,Major,Kenyon,kenyon,Group 1,Yes,Biochemistry; Molecular Biology
+Biology,Major,Kenyon,kenyon,Group 1,Yes,Biology
+Chemistry,Major,Kenyon,kenyon,Group 1,Yes,Chemistry
+Classics,Major,Kenyon,kenyon,Group 1,Yes,Classics
+Computer Science,Major,Kenyon,kenyon,Group 1,No,
+Computer Science and Mathematics,Major,Kenyon,kenyon,Group 1,No,
+Dance,Major,Kenyon,kenyon,Group 1,Yes,Dance
+Data Science,Major,Kenyon,kenyon,Group 1,No,
+Economics,Major,Kenyon,kenyon,Group 1,Yes,Economics
+English,Major,Kenyon,kenyon,Group 1,Yes,English
+Environmental Studies,Major,Kenyon,kenyon,Group 1,Yes,Environmental Studies
+French Studies,Major,Kenyon,kenyon,Group 1,No,
+German Studies,Major,Kenyon,kenyon,Group 1,No,
+Hispanic Studies,Major,Kenyon,kenyon,Group 1,No,
+History,Major,Kenyon,kenyon,Group 1,Yes,History
+International Affairs,Major,Kenyon,kenyon,Group 1,Yes,International Studies
+Mathematics,Major,Kenyon,kenyon,Group 1,Yes,Mathematics
+Music,Major,Kenyon,kenyon,Group 1,Yes,Music
+Philosophy,Major,Kenyon,kenyon,Group 1,Yes,Philosophy
+Physics,Major,Kenyon,kenyon,Group 1,Yes,Physics
+Political Science,Major,Kenyon,kenyon,Group 1,Yes,Political Science
+Psychology,Major,Kenyon,kenyon,Group 1,Yes,Psychology
+Religious Studies,Major,Kenyon,kenyon,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Major,Kenyon,kenyon,Group 1,No,
+Sociology and Anthropology,Major,Kenyon,kenyon,Group 1,Yes,Anthropology; Sociology
+Theatre,Major,Kenyon,kenyon,Group 1,Yes,Drama
+World Languages,Major,Kenyon,kenyon,Group 1,Yes,Modern Languages and Literatures
+Student-Designed Major,Major,Kenyon,kenyon,Group 1,Yes,Synoptic Major
+Art and Art History,Minor,Kenyon,kenyon,Group 1,Yes,Art History; Studio Art
+Artificial Intelligence,Minor,Kenyon,kenyon,Group 1,No,
+Asian Studies,Minor,Kenyon,kenyon,Group 1,Yes,Asian Studies
+Chemistry,Minor,Kenyon,kenyon,Group 1,Yes,Chemistry
+Chinese,Minor,Kenyon,kenyon,Group 1,Yes,Chinese
+Classics,Minor,Kenyon,kenyon,Group 1,Yes,Classics
+Computer Science,Minor,Kenyon,kenyon,Group 1,Yes,Computing
+Cybersecurity,Minor,Kenyon,kenyon,Group 1,No,
+Dance,Minor,Kenyon,kenyon,Group 1,Yes,Dance
+Data Science,Minor,Kenyon,kenyon,Group 1,No,
+Earth System Science,Minor,Kenyon,kenyon,Group 1,No,
+Economics,Minor,Kenyon,kenyon,Group 1,No,
+Education,Minor,Kenyon,kenyon,Group 1,No,
+English,Minor,Kenyon,kenyon,Group 1,Yes,English and Creative Writing
+Entrepreneurial Leadership and Innovation,Minor,Kenyon,kenyon,Group 1,No,
+Environmental Studies,Minor,Kenyon,kenyon,Group 1,Yes,Environmental Studies
+Ethnic Studies,Minor,Kenyon,kenyon,Group 1,No,
+French Studies,Minor,Kenyon,kenyon,Group 1,Yes,French
+Gender Studies,Minor,Kenyon,kenyon,Group 1,Yes,Gender and Sexuality Studies
+German Studies,Minor,Kenyon,kenyon,Group 1,Yes,German
+Health Studies,Minor,Kenyon,kenyon,Group 1,No,
+Hispanic Studies,Minor,Kenyon,kenyon,Group 1,Yes,Spanish
+History,Minor,Kenyon,kenyon,Group 1,Yes,History
+Japanese,Minor,Kenyon,kenyon,Group 1,Yes,Japanese
+Latin American and Latino Studies,Minor,Kenyon,kenyon,Group 1,Yes,Latine Studies
+Law and Policy,Minor,Kenyon,kenyon,Group 1,Yes,Law and Society
+Mathematics,Minor,Kenyon,kenyon,Group 1,Yes,Mathematics
+Middle East and North African Studies,Minor,Kenyon,kenyon,Group 1,Yes,Islamic Civilizations and Cultures
+Music,Minor,Kenyon,kenyon,Group 1,Yes,Music
+Neuroscience,Minor,Kenyon,kenyon,Group 1,Yes,Neuroscience
+Philosophy,Minor,Kenyon,kenyon,Group 1,Yes,Philosophy
+Physics,Minor,Kenyon,kenyon,Group 1,Yes,Physics
+Political Economy,Minor,Kenyon,kenyon,Group 1,No,
+Political Science,Minor,Kenyon,kenyon,Group 1,No,
+Religious Studies,Minor,Kenyon,kenyon,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Minor,Kenyon,kenyon,Group 1,No,
+Russian,Minor,Kenyon,kenyon,Group 1,Yes,Russian
+Theatre,Minor,Kenyon,kenyon,Group 1,No,
+Art (Studio),Major,Occidental,occidental,Group 1,Yes,Art and Art History
+Art History,Major,Occidental,occidental,Group 1,No,
+Biochemistry and Molecular Biology,Major,Occidental,occidental,Group 1,Yes,Biochemistry
+Biology,Major,Occidental,occidental,Group 1,Yes,Biology
+Chemistry,Major,Occidental,occidental,Group 1,Yes,Chemistry
+Classics,Major,Occidental,occidental,Group 1,No,
+Computer Science,Major,Occidental,occidental,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,Occidental,occidental,Group 1,No,
+Dance,Major,Occidental,occidental,Group 1,No,
+Data Science,Major,Occidental,occidental,Group 1,No,
+Economics,Major,Occidental,occidental,Group 1,Yes,Economics
+English,Major,Occidental,occidental,Group 1,Yes,English
+Environmental Studies,Major,Occidental,occidental,Group 1,No,
+French Studies,Major,Occidental,occidental,Group 1,Yes,French Studies
+German Studies,Major,Occidental,occidental,Group 1,No,
+Hispanic Studies,Major,Occidental,occidental,Group 1,Yes,Spanish Studies
+History,Major,Occidental,occidental,Group 1,Yes,History
+International Affairs,Major,Occidental,occidental,Group 1,Yes,Diplomacy and World Affairs
+Mathematics,Major,Occidental,occidental,Group 1,Yes,Mathematics
+Music,Major,Occidental,occidental,Group 1,Yes,Music
+Philosophy,Major,Occidental,occidental,Group 1,Yes,Philosophy
+Physics,Major,Occidental,occidental,Group 1,Yes,Physics
+Political Science,Major,Occidental,occidental,Group 1,Yes,Politics
+Psychology,Major,Occidental,occidental,Group 1,Yes,Psychology
+Religious Studies,Major,Occidental,occidental,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Major,Occidental,occidental,Group 1,Yes,Media Arts and Culture
+Sociology and Anthropology,Major,Occidental,occidental,Group 1,Yes,Sociology
+Theatre,Major,Occidental,occidental,Group 1,Yes,Theater and Performance Studies
+World Languages,Major,Occidental,occidental,Group 1,Yes,Group Language
+Student-Designed Major,Major,Occidental,occidental,Group 1,Yes,Independent Pattern of Study
+Art and Art History,Minor,Occidental,occidental,Group 1,Yes,Art and Art History
+Artificial Intelligence,Minor,Occidental,occidental,Group 1,No,
+Asian Studies,Minor,Occidental,occidental,Group 1,Yes,Asian Studies
+Chemistry,Minor,Occidental,occidental,Group 1,Yes,Chemistry
+Chinese,Minor,Occidental,occidental,Group 1,Yes,Chinese Studies
+Classics,Minor,Occidental,occidental,Group 1,Yes,Classical Studies
+Computer Science,Minor,Occidental,occidental,Group 1,Yes,Computer Science
+Cybersecurity,Minor,Occidental,occidental,Group 1,No,
+Dance,Minor,Occidental,occidental,Group 1,No,
+Data Science,Minor,Occidental,occidental,Group 1,Yes,Data Science
+Earth System Science,Minor,Occidental,occidental,Group 1,Yes,Geology
+Economics,Minor,Occidental,occidental,Group 1,Yes,Economics
+Education,Minor,Occidental,occidental,Group 1,Yes,Education
+English,Minor,Occidental,occidental,Group 1,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Occidental,occidental,Group 1,No,
+Environmental Studies,Minor,Occidental,occidental,Group 1,No,
+Ethnic Studies,Minor,Occidental,occidental,Group 1,No,
+French Studies,Minor,Occidental,occidental,Group 1,Yes,French
+Gender Studies,Minor,Occidental,occidental,Group 1,Yes,"Gender, Women, and Sexuality Studies"
+German Studies,Minor,Occidental,occidental,Group 1,Yes,German
+Health Studies,Minor,Occidental,occidental,Group 1,Yes,Public Health
+Hispanic Studies,Minor,Occidental,occidental,Group 1,Yes,Spanish
+History,Minor,Occidental,occidental,Group 1,Yes,History
+Japanese,Minor,Occidental,occidental,Group 1,Yes,Japanese Studies
+Latin American and Latino Studies,Minor,Occidental,occidental,Group 1,Yes,Latino/a and Latin American Studies
+Law and Policy,Minor,Occidental,occidental,Group 1,No,
+Mathematics,Minor,Occidental,occidental,Group 1,Yes,Mathematics
+Middle East and North African Studies,Minor,Occidental,occidental,Group 1,Yes,Southwest Asia & North African Studies
+Music,Minor,Occidental,occidental,Group 1,Yes,Music
+Neuroscience,Minor,Occidental,occidental,Group 1,Yes,Neuroscience
+Philosophy,Minor,Occidental,occidental,Group 1,Yes,Philosophy
+Physics,Minor,Occidental,occidental,Group 1,Yes,Physics
+Political Economy,Minor,Occidental,occidental,Group 1,No,
+Political Science,Minor,Occidental,occidental,Group 1,Yes,Politics
+Religious Studies,Minor,Occidental,occidental,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Minor,Occidental,occidental,Group 1,Yes,Media Arts and Culture
+Russian,Minor,Occidental,occidental,Group 1,Yes,Russian
+Theatre,Minor,Occidental,occidental,Group 1,Yes,Theater and Performance Studies
+Art (Studio),Major,Rhodes,rhodes,Group 1,Yes,Studio Art; Studio Art and Art History
+Art History,Major,Rhodes,rhodes,Group 1,Yes,Art History
+Biochemistry and Molecular Biology,Major,Rhodes,rhodes,Group 1,Yes,Biochemistry and Molecular Biology
+Biology,Major,Rhodes,rhodes,Group 1,Yes,Biology
+Chemistry,Major,Rhodes,rhodes,Group 1,Yes,Chemistry
+Classics,Major,Rhodes,rhodes,Group 1,Yes,Ancient Mediterranean Studies
+Computer Science,Major,Rhodes,rhodes,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,Rhodes,rhodes,Group 1,No,
+Dance,Major,Rhodes,rhodes,Group 1,No,
+Data Science,Major,Rhodes,rhodes,Group 1,Yes,Data Analytics
+Economics,Major,Rhodes,rhodes,Group 1,Yes,Economics; Economics and Business; Economics and International Studies; Mathematics and Economics
+English,Major,Rhodes,rhodes,Group 1,Yes,English
+Environmental Studies,Major,Rhodes,rhodes,Group 1,Yes,Environmental Sciences; Environmental Studies
+French Studies,Major,Rhodes,rhodes,Group 1,Yes,French and Francophone Studies
+German Studies,Major,Rhodes,rhodes,Group 1,Yes,German Studies
+Hispanic Studies,Major,Rhodes,rhodes,Group 1,Yes,Spanish
+History,Major,Rhodes,rhodes,Group 1,Yes,History; History and International Studies
+International Affairs,Major,Rhodes,rhodes,Group 1,Yes,International Studies
+Mathematics,Major,Rhodes,rhodes,Group 1,Yes,Mathematics
+Music,Major,Rhodes,rhodes,Group 1,Yes,Music
+Philosophy,Major,Rhodes,rhodes,Group 1,Yes,Philosophy
+Physics,Major,Rhodes,rhodes,Group 1,Yes,Physics
+Political Science,Major,Rhodes,rhodes,Group 1,Yes,Political Science; Political Science and International Studies
+Psychology,Major,Rhodes,rhodes,Group 1,Yes,Psychology
+Religious Studies,Major,Rhodes,rhodes,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Major,Rhodes,rhodes,Group 1,Yes,Media Studies
+Sociology and Anthropology,Major,Rhodes,rhodes,Group 1,Yes,Anthropology/Sociology
+Theatre,Major,Rhodes,rhodes,Group 1,No,
+World Languages,Major,Rhodes,rhodes,Group 1,No,
+Student-Designed Major,Major,Rhodes,rhodes,Group 1,Yes,Self-Designed Interdisciplinary Major
+Art and Art History,Minor,Rhodes,rhodes,Group 1,Yes,Studio Art; Art History
+Artificial Intelligence,Minor,Rhodes,rhodes,Group 1,No,
+Asian Studies,Minor,Rhodes,rhodes,Group 1,Yes,Asian and Asian American Studies
+Chemistry,Minor,Rhodes,rhodes,Group 1,Yes,Chemistry
+Chinese,Minor,Rhodes,rhodes,Group 1,Yes,Chinese Studies
+Classics,Minor,Rhodes,rhodes,Group 1,Yes,Ancient Mediterranean Studies
+Computer Science,Minor,Rhodes,rhodes,Group 1,Yes,Computer Science
+Cybersecurity,Minor,Rhodes,rhodes,Group 1,No,
+Dance,Minor,Rhodes,rhodes,Group 1,Yes,Dance
+Data Science,Minor,Rhodes,rhodes,Group 1,Yes,Data Analytics
+Earth System Science,Minor,Rhodes,rhodes,Group 1,No,
+Economics,Minor,Rhodes,rhodes,Group 1,Yes,Economics
+Education,Minor,Rhodes,rhodes,Group 1,Yes,Educational Studies
+English,Minor,Rhodes,rhodes,Group 1,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Rhodes,rhodes,Group 1,No,
+Environmental Studies,Minor,Rhodes,rhodes,Group 1,Yes,Environmental Sciences; Environmental Studies
+Ethnic Studies,Minor,Rhodes,rhodes,Group 1,No,
+French Studies,Minor,Rhodes,rhodes,Group 1,Yes,French and Francophone Studies
+Gender Studies,Minor,Rhodes,rhodes,Group 1,Yes,Gender and Sexuality Studies
+German Studies,Minor,Rhodes,rhodes,Group 1,Yes,German Studies
+Health Studies,Minor,Rhodes,rhodes,Group 1,Yes,Health Equity
+Hispanic Studies,Minor,Rhodes,rhodes,Group 1,Yes,Spanish
+History,Minor,Rhodes,rhodes,Group 1,Yes,History
+Japanese,Minor,Rhodes,rhodes,Group 1,No,
+Latin American and Latino Studies,Minor,Rhodes,rhodes,Group 1,Yes,Latin American and Latinx Studies
+Law and Policy,Minor,Rhodes,rhodes,Group 1,Yes,Law and Society
+Mathematics,Minor,Rhodes,rhodes,Group 1,Yes,Mathematics
+Middle East and North African Studies,Minor,Rhodes,rhodes,Group 1,Yes,"Islamic and Middle East Studies; Jewish, Islamic and Middle East Studies"
+Music,Minor,Rhodes,rhodes,Group 1,Yes,Music
+Neuroscience,Minor,Rhodes,rhodes,Group 1,No,
+Philosophy,Minor,Rhodes,rhodes,Group 1,Yes,Philosophy
+Physics,Minor,Rhodes,rhodes,Group 1,Yes,Physics
+Political Economy,Minor,Rhodes,rhodes,Group 1,No,
+Political Science,Minor,Rhodes,rhodes,Group 1,Yes,Political Science
+Religious Studies,Minor,Rhodes,rhodes,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Minor,Rhodes,rhodes,Group 1,Yes,Media Studies
+Russian,Minor,Rhodes,rhodes,Group 1,Yes,Russian Studies
+Theatre,Minor,Rhodes,rhodes,Group 1,No,
+Art (Studio),Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Visual & Studio Arts
+Art History,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Art History
+Biochemistry and Molecular Biology,Major,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Biology,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Biology
+Chemistry,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Chemistry
+Classics,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Classics; Greek (Ancient); Latin
+Computer Science,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Dance,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Dance; Dance History
+Data Science,Major,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Economics,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Economics
+English,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Literature
+Environmental Studies,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Environmental Studies; Environmental Science; The Sarah Lawrence Interdisciplinary Collaborative on the Environment (SLICE)
+French Studies,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,French
+German Studies,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,German
+Hispanic Studies,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Spanish
+History,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,History
+International Affairs,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,International Studies
+Mathematics,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Mathematics
+Music,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Music; Music History
+Philosophy,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Philosophy
+Physics,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Physics
+Political Science,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Politics
+Psychology,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Psychology
+Religious Studies,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Religion
+Rhetoric and Media Studies,Major,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Sociology and Anthropology,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Anthropology; Sociology
+Theatre,Major,Sarah Lawrence,sarah-lawrence,Group 1,Yes,Theatre
+World Languages,Major,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Student-Designed Major,Major,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Art and Art History,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Artificial Intelligence,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Asian Studies,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Chemistry,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Chinese,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Classics,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Computer Science,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Cybersecurity,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Dance,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Data Science,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Earth System Science,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Economics,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Education,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+English,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Entrepreneurial Leadership and Innovation,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Environmental Studies,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Ethnic Studies,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+French Studies,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Gender Studies,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+German Studies,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Health Studies,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Hispanic Studies,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+History,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Japanese,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Latin American and Latino Studies,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Law and Policy,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Mathematics,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Middle East and North African Studies,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Music,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Neuroscience,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Philosophy,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Physics,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Political Economy,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Political Science,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Religious Studies,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Rhetoric and Media Studies,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Russian,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Theatre,Minor,Sarah Lawrence,sarah-lawrence,Group 1,No,
+Art (Studio),Major,Skidmore,skidmore,Group 1,Yes,Art (Studio)
+Art History,Major,Skidmore,skidmore,Group 1,Yes,Art History
+Biochemistry and Molecular Biology,Major,Skidmore,skidmore,Group 1,No,
+Biology,Major,Skidmore,skidmore,Group 1,Yes,Biology
+Chemistry,Major,Skidmore,skidmore,Group 1,Yes,Chemistry
+Classics,Major,Skidmore,skidmore,Group 1,Yes,Classics
+Computer Science,Major,Skidmore,skidmore,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,Skidmore,skidmore,Group 1,No,
+Dance,Major,Skidmore,skidmore,Group 1,Yes,Dance
+Data Science,Major,Skidmore,skidmore,Group 1,No,
+Economics,Major,Skidmore,skidmore,Group 1,Yes,Economics
+English,Major,Skidmore,skidmore,Group 1,Yes,English
+Environmental Studies,Major,Skidmore,skidmore,Group 1,Yes,Environmental Sciences; Environmental Studies
+French Studies,Major,Skidmore,skidmore,Group 1,Yes,French
+German Studies,Major,Skidmore,skidmore,Group 1,Yes,German
+Hispanic Studies,Major,Skidmore,skidmore,Group 1,Yes,Spanish
+History,Major,Skidmore,skidmore,Group 1,Yes,History
+International Affairs,Major,Skidmore,skidmore,Group 1,Yes,International Affairs
+Mathematics,Major,Skidmore,skidmore,Group 1,Yes,Mathematics
+Music,Major,Skidmore,skidmore,Group 1,Yes,Music
+Philosophy,Major,Skidmore,skidmore,Group 1,Yes,Philosophy
+Physics,Major,Skidmore,skidmore,Group 1,Yes,Physics
+Political Science,Major,Skidmore,skidmore,Group 1,Yes,Political Science; Political Science-French; Political Science-German; Political Science-Spanish
+Psychology,Major,Skidmore,skidmore,Group 1,Yes,Psychology
+Religious Studies,Major,Skidmore,skidmore,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Major,Skidmore,skidmore,Group 1,No,
+Sociology and Anthropology,Major,Skidmore,skidmore,Group 1,Yes,Anthropology; Sociology
+Theatre,Major,Skidmore,skidmore,Group 1,Yes,Theater
+World Languages,Major,Skidmore,skidmore,Group 1,No,
+Student-Designed Major,Major,Skidmore,skidmore,Group 1,Yes,Self-Determined Major
+Art and Art History,Minor,Skidmore,skidmore,Group 1,Yes,Art (Studio); Art History
+Artificial Intelligence,Minor,Skidmore,skidmore,Group 1,No,
+Asian Studies,Minor,Skidmore,skidmore,Group 1,Yes,Asian Studies
+Chemistry,Minor,Skidmore,skidmore,Group 1,Yes,Chemistry
+Chinese,Minor,Skidmore,skidmore,Group 1,Yes,Chinese
+Classics,Minor,Skidmore,skidmore,Group 1,Yes,Classics
+Computer Science,Minor,Skidmore,skidmore,Group 1,Yes,Computer Science
+Cybersecurity,Minor,Skidmore,skidmore,Group 1,No,
+Dance,Minor,Skidmore,skidmore,Group 1,Yes,Dance
+Data Science,Minor,Skidmore,skidmore,Group 1,No,
+Earth System Science,Minor,Skidmore,skidmore,Group 1,Yes,Geosciences
+Economics,Minor,Skidmore,skidmore,Group 1,Yes,Economics
+Education,Minor,Skidmore,skidmore,Group 1,Yes,Education Studies
+English,Minor,Skidmore,skidmore,Group 1,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Skidmore,skidmore,Group 1,Yes,Entrepreneurship
+Environmental Studies,Minor,Skidmore,skidmore,Group 1,Yes,Environmental Studies and Sciences
+Ethnic Studies,Minor,Skidmore,skidmore,Group 1,No,
+French Studies,Minor,Skidmore,skidmore,Group 1,Yes,French
+Gender Studies,Minor,Skidmore,skidmore,Group 1,Yes,Gender Studies
+German Studies,Minor,Skidmore,skidmore,Group 1,Yes,German
+Health Studies,Minor,Skidmore,skidmore,Group 1,No,
+Hispanic Studies,Minor,Skidmore,skidmore,Group 1,Yes,Spanish
+History,Minor,Skidmore,skidmore,Group 1,Yes,History
+Japanese,Minor,Skidmore,skidmore,Group 1,Yes,Japanese
+Latin American and Latino Studies,Minor,Skidmore,skidmore,Group 1,Yes,"Latin American, Caribbean, and Latinx Studies"
+Law and Policy,Minor,Skidmore,skidmore,Group 1,No,
+Mathematics,Minor,Skidmore,skidmore,Group 1,Yes,Mathematics
+Middle East and North African Studies,Minor,Skidmore,skidmore,Group 1,No,
+Music,Minor,Skidmore,skidmore,Group 1,Yes,Music
+Neuroscience,Minor,Skidmore,skidmore,Group 1,No,
+Philosophy,Minor,Skidmore,skidmore,Group 1,Yes,Philosophy
+Physics,Minor,Skidmore,skidmore,Group 1,Yes,Physics
+Political Economy,Minor,Skidmore,skidmore,Group 1,No,
+Political Science,Minor,Skidmore,skidmore,Group 1,Yes,Political Science
+Religious Studies,Minor,Skidmore,skidmore,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Minor,Skidmore,skidmore,Group 1,No,
+Russian,Minor,Skidmore,skidmore,Group 1,No,
+Theatre,Minor,Skidmore,skidmore,Group 1,Yes,Theater
+Art (Studio),Major,St. Olaf,st-olaf,Group 1,Yes,Studio Art
+Art History,Major,St. Olaf,st-olaf,Group 1,Yes,Art History
+Biochemistry and Molecular Biology,Major,St. Olaf,st-olaf,Group 1,No,
+Biology,Major,St. Olaf,st-olaf,Group 1,Yes,Biology
+Chemistry,Major,St. Olaf,st-olaf,Group 1,Yes,Chemistry
+Classics,Major,St. Olaf,st-olaf,Group 1,Yes,Ancient Studies; Classics; Greek; Latin
+Computer Science,Major,St. Olaf,st-olaf,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,St. Olaf,st-olaf,Group 1,No,
+Dance,Major,St. Olaf,st-olaf,Group 1,Yes,Dance
+Data Science,Major,St. Olaf,st-olaf,Group 1,Yes,Statistics and Data Science
+Economics,Major,St. Olaf,st-olaf,Group 1,Yes,Economics; Quantitative Economics
+English,Major,St. Olaf,st-olaf,Group 1,Yes,English
+Environmental Studies,Major,St. Olaf,st-olaf,Group 1,Yes,Environmental Studies
+French Studies,Major,St. Olaf,st-olaf,Group 1,Yes,French
+German Studies,Major,St. Olaf,st-olaf,Group 1,Yes,German
+Hispanic Studies,Major,St. Olaf,st-olaf,Group 1,Yes,Spanish
+History,Major,St. Olaf,st-olaf,Group 1,Yes,History
+International Affairs,Major,St. Olaf,st-olaf,Group 1,No,
+Mathematics,Major,St. Olaf,st-olaf,Group 1,Yes,Mathematics
+Music,Major,St. Olaf,st-olaf,Group 1,Yes,Music; Performance
+Philosophy,Major,St. Olaf,st-olaf,Group 1,Yes,Philosophy
+Physics,Major,St. Olaf,st-olaf,Group 1,Yes,Physics
+Political Science,Major,St. Olaf,st-olaf,Group 1,Yes,Political Science
+Psychology,Major,St. Olaf,st-olaf,Group 1,Yes,Psychology
+Religious Studies,Major,St. Olaf,st-olaf,Group 1,Yes,Religion
+Rhetoric and Media Studies,Major,St. Olaf,st-olaf,Group 1,No,
+Sociology and Anthropology,Major,St. Olaf,st-olaf,Group 1,Yes,Sociology/Anthropology
+Theatre,Major,St. Olaf,st-olaf,Group 1,Yes,Theater
+World Languages,Major,St. Olaf,st-olaf,Group 1,No,
+Student-Designed Major,Major,St. Olaf,st-olaf,Group 1,Yes,Individual Major
+Art and Art History,Minor,St. Olaf,st-olaf,Group 1,No,
+Artificial Intelligence,Minor,St. Olaf,st-olaf,Group 1,No,
+Asian Studies,Minor,St. Olaf,st-olaf,Group 1,Yes,Asian Studies
+Chemistry,Minor,St. Olaf,st-olaf,Group 1,No,
+Chinese,Minor,St. Olaf,st-olaf,Group 1,No,
+Classics,Minor,St. Olaf,st-olaf,Group 1,No,
+Computer Science,Minor,St. Olaf,st-olaf,Group 1,No,
+Cybersecurity,Minor,St. Olaf,st-olaf,Group 1,No,
+Dance,Minor,St. Olaf,st-olaf,Group 1,No,
+Data Science,Minor,St. Olaf,st-olaf,Group 1,No,
+Earth System Science,Minor,St. Olaf,st-olaf,Group 1,No,
+Economics,Minor,St. Olaf,st-olaf,Group 1,No,
+Education,Minor,St. Olaf,st-olaf,Group 1,Yes,Educational Studies
+English,Minor,St. Olaf,st-olaf,Group 1,No,
+Entrepreneurial Leadership and Innovation,Minor,St. Olaf,st-olaf,Group 1,No,
+Environmental Studies,Minor,St. Olaf,st-olaf,Group 1,Yes,Environmental Studies
+Ethnic Studies,Minor,St. Olaf,st-olaf,Group 1,Yes,Race and Ethnic Studies
+French Studies,Minor,St. Olaf,st-olaf,Group 1,No,
+Gender Studies,Minor,St. Olaf,st-olaf,Group 1,Yes,Gender and Sexuality Studies
+German Studies,Minor,St. Olaf,st-olaf,Group 1,Yes,German Studies
+Health Studies,Minor,St. Olaf,st-olaf,Group 1,Yes,Public Health Studies
+Hispanic Studies,Minor,St. Olaf,st-olaf,Group 1,No,
+History,Minor,St. Olaf,st-olaf,Group 1,No,
+Japanese,Minor,St. Olaf,st-olaf,Group 1,No,
+Latin American and Latino Studies,Minor,St. Olaf,st-olaf,Group 1,Yes,Latin American Studies
+Law and Policy,Minor,St. Olaf,st-olaf,Group 1,No,
+Mathematics,Minor,St. Olaf,st-olaf,Group 1,No,
+Middle East and North African Studies,Minor,St. Olaf,st-olaf,Group 1,Yes,Middle Eastern Studies
+Music,Minor,St. Olaf,st-olaf,Group 1,No,
+Neuroscience,Minor,St. Olaf,st-olaf,Group 1,Yes,Neuroscience
+Philosophy,Minor,St. Olaf,st-olaf,Group 1,No,
+Physics,Minor,St. Olaf,st-olaf,Group 1,No,
+Political Economy,Minor,St. Olaf,st-olaf,Group 1,No,
+Political Science,Minor,St. Olaf,st-olaf,Group 1,No,
+Religious Studies,Minor,St. Olaf,st-olaf,Group 1,No,
+Rhetoric and Media Studies,Minor,St. Olaf,st-olaf,Group 1,No,
+Russian,Minor,St. Olaf,st-olaf,Group 1,No,
+Theatre,Minor,St. Olaf,st-olaf,Group 1,Yes,Musical Theater
+Art (Studio),Major,Union,union,Group 1,Yes,Visual Arts (Art History/Studio Arts Dual Concentration); Visual Arts (Studio Fine Arts Concentration); Visual Arts (Studio Fine Arts Concentration ID)
+Art History,Major,Union,union,Group 1,Yes,Visual Arts (Art History Concentration); Visual Arts (Art History Concentration ID)
+Biochemistry and Molecular Biology,Major,Union,union,Group 1,Yes,Biochemistry
+Biology,Major,Union,union,Group 1,Yes,Biological Sciences
+Chemistry,Major,Union,union,Group 1,Yes,"Chemistry, A.C.S.; Chemistry, Basic"
+Classics,Major,Union,union,Group 1,Yes,Classics
+Computer Science,Major,Union,union,Group 1,Yes,Computer Science
+Computer Science and Mathematics,Major,Union,union,Group 1,No,
+Dance,Major,Union,union,Group 1,No,
+Data Science,Major,Union,union,Group 1,No,
+Economics,Major,Union,union,Group 1,Yes,Economics; Managerial Economics
+English,Major,Union,union,Group 1,Yes,English
+Environmental Studies,Major,Union,union,Group 1,Yes,Environmental Policy; Environmental Science
+French Studies,Major,Union,union,Group 1,Yes,French and Francophone Studies
+German Studies,Major,Union,union,Group 1,Yes,German Studies
+Hispanic Studies,Major,Union,union,Group 1,Yes,Spanish and Hispanic Studies
+History,Major,Union,union,Group 1,Yes,History
+International Affairs,Major,Union,union,Group 1,No,
+Mathematics,Major,Union,union,Group 1,Yes,Mathematics
+Music,Major,Union,union,Group 1,Yes,Music
+Philosophy,Major,Union,union,Group 1,Yes,Philosophy
+Physics,Major,Union,union,Group 1,Yes,Physics
+Political Science,Major,Union,union,Group 1,Yes,Political Science
+Psychology,Major,Union,union,Group 1,Yes,Psychology
+Religious Studies,Major,Union,union,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Major,Union,union,Group 1,No,
+Sociology and Anthropology,Major,Union,union,Group 1,Yes,Anthropology; Sociology
+Theatre,Major,Union,union,Group 1,Yes,Theater
+World Languages,Major,Union,union,Group 1,No,
+Student-Designed Major,Major,Union,union,Group 1,Yes,Organizing Theme
+Art and Art History,Minor,Union,union,Group 1,Yes,Visual Arts - Art History; Visual Arts - Studio Fine Arts
+Artificial Intelligence,Minor,Union,union,Group 1,No,
+Asian Studies,Minor,Union,union,Group 1,Yes,Asian Studies
+Chemistry,Minor,Union,union,Group 1,Yes,Chemistry
+Chinese,Minor,Union,union,Group 1,Yes,Chinese
+Classics,Minor,Union,union,Group 1,Yes,Classical Civilization; Greek or Latin
+Computer Science,Minor,Union,union,Group 1,Yes,Computer Science
+Cybersecurity,Minor,Union,union,Group 1,No,
+Dance,Minor,Union,union,Group 1,Yes,Dance
+Data Science,Minor,Union,union,Group 1,Yes,Data Analytics
+Earth System Science,Minor,Union,union,Group 1,Yes,Geosciences
+Economics,Minor,Union,union,Group 1,Yes,Economics
+Education,Minor,Union,union,Group 1,No,
+English,Minor,Union,union,Group 1,Yes,English; English Creative Writing
+Entrepreneurial Leadership and Innovation,Minor,Union,union,Group 1,No,
+Environmental Studies,Minor,Union,union,Group 1,Yes,Environmental Science and Policy
+Ethnic Studies,Minor,Union,union,Group 1,No,
+French Studies,Minor,Union,union,Group 1,Yes,French and Francophone Studies
+Gender Studies,Minor,Union,union,Group 1,Yes,"Gender, Sexuality, and Women's Studies"
+German Studies,Minor,Union,union,Group 1,Yes,German Studies
+Health Studies,Minor,Union,union,Group 1,No,
+Hispanic Studies,Minor,Union,union,Group 1,Yes,Spanish and Hispanic Studies
+History,Minor,Union,union,Group 1,Yes,History; Public History
+Japanese,Minor,Union,union,Group 1,Yes,Japanese
+Latin American and Latino Studies,Minor,Union,union,Group 1,Yes,Latin American and Caribbean Studies
+Law and Policy,Minor,Union,union,Group 1,Yes,Law and Humanities
+Mathematics,Minor,Union,union,Group 1,Yes,Mathematics
+Middle East and North African Studies,Minor,Union,union,Group 1,No,
+Music,Minor,Union,union,Group 1,Yes,Music
+Neuroscience,Minor,Union,union,Group 1,Yes,Neuroscience
+Philosophy,Minor,Union,union,Group 1,Yes,Philosophy
+Physics,Minor,Union,union,Group 1,Yes,Astrophysics; Physics
+Political Economy,Minor,Union,union,Group 1,No,
+Political Science,Minor,Union,union,Group 1,Yes,Political Science
+Religious Studies,Minor,Union,union,Group 1,Yes,Religious Studies
+Rhetoric and Media Studies,Minor,Union,union,Group 1,No,
+Russian,Minor,Union,union,Group 1,Yes,Russian
+Theatre,Minor,Union,union,Group 1,Yes,Theater
+Art (Studio),Major,Clark,clark,Group 2,Yes,Visual Arts
+Art History,Major,Clark,clark,Group 2,Yes,Art History
+Biochemistry and Molecular Biology,Major,Clark,clark,Group 2,Yes,Biochemistry and Molecular Biology
+Biology,Major,Clark,clark,Group 2,Yes,Biology
+Chemistry,Major,Clark,clark,Group 2,Yes,Chemistry
+Classics,Major,Clark,clark,Group 2,No,
+Computer Science,Major,Clark,clark,Group 2,Yes,Computer Science
+Computer Science and Mathematics,Major,Clark,clark,Group 2,No,
+Dance,Major,Clark,clark,Group 2,No,
+Data Science,Major,Clark,clark,Group 2,Yes,Data Science
+Economics,Major,Clark,clark,Group 2,Yes,Business Economics; Economics
+English,Major,Clark,clark,Group 2,Yes,English
+Environmental Studies,Major,Clark,clark,Group 2,Yes,"Climate, Environment, and Society; Environmental Science"
+French Studies,Major,Clark,clark,Group 2,No,
+German Studies,Major,Clark,clark,Group 2,No,
+Hispanic Studies,Major,Clark,clark,Group 2,Yes,Spanish
+History,Major,Clark,clark,Group 2,Yes,History
+International Affairs,Major,Clark,clark,Group 2,No,
+Mathematics,Major,Clark,clark,Group 2,Yes,Mathematics
+Music,Major,Clark,clark,Group 2,Yes,Music
+Philosophy,Major,Clark,clark,Group 2,Yes,Philosophy
+Physics,Major,Clark,clark,Group 2,Yes,Physics
+Political Science,Major,Clark,clark,Group 2,Yes,Political Science
+Psychology,Major,Clark,clark,Group 2,Yes,Psychology
+Religious Studies,Major,Clark,clark,Group 2,No,
+Rhetoric and Media Studies,Major,Clark,clark,Group 2,Yes,"Media, Culture, and the Arts"
+Sociology and Anthropology,Major,Clark,clark,Group 2,Yes,Sociology
+Theatre,Major,Clark,clark,Group 2,Yes,Theater Arts
+World Languages,Major,Clark,clark,Group 2,Yes,Combined Languages
+Student-Designed Major,Major,Clark,clark,Group 2,Yes,Student-Designed
+Art and Art History,Minor,Clark,clark,Group 2,Yes,Art History; Visual Arts
+Artificial Intelligence,Minor,Clark,clark,Group 2,No,
+Asian Studies,Minor,Clark,clark,Group 2,Yes,Asian Studies
+Chemistry,Minor,Clark,clark,Group 2,Yes,Chemistry
+Chinese,Minor,Clark,clark,Group 2,No,
+Classics,Minor,Clark,clark,Group 2,No,
+Computer Science,Minor,Clark,clark,Group 2,Yes,Computer Science
+Cybersecurity,Minor,Clark,clark,Group 2,No,
+Dance,Minor,Clark,clark,Group 2,Yes,Dance
+Data Science,Minor,Clark,clark,Group 2,Yes,Data Science
+Earth System Science,Minor,Clark,clark,Group 2,No,
+Economics,Minor,Clark,clark,Group 2,Yes,Economics
+Education,Minor,Clark,clark,Group 2,Yes,Education
+English,Minor,Clark,clark,Group 2,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Clark,clark,Group 2,Yes,Entrepreneurship and Innovation
+Environmental Studies,Minor,Clark,clark,Group 2,Yes,"Climate, Environment, and Society; Environmental Science"
+Ethnic Studies,Minor,Clark,clark,Group 2,No,
+French Studies,Minor,Clark,clark,Group 2,No,
+Gender Studies,Minor,Clark,clark,Group 2,Yes,"Women's, Gender, and Sexuality Studies"
+German Studies,Minor,Clark,clark,Group 2,No,
+Health Studies,Minor,Clark,clark,Group 2,Yes,"Health, Science & Society"
+Hispanic Studies,Minor,Clark,clark,Group 2,Yes,Spanish
+History,Minor,Clark,clark,Group 2,Yes,History
+Japanese,Minor,Clark,clark,Group 2,No,
+Latin American and Latino Studies,Minor,Clark,clark,Group 2,No,
+Law and Policy,Minor,Clark,clark,Group 2,No,
+Mathematics,Minor,Clark,clark,Group 2,Yes,Mathematics
+Middle East and North African Studies,Minor,Clark,clark,Group 2,No,
+Music,Minor,Clark,clark,Group 2,Yes,Music
+Neuroscience,Minor,Clark,clark,Group 2,No,
+Philosophy,Minor,Clark,clark,Group 2,Yes,Philosophy
+Physics,Minor,Clark,clark,Group 2,Yes,Physics
+Political Economy,Minor,Clark,clark,Group 2,No,
+Political Science,Minor,Clark,clark,Group 2,Yes,Political Science
+Religious Studies,Minor,Clark,clark,Group 2,No,
+Rhetoric and Media Studies,Minor,Clark,clark,Group 2,Yes,"Media, Culture, and the Arts"
+Russian,Minor,Clark,clark,Group 2,No,
+Theatre,Minor,Clark,clark,Group 2,Yes,Theater Arts
+Art (Studio),Major,Drew,drew,Group 2,Yes,Art
+Art History,Major,Drew,drew,Group 2,Yes,Art History
+Biochemistry and Molecular Biology,Major,Drew,drew,Group 2,Yes,Biochemistry & Molecular Biology
+Biology,Major,Drew,drew,Group 2,Yes,Biology
+Chemistry,Major,Drew,drew,Group 2,Yes,Chemistry
+Classics,Major,Drew,drew,Group 2,Yes,Classical Studies
+Computer Science,Major,Drew,drew,Group 2,Yes,Computer Science
+Computer Science and Mathematics,Major,Drew,drew,Group 2,No,
+Dance,Major,Drew,drew,Group 2,No,
+Data Science,Major,Drew,drew,Group 2,No,
+Economics,Major,Drew,drew,Group 2,Yes,Economics
+English,Major,Drew,drew,Group 2,Yes,English
+Environmental Studies,Major,Drew,drew,Group 2,Yes,Environmental Science; Environmental Studies & Sustainability
+French Studies,Major,Drew,drew,Group 2,Yes,French & Francophone Studies
+German Studies,Major,Drew,drew,Group 2,Yes,German Studies
+Hispanic Studies,Major,Drew,drew,Group 2,Yes,Spanish
+History,Major,Drew,drew,Group 2,Yes,History
+International Affairs,Major,Drew,drew,Group 2,Yes,International Relations
+Mathematics,Major,Drew,drew,Group 2,Yes,Mathematics
+Music,Major,Drew,drew,Group 2,Yes,Music
+Philosophy,Major,Drew,drew,Group 2,Yes,Philosophy
+Physics,Major,Drew,drew,Group 2,Yes,Physics
+Political Science,Major,Drew,drew,Group 2,Yes,Political Science
+Psychology,Major,Drew,drew,Group 2,Yes,Psychology
+Religious Studies,Major,Drew,drew,Group 2,Yes,Religion (History of Religions)
+Rhetoric and Media Studies,Major,Drew,drew,Group 2,Yes,Media & Communications
+Sociology and Anthropology,Major,Drew,drew,Group 2,Yes,Anthropology; Sociology
+Theatre,Major,Drew,drew,Group 2,Yes,Theatre Arts
+World Languages,Major,Drew,drew,Group 2,No,
+Student-Designed Major,Major,Drew,drew,Group 2,No,
+Art and Art History,Minor,Drew,drew,Group 2,Yes,Art; Art History
+Artificial Intelligence,Minor,Drew,drew,Group 2,No,
+Asian Studies,Minor,Drew,drew,Group 2,Yes,Asian Studies
+Chemistry,Minor,Drew,drew,Group 2,Yes,Chemistry
+Chinese,Minor,Drew,drew,Group 2,Yes,Chinese Studies
+Classics,Minor,Drew,drew,Group 2,Yes,Classical Studies
+Computer Science,Minor,Drew,drew,Group 2,Yes,Computer Science
+Cybersecurity,Minor,Drew,drew,Group 2,Yes,Cybersecurity
+Dance,Minor,Drew,drew,Group 2,Yes,Dance
+Data Science,Minor,Drew,drew,Group 2,Yes,Data Science
+Earth System Science,Minor,Drew,drew,Group 2,No,
+Economics,Minor,Drew,drew,Group 2,Yes,Economics
+Education,Minor,Drew,drew,Group 2,Yes,Education & Society; Teaching
+English,Minor,Drew,drew,Group 2,Yes,Literature
+Entrepreneurial Leadership and Innovation,Minor,Drew,drew,Group 2,No,
+Environmental Studies,Minor,Drew,drew,Group 2,Yes,Environmental Science; Environmental Studies & Sustainability
+Ethnic Studies,Minor,Drew,drew,Group 2,No,
+French Studies,Minor,Drew,drew,Group 2,Yes,French & Francophone Studies
+Gender Studies,Minor,Drew,drew,Group 2,Yes,Women's & Gender Studies
+German Studies,Minor,Drew,drew,Group 2,Yes,German Studies
+Health Studies,Minor,Drew,drew,Group 2,Yes,Public Health
+Hispanic Studies,Minor,Drew,drew,Group 2,Yes,Spanish
+History,Minor,Drew,drew,Group 2,Yes,History
+Japanese,Minor,Drew,drew,Group 2,No,
+Latin American and Latino Studies,Minor,Drew,drew,Group 2,Yes,Latin American Studies
+Law and Policy,Minor,Drew,drew,Group 2,Yes,"Law, Justice & Society"
+Mathematics,Minor,Drew,drew,Group 2,Yes,Mathematics
+Middle East and North African Studies,Minor,Drew,drew,Group 2,Yes,Middle East Studies
+Music,Minor,Drew,drew,Group 2,Yes,Music
+Neuroscience,Minor,Drew,drew,Group 2,Yes,Neuroscience
+Philosophy,Minor,Drew,drew,Group 2,Yes,Philosophy
+Physics,Minor,Drew,drew,Group 2,Yes,Physics
+Political Economy,Minor,Drew,drew,Group 2,No,
+Political Science,Minor,Drew,drew,Group 2,Yes,Political Science
+Religious Studies,Minor,Drew,drew,Group 2,Yes,Religion (History of Religions)
+Rhetoric and Media Studies,Minor,Drew,drew,Group 2,Yes,Writing & Communication Studies
+Russian,Minor,Drew,drew,Group 2,No,
+Theatre,Minor,Drew,drew,Group 2,Yes,Musical Theatre; Theatre Arts
+Art (Studio),Major,Seattle Pacific,seattle-pacific,Group 2,Yes,Art and Design: Photography; Art and Design: Studio; Art and Design: Visual Communication; Art and Design: Visual Studies
+Art History,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+Biochemistry and Molecular Biology,Major,Seattle Pacific,seattle-pacific,Group 2,Yes,Biochemistry
+Biology,Major,Seattle Pacific,seattle-pacific,Group 2,Yes,Biology; Biology; Ecology
+Chemistry,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+Classics,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+Computer Science,Major,Seattle Pacific,seattle-pacific,Group 2,Yes,Computer Science; Computer Science
+Computer Science and Mathematics,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+Dance,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+Data Science,Major,Seattle Pacific,seattle-pacific,Group 2,Yes,Data Science
+Economics,Major,Seattle Pacific,seattle-pacific,Group 2,Yes,Economics: Business Analysis; Economics: Development Economics; Economics: Financial Economics; Economics: General Track; Economics: Public Policy
+English,Major,Seattle Pacific,seattle-pacific,Group 2,Yes,English: Creative Writing Concentration; English: Literature Concentration
+Environmental Studies,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+French Studies,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+German Studies,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+Hispanic Studies,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+History,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+International Affairs,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+Mathematics,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+Music,Major,Seattle Pacific,seattle-pacific,Group 2,Yes,Music: Composition; Music: Music Production; Music: Performance
+Philosophy,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+Physics,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+Political Science,Major,Seattle Pacific,seattle-pacific,Group 2,Yes,Political Science
+Psychology,Major,Seattle Pacific,seattle-pacific,Group 2,Yes,Psychology: Animal Behavior Track; Psychology: Animal Behavior Track; Psychology: Behavioral and Cognitive Neuroscience Track; Psychology: Clinical-Counseling Psychology Track; Psychology: Community Psychology & Behavioral Health Track; Psychology: Cross-Cultural Track; Psychology: Data Analytics Track; Psychology: Developmental Psychology Track; Psychology: Psychological Science Track; Psychology: Psychological Science Track; Psychology: Social-Personality Psychology Track; Psychology: Sports Psychology Track
+Religious Studies,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+Rhetoric and Media Studies,Major,Seattle Pacific,seattle-pacific,Group 2,Yes,Communication and Media Studies
+Sociology and Anthropology,Major,Seattle Pacific,seattle-pacific,Group 2,Yes,Sociology
+Theatre,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+World Languages,Major,Seattle Pacific,seattle-pacific,Group 2,No,
+Student-Designed Major,Major,Seattle Pacific,seattle-pacific,Group 2,Yes,Student-Designed
+Art and Art History,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Art: Digital Media Minor; Art: Photography Minor; Art: Studio Minor; Art: Visual Studies Minor
+Artificial Intelligence,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Asian Studies,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Asian Studies Minor
+Chemistry,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Chemistry Minor
+Chinese,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Classics,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Computer Science,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Computer Science Minor
+Cybersecurity,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Dance,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Data Science,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Data Analytics Minor
+Earth System Science,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Economics,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Economics Minor
+Education,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+English,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,English Creative Writing Minor; English Literature Minor
+Entrepreneurial Leadership and Innovation,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Entrepreneurship Minor
+Environmental Studies,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Ethnic Studies,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+French Studies,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Gender Studies,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Women's Studies Minor
+German Studies,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Health Studies,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Hispanic Studies,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+History,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,History Minor; History: Museum Studies Minor
+Japanese,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Latin American and Latino Studies,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Law and Policy,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Mathematics,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Mathematics Minor
+Middle East and North African Studies,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Music,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Music Minor
+Neuroscience,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Philosophy,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Philosophy Minor
+Physics,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Physics Minor
+Political Economy,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Political Science,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Political Science Minor
+Religious Studies,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Rhetoric and Media Studies,Minor,Seattle Pacific,seattle-pacific,Group 2,Yes,Communication Minor
+Russian,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Theatre,Minor,Seattle Pacific,seattle-pacific,Group 2,No,
+Art (Studio),Major,Lynchburg,lynchburg,Group 2,Yes,Art Major
+Art History,Major,Lynchburg,lynchburg,Group 2,No,
+Biochemistry and Molecular Biology,Major,Lynchburg,lynchburg,Group 2,No,
+Biology,Major,Lynchburg,lynchburg,Group 2,Yes,Biology Major
+Chemistry,Major,Lynchburg,lynchburg,Group 2,Yes,Chemistry Major
+Classics,Major,Lynchburg,lynchburg,Group 2,No,
+Computer Science,Major,Lynchburg,lynchburg,Group 2,Yes,Computer Science Major
+Computer Science and Mathematics,Major,Lynchburg,lynchburg,Group 2,No,
+Dance,Major,Lynchburg,lynchburg,Group 2,No,
+Data Science,Major,Lynchburg,lynchburg,Group 2,Yes,Statistics and Data Science Major
+Economics,Major,Lynchburg,lynchburg,Group 2,Yes,Economics Major; Financial Economics Major
+English,Major,Lynchburg,lynchburg,Group 2,Yes,English Major
+Environmental Studies,Major,Lynchburg,lynchburg,Group 2,Yes,Environmental Sciences and Sustainability Major
+French Studies,Major,Lynchburg,lynchburg,Group 2,No,
+German Studies,Major,Lynchburg,lynchburg,Group 2,No,
+Hispanic Studies,Major,Lynchburg,lynchburg,Group 2,No,
+History,Major,Lynchburg,lynchburg,Group 2,Yes,History Major
+International Affairs,Major,Lynchburg,lynchburg,Group 2,No,
+Mathematics,Major,Lynchburg,lynchburg,Group 2,Yes,Mathematics Major
+Music,Major,Lynchburg,lynchburg,Group 2,No,
+Philosophy,Major,Lynchburg,lynchburg,Group 2,Yes,Philosophy Major
+Physics,Major,Lynchburg,lynchburg,Group 2,No,
+Political Science,Major,Lynchburg,lynchburg,Group 2,Yes,Political Science Major
+Psychology,Major,Lynchburg,lynchburg,Group 2,Yes,Psychological Science Major
+Religious Studies,Major,Lynchburg,lynchburg,Group 2,No,
+Rhetoric and Media Studies,Major,Lynchburg,lynchburg,Group 2,Yes,Communication Studies Major; Digital Media Communications Major
+Sociology and Anthropology,Major,Lynchburg,lynchburg,Group 2,Yes,Sociology Major
+Theatre,Major,Lynchburg,lynchburg,Group 2,No,
+World Languages,Major,Lynchburg,lynchburg,Group 2,No,
+Student-Designed Major,Major,Lynchburg,lynchburg,Group 2,No,
+Art and Art History,Minor,Lynchburg,lynchburg,Group 2,Yes,Art History Minor; Studio Art Minor
+Artificial Intelligence,Minor,Lynchburg,lynchburg,Group 2,Yes,AI Literacy Minor
+Asian Studies,Minor,Lynchburg,lynchburg,Group 2,No,
+Chemistry,Minor,Lynchburg,lynchburg,Group 2,Yes,Chemistry Minor
+Chinese,Minor,Lynchburg,lynchburg,Group 2,No,
+Classics,Minor,Lynchburg,lynchburg,Group 2,No,
+Computer Science,Minor,Lynchburg,lynchburg,Group 2,Yes,Computer Science Minor
+Cybersecurity,Minor,Lynchburg,lynchburg,Group 2,Yes,Cybersecurity Minor
+Dance,Minor,Lynchburg,lynchburg,Group 2,No,
+Data Science,Minor,Lynchburg,lynchburg,Group 2,No,
+Earth System Science,Minor,Lynchburg,lynchburg,Group 2,No,
+Economics,Minor,Lynchburg,lynchburg,Group 2,Yes,Economics Minor
+Education,Minor,Lynchburg,lynchburg,Group 2,Yes,Educational Studies Minor
+English,Minor,Lynchburg,lynchburg,Group 2,Yes,English Minor
+Entrepreneurial Leadership and Innovation,Minor,Lynchburg,lynchburg,Group 2,No,
+Environmental Studies,Minor,Lynchburg,lynchburg,Group 2,Yes,Environmental Science Minor; Sustainability Studies Minor
+Ethnic Studies,Minor,Lynchburg,lynchburg,Group 2,No,
+French Studies,Minor,Lynchburg,lynchburg,Group 2,No,
+Gender Studies,Minor,Lynchburg,lynchburg,Group 2,No,
+German Studies,Minor,Lynchburg,lynchburg,Group 2,No,
+Health Studies,Minor,Lynchburg,lynchburg,Group 2,Yes,Public Health Minor
+Hispanic Studies,Minor,Lynchburg,lynchburg,Group 2,Yes,Spanish Minor
+History,Minor,Lynchburg,lynchburg,Group 2,Yes,History Minor
+Japanese,Minor,Lynchburg,lynchburg,Group 2,No,
+Latin American and Latino Studies,Minor,Lynchburg,lynchburg,Group 2,No,
+Law and Policy,Minor,Lynchburg,lynchburg,Group 2,Yes,Law and Society Minor
+Mathematics,Minor,Lynchburg,lynchburg,Group 2,Yes,Mathematics Minor
+Middle East and North African Studies,Minor,Lynchburg,lynchburg,Group 2,No,
+Music,Minor,Lynchburg,lynchburg,Group 2,No,
+Neuroscience,Minor,Lynchburg,lynchburg,Group 2,Yes,Neuroscience Minor
+Philosophy,Minor,Lynchburg,lynchburg,Group 2,Yes,Philosophy Minor
+Physics,Minor,Lynchburg,lynchburg,Group 2,No,
+Political Economy,Minor,Lynchburg,lynchburg,Group 2,No,
+Political Science,Minor,Lynchburg,lynchburg,Group 2,Yes,Political Science Minor
+Religious Studies,Minor,Lynchburg,lynchburg,Group 2,No,
+Rhetoric and Media Studies,Minor,Lynchburg,lynchburg,Group 2,No,
+Russian,Minor,Lynchburg,lynchburg,Group 2,No,
+Theatre,Minor,Lynchburg,lynchburg,Group 2,No,
+Art (Studio),Major,Stetson,stetson,Group 2,Yes,Studio Art
+Art History,Major,Stetson,stetson,Group 2,No,
+Biochemistry and Molecular Biology,Major,Stetson,stetson,Group 2,Yes,Biochemistry; Cellular and Molecular Biomedical Sciences
+Biology,Major,Stetson,stetson,Group 2,Yes,Aquatic and Marine Biology; Biology
+Chemistry,Major,Stetson,stetson,Group 2,Yes,Chemistry
+Classics,Major,Stetson,stetson,Group 2,No,
+Computer Science,Major,Stetson,stetson,Group 2,Yes,Computer Science
+Computer Science and Mathematics,Major,Stetson,stetson,Group 2,No,
+Dance,Major,Stetson,stetson,Group 2,No,
+Data Science,Major,Stetson,stetson,Group 2,No,
+Economics,Major,Stetson,stetson,Group 2,Yes,Economics; Economics
+English,Major,Stetson,stetson,Group 2,Yes,English
+Environmental Studies,Major,Stetson,stetson,Group 2,Yes,Environmental Studies; Environmental Science
+French Studies,Major,Stetson,stetson,Group 2,No,
+German Studies,Major,Stetson,stetson,Group 2,No,
+Hispanic Studies,Major,Stetson,stetson,Group 2,No,
+History,Major,Stetson,stetson,Group 2,Yes,History
+International Affairs,Major,Stetson,stetson,Group 2,Yes,International Studies
+Mathematics,Major,Stetson,stetson,Group 2,Yes,"Applied Mathematics, Actuarial and Financial Mathematics; Applied Mathematics, Data Science; Applied Mathematics, Physics; Applied Mathematics, Statistics; Mathematics"
+Music,Major,Stetson,stetson,Group 2,Yes,Bachelor Of Music in Composition; Bachelor Of Music in Music Theory; Bachelor Of Music in Performance (Guitar); Bachelor Of Music in Performance (Orchestral Instrument); Bachelor Of Music in Performance (Organ); Bachelor Of Music in Performance (Piano); Bachelor Of Music in Performance (Voice); Bachelor Of Music with Elective Studies in a Specific Outside Field; Bachelor Of Music with Emphasis in Business; Bachelor of Arts in Music
+Philosophy,Major,Stetson,stetson,Group 2,Yes,Philosophy
+Physics,Major,Stetson,stetson,Group 2,Yes,"Physics; Physics, Applied Physics; Physics, Biophysics"
+Political Science,Major,Stetson,stetson,Group 2,Yes,Political Science
+Psychology,Major,Stetson,stetson,Group 2,Yes,Psychology
+Religious Studies,Major,Stetson,stetson,Group 2,Yes,Religious Studies
+Rhetoric and Media Studies,Major,Stetson,stetson,Group 2,Yes,Communication and Media Studies
+Sociology and Anthropology,Major,Stetson,stetson,Group 2,Yes,Sociology
+Theatre,Major,Stetson,stetson,Group 2,Yes,Theatre Arts
+World Languages,Major,Stetson,stetson,Group 2,Yes,"World Languages and Cultures, French and Francophone Studies; World Languages and Cultures, Hispanic and Latinx Studies; World Languages and Cultures, German Studies; World Languages and Cultures, Translation and Interpretation"
+Student-Designed Major,Major,Stetson,stetson,Group 2,No,
+Art and Art History,Minor,Stetson,stetson,Group 2,Yes,Art History; Studio Art
+Artificial Intelligence,Minor,Stetson,stetson,Group 2,No,
+Asian Studies,Minor,Stetson,stetson,Group 2,Yes,Asian Studies
+Chemistry,Minor,Stetson,stetson,Group 2,Yes,Chemistry
+Chinese,Minor,Stetson,stetson,Group 2,No,
+Classics,Minor,Stetson,stetson,Group 2,No,
+Computer Science,Minor,Stetson,stetson,Group 2,Yes,Computer Science
+Cybersecurity,Minor,Stetson,stetson,Group 2,No,
+Dance,Minor,Stetson,stetson,Group 2,No,
+Data Science,Minor,Stetson,stetson,Group 2,Yes,Data Analytics
+Earth System Science,Minor,Stetson,stetson,Group 2,No,
+Economics,Minor,Stetson,stetson,Group 2,Yes,Economics
+Education,Minor,Stetson,stetson,Group 2,Yes,Education
+English,Minor,Stetson,stetson,Group 2,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Stetson,stetson,Group 2,Yes,Entrepreneurship
+Environmental Studies,Minor,Stetson,stetson,Group 2,Yes,Environmental Studies
+Ethnic Studies,Minor,Stetson,stetson,Group 2,No,
+French Studies,Minor,Stetson,stetson,Group 2,Yes,French
+Gender Studies,Minor,Stetson,stetson,Group 2,Yes,Gender Studies
+German Studies,Minor,Stetson,stetson,Group 2,Yes,German
+Health Studies,Minor,Stetson,stetson,Group 2,Yes,Health Sciences; Medical and Health Humanities; Public Health
+Hispanic Studies,Minor,Stetson,stetson,Group 2,Yes,Spanish
+History,Minor,Stetson,stetson,Group 2,Yes,History
+Japanese,Minor,Stetson,stetson,Group 2,No,
+Latin American and Latino Studies,Minor,Stetson,stetson,Group 2,Yes,Latin American and Latino Studies
+Law and Policy,Minor,Stetson,stetson,Group 2,Yes,"Law, Society, and Advocacy"
+Mathematics,Minor,Stetson,stetson,Group 2,Yes,Mathematics
+Middle East and North African Studies,Minor,Stetson,stetson,Group 2,No,
+Music,Minor,Stetson,stetson,Group 2,Yes,Music
+Neuroscience,Minor,Stetson,stetson,Group 2,No,
+Philosophy,Minor,Stetson,stetson,Group 2,Yes,Philosophy
+Physics,Minor,Stetson,stetson,Group 2,Yes,Physics
+Political Economy,Minor,Stetson,stetson,Group 2,No,
+Political Science,Minor,Stetson,stetson,Group 2,Yes,Political Science
+Religious Studies,Minor,Stetson,stetson,Group 2,Yes,Religious Studies
+Rhetoric and Media Studies,Minor,Stetson,stetson,Group 2,Yes,Communication and Media Studies
+Russian,Minor,Stetson,stetson,Group 2,Yes,"Russian; Russian, East European, and Eurasian Studies"
+Theatre,Minor,Stetson,stetson,Group 2,Yes,Theatre Arts
+Art (Studio),Major,Seattle University,seattle-university,Group 2,Yes,"Art, BFA & Art & Art History, BA"
+Art History,Major,Seattle University,seattle-university,Group 2,Yes,"Art and Visual Culture Studies, BA"
+Biochemistry and Molecular Biology,Major,Seattle University,seattle-university,Group 2,Yes,"Biochemistry, BS; Cell & Molecular Biology, BS"
+Biology,Major,Seattle University,seattle-university,Group 2,Yes,"Biology, BA; Biology, BS; Marine & Conservation Biology, BS"
+Chemistry,Major,Seattle University,seattle-university,Group 2,Yes,"Chemical Sciences, BS; Chemistry, BS"
+Classics,Major,Seattle University,seattle-university,Group 2,No,
+Computer Science,Major,Seattle University,seattle-university,Group 2,Yes,"Computer Science, BA & BS"
+Computer Science and Mathematics,Major,Seattle University,seattle-university,Group 2,No,
+Dance,Major,Seattle University,seattle-university,Group 2,Yes,"Dance, BFA & BA"
+Data Science,Major,Seattle University,seattle-university,Group 2,No,
+Economics,Major,Seattle University,seattle-university,Group 2,Yes,"Business Economics, BABA; Economics, BA"
+English,Major,Seattle University,seattle-university,Group 2,Yes,"English, BA & English & Creative Writing, BA"
+Environmental Studies,Major,Seattle University,seattle-university,Group 2,Yes,"Environment & Sustainability, BA & BS"
+French Studies,Major,Seattle University,seattle-university,Group 2,Yes,"French, BA"
+German Studies,Major,Seattle University,seattle-university,Group 2,No,
+Hispanic Studies,Major,Seattle University,seattle-university,Group 2,Yes,"Spanish, BA"
+History,Major,Seattle University,seattle-university,Group 2,Yes,"History, BA"
+International Affairs,Major,Seattle University,seattle-university,Group 2,Yes,"International Studies, BA"
+Mathematics,Major,Seattle University,seattle-university,Group 2,Yes,"Mathematics, BA & BS"
+Music,Major,Seattle University,seattle-university,Group 2,Yes,"Music, BM & BA"
+Philosophy,Major,Seattle University,seattle-university,Group 2,Yes,"Philosophy, BA"
+Physics,Major,Seattle University,seattle-university,Group 2,Yes,"Physics, BA & BS"
+Political Science,Major,Seattle University,seattle-university,Group 2,Yes,"Political Science, BA"
+Psychology,Major,Seattle University,seattle-university,Group 2,Yes,"Psychology, BA & BS"
+Religious Studies,Major,Seattle University,seattle-university,Group 2,Yes,"Theology & Religious Studies, BA"
+Rhetoric and Media Studies,Major,Seattle University,seattle-university,Group 2,Yes,"Communication & Media, BA"
+Sociology and Anthropology,Major,Seattle University,seattle-university,Group 2,Yes,"Anthropology & Sociology, BA"
+Theatre,Major,Seattle University,seattle-university,Group 2,Yes,"Musical Theater, BFA; Theatre, BA; Theatre, BFA"
+World Languages,Major,Seattle University,seattle-university,Group 2,No,
+Student-Designed Major,Major,Seattle University,seattle-university,Group 2,Yes,"Individualized Major, BABA"
+Art and Art History,Minor,Seattle University,seattle-university,Group 2,Yes,Art and Visual Culture Studies; Art / Art & Art History
+Artificial Intelligence,Minor,Seattle University,seattle-university,Group 2,No,
+Asian Studies,Minor,Seattle University,seattle-university,Group 2,Yes,Asian Studies
+Chemistry,Minor,Seattle University,seattle-university,Group 2,Yes,Chemistry
+Chinese,Minor,Seattle University,seattle-university,Group 2,Yes,"Chinese, Minor"
+Classics,Minor,Seattle University,seattle-university,Group 2,No,
+Computer Science,Minor,Seattle University,seattle-university,Group 2,Yes,Computer Science
+Cybersecurity,Minor,Seattle University,seattle-university,Group 2,No,
+Dance,Minor,Seattle University,seattle-university,Group 2,No,
+Data Science,Minor,Seattle University,seattle-university,Group 2,Yes,"Data Science, Minor"
+Earth System Science,Minor,Seattle University,seattle-university,Group 2,No,
+Economics,Minor,Seattle University,seattle-university,Group 2,Yes,Economics
+Education,Minor,Seattle University,seattle-university,Group 2,No,
+English,Minor,Seattle University,seattle-university,Group 2,Yes,English / English & Creative Writing
+Entrepreneurial Leadership and Innovation,Minor,Seattle University,seattle-university,Group 2,Yes,Entrepreneurship & Innovation Minor
+Environmental Studies,Minor,Seattle University,seattle-university,Group 2,Yes,"Environmental Science, Minor; Environment & Sustainability"
+Ethnic Studies,Minor,Seattle University,seattle-university,Group 2,No,
+French Studies,Minor,Seattle University,seattle-university,Group 2,Yes,French
+Gender Studies,Minor,Seattle University,seattle-university,Group 2,Yes,"Women, Gender & Sexuality Studies"
+German Studies,Minor,Seattle University,seattle-university,Group 2,No,
+Health Studies,Minor,Seattle University,seattle-university,Group 2,No,
+Hispanic Studies,Minor,Seattle University,seattle-university,Group 2,Yes,Spanish
+History,Minor,Seattle University,seattle-university,Group 2,Yes,History
+Japanese,Minor,Seattle University,seattle-university,Group 2,Yes,"Japanese, Minor"
+Latin American and Latino Studies,Minor,Seattle University,seattle-university,Group 2,Yes,"Latin America & Latinx Studies, Minor"
+Law and Policy,Minor,Seattle University,seattle-university,Group 2,No,
+Mathematics,Minor,Seattle University,seattle-university,Group 2,Yes,Mathematics
+Middle East and North African Studies,Minor,Seattle University,seattle-university,Group 2,Yes,"Middle Eastern Studies, Minor"
+Music,Minor,Seattle University,seattle-university,Group 2,Yes,"Music, Minor"
+Neuroscience,Minor,Seattle University,seattle-university,Group 2,No,
+Philosophy,Minor,Seattle University,seattle-university,Group 2,Yes,Philosophy
+Physics,Minor,Seattle University,seattle-university,Group 2,Yes,Physics
+Political Economy,Minor,Seattle University,seattle-university,Group 2,No,
+Political Science,Minor,Seattle University,seattle-university,Group 2,Yes,Political Science
+Religious Studies,Minor,Seattle University,seattle-university,Group 2,Yes,Theology & Religious Studies
+Rhetoric and Media Studies,Minor,Seattle University,seattle-university,Group 2,Yes,Communication & Media
+Russian,Minor,Seattle University,seattle-university,Group 2,No,
+Theatre,Minor,Seattle University,seattle-university,Group 2,Yes,Theatre
+Art (Studio),Major,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Art History,Major,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Biochemistry and Molecular Biology,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Science in Biochemistry
+Biology,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Science in Biological Sciences
+Chemistry,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Science in Chemistry
+Classics,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Arts in Classical Studies
+Computer Science,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Science in Computer Science
+Computer Science and Mathematics,Major,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Dance,Major,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Data Science,Major,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Economics,Major,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+English,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Arts in English
+Environmental Studies,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Arts in Environmental Studies; Bachelor of Science in Environmental Science
+French Studies,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Arts in Francophone Studies
+German Studies,Major,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Hispanic Studies,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Arts in Spanish
+History,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Arts in History
+International Affairs,Major,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Mathematics,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Science in Mathematics
+Music,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Arts in Music; Bachelor of Music in Composition; Bachelor of Music in Elective Studies in an Outside Field; Bachelor of Music in Guitar Performance; Bachelor of Music in Jazz Studies; Bachelor of Music in Keyboard Performance; Bachelor of Music with Emphasis in Music Industry Studies; Bachelor of Music in Orchestral Instrument Performance; Bachelor of Music in Vocal Performance
+Philosophy,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Arts in Philosophy
+Physics,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Science in Physics
+Political Science,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Arts in Political Science
+Psychology,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Science in Psychological Sciences; Online Bachelor of Arts in Psychology
+Religious Studies,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Arts in Religious Studies; Bachelor of Arts in Ministry & Theology
+Rhetoric and Media Studies,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,"Bachelor of Arts in Mass Communication; Bachelor of Arts in Communications, Online program"
+Sociology and Anthropology,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Arts in Sociology
+Theatre,Major,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Bachelor of Arts in Theatre Arts; Bachelor of Arts in Theatre Arts and Musical Theatre; Bachelor of Arts in Theatre Arts with Business Minor
+World Languages,Major,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Student-Designed Major,Major,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Art and Art History,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Artificial Intelligence,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Asian Studies,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Asian Studies
+Chemistry,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Chemistry minor
+Chinese,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Classics,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Classical Studies minor
+Computer Science,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Computer Science minor
+Cybersecurity,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Dance,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Data Science,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Earth System Science,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Economics,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Economics minor
+Education,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+English,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,English minor
+Entrepreneurial Leadership and Innovation,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Entrepreneurship minor
+Environmental Studies,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Environmental Studies minor
+Ethnic Studies,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+French Studies,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Francophone Studies minor
+Gender Studies,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Women and Gender Studies
+German Studies,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Health Studies,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Public Health minor
+Hispanic Studies,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Spanish minor
+History,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,History minor; History Pre-Law minor
+Japanese,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Latin American and Latino Studies,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Latin American Studies minor
+Law and Policy,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Mathematics,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Mathematics minor
+Middle East and North African Studies,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Middle East and North Africa Studies
+Music,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Jazz Studies Minor; Music Minor
+Neuroscience,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Philosophy,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Philosophy minor; Philosophy Pre-Law minor
+Physics,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Physics minor
+Political Economy,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Political Science,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Political Science minor
+Religious Studies,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Religious Studies - Christian Theology minor; Religious Studies - Religion and Media minor; Religious Studies - World Religions minor
+Rhetoric and Media Studies,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Communication Minor
+Russian,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,No,
+Theatre,Minor,Loyola New Orleans,loyola-new-orleans,Group 2,Yes,Theatre Arts Minor
+Art (Studio),Major,Pacific University,pacific-university,Group 2,Yes,Art
+Art History,Major,Pacific University,pacific-university,Group 2,Yes,Art History
+Biochemistry and Molecular Biology,Major,Pacific University,pacific-university,Group 2,No,
+Biology,Major,Pacific University,pacific-university,Group 2,Yes,Biology
+Chemistry,Major,Pacific University,pacific-university,Group 2,Yes,Chemistry
+Classics,Major,Pacific University,pacific-university,Group 2,No,
+Computer Science,Major,Pacific University,pacific-university,Group 2,Yes,Computer Science
+Computer Science and Mathematics,Major,Pacific University,pacific-university,Group 2,No,
+Dance,Major,Pacific University,pacific-university,Group 2,Yes,Dance
+Data Science,Major,Pacific University,pacific-university,Group 2,Yes,Data Science
+Economics,Major,Pacific University,pacific-university,Group 2,Yes,Economics
+English,Major,Pacific University,pacific-university,Group 2,Yes,Literature
+Environmental Studies,Major,Pacific University,pacific-university,Group 2,Yes,Environmental Science: Biology; Sustainability and Adaptation
+French Studies,Major,Pacific University,pacific-university,Group 2,Yes,French
+German Studies,Major,Pacific University,pacific-university,Group 2,No,
+Hispanic Studies,Major,Pacific University,pacific-university,Group 2,Yes,Spanish
+History,Major,Pacific University,pacific-university,Group 2,Yes,History
+International Affairs,Major,Pacific University,pacific-university,Group 2,Yes,International Studies
+Mathematics,Major,Pacific University,pacific-university,Group 2,Yes,Mathematics
+Music,Major,Pacific University,pacific-university,Group 2,Yes,Music; Music Performance
+Philosophy,Major,Pacific University,pacific-university,Group 2,Yes,Philosophy
+Physics,Major,Pacific University,pacific-university,Group 2,Yes,Physics
+Political Science,Major,Pacific University,pacific-university,Group 2,Yes,Politics & Government
+Psychology,Major,Pacific University,pacific-university,Group 2,Yes,Psychology
+Religious Studies,Major,Pacific University,pacific-university,Group 2,No,
+Rhetoric and Media Studies,Major,Pacific University,pacific-university,Group 2,No,
+Sociology and Anthropology,Major,Pacific University,pacific-university,Group 2,Yes,Cultural Anthropology; Sociology
+Theatre,Major,Pacific University,pacific-university,Group 2,Yes,Applied Theatre; Theatre
+World Languages,Major,Pacific University,pacific-university,Group 2,Yes,Dual Languages and Cultures
+Student-Designed Major,Major,Pacific University,pacific-university,Group 2,Yes,Self-Designed Interdisciplinary Studies
+Art and Art History,Minor,Pacific University,pacific-university,Group 2,Yes,Art History; Art
+Artificial Intelligence,Minor,Pacific University,pacific-university,Group 2,No,
+Asian Studies,Minor,Pacific University,pacific-university,Group 2,Yes,Asia-Pacific Studies
+Chemistry,Minor,Pacific University,pacific-university,Group 2,Yes,Chemistry
+Chinese,Minor,Pacific University,pacific-university,Group 2,No,
+Classics,Minor,Pacific University,pacific-university,Group 2,No,
+Computer Science,Minor,Pacific University,pacific-university,Group 2,Yes,Computer Science
+Cybersecurity,Minor,Pacific University,pacific-university,Group 2,No,
+Dance,Minor,Pacific University,pacific-university,Group 2,Yes,Dance
+Data Science,Minor,Pacific University,pacific-university,Group 2,No,
+Earth System Science,Minor,Pacific University,pacific-university,Group 2,No,
+Economics,Minor,Pacific University,pacific-university,Group 2,Yes,Economics
+Education,Minor,Pacific University,pacific-university,Group 2,No,
+English,Minor,Pacific University,pacific-university,Group 2,Yes,Literature
+Entrepreneurial Leadership and Innovation,Minor,Pacific University,pacific-university,Group 2,No,
+Environmental Studies,Minor,Pacific University,pacific-university,Group 2,Yes,Environmental Policy; Environmental Science; Sustainability and Adaptation
+Ethnic Studies,Minor,Pacific University,pacific-university,Group 2,No,
+French Studies,Minor,Pacific University,pacific-university,Group 2,Yes,French
+Gender Studies,Minor,Pacific University,pacific-university,Group 2,Yes,Gender & Sexuality Studies
+German Studies,Minor,Pacific University,pacific-university,Group 2,No,
+Health Studies,Minor,Pacific University,pacific-university,Group 2,Yes,Public Health
+Hispanic Studies,Minor,Pacific University,pacific-university,Group 2,Yes,Spanish
+History,Minor,Pacific University,pacific-university,Group 2,Yes,History
+Japanese,Minor,Pacific University,pacific-university,Group 2,Yes,Japanese
+Latin American and Latino Studies,Minor,Pacific University,pacific-university,Group 2,Yes,Latinx Studies
+Law and Policy,Minor,Pacific University,pacific-university,Group 2,No,
+Mathematics,Minor,Pacific University,pacific-university,Group 2,Yes,Mathematics
+Middle East and North African Studies,Minor,Pacific University,pacific-university,Group 2,No,
+Music,Minor,Pacific University,pacific-university,Group 2,Yes,Music
+Neuroscience,Minor,Pacific University,pacific-university,Group 2,No,
+Philosophy,Minor,Pacific University,pacific-university,Group 2,Yes,Philosophy
+Physics,Minor,Pacific University,pacific-university,Group 2,Yes,Astrophysics; Physics
+Political Economy,Minor,Pacific University,pacific-university,Group 2,No,
+Political Science,Minor,Pacific University,pacific-university,Group 2,Yes,Politics & Government
+Religious Studies,Minor,Pacific University,pacific-university,Group 2,No,
+Rhetoric and Media Studies,Minor,Pacific University,pacific-university,Group 2,Yes,Communication
+Russian,Minor,Pacific University,pacific-university,Group 2,No,
+Theatre,Minor,Pacific University,pacific-university,Group 2,Yes,Applied Theatre; Musical Theatre; Theatre
+Art (Studio),Major,Goucher,goucher,Group 3,No,
+Art History,Major,Goucher,goucher,Group 3,Yes,Art History/Visual & Material Culture
+Biochemistry and Molecular Biology,Major,Goucher,goucher,Group 3,Yes,Biochemistry & Molecular Biology
+Biology,Major,Goucher,goucher,Group 3,Yes,Biological Sciences
+Chemistry,Major,Goucher,goucher,Group 3,Yes,Chemistry
+Classics,Major,Goucher,goucher,Group 3,No,
+Computer Science,Major,Goucher,goucher,Group 3,Yes,Computer Science
+Computer Science and Mathematics,Major,Goucher,goucher,Group 3,No,
+Dance,Major,Goucher,goucher,Group 3,Yes,Dance
+Data Science,Major,Goucher,goucher,Group 3,Yes,Data Science
+Economics,Major,Goucher,goucher,Group 3,Yes,Economics
+English,Major,Goucher,goucher,Group 3,Yes,Literary Studies
+Environmental Studies,Major,Goucher,goucher,Group 3,Yes,Environmental Studies: Environment & Society; Environmental Studies: Environmental Science
+French Studies,Major,Goucher,goucher,Group 3,Yes,French Transnational Studies
+German Studies,Major,Goucher,goucher,Group 3,No,
+Hispanic Studies,Major,Goucher,goucher,Group 3,Yes,Spanish
+History,Major,Goucher,goucher,Group 3,Yes,History
+International Affairs,Major,Goucher,goucher,Group 3,Yes,International Relations
+Mathematics,Major,Goucher,goucher,Group 3,No,
+Music,Major,Goucher,goucher,Group 3,No,
+Philosophy,Major,Goucher,goucher,Group 3,Yes,Philosophy
+Physics,Major,Goucher,goucher,Group 3,No,
+Political Science,Major,Goucher,goucher,Group 3,Yes,Political Science
+Psychology,Major,Goucher,goucher,Group 3,Yes,Psychology
+Religious Studies,Major,Goucher,goucher,Group 3,No,
+Rhetoric and Media Studies,Major,Goucher,goucher,Group 3,Yes,Communication
+Sociology and Anthropology,Major,Goucher,goucher,Group 3,Yes,Sociology & Anthropology
+Theatre,Major,Goucher,goucher,Group 3,No,
+World Languages,Major,Goucher,goucher,Group 3,No,
+Student-Designed Major,Major,Goucher,goucher,Group 3,Yes,Individualized Interdisciplinary Major
+Art and Art History,Minor,Goucher,goucher,Group 3,Yes,Art History/Visual & Material Culture; Art (Studio)
+Artificial Intelligence,Minor,Goucher,goucher,Group 3,No,
+Asian Studies,Minor,Goucher,goucher,Group 3,Yes,Asian Studies
+Chemistry,Minor,Goucher,goucher,Group 3,Yes,Chemistry
+Chinese,Minor,Goucher,goucher,Group 3,No,
+Classics,Minor,Goucher,goucher,Group 3,No,
+Computer Science,Minor,Goucher,goucher,Group 3,Yes,Computer Science
+Cybersecurity,Minor,Goucher,goucher,Group 3,No,
+Dance,Minor,Goucher,goucher,Group 3,Yes,Dance
+Data Science,Minor,Goucher,goucher,Group 3,Yes,Data Science
+Earth System Science,Minor,Goucher,goucher,Group 3,No,
+Economics,Minor,Goucher,goucher,Group 3,Yes,Economics
+Education,Minor,Goucher,goucher,Group 3,No,
+English,Minor,Goucher,goucher,Group 3,Yes,Literary Studies
+Entrepreneurial Leadership and Innovation,Minor,Goucher,goucher,Group 3,No,
+Environmental Studies,Minor,Goucher,goucher,Group 3,Yes,Environmental Studies: Environment & Society; Environmental Studies: Environmental Science
+Ethnic Studies,Minor,Goucher,goucher,Group 3,No,
+French Studies,Minor,Goucher,goucher,Group 3,Yes,French Transnational Studies
+Gender Studies,Minor,Goucher,goucher,Group 3,Yes,"Women, Gender, & Sexuality Studies"
+German Studies,Minor,Goucher,goucher,Group 3,No,
+Health Studies,Minor,Goucher,goucher,Group 3,Yes,Public Health
+Hispanic Studies,Minor,Goucher,goucher,Group 3,Yes,Spanish
+History,Minor,Goucher,goucher,Group 3,Yes,History
+Japanese,Minor,Goucher,goucher,Group 3,No,
+Latin American and Latino Studies,Minor,Goucher,goucher,Group 3,Yes,Latin American Studies
+Law and Policy,Minor,Goucher,goucher,Group 3,Yes,Legal Studies
+Mathematics,Minor,Goucher,goucher,Group 3,No,
+Middle East and North African Studies,Minor,Goucher,goucher,Group 3,No,
+Music,Minor,Goucher,goucher,Group 3,Yes,Music
+Neuroscience,Minor,Goucher,goucher,Group 3,No,
+Philosophy,Minor,Goucher,goucher,Group 3,Yes,Philosophy
+Physics,Minor,Goucher,goucher,Group 3,No,
+Political Economy,Minor,Goucher,goucher,Group 3,No,
+Political Science,Minor,Goucher,goucher,Group 3,Yes,Political Science
+Religious Studies,Minor,Goucher,goucher,Group 3,No,
+Rhetoric and Media Studies,Minor,Goucher,goucher,Group 3,Yes,Communication
+Russian,Minor,Goucher,goucher,Group 3,No,
+Theatre,Minor,Goucher,goucher,Group 3,Yes,Theatre
+Art (Studio),Major,Ohio Northern,ohio-northern,Group 3,Yes,Art & Design
+Art History,Major,Ohio Northern,ohio-northern,Group 3,No,
+Biochemistry and Molecular Biology,Major,Ohio Northern,ohio-northern,Group 3,Yes,Biochemistry; Molecular Biology
+Biology,Major,Ohio Northern,ohio-northern,Group 3,Yes,Biology; Environmental & Field Biology
+Chemistry,Major,Ohio Northern,ohio-northern,Group 3,Yes,Chemistry
+Classics,Major,Ohio Northern,ohio-northern,Group 3,No,
+Computer Science,Major,Ohio Northern,ohio-northern,Group 3,Yes,Computer Science; Computer Science + X (CS+X)
+Computer Science and Mathematics,Major,Ohio Northern,ohio-northern,Group 3,No,
+Dance,Major,Ohio Northern,ohio-northern,Group 3,No,
+Data Science,Major,Ohio Northern,ohio-northern,Group 3,No,
+Economics,Major,Ohio Northern,ohio-northern,Group 3,No,
+English,Major,Ohio Northern,ohio-northern,Group 3,Yes,English
+Environmental Studies,Major,Ohio Northern,ohio-northern,Group 3,No,
+French Studies,Major,Ohio Northern,ohio-northern,Group 3,No,
+German Studies,Major,Ohio Northern,ohio-northern,Group 3,No,
+Hispanic Studies,Major,Ohio Northern,ohio-northern,Group 3,No,
+History,Major,Ohio Northern,ohio-northern,Group 3,Yes,History
+International Affairs,Major,Ohio Northern,ohio-northern,Group 3,No,
+Mathematics,Major,Ohio Northern,ohio-northern,Group 3,Yes,Mathematics
+Music,Major,Ohio Northern,ohio-northern,Group 3,Yes,Music
+Philosophy,Major,Ohio Northern,ohio-northern,Group 3,No,
+Physics,Major,Ohio Northern,ohio-northern,Group 3,No,
+Political Science,Major,Ohio Northern,ohio-northern,Group 3,Yes,Political Science
+Psychology,Major,Ohio Northern,ohio-northern,Group 3,Yes,Psychology
+Religious Studies,Major,Ohio Northern,ohio-northern,Group 3,No,
+Rhetoric and Media Studies,Major,Ohio Northern,ohio-northern,Group 3,Yes,Communication & Media
+Sociology and Anthropology,Major,Ohio Northern,ohio-northern,Group 3,No,
+Theatre,Major,Ohio Northern,ohio-northern,Group 3,Yes,Musical Theatre; Theatre
+World Languages,Major,Ohio Northern,ohio-northern,Group 3,No,
+Student-Designed Major,Major,Ohio Northern,ohio-northern,Group 3,No,
+Art and Art History,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Art & Design
+Artificial Intelligence,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Asian Studies,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Chemistry,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Chemistry
+Chinese,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Classics,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Computer Science,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Computer Science
+Cybersecurity,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Dance,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Dance
+Data Science,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Data Analytics
+Earth System Science,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Economics,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Education,Minor,Ohio Northern,ohio-northern,Group 3,No,
+English,Minor,Ohio Northern,ohio-northern,Group 3,Yes,English
+Entrepreneurial Leadership and Innovation,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Entrepreneurship
+Environmental Studies,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Environmental Studies
+Ethnic Studies,Minor,Ohio Northern,ohio-northern,Group 3,No,
+French Studies,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Gender Studies,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Gender & Sexuality Studies
+German Studies,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Health Studies,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Medical Humanities; Public Health
+Hispanic Studies,Minor,Ohio Northern,ohio-northern,Group 3,No,
+History,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Japanese,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Latin American and Latino Studies,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Law and Policy,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Mathematics,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Applied Mathematics; Mathematics
+Middle East and North African Studies,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Music,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Music
+Neuroscience,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Philosophy,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Philosophy
+Physics,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Political Economy,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Political Science,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Political Science
+Religious Studies,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Rhetoric and Media Studies,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Communication & Media
+Russian,Minor,Ohio Northern,ohio-northern,Group 3,No,
+Theatre,Minor,Ohio Northern,ohio-northern,Group 3,Yes,Theatre
+Art (Studio),Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Art Practice
+Art History,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Art History
+Biochemistry and Molecular Biology,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Biochemistry
+Biology,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Biology
+Chemistry,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Chemistry
+Classics,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Classical Languages
+Computer Science,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Computer Science
+Computer Science and Mathematics,Major,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Dance,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Dance
+Data Science,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Data Analytics; Data Science
+Economics,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Economics
+English,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,English
+Environmental Studies,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Environmental Science; Environmental Studies
+French Studies,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,French Studies
+German Studies,Major,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Hispanic Studies,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Spanish
+History,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,History
+International Affairs,Major,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Mathematics,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Mathematics
+Music,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Music
+Philosophy,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Philosophy
+Physics,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Physics
+Political Science,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Politics
+Psychology,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Psychology
+Religious Studies,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Theology and Religious Studies
+Rhetoric and Media Studies,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Communication
+Sociology and Anthropology,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Anthropology; Sociology
+Theatre,Major,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Theatre
+World Languages,Major,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Student-Designed Major,Major,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Art and Art History,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Art History Minor
+Artificial Intelligence,Minor,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Asian Studies,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,East Asian Studies Minor
+Chemistry,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Chemistry Minor
+Chinese,Minor,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Classics,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Classical Studies Minor
+Computer Science,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Computer Science Minor
+Cybersecurity,Minor,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Dance,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Dance Minor
+Data Science,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Data Science Minor
+Earth System Science,Minor,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Economics,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Economics Minor
+Education,Minor,Saint Mary's CA,saint-marys-ca,Group 3,No,
+English,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,English Minor
+Entrepreneurial Leadership and Innovation,Minor,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Environmental Studies,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Environmental Science Minor; Environmental Studies Minor
+Ethnic Studies,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Ethnic Studies Minor
+French Studies,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,French Studies Minor
+Gender Studies,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Women's and Gender Studies Minor
+German Studies,Minor,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Health Studies,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Health Promotion Minor
+Hispanic Studies,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Spanish Minor
+History,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,History Minor; Public History Minor
+Japanese,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Japanese Minor
+Latin American and Latino Studies,Minor,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Law and Policy,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Law & Society Minor
+Mathematics,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Mathematics Minor
+Middle East and North African Studies,Minor,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Music,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Music Minor
+Neuroscience,Minor,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Philosophy,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Philosophy Minor
+Physics,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Physics Minor
+Political Economy,Minor,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Political Science,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Politics Minor
+Religious Studies,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Theology and Religious Studies Minor
+Rhetoric and Media Studies,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Communication Minor
+Russian,Minor,Saint Mary's CA,saint-marys-ca,Group 3,No,
+Theatre,Minor,Saint Mary's CA,saint-marys-ca,Group 3,Yes,Theatre Minor
+Art (Studio),Major,La Verne,la-verne,Group 3,Yes,Studio Art
+Art History,Major,La Verne,la-verne,Group 3,Yes,Art History
+Biochemistry and Molecular Biology,Major,La Verne,la-verne,Group 3,No,
+Biology,Major,La Verne,la-verne,Group 3,Yes,Biology
+Chemistry,Major,La Verne,la-verne,Group 3,Yes,Chemistry
+Classics,Major,La Verne,la-verne,Group 3,No,
+Computer Science,Major,La Verne,la-verne,Group 3,Yes,Computer Science
+Computer Science and Mathematics,Major,La Verne,la-verne,Group 3,No,
+Dance,Major,La Verne,la-verne,Group 3,No,
+Data Science,Major,La Verne,la-verne,Group 3,No,
+Economics,Major,La Verne,la-verne,Group 3,Yes,Economics
+English,Major,La Verne,la-verne,Group 3,Yes,English
+Environmental Studies,Major,La Verne,la-verne,Group 3,No,
+French Studies,Major,La Verne,la-verne,Group 3,Yes,French
+German Studies,Major,La Verne,la-verne,Group 3,No,
+Hispanic Studies,Major,La Verne,la-verne,Group 3,Yes,Spanish
+History,Major,La Verne,la-verne,Group 3,Yes,History
+International Affairs,Major,La Verne,la-verne,Group 3,Yes,International Studies
+Mathematics,Major,La Verne,la-verne,Group 3,Yes,Mathematics
+Music,Major,La Verne,la-verne,Group 3,Yes,Music
+Philosophy,Major,La Verne,la-verne,Group 3,Yes,Philosophy
+Physics,Major,La Verne,la-verne,Group 3,Yes,Physics
+Political Science,Major,La Verne,la-verne,Group 3,Yes,Political Science
+Psychology,Major,La Verne,la-verne,Group 3,Yes,Psychology
+Religious Studies,Major,La Verne,la-verne,Group 3,Yes,Religious Studies
+Rhetoric and Media Studies,Major,La Verne,la-verne,Group 3,Yes,Communications; Rhetoric and Communication Studies
+Sociology and Anthropology,Major,La Verne,la-verne,Group 3,Yes,Anthropology; Sociology
+Theatre,Major,La Verne,la-verne,Group 3,Yes,Theatre Arts
+World Languages,Major,La Verne,la-verne,Group 3,No,
+Student-Designed Major,Major,La Verne,la-verne,Group 3,Yes,Create Your Own Major
+Art and Art History,Minor,La Verne,la-verne,Group 3,Yes,Art History Minor; Studio Art Minor
+Artificial Intelligence,Minor,La Verne,la-verne,Group 3,No,
+Asian Studies,Minor,La Verne,la-verne,Group 3,No,
+Chemistry,Minor,La Verne,la-verne,Group 3,Yes,Chemistry Minor
+Chinese,Minor,La Verne,la-verne,Group 3,No,
+Classics,Minor,La Verne,la-verne,Group 3,No,
+Computer Science,Minor,La Verne,la-verne,Group 3,No,
+Cybersecurity,Minor,La Verne,la-verne,Group 3,No,
+Dance,Minor,La Verne,la-verne,Group 3,No,
+Data Science,Minor,La Verne,la-verne,Group 3,No,
+Earth System Science,Minor,La Verne,la-verne,Group 3,No,
+Economics,Minor,La Verne,la-verne,Group 3,Yes,Economics Minor
+Education,Minor,La Verne,la-verne,Group 3,Yes,Elementary Education Minor
+English,Minor,La Verne,la-verne,Group 3,Yes,English Minor
+Entrepreneurial Leadership and Innovation,Minor,La Verne,la-verne,Group 3,No,
+Environmental Studies,Minor,La Verne,la-verne,Group 3,Yes,Sustainability Minor
+Ethnic Studies,Minor,La Verne,la-verne,Group 3,Yes,Ethnic Studies Minor
+French Studies,Minor,La Verne,la-verne,Group 3,Yes,French Minor
+Gender Studies,Minor,La Verne,la-verne,Group 3,Yes,Gender Studies Minor
+German Studies,Minor,La Verne,la-verne,Group 3,No,
+Health Studies,Minor,La Verne,la-verne,Group 3,No,
+Hispanic Studies,Minor,La Verne,la-verne,Group 3,Yes,Spanish Minor
+History,Minor,La Verne,la-verne,Group 3,Yes,History Minor; Public History Minor
+Japanese,Minor,La Verne,la-verne,Group 3,Yes,Japanese Minor
+Latin American and Latino Studies,Minor,La Verne,la-verne,Group 3,Yes,Latinx & Latin American Studies Minor
+Law and Policy,Minor,La Verne,la-verne,Group 3,No,
+Mathematics,Minor,La Verne,la-verne,Group 3,Yes,Mathematics Minor
+Middle East and North African Studies,Minor,La Verne,la-verne,Group 3,No,
+Music,Minor,La Verne,la-verne,Group 3,Yes,Music Minor
+Neuroscience,Minor,La Verne,la-verne,Group 3,No,
+Philosophy,Minor,La Verne,la-verne,Group 3,Yes,Philosophy Minor
+Physics,Minor,La Verne,la-verne,Group 3,Yes,Physics Minor
+Political Economy,Minor,La Verne,la-verne,Group 3,No,
+Political Science,Minor,La Verne,la-verne,Group 3,Yes,Political Science Minor
+Religious Studies,Minor,La Verne,la-verne,Group 3,Yes,Religious Studies Minor
+Rhetoric and Media Studies,Minor,La Verne,la-verne,Group 3,Yes,Rhetoric and Communication Studies Minor
+Russian,Minor,La Verne,la-verne,Group 3,No,
+Theatre,Minor,La Verne,la-verne,Group 3,Yes,Musical Theatre Minor; Theatre Arts Minor
+Art (Studio),Major,Hamline,hamline,Group 3,No,
+Art History,Major,Hamline,hamline,Group 3,No,
+Biochemistry and Molecular Biology,Major,Hamline,hamline,Group 3,Yes,Biochemistry
+Biology,Major,Hamline,hamline,Group 3,Yes,Biology
+Chemistry,Major,Hamline,hamline,Group 3,Yes,Chemistry
+Classics,Major,Hamline,hamline,Group 3,No,
+Computer Science,Major,Hamline,hamline,Group 3,No,
+Computer Science and Mathematics,Major,Hamline,hamline,Group 3,No,
+Dance,Major,Hamline,hamline,Group 3,No,
+Data Science,Major,Hamline,hamline,Group 3,No,
+Economics,Major,Hamline,hamline,Group 3,Yes,Economics
+English,Major,Hamline,hamline,Group 3,No,
+Environmental Studies,Major,Hamline,hamline,Group 3,No,
+French Studies,Major,Hamline,hamline,Group 3,No,
+German Studies,Major,Hamline,hamline,Group 3,No,
+Hispanic Studies,Major,Hamline,hamline,Group 3,No,
+History,Major,Hamline,hamline,Group 3,Yes,History
+International Affairs,Major,Hamline,hamline,Group 3,Yes,Global and International Studies
+Mathematics,Major,Hamline,hamline,Group 3,Yes,Applied Mathematics
+Music,Major,Hamline,hamline,Group 3,No,
+Philosophy,Major,Hamline,hamline,Group 3,Yes,Philosophy
+Physics,Major,Hamline,hamline,Group 3,Yes,Physics
+Political Science,Major,Hamline,hamline,Group 3,Yes,Political Science
+Psychology,Major,Hamline,hamline,Group 3,Yes,Psychology
+Religious Studies,Major,Hamline,hamline,Group 3,Yes,Religion
+Rhetoric and Media Studies,Major,Hamline,hamline,Group 3,No,
+Sociology and Anthropology,Major,Hamline,hamline,Group 3,Yes,Anthropology
+Theatre,Major,Hamline,hamline,Group 3,Yes,"Theatre and Dance: Performance, Production, and Community"
+World Languages,Major,Hamline,hamline,Group 3,No,
+Student-Designed Major,Major,Hamline,hamline,Group 3,Yes,Flexible Curriculum
+Art and Art History,Minor,Hamline,hamline,Group 3,Yes,Studio Arts
+Artificial Intelligence,Minor,Hamline,hamline,Group 3,No,
+Asian Studies,Minor,Hamline,hamline,Group 3,No,
+Chemistry,Minor,Hamline,hamline,Group 3,No,
+Chinese,Minor,Hamline,hamline,Group 3,Yes,Chinese Studies
+Classics,Minor,Hamline,hamline,Group 3,No,
+Computer Science,Minor,Hamline,hamline,Group 3,No,
+Cybersecurity,Minor,Hamline,hamline,Group 3,No,
+Dance,Minor,Hamline,hamline,Group 3,No,
+Data Science,Minor,Hamline,hamline,Group 3,No,
+Earth System Science,Minor,Hamline,hamline,Group 3,No,
+Economics,Minor,Hamline,hamline,Group 3,No,
+Education,Minor,Hamline,hamline,Group 3,Yes,Education
+English,Minor,Hamline,hamline,Group 3,No,
+Entrepreneurial Leadership and Innovation,Minor,Hamline,hamline,Group 3,No,
+Environmental Studies,Minor,Hamline,hamline,Group 3,No,
+Ethnic Studies,Minor,Hamline,hamline,Group 3,No,
+French Studies,Minor,Hamline,hamline,Group 3,No,
+Gender Studies,Minor,Hamline,hamline,Group 3,No,
+German Studies,Minor,Hamline,hamline,Group 3,No,
+Health Studies,Minor,Hamline,hamline,Group 3,No,
+Hispanic Studies,Minor,Hamline,hamline,Group 3,Yes,Spanish
+History,Minor,Hamline,hamline,Group 3,No,
+Japanese,Minor,Hamline,hamline,Group 3,No,
+Latin American and Latino Studies,Minor,Hamline,hamline,Group 3,No,
+Law and Policy,Minor,Hamline,hamline,Group 3,No,
+Mathematics,Minor,Hamline,hamline,Group 3,No,
+Middle East and North African Studies,Minor,Hamline,hamline,Group 3,No,
+Music,Minor,Hamline,hamline,Group 3,Yes,Music Performance
+Neuroscience,Minor,Hamline,hamline,Group 3,No,
+Philosophy,Minor,Hamline,hamline,Group 3,No,
+Physics,Minor,Hamline,hamline,Group 3,No,
+Political Economy,Minor,Hamline,hamline,Group 3,No,
+Political Science,Minor,Hamline,hamline,Group 3,No,
+Religious Studies,Minor,Hamline,hamline,Group 3,No,
+Rhetoric and Media Studies,Minor,Hamline,hamline,Group 3,Yes,Strategic Communication
+Russian,Minor,Hamline,hamline,Group 3,No,
+Theatre,Minor,Hamline,hamline,Group 3,No,
+Art (Studio),Major,Capital,capital,Group 3,Yes,Studio Art
+Art History,Major,Capital,capital,Group 3,No,
+Biochemistry and Molecular Biology,Major,Capital,capital,Group 3,Yes,Biochemistry
+Biology,Major,Capital,capital,Group 3,Yes,Biology
+Chemistry,Major,Capital,capital,Group 3,Yes,Chemistry
+Classics,Major,Capital,capital,Group 3,No,
+Computer Science,Major,Capital,capital,Group 3,Yes,Computer Science
+Computer Science and Mathematics,Major,Capital,capital,Group 3,No,
+Dance,Major,Capital,capital,Group 3,No,
+Data Science,Major,Capital,capital,Group 3,No,
+Economics,Major,Capital,capital,Group 3,Yes,Economics
+English,Major,Capital,capital,Group 3,Yes,English
+Environmental Studies,Major,Capital,capital,Group 3,Yes,Environmental Science
+French Studies,Major,Capital,capital,Group 3,Yes,French
+German Studies,Major,Capital,capital,Group 3,No,
+Hispanic Studies,Major,Capital,capital,Group 3,Yes,Spanish
+History,Major,Capital,capital,Group 3,Yes,History
+International Affairs,Major,Capital,capital,Group 3,Yes,International Studies
+Mathematics,Major,Capital,capital,Group 3,Yes,Mathematics
+Music,Major,Capital,capital,Group 3,Yes,Bachelor of Arts in Music; Bachelor of Music in Composition; Bachelor of Music in Jazz Studies; Bachelor of Music in Keyboard Pedagogy; Bachelor of Music in Music Industry; Bachelor of Music in Performance; Bachelor of Music in Music Technology
+Philosophy,Major,Capital,capital,Group 3,Yes,Philosophy
+Physics,Major,Capital,capital,Group 3,No,
+Political Science,Major,Capital,capital,Group 3,Yes,Political Science
+Psychology,Major,Capital,capital,Group 3,Yes,Psychology
+Religious Studies,Major,Capital,capital,Group 3,Yes,Religion
+Rhetoric and Media Studies,Major,Capital,capital,Group 3,Yes,Communication; Organizational Communication
+Sociology and Anthropology,Major,Capital,capital,Group 3,Yes,Sociology
+Theatre,Major,Capital,capital,Group 3,Yes,Theatre Studies
+World Languages,Major,Capital,capital,Group 3,No,
+Student-Designed Major,Major,Capital,capital,Group 3,No,
+Art and Art History,Minor,Capital,capital,Group 3,Yes,Art History Minor; Studio Art Minor
+Artificial Intelligence,Minor,Capital,capital,Group 3,No,
+Asian Studies,Minor,Capital,capital,Group 3,No,
+Chemistry,Minor,Capital,capital,Group 3,Yes,Chemistry Minor
+Chinese,Minor,Capital,capital,Group 3,No,
+Classics,Minor,Capital,capital,Group 3,No,
+Computer Science,Minor,Capital,capital,Group 3,Yes,Computer Science Minor
+Cybersecurity,Minor,Capital,capital,Group 3,No,
+Dance,Minor,Capital,capital,Group 3,No,
+Data Science,Minor,Capital,capital,Group 3,Yes,Data Science Minor
+Earth System Science,Minor,Capital,capital,Group 3,No,
+Economics,Minor,Capital,capital,Group 3,Yes,Economics Minor
+Education,Minor,Capital,capital,Group 3,No,
+English,Minor,Capital,capital,Group 3,Yes,Literature Minor
+Entrepreneurial Leadership and Innovation,Minor,Capital,capital,Group 3,Yes,Entrepreneurship Minor
+Environmental Studies,Minor,Capital,capital,Group 3,Yes,Environmental Science Minor
+Ethnic Studies,Minor,Capital,capital,Group 3,Yes,Ethnic Studies Minor
+French Studies,Minor,Capital,capital,Group 3,Yes,French Minor
+Gender Studies,Minor,Capital,capital,Group 3,Yes,Gender and Women's Studies Minor
+German Studies,Minor,Capital,capital,Group 3,No,
+Health Studies,Minor,Capital,capital,Group 3,Yes,Health Minor
+Hispanic Studies,Minor,Capital,capital,Group 3,Yes,Spanish Minor
+History,Minor,Capital,capital,Group 3,Yes,History Minor
+Japanese,Minor,Capital,capital,Group 3,No,
+Latin American and Latino Studies,Minor,Capital,capital,Group 3,No,
+Law and Policy,Minor,Capital,capital,Group 3,No,
+Mathematics,Minor,Capital,capital,Group 3,Yes,Mathematics Minor
+Middle East and North African Studies,Minor,Capital,capital,Group 3,No,
+Music,Minor,Capital,capital,Group 3,Yes,Music Minor
+Neuroscience,Minor,Capital,capital,Group 3,No,
+Philosophy,Minor,Capital,capital,Group 3,Yes,Philosophy Minor
+Physics,Minor,Capital,capital,Group 3,Yes,Physics Minor
+Political Economy,Minor,Capital,capital,Group 3,No,
+Political Science,Minor,Capital,capital,Group 3,Yes,Political Science Minor
+Religious Studies,Minor,Capital,capital,Group 3,Yes,Religion Minor
+Rhetoric and Media Studies,Minor,Capital,capital,Group 3,Yes,Organizational Communication Minor
+Russian,Minor,Capital,capital,Group 3,No,
+Theatre,Minor,Capital,capital,Group 3,Yes,Theatre Minor
+Art (Studio),Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Studio Arts
+Art History,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Art History
+Biochemistry and Molecular Biology,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Biochemistry
+Biology,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Biology
+Chemistry,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Chemistry
+Classics,Major,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Computer Science,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Computer Science
+Computer Science and Mathematics,Major,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Dance,Major,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Data Science,Major,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Economics,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Economics
+English,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,English
+Environmental Studies,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Environmental Studies
+French Studies,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,French & Francophone Studies
+German Studies,Major,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Hispanic Studies,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Hispanic Studies
+History,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,History
+International Affairs,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Global Studies
+Mathematics,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,"Mathematics; Mathematics, Applied"
+Music,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Music
+Philosophy,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Philosophy
+Physics,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,"Physics; Physics, Applied"
+Political Science,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Political Science
+Psychology,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Psychology
+Religious Studies,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Religion
+Rhetoric and Media Studies,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Communication
+Sociology and Anthropology,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Sociology
+Theatre,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Theatre; Theatre
+World Languages,Major,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Student-Designed Major,Major,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Individualized Major
+Art and Art History,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Art History; Studio Arts
+Artificial Intelligence,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Asian Studies,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Chemistry,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Chemistry
+Chinese,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Chinese; Chinese Studies
+Classics,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Computer Science,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Computer Science
+Cybersecurity,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Dance,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Dance
+Data Science,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Data Science
+Earth System Science,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Earth Science
+Economics,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Economics
+Education,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+English,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,"Literature, Culture, & Power"
+Entrepreneurial Leadership and Innovation,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Environmental Studies,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Environmental Studies
+Ethnic Studies,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Critical Race Studies
+French Studies,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,French & Francophone Studies
+Gender Studies,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Gender & Sexuality Studies
+German Studies,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Health Studies,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Hispanic Studies,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Hispanic Studies
+History,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,History
+Japanese,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Latin American and Latino Studies,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Latino Studies
+Law and Policy,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Mathematics,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Mathematics
+Middle East and North African Studies,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Music,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Music - General
+Neuroscience,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Philosophy,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Philosophy
+Physics,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Physics
+Political Economy,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Political Science,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Political Science
+Religious Studies,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Religion
+Rhetoric and Media Studies,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Communication
+Russian,Minor,Pacific Lutheran,pacific-lutheran,Group 3,No,
+Theatre,Minor,Pacific Lutheran,pacific-lutheran,Group 3,Yes,Theatre
+Art (Studio),Major,Redlands,redlands,Group 3,Yes,"Studio Art, B.A."
+Art History,Major,Redlands,redlands,Group 3,No,
+Biochemistry and Molecular Biology,Major,Redlands,redlands,Group 3,Yes,"Biochemistry and Molecular Biology, B.S."
+Biology,Major,Redlands,redlands,Group 3,Yes,"Biology, B.A.; Biology, B.S."
+Chemistry,Major,Redlands,redlands,Group 3,Yes,"Chemistry, B.S."
+Classics,Major,Redlands,redlands,Group 3,No,
+Computer Science,Major,Redlands,redlands,Group 3,Yes,"Computer Science, B.A.; Computer Science, B.S."
+Computer Science and Mathematics,Major,Redlands,redlands,Group 3,No,
+Dance,Major,Redlands,redlands,Group 3,No,
+Data Science,Major,Redlands,redlands,Group 3,Yes,"Data Science, B.A."
+Economics,Major,Redlands,redlands,Group 3,Yes,"Economics, B.A.; Economics, B.S.; Financial Economics, B.S."
+English,Major,Redlands,redlands,Group 3,Yes,"English Literature, B.A."
+Environmental Studies,Major,Redlands,redlands,Group 3,Yes,"Environmental Science, B.S.; Environmental Studies, B.A."
+French Studies,Major,Redlands,redlands,Group 3,No,
+German Studies,Major,Redlands,redlands,Group 3,No,
+Hispanic Studies,Major,Redlands,redlands,Group 3,Yes,"Spanish, B.A."
+History,Major,Redlands,redlands,Group 3,Yes,"History, B.A."
+International Affairs,Major,Redlands,redlands,Group 3,Yes,"International Relations, B.A."
+Mathematics,Major,Redlands,redlands,Group 3,Yes,"Mathematics, B.S."
+Music,Major,Redlands,redlands,Group 3,Yes,"Music, B.A.; Music: Composition, B.M.; Music: Education, B.M.; Music Performance: Guitar, B.M.; Music Performance: Keyboard, B.M.; Music Performance: Strings, B.M.; Music Performance: Voice, B.M.; Music Performance: Wind or Percussion, B.M."
+Philosophy,Major,Redlands,redlands,Group 3,Yes,"Philosophy, B.A."
+Physics,Major,Redlands,redlands,Group 3,Yes,"Physics, B.A.; Physics, B.S."
+Political Science,Major,Redlands,redlands,Group 3,Yes,"Political Science, B.A."
+Psychology,Major,Redlands,redlands,Group 3,Yes,"Psychology, B.A."
+Religious Studies,Major,Redlands,redlands,Group 3,Yes,"Religious Studies, B.A."
+Rhetoric and Media Studies,Major,Redlands,redlands,Group 3,Yes,"Media and Communication, B.A.; Media Studies, B.A."
+Sociology and Anthropology,Major,Redlands,redlands,Group 3,Yes,"Sociology and Anthropology, B.A."
+Theatre,Major,Redlands,redlands,Group 3,Yes,"Theatre Arts, B.A."
+World Languages,Major,Redlands,redlands,Group 3,No,
+Student-Designed Major,Major,Redlands,redlands,Group 3,Yes,"Johnston, B.A.; Johnston, B.S."
+Art and Art History,Minor,Redlands,redlands,Group 3,Yes,"Studio Art, Minor"
+Artificial Intelligence,Minor,Redlands,redlands,Group 3,No,
+Asian Studies,Minor,Redlands,redlands,Group 3,Yes,"Asian Studies, Minor"
+Chemistry,Minor,Redlands,redlands,Group 3,Yes,"Chemistry, Minor"
+Chinese,Minor,Redlands,redlands,Group 3,No,
+Classics,Minor,Redlands,redlands,Group 3,No,
+Computer Science,Minor,Redlands,redlands,Group 3,Yes,"Computer Science, Minor"
+Cybersecurity,Minor,Redlands,redlands,Group 3,No,
+Dance,Minor,Redlands,redlands,Group 3,Yes,Dance Minor
+Data Science,Minor,Redlands,redlands,Group 3,Yes,"Data Science, Minor"
+Earth System Science,Minor,Redlands,redlands,Group 3,No,
+Economics,Minor,Redlands,redlands,Group 3,Yes,"Economics, Minor"
+Education,Minor,Redlands,redlands,Group 3,Yes,"Education: Elementary Teaching, Minor; Education: Secondary Teaching, Minor"
+English,Minor,Redlands,redlands,Group 3,Yes,"English Literature, Minor"
+Entrepreneurial Leadership and Innovation,Minor,Redlands,redlands,Group 3,No,
+Environmental Studies,Minor,Redlands,redlands,Group 3,Yes,"Environmental Studies, Minor"
+Ethnic Studies,Minor,Redlands,redlands,Group 3,Yes,"Race and Ethnic Studies, Minor"
+French Studies,Minor,Redlands,redlands,Group 3,No,
+Gender Studies,Minor,Redlands,redlands,Group 3,Yes,"Women, Gender, and Sexuality Studies, Minor"
+German Studies,Minor,Redlands,redlands,Group 3,No,
+Health Studies,Minor,Redlands,redlands,Group 3,No,
+Hispanic Studies,Minor,Redlands,redlands,Group 3,Yes,"Spanish, Minor"
+History,Minor,Redlands,redlands,Group 3,Yes,"History, Minor"
+Japanese,Minor,Redlands,redlands,Group 3,No,
+Latin American and Latino Studies,Minor,Redlands,redlands,Group 3,Yes,"Latin American Studies, Minor"
+Law and Policy,Minor,Redlands,redlands,Group 3,No,
+Mathematics,Minor,Redlands,redlands,Group 3,Yes,"Mathematics, Minor"
+Middle East and North African Studies,Minor,Redlands,redlands,Group 3,No,
+Music,Minor,Redlands,redlands,Group 3,Yes,"Music: Instrumental or Vocal Music, Minor"
+Neuroscience,Minor,Redlands,redlands,Group 3,No,
+Philosophy,Minor,Redlands,redlands,Group 3,Yes,"Philosophy, Minor"
+Physics,Minor,Redlands,redlands,Group 3,Yes,"Physics, Minor"
+Political Economy,Minor,Redlands,redlands,Group 3,No,
+Political Science,Minor,Redlands,redlands,Group 3,Yes,"Political Science, Minor"
+Religious Studies,Minor,Redlands,redlands,Group 3,Yes,"Religious Studies, Minor"
+Rhetoric and Media Studies,Minor,Redlands,redlands,Group 3,Yes,"Media and Communication, Minor"
+Russian,Minor,Redlands,redlands,Group 3,No,
+Theatre,Minor,Redlands,redlands,Group 3,Yes,"Theatre Arts, Minor"
+Art (Studio),Major,John Carroll,john-carroll,Group 3,No,
+Art History,Major,John Carroll,john-carroll,Group 3,No,
+Biochemistry and Molecular Biology,Major,John Carroll,john-carroll,Group 3,Yes,Cell & Molecular Biology Major
+Biology,Major,John Carroll,john-carroll,Group 3,Yes,Biology Major
+Chemistry,Major,John Carroll,john-carroll,Group 3,Yes,Chemistry
+Classics,Major,John Carroll,john-carroll,Group 3,Yes,Ancient Greek and Roman Studies
+Computer Science,Major,John Carroll,john-carroll,Group 3,Yes,Computer Science
+Computer Science and Mathematics,Major,John Carroll,john-carroll,Group 3,No,
+Dance,Major,John Carroll,john-carroll,Group 3,No,
+Data Science,Major,John Carroll,john-carroll,Group 3,Yes,Data Science
+Economics,Major,John Carroll,john-carroll,Group 3,Yes,Economics
+English,Major,John Carroll,john-carroll,Group 3,Yes,English
+Environmental Studies,Major,John Carroll,john-carroll,Group 3,Yes,Environmental Science
+French Studies,Major,John Carroll,john-carroll,Group 3,No,
+German Studies,Major,John Carroll,john-carroll,Group 3,No,
+Hispanic Studies,Major,John Carroll,john-carroll,Group 3,Yes,Spanish and Hispanic Studies
+History,Major,John Carroll,john-carroll,Group 3,Yes,History
+International Affairs,Major,John Carroll,john-carroll,Group 3,No,
+Mathematics,Major,John Carroll,john-carroll,Group 3,Yes,Mathematics
+Music,Major,John Carroll,john-carroll,Group 3,No,
+Philosophy,Major,John Carroll,john-carroll,Group 3,Yes,Philosophy
+Physics,Major,John Carroll,john-carroll,Group 3,Yes,Physics
+Political Science,Major,John Carroll,john-carroll,Group 3,Yes,Political Science
+Psychology,Major,John Carroll,john-carroll,Group 3,Yes,Psychology Major
+Religious Studies,Major,John Carroll,john-carroll,Group 3,Yes,Theology and Religious Studies
+Rhetoric and Media Studies,Major,John Carroll,john-carroll,Group 3,Yes,Communication
+Sociology and Anthropology,Major,John Carroll,john-carroll,Group 3,Yes,Sociology & Criminology
+Theatre,Major,John Carroll,john-carroll,Group 3,No,
+World Languages,Major,John Carroll,john-carroll,Group 3,No,
+Student-Designed Major,Major,John Carroll,john-carroll,Group 3,No,
+Art and Art History,Minor,John Carroll,john-carroll,Group 3,No,
+Artificial Intelligence,Minor,John Carroll,john-carroll,Group 3,Yes,Artificial Intelligence Minor
+Asian Studies,Minor,John Carroll,john-carroll,Group 3,No,
+Chemistry,Minor,John Carroll,john-carroll,Group 3,Yes,Chemistry Minor
+Chinese,Minor,John Carroll,john-carroll,Group 3,No,
+Classics,Minor,John Carroll,john-carroll,Group 3,Yes,Ancient Greek And Roman Studies Minor
+Computer Science,Minor,John Carroll,john-carroll,Group 3,Yes,Computer Science Minor
+Cybersecurity,Minor,John Carroll,john-carroll,Group 3,No,
+Dance,Minor,John Carroll,john-carroll,Group 3,No,
+Data Science,Minor,John Carroll,john-carroll,Group 3,Yes,Data Science Minor
+Earth System Science,Minor,John Carroll,john-carroll,Group 3,No,
+Economics,Minor,John Carroll,john-carroll,Group 3,Yes,Economics Minor
+Education,Minor,John Carroll,john-carroll,Group 3,No,
+English,Minor,John Carroll,john-carroll,Group 3,Yes,English Minor
+Entrepreneurial Leadership and Innovation,Minor,John Carroll,john-carroll,Group 3,Yes,Entrepreneurship Minor
+Environmental Studies,Minor,John Carroll,john-carroll,Group 3,No,
+Ethnic Studies,Minor,John Carroll,john-carroll,Group 3,No,
+French Studies,Minor,John Carroll,john-carroll,Group 3,Yes,French And Francophone Studies Minor
+Gender Studies,Minor,John Carroll,john-carroll,Group 3,Yes,"Gender, Sexuality, And Women's Studies Minor"
+German Studies,Minor,John Carroll,john-carroll,Group 3,Yes,German Minor
+Health Studies,Minor,John Carroll,john-carroll,Group 3,Yes,Public Health Minor
+Hispanic Studies,Minor,John Carroll,john-carroll,Group 3,Yes,Spanish And Hispanic Studies Minor
+History,Minor,John Carroll,john-carroll,Group 3,Yes,History Minor
+Japanese,Minor,John Carroll,john-carroll,Group 3,No,
+Latin American and Latino Studies,Minor,John Carroll,john-carroll,Group 3,No,
+Law and Policy,Minor,John Carroll,john-carroll,Group 3,No,
+Mathematics,Minor,John Carroll,john-carroll,Group 3,Yes,Mathematics Minor
+Middle East and North African Studies,Minor,John Carroll,john-carroll,Group 3,No,
+Music,Minor,John Carroll,john-carroll,Group 3,No,
+Neuroscience,Minor,John Carroll,john-carroll,Group 3,No,
+Philosophy,Minor,John Carroll,john-carroll,Group 3,Yes,Philosophy Minor
+Physics,Minor,John Carroll,john-carroll,Group 3,Yes,Physics Minor
+Political Economy,Minor,John Carroll,john-carroll,Group 3,No,
+Political Science,Minor,John Carroll,john-carroll,Group 3,Yes,Political Science Minor
+Religious Studies,Minor,John Carroll,john-carroll,Group 3,Yes,Theology & Religious Studies Minor
+Rhetoric and Media Studies,Minor,John Carroll,john-carroll,Group 3,Yes,Communication Minor
+Russian,Minor,John Carroll,john-carroll,Group 3,No,
+Theatre,Minor,John Carroll,john-carroll,Group 3,No,
+Art (Studio),Major,Roger Williams,roger-williams,Group 3,Yes,Visual Arts
+Art History,Major,Roger Williams,roger-williams,Group 3,No,
+Biochemistry and Molecular Biology,Major,Roger Williams,roger-williams,Group 3,Yes,Biochemistry
+Biology,Major,Roger Williams,roger-williams,Group 3,Yes,Biology
+Chemistry,Major,Roger Williams,roger-williams,Group 3,Yes,Chemistry
+Classics,Major,Roger Williams,roger-williams,Group 3,No,
+Computer Science,Major,Roger Williams,roger-williams,Group 3,Yes,Computer Science
+Computer Science and Mathematics,Major,Roger Williams,roger-williams,Group 3,No,
+Dance,Major,Roger Williams,roger-williams,Group 3,No,
+Data Science,Major,Roger Williams,roger-williams,Group 3,Yes,Data Science
+Economics,Major,Roger Williams,roger-williams,Group 3,Yes,Economics
+English,Major,Roger Williams,roger-williams,Group 3,No,
+Environmental Studies,Major,Roger Williams,roger-williams,Group 3,Yes,Environmental Science; Sustainability Studies
+French Studies,Major,Roger Williams,roger-williams,Group 3,No,
+German Studies,Major,Roger Williams,roger-williams,Group 3,No,
+Hispanic Studies,Major,Roger Williams,roger-williams,Group 3,Yes,Spanish
+History,Major,Roger Williams,roger-williams,Group 3,Yes,History
+International Affairs,Major,Roger Williams,roger-williams,Group 3,Yes,International Relations
+Mathematics,Major,Roger Williams,roger-williams,Group 3,Yes,Applied Mathematics; Mathematics
+Music,Major,Roger Williams,roger-williams,Group 3,Yes,Music
+Philosophy,Major,Roger Williams,roger-williams,Group 3,No,
+Physics,Major,Roger Williams,roger-williams,Group 3,Yes,Physics
+Political Science,Major,Roger Williams,roger-williams,Group 3,Yes,Political Science
+Psychology,Major,Roger Williams,roger-williams,Group 3,Yes,Psychology
+Religious Studies,Major,Roger Williams,roger-williams,Group 3,No,
+Rhetoric and Media Studies,Major,Roger Williams,roger-williams,Group 3,Yes,Communication & Media Studies
+Sociology and Anthropology,Major,Roger Williams,roger-williams,Group 3,Yes,Anthropology + Sociology
+Theatre,Major,Roger Williams,roger-williams,Group 3,No,
+World Languages,Major,Roger Williams,roger-williams,Group 3,Yes,Modern Languages
+Student-Designed Major,Major,Roger Williams,roger-williams,Group 3,No,
+Art and Art History,Minor,Roger Williams,roger-williams,Group 3,Yes,Visual Arts
+Artificial Intelligence,Minor,Roger Williams,roger-williams,Group 3,No,
+Asian Studies,Minor,Roger Williams,roger-williams,Group 3,No,
+Chemistry,Minor,Roger Williams,roger-williams,Group 3,Yes,Chemistry
+Chinese,Minor,Roger Williams,roger-williams,Group 3,Yes,Chinese
+Classics,Minor,Roger Williams,roger-williams,Group 3,No,
+Computer Science,Minor,Roger Williams,roger-williams,Group 3,Yes,Computer Science
+Cybersecurity,Minor,Roger Williams,roger-williams,Group 3,No,
+Dance,Minor,Roger Williams,roger-williams,Group 3,No,
+Data Science,Minor,Roger Williams,roger-williams,Group 3,Yes,Data Science
+Earth System Science,Minor,Roger Williams,roger-williams,Group 3,No,
+Economics,Minor,Roger Williams,roger-williams,Group 3,Yes,Economics
+Education,Minor,Roger Williams,roger-williams,Group 3,Yes,Educational Studies
+English,Minor,Roger Williams,roger-williams,Group 3,No,
+Entrepreneurial Leadership and Innovation,Minor,Roger Williams,roger-williams,Group 3,Yes,Entrepreneurship
+Environmental Studies,Minor,Roger Williams,roger-williams,Group 3,Yes,Environmental Science; Sustainability Studies
+Ethnic Studies,Minor,Roger Williams,roger-williams,Group 3,No,
+French Studies,Minor,Roger Williams,roger-williams,Group 3,No,
+Gender Studies,Minor,Roger Williams,roger-williams,Group 3,Yes,Gender and Sexuality Studies Minor
+German Studies,Minor,Roger Williams,roger-williams,Group 3,No,
+Health Studies,Minor,Roger Williams,roger-williams,Group 3,Yes,Public Health
+Hispanic Studies,Minor,Roger Williams,roger-williams,Group 3,Yes,Spanish
+History,Minor,Roger Williams,roger-williams,Group 3,Yes,History
+Japanese,Minor,Roger Williams,roger-williams,Group 3,No,
+Latin American and Latino Studies,Minor,Roger Williams,roger-williams,Group 3,Yes,Latin American and Latino Studies Minor
+Law and Policy,Minor,Roger Williams,roger-williams,Group 3,Yes,Legal Studies
+Mathematics,Minor,Roger Williams,roger-williams,Group 3,Yes,Applied Mathematics; Mathematics
+Middle East and North African Studies,Minor,Roger Williams,roger-williams,Group 3,No,
+Music,Minor,Roger Williams,roger-williams,Group 3,Yes,Music
+Neuroscience,Minor,Roger Williams,roger-williams,Group 3,No,
+Philosophy,Minor,Roger Williams,roger-williams,Group 3,Yes,Philosophy Minor
+Physics,Minor,Roger Williams,roger-williams,Group 3,Yes,Physics
+Political Economy,Minor,Roger Williams,roger-williams,Group 3,No,
+Political Science,Minor,Roger Williams,roger-williams,Group 3,Yes,Political Science
+Religious Studies,Minor,Roger Williams,roger-williams,Group 3,No,
+Rhetoric and Media Studies,Minor,Roger Williams,roger-williams,Group 3,Yes,Communication & Media Studies
+Russian,Minor,Roger Williams,roger-williams,Group 3,No,
+Theatre,Minor,Roger Williams,roger-williams,Group 3,Yes,Theatre Minor
