@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Peer Endowment Size and Growth</title>
+<meta name="description" content="Endowment size and five-year growth, FY2020 to FY2025, for Lewis & Clark and 33 peer institutions, from audited financial statements.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../peer.css">
+<style>
+.key i.dot20 { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--muted); background: var(--panel); display: inline-block; }
+.key i.dot25 { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Peer analysis</a></p>
+  <header>
+    <div class="eyebrow">All three peer groups · endowment net assets, audited statements</div>
+    <h1>Peer Endowment Size and Growth</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5 (high effort), November 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="dek">Endowment at fiscal year end 2020 and 2025, the five-year change, and endowment per student for Lewis &amp; Clark and its 33 peers. Each school's two years use the same basis, almost always endowment net assets from its audited statements.</p>
+    <p class="find" id="find"></p>
+  </header>
+
+  <div class="tiles">
+    <div class="tile"><b id="k-lc25">&nbsp;</b><span>Lewis &amp; Clark endowment, FY2025</span></div>
+    <div class="tile"><b id="k-lcchg">&nbsp;</b><span>Lewis &amp; Clark change, FY2020 to FY2025</span></div>
+    <div class="tile"><b id="k-medchg">&nbsp;</b><span>Peer median change (shown peers)</span></div>
+    <div class="tile"><b id="k-lcps">&nbsp;</b><span>Lewis &amp; Clark endowment per student</span></div>
+    <div class="tile"><b id="k-medps">&nbsp;</b><span>Peer median per student (shown peers)</span></div>
+    <div class="tile"><b id="k-lc26">&nbsp;</b><span>Lewis &amp; Clark endowment, FY2026</span></div>
+  </div>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Peer group">
+      <button type="button" data-group="" aria-pressed="true">All groups</button>
+      <button type="button" data-group="Group 1" aria-pressed="false">Group 1</button>
+      <button type="button" data-group="Group 2" aria-pressed="false">Group 2</button>
+      <button type="button" data-group="Group 3" aria-pressed="false">Group 3</button>
+    </div>
+    <span style="color:var(--muted);font-size:13px">Group 1: L&amp;C comparison group. Group 2: Carnegie class (Willamette is in both). Group 3: smaller endowment.</span>
+  </div>
+
+  <section class="card" aria-labelledby="h-size">
+    <h2 id="h-size">Endowment, FY2020 and FY2025</h2>
+    <p class="note">Each line runs from the FY2020 endowment (open circle) to FY2025 (filled), sorted by FY2025 size. A line running left means the endowment shrank. Hover or tap a row for figures.</p>
+    <div class="key" aria-hidden="true">
+      <span><i class="dot20"></i>FY2020</span>
+      <span><i class="dot25" style="background:var(--gross)"></i>Lewis &amp; Clark, FY2025</span>
+      <span><i class="dot25" style="background:var(--aid)"></i>Peer, FY2025</span>
+    </div>
+    <div class="chart" id="c-size" role="img" aria-label="Endowment in FY2020 and FY2025 by institution"></div>
+  </section>
+
+  <div class="pair">
+    <section class="card" aria-labelledby="h-chg">
+      <h2 id="h-chg">Five-year change</h2>
+      <p class="note">Percent change in the endowment from FY2020 to FY2025. The dashed line is the median of the peers shown.</p>
+      <div class="key" aria-hidden="true">
+        <span><i class="sq" style="background:var(--gross)"></i>Lewis &amp; Clark</span>
+        <span><i class="sq" style="background:var(--other)"></i>Peers</span>
+        <span><i class="ref"></i>Peer median</span>
+      </div>
+      <div class="chart" id="c-chg" role="img" aria-label="Five-year endowment change by institution"></div>
+    </section>
+    <section class="card" aria-labelledby="h-ps">
+      <h2 id="h-ps">Endowment per student</h2>
+      <p class="note">FY2025 endowment divided by total headcount enrollment (undergraduate plus graduate). Enrollment terms differ by school; see the table.</p>
+      <div class="key" aria-hidden="true">
+        <span><i class="sq" style="background:var(--gross)"></i>Lewis &amp; Clark</span>
+        <span><i class="sq" style="background:var(--other)"></i>Peers</span>
+        <span><i class="ref"></i>Peer median</span>
+      </div>
+      <div class="chart" id="c-ps" role="img" aria-label="Endowment per student by institution"></div>
+    </section>
+  </div>
+
+  <section class="card" aria-labelledby="h-table">
+    <h2 id="h-table">Figures by institution</h2>
+    <p class="note">Endowment in millions of dollars at each school's fiscal year end. The basis column says what each figure measures and where it came from.</p>
+    <div class="tbox">
+      <table style="min-width:62rem">
+        <thead><tr><th scope="col">Institution</th><th scope="col">Peer group</th><th scope="col" class="n">FY2020 ($M)</th><th scope="col" class="n">FY2025 ($M)</th><th scope="col" class="n">Change</th><th scope="col" class="n">Enrollment</th><th scope="col">Term</th><th scope="col" class="n">Per student</th><th scope="col">Basis</th></tr></thead>
+        <tbody id="t-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <p class="data-link"><a href="../data/#endowment">Data tables and sources for this page →</a><span>Every value with its citation.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="peer_endowment.csv" download>Download the data (CSV) →</a><span>One row per institution, with the basis of each figure.</span></p>
+  <div class="notes">
+    <div>
+      <h3>What is measured</h3>
+      <p>Endowment net assets from the endowment note of each school's audited financial statements, at fiscal year end (May 31 or June 30). Endowment net assets include donor-restricted and board-designated funds and can differ from the market value a school reports to the national endowment survey.</p>
+      <p>Gettysburg's statements were not read; its figures are national endowment survey (NACUBO) market values, so it is the one school not on an audited basis.</p>
+    </div>
+    <div>
+      <h3>Timing differences</h3>
+      <ul>
+        <li>Willamette moved its year end from May 31 to June 30 in 2021; its FY2020 figure is endowment net assets at the start of its restated 12-month FY2021, and its May 31, 2020 year-end figure was $249.7M. Pacific Northwest College of Art merged in on June 30, 2021.</li>
+        <li>Sarah Lawrence moved its year end from May 31 to June 30; Seattle University's FY2020 figure is at July 1, 2020.</li>
+        <li>Lewis &amp; Clark's FY2026 endowment net assets were $374.9M (FY2026 audited statements); Skidmore's were $597.8M at May 31, 2026. Other peers' FY2026 statements were not yet read, so the comparison stops at FY2025.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Gaps and cautions</h3>
+      <ul>
+        <li>Loyola New Orleans publishes only statement of activities extracts with no endowment note, so it has no endowment figures.</li>
+        <li>Drew's and Saint Mary's endowments shrank over the period. Goucher's FY2024 endowment included $48.9M of gifts.</li>
+        <li>Enrollment for groups 1 and 2 is total headcount from each school's Common Data Set, fact book or profile page (fall 2025 where available; NCES College Navigator or a published compilation for a few), and for group 3 federal IPEDS fall headcount. Roger Williams has no enrollment figure because its statements include the law school, which reports separately.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fM = (v) => "$" + d3.format(",.1f")(v) + "M";
+  const fP = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + d3.format(".1%")(Math.abs(v));
+  const fK = (v) => "$" + d3.format(",.0f")(v / 1000) + "K";
+  const fD = d3.format(",");
+  const ord = (n) => n + (["th", "st", "nd", "rd"][(n % 100 - 20) % 10] || ["th", "st", "nd", "rd"][n % 100] || "th");
+  const state = { group: "" };
+  let all = [];
+  const num = (v) => (v === "" || v == null ? NaN : +v);
+  const inGroup = (r) => !state.group || r.lc || r.peer_group === state.group || r.also_in === state.group;
+  const name = (r) => (r.lc ? "Lewis & Clark" : r.short);
+
+  function measure(svg, rows, cls) {
+    const probe = svg.append("text").attr("class", cls);
+    const w = d3.max(rows, (r) => { probe.text(name(r)); return probe.node().getComputedTextLength(); }) || 80;
+    probe.remove();
+    return w;
+  }
+  function tipFor(el) {
+    const tip = document.createElement("div"); tip.className = "tip"; el.append(tip);
+    return {
+      show(ev, lines) {
+        tip.replaceChildren();
+        lines.forEach(([t, cls]) => { const d = document.createElement("div"); if (cls) d.className = cls; d.textContent = t; tip.append(d); });
+        tip.style.opacity = 1;
+        const [px, py] = d3.pointer(ev, el), tw = tip.offsetWidth, th = tip.offsetHeight;
+        let left = px + 14; if (left + tw > el.clientWidth) left = Math.max(0, px - tw - 14);
+        let top = py + 12; if (top + th > el.clientHeight) top = Math.max(0, py - th - 8);
+        tip.style.left = left + "px"; tip.style.top = top + "px";
+      },
+      hide() { tip.style.opacity = 0; }
+    };
+  }
+  const lines = (r) => [[name(r), "t"], [r.peer_group + (r.also_in ? " and " + r.also_in : ""), "h"],
+    ["FY2020: " + (isNaN(r.e20) ? "n/a" : fM(r.e20)) + "   FY2025: " + (isNaN(r.e25) ? "n/a" : fM(r.e25))],
+    ["Change: " + (isNaN(r.chg) ? "n/a" : fP(r.chg)) + (isNaN(r.ps) ? "" : "   Per student: " + fK(r.ps))]];
+
+  function dumbbell(rows) {
+    const el = $("c-size"); el.replaceChildren();
+    rows = rows.filter((r) => !isNaN(r.e25)).sort((a, b) => b.e25 - a.e25);
+    const W = Math.max(300, el.clientWidth || 700), rowH = 22, top = 8, bottom = 30, mr = W < 480 ? 44 : 60;
+    const H = top + rows.length * rowH + bottom;
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const ml = Math.min(W * 0.42, measure(svg, rows, "nm lc")) + 12;
+    const x = d3.scaleLinear([0, d3.max(rows, (r) => Math.max(r.e25, r.e20 || 0))], [ml, W - mr]).nice();
+    x.ticks(W < 480 ? 3 : 6).forEach((t) => {
+      svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", top).attr("y2", H - bottom).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", H - bottom + 16).attr("text-anchor", "middle").text("$" + fD(t) + "M");
+    });
+    const tip = tipFor(el);
+    rows.forEach((r, i) => {
+      const y = top + i * rowH + rowH / 2;
+      const g = svg.append("g");
+      g.append("text").attr("class", r.lc ? "nm lc" : "nm").attr("x", ml - 10).attr("y", y).attr("dy", "0.32em").attr("text-anchor", "end").text(name(r));
+      const c = r.lc ? "var(--gross)" : "var(--aid)";
+      if (!isNaN(r.e20)) {
+        g.append("line").attr("x1", x(r.e20)).attr("x2", x(r.e25)).attr("y1", y).attr("y2", y).attr("stroke", c).attr("stroke-width", 2).attr("opacity", 0.55);
+        g.append("circle").attr("cx", x(r.e20)).attr("cy", y).attr("r", 4).attr("fill", "var(--panel)").attr("stroke", "var(--muted)").attr("stroke-width", 2);
+      }
+      g.append("circle").attr("cx", x(r.e25)).attr("cy", y).attr("r", 5).attr("fill", c).attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
+      g.append("text").attr("class", "lbl v").attr("x", x(Math.max(r.e25, r.e20 || 0)) + 9).attr("y", y).attr("dy", "0.32em").text(fM(r.e25).replace(".0M", "M"));
+      g.append("rect").attr("x", 0).attr("y", y - rowH / 2).attr("width", W).attr("height", rowH).attr("fill", "transparent")
+        .on("pointermove", (ev) => tip.show(ev, lines(r))).on("pointerleave", () => tip.hide());
+    });
+  }
+
+  function bars(id, rows, field, fmt, tickFmt) {
+    const el = $(id); el.replaceChildren();
+    rows = rows.filter((r) => !isNaN(r[field])).sort((a, b) => b[field] - a[field]);
+    const W = Math.max(280, el.clientWidth || 500), rowH = 20, top = 22, bottom = 26;
+    const H = top + rows.length * rowH + bottom;
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const ml = Math.min(W * 0.42, measure(svg, rows, "nm lc")) + 12, mr = 58;
+    const lo = Math.min(0, d3.min(rows, (r) => r[field])), hi = d3.max(rows, (r) => r[field]);
+    const x = d3.scaleLinear([lo, hi], [ml, W - mr]).nice();
+    x.ticks(4).forEach((t) => {
+      svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", top).attr("y2", H - bottom).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", H - bottom + 16).attr("text-anchor", "middle").text(tickFmt(t));
+    });
+    const tip = tipFor(el);
+    rows.forEach((r, i) => {
+      const y = top + i * rowH;
+      svg.append("text").attr("class", r.lc ? "nm lc" : "nm").attr("x", ml - 10).attr("y", y + rowH / 2).attr("dy", "0.32em").attr("text-anchor", "end").text(name(r));
+      const x0 = x(Math.min(0, r[field])), x1 = x(Math.max(0, r[field]));
+      svg.append("rect").attr("x", x0).attr("y", y + 4).attr("width", Math.max(1, x1 - x0)).attr("height", rowH - 8).attr("rx", 2).attr("fill", r.lc ? "var(--gross)" : "var(--other)");
+      svg.append("text").attr("class", "lbl v").attr("x", x1 + 6).attr("y", y + rowH / 2).attr("dy", "0.32em").text(fmt(r[field]));
+      svg.append("rect").attr("x", 0).attr("y", y).attr("width", W).attr("height", rowH).attr("fill", "transparent")
+        .on("pointermove", (ev) => tip.show(ev, lines(r))).on("pointerleave", () => tip.hide());
+    });
+    const med = d3.median(rows.filter((r) => !r.lc), (r) => r[field]);
+    if (med != null) {
+      svg.append("line").attr("x1", x(med)).attr("x2", x(med)).attr("y1", top - 6).attr("y2", H - bottom).attr("stroke", "var(--ink)").attr("stroke-width", 1.5).attr("stroke-dasharray", "4 3").attr("pointer-events", "none");
+      const lab = svg.append("text").attr("class", "lbl").attr("x", x(med)).attr("y", top - 10).attr("text-anchor", "middle").attr("fill", "var(--ink)").text("Median " + fmt(med));
+      const lw = lab.node().getComputedTextLength();
+      if (x(med) + lw / 2 > W) lab.attr("text-anchor", "end").attr("x", W - 2);
+      if (x(med) - lw / 2 < 0) lab.attr("text-anchor", "start").attr("x", 2);
+    }
+  }
+
+  function draw() {
+    const rows = all.filter(inGroup);
+    const peers = rows.filter((r) => !r.lc);
+    const lc = all.find((r) => r.lc);
+    $("k-lc25").textContent = fM(lc.e25);
+    $("k-lcchg").textContent = fP(lc.chg);
+    $("k-medchg").textContent = fP(d3.median(peers.filter((r) => !isNaN(r.chg)), (r) => r.chg));
+    $("k-lcps").textContent = fK(lc.ps);
+    $("k-medps").textContent = fK(d3.median(peers.filter((r) => !isNaN(r.ps)), (r) => r.ps));
+    $("k-lc26").textContent = isNaN(lc.e26) ? "n/a" : fM(lc.e26);
+    const withChg = rows.filter((r) => !isNaN(r.chg)).sort((a, b) => b.chg - a.chg);
+    const withSize = rows.filter((r) => !isNaN(r.e25)).sort((a, b) => b.e25 - a.e25);
+    const rc = withChg.findIndex((r) => r.lc) + 1, rs = withSize.findIndex((r) => r.lc) + 1;
+    const scope = state.group ? state.group : "all three groups";
+    $("find").textContent = `Lewis & Clark's endowment grew ${fP(lc.chg).replace("+", "")} from FY2020 to FY2025, to ${fM(lc.e25)}. Among the ${withChg.length} schools in ${scope} with both years, that is the ${ord(rc)} fastest growth; its FY2025 endowment is the ${ord(rs)} largest of ${withSize.length}.`;
+    dumbbell(rows);
+    bars("c-chg", rows, "chg", fP, (t) => d3.format(".0%")(t));
+    bars("c-ps", rows, "ps", fK, (t) => "$" + fD(t / 1000) + "K");
+    const tb = $("t-body"); tb.replaceChildren();
+    rows.slice().sort((a, b) => (b.lc - a.lc) || (isNaN(b.e25) ? -1 : isNaN(a.e25) ? 1 : b.e25 - a.e25)).forEach((r) => {
+      const tr = document.createElement("tr"); if (r.lc) tr.className = "lc";
+      [[r.institution], [r.peer_group + (r.also_in ? ", " + r.also_in : "")], [isNaN(r.e20) ? "" : d3.format(",.1f")(r.e20), "n"], [isNaN(r.e25) ? "" : d3.format(",.1f")(r.e25), "n"],
+        [isNaN(r.chg) ? "" : fP(r.chg), "n"], [isNaN(r.enr) ? "" : fD(r.enr), "n"], [r.enrollment_term], [isNaN(r.ps) ? "" : "$" + fD(r.ps), "n"], [r.basis, "w"]].forEach(([t, c]) => {
+        const td = document.createElement("td"); if (c) td.className = c; td.textContent = t; tr.append(td);
+      });
+      tb.append(tr);
+    });
+  }
+
+  d3.csv("peer_endowment.csv").then((raw) => {
+    all = raw.map((r) => ({ ...r, lc: r.peer_group === "Lewis & Clark", e20: num(r.endowment_fy2020_m), e25: num(r.endowment_fy2025_m), e26: num(r.endowment_fy2026_m), chg: num(r.change_5yr), enr: num(r.total_enrollment), ps: num(r.endowment_per_student) }));
+    draw();
+    document.querySelectorAll("[data-group]").forEach((b) => b.addEventListener("click", () => {
+      state.group = b.dataset.group;
+      document.querySelectorAll("[data-group]").forEach((o) => o.setAttribute("aria-pressed", String(o === b)));
+      draw();
+    }));
+    let t; window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(draw, 120); });
+  }).catch(() => { const p = document.createElement("p"); p.className = "fail"; p.textContent = "The data file did not load."; $("c-size").append(p); });
+})();
+</script>
+</body>
+</html>

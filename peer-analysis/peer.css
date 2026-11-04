@@ -86,3 +86,4 @@ td a { color: var(--ink); white-space: nowrap; }
 .notes a { color: inherit; word-break: break-word; }
 .fail { color: var(--muted); font-size: 13px; padding: 40px 0; text-align: center; }
 [hidden] { display: none !important; }
+.lbl.v { paint-order: stroke; stroke: var(--panel); stroke-width: 4px; stroke-linejoin: round; }
