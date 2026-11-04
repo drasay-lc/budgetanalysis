@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Peer Foreign Language Requirements</title>
+<meta name="description" content="Foreign language graduation requirements at Lewis & Clark and 33 peer institutions, from each school's catalog.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../peer.css">
+<style>
+.c-all { background: var(--gross); }
+.c-some { background: var(--aid); }
+.c-menu { background: var(--other); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Peer analysis</a></p>
+  <header>
+    <div class="eyebrow">All three peer groups · undergraduate catalogs, read November 3, 2026</div>
+    <h1>Peer Foreign Language Requirements</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5 (high effort), November 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="dek">Which peer institutions require a year or more of a foreign language to graduate, who the requirement applies to, and how a student can test out of it. Lewis &amp; Clark requires proficiency at the 201 level of every College of Arts and Sciences student, or placement into 202 or above.</p>
+    <p class="find" id="find"></p>
+  </header>
+
+  <div class="tiles" aria-live="polite">
+    <div class="tile"><b id="k-peers">&nbsp;</b><span>Peers reviewed, three groups</span></div>
+    <div class="tile"><b id="k-1">&nbsp;</b><span>More than one year, all students</span></div>
+    <div class="tile"><b id="k-2">&nbsp;</b><span>One year, all students</span></div>
+    <div class="tile"><b id="k-34">&nbsp;</b><span>Some students only (by college or degree)</span></div>
+    <div class="tile"><b id="k-5">&nbsp;</b><span>Less than one year, or one option in a menu</span></div>
+    <div class="tile"><b id="k-6">&nbsp;</b><span>No language requirement</span></div>
+  </div>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Peer group">
+      <button type="button" data-group="" aria-pressed="true">All groups</button>
+      <button type="button" data-group="Group 1" aria-pressed="false">Group 1</button>
+      <button type="button" data-group="Group 2" aria-pressed="false">Group 2</button>
+      <button type="button" data-group="Group 3" aria-pressed="false">Group 3</button>
+    </div>
+    <span style="color:var(--muted);font-size:13px">Group 1: L&amp;C comparison group. Group 2: Carnegie class. Group 3: smaller endowment.</span>
+  </div>
+
+  <section class="card" aria-labelledby="h-chart">
+    <h2 id="h-chart">Semesters of language study required, by institution</h2>
+    <p class="note">College semesters of one language a student with no prior background would take to meet the requirement, grouped by requirement segment. Requirements stated as a proficiency level are converted to the course that confers it (the 201 level is three semesters); quarter terms are converted to semesters. Lewis &amp; Clark is always shown. Hover or tap a row for details.</p>
+    <div class="key" aria-hidden="true">
+      <span><i class="sq c-all"></i>Required of all students</span>
+      <span><i class="sq c-some"></i>Required of some students</span>
+      <span><i class="sq c-menu"></i>One option among several</span>
+      <span><i class="ref"></i>Lewis &amp; Clark requirement</span>
+    </div>
+    <div class="chart" id="chart" role="img" aria-label="Semesters of language study required at each institution, grouped by segment"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-seg">
+    <h2 id="h-seg">Peers by requirement segment and group</h2>
+    <p class="note">Number of peer institutions in each segment. More than one year means three or more semesters from no background; one year means two.</p>
+    <div class="tbox">
+      <table>
+        <thead><tr><th scope="col">Segment</th><th scope="col" class="n">Group 1</th><th scope="col" class="n">Group 2</th><th scope="col" class="n">Group 3</th><th scope="col" class="n">All peers</th><th scope="col" class="n">Share of peers</th></tr></thead>
+        <tbody id="seg-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="h-detail">
+    <h2 id="h-detail">Requirement details and sources</h2>
+    <p class="note">Who the requirement applies to and how a student can test out or be exempted, as each catalog states it. Each row links to the catalog or official page it was read from.</p>
+    <div class="controls" style="margin-bottom:10px">
+      <input type="search" id="q" placeholder="Search institution, requirement or test-out rule" aria-label="Search the table" style="min-width:min(100%,22rem)">
+      <span id="shown" style="color:var(--muted);font-size:13px"></span>
+    </div>
+    <div class="tbox">
+      <table style="min-width:64rem">
+        <thead><tr><th scope="col">Institution</th><th scope="col">Peer group</th><th scope="col">Segment</th><th scope="col" class="n">Semesters</th><th scope="col">Applies to</th><th scope="col">How to test out or be exempted</th><th scope="col">Catalog</th><th scope="col">Source</th></tr></thead>
+        <tbody id="t-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <p class="data-link"><a href="language_requirements.csv" download>Download the data (CSV) →</a><span>One row per institution, with the level required, notes and the citation URL.</span></p>
+  <div class="notes">
+    <div>
+      <h3>How the requirement was recorded</h3>
+      <p>Each institution's current undergraduate catalog (2026-27, or 2025-26 where no newer edition is published) or its official general education page was read on November 3, 2026. Where a catalog blocks automated reading, the institution's own general education, registrar or language department pages were used. No third-party sites were used.</p>
+      <p>Where a school offers a choice of language options (Pacific Lutheran), the shortest option is used.</p>
+    </div>
+    <div>
+      <h3>Segments</h3>
+      <ul>
+        <li><b>More than one year:</b> three or more semesters from no background, for example a requirement met at the 201 level.</li>
+        <li><b>One year:</b> two semesters, or three quarters.</li>
+        <li><b>Some students:</b> the requirement applies only to some colleges or degrees, such as the College of Arts and Sciences or the BA.</li>
+        <li><b>Less than one year:</b> one course, or language is one option in a menu of ways to meet a general education area.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Caveats</h3>
+      <ul>
+        <li>Reed's 2026-27 catalog could not be read, so its 2024-25 catalog was used; Reed's Common Data Set appears to list foreign language as required, which conflicts with the catalog.</li>
+        <li>Pacific Lutheran's current catalogs block automated reading, so its 2022-23 text was used and the current wording is unverified.</li>
+        <li>Ohio Northern rests on its general education policy and published degree plans.</li>
+        <li>Union's catalog says students choose how to distribute eight Perspectives courses, while its Complex Questions page says every student takes one in each; if the latter applies, one term of language is required.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmtI = d3.format(","), fmtPct = d3.format(".0%");
+  const state = { group: "", q: "" };
+  const fill = (c) => (c === "All students" ? "var(--gross)" : c === "Some students" ? "var(--aid)" : "var(--other)");
+  let all = [];
+  const inGroup = (r) => !state.group || r.lc || r.peer_group === state.group;
+  const sortRows = (a, b) => a.seg - b.seg || (b.lc - a.lc) || b.sem - a.sem || a.institution.localeCompare(b.institution);
+
+  function summary() {
+    const peers = all.filter((r) => !r.lc);
+    const n = (...o) => peers.filter((r) => o.includes(r.seg)).length;
+    const lc = all.find((r) => r.lc);
+    $("k-peers").textContent = fmtI(peers.length);
+    $("k-1").textContent = fmtI(n(1));
+    $("k-2").textContent = fmtI(n(2));
+    $("k-34").textContent = fmtI(n(3, 4));
+    $("k-5").textContent = fmtI(n(5));
+    $("k-6").textContent = fmtI(n(6));
+    $("find").textContent = `Lewis & Clark requires ${fmtI(lc.sem)} semesters of one language. Only ${fmtI(n(1))} of ${fmtI(peers.length)} peers ask as much of all students; ${fmtI(n(2))} more require one year, and ${fmtI(n(5, 6))} require less than a year or nothing.`;
+    const tb = $("seg-body");
+    tb.replaceChildren();
+    d3.groups(all, (r) => r.seg).sort((a, b) => a[0] - b[0]).forEach(([seg, rs]) => {
+      const p = peers.filter((r) => r.seg === seg);
+      const g = (k) => p.filter((r) => r.peer_group === k).length;
+      const tr = document.createElement("tr");
+      [[rs[0].segment], [fmtI(g("Group 1")), "n"], [fmtI(g("Group 2")), "n"], [fmtI(g("Group 3")), "n"], [fmtI(p.length), "n"], [fmtPct(p.length / peers.length), "n"]].forEach(([t, c]) => {
+        const td = document.createElement("td"); if (c) td.className = c; td.textContent = t; tr.append(td);
+      });
+      tb.append(tr);
+    });
+  }
+
+  function chart() {
+    const el = $("chart");
+    el.replaceChildren();
+    const rows = all.filter(inGroup).sort(sortRows);
+    const segs = d3.groups(rows, (r) => r.seg).sort((a, b) => a[0] - b[0]);
+    const W = Math.max(300, el.clientWidth || 700);
+    const rowH = 22, headH = 32, top = 28, axisH = 46, mr = 18;
+    const H = top + segs.length * headH + rows.length * rowH + axisH;
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const probe = svg.append("text").attr("class", "nm lc");
+    const widthOf = (s) => { probe.text(s); return probe.node().getComputedTextLength(); };
+    const maxL = Math.max(100, Math.min(W * 0.45, d3.max(rows, (r) => widthOf(r.institution))));
+    const fit = (s) => {
+      if (widthOf(s) <= maxL) return s;
+      let t = s;
+      while (t.length > 4 && widthOf(t + "…") > maxL) t = t.slice(0, -1);
+      return t.trimEnd() + "…";
+    };
+    const labels = new Map(rows.map((r) => [r.key, fit(r.institution)]));
+    probe.remove();
+    const ml = maxL + 12;
+    const xMax = Math.max(4, d3.max(rows, (r) => r.sem));
+    const x = d3.scaleLinear([0, xMax], [ml, W - mr]);
+    const bottom = H - axisH;
+    d3.range(0, xMax + 1).forEach((t) => {
+      svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", top).attr("y2", bottom).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", bottom + 16).attr("text-anchor", "middle").text(fmtI(t));
+    });
+    svg.append("text").attr("class", "lbl").attr("x", W - mr).attr("y", H - 8).attr("text-anchor", "end").text("Semesters, starting with no background");
+
+    const tip = document.createElement("div");
+    tip.className = "tip";
+    const show = (ev, r) => {
+      tip.replaceChildren();
+      const t = document.createElement("div"); t.className = "t"; t.textContent = r.institution;
+      const h = document.createElement("div"); h.className = "h"; h.textContent = r.peer_group + " · " + r.segment;
+      const v = document.createElement("div"); v.textContent = r.sem === 0 ? "No language requirement" : fmtI(r.sem) + (r.sem === 1 ? " semester" : " semesters") + " (" + r.coverage.toLowerCase() + ")";
+      const a = document.createElement("div"); a.className = "h";
+      const ap = String(r.applies_to || "");
+      a.textContent = "Applies to: " + (ap.length > 160 ? ap.slice(0, 157).trimEnd() + "…" : ap);
+      tip.append(t, h, v, a);
+      tip.style.opacity = 1;
+      const [px, py] = d3.pointer(ev, el);
+      const tw = tip.offsetWidth, th = tip.offsetHeight;
+      let left = px + 14;
+      if (left + tw > el.clientWidth) left = Math.max(0, px - tw - 14);
+      let tp = py + 14;
+      if (tp + th > el.clientHeight) tp = Math.max(0, py - th - 10);
+      tip.style.left = left + "px";
+      tip.style.top = tp + "px";
+    };
+
+    let y = top;
+    segs.forEach(([, rs]) => {
+      svg.append("text").attr("class", "sg").attr("x", 0).attr("y", y + headH - 10).text(rs[0].segment);
+      y += headH;
+      rs.forEach((r) => {
+        const g = svg.append("g").attr("transform", `translate(0,${y})`);
+        g.append("text").attr("class", r.lc ? "nm lc" : "nm").attr("x", ml - 10).attr("y", rowH / 2).attr("dy", "0.32em").attr("text-anchor", "end").text(labels.get(r.key));
+        if (r.sem > 0) g.append("rect").attr("x", x(0)).attr("y", (rowH - 14) / 2).attr("width", Math.max(0, x(r.sem) - x(0))).attr("height", 14).attr("rx", 3).attr("fill", fill(r.coverage));
+        else g.append("text").attr("class", "lbl").attr("x", x(0) + 6).attr("y", rowH / 2).attr("dy", "0.32em").text("None");
+        g.append("rect").attr("width", W).attr("height", rowH).attr("fill", "transparent")
+          .on("pointermove", (ev) => show(ev, r)).on("pointerleave", () => { tip.style.opacity = 0; });
+        y += rowH;
+      });
+    });
+    const lc = rows.find((r) => r.lc);
+    if (lc && lc.sem > 0) {
+      const lx = x(lc.sem);
+      svg.append("line").attr("x1", lx).attr("x2", lx).attr("y1", top - 6).attr("y2", bottom).attr("stroke", "var(--ink)").attr("stroke-width", 1.5).attr("stroke-dasharray", "4 3").attr("pointer-events", "none");
+      const lab = svg.append("text").attr("class", "lbl").attr("x", lx).attr("y", top - 12).attr("text-anchor", "middle").attr("fill", "var(--ink)").text("Lewis & Clark: " + fmtI(lc.sem));
+      if (lx + lab.node().getComputedTextLength() / 2 > W) lab.attr("text-anchor", "end").attr("x", W - 2);
+    }
+    el.append(tip);
+  }
+
+  function table() {
+    const tb = $("t-body");
+    tb.replaceChildren();
+    const q = state.q.trim().toLowerCase();
+    const rows = all.filter(inGroup)
+      .filter((r) => !q || [r.institution, r.peer_group, r.segment, r.applies_to, r.test_out, r.level_required].join(" ").toLowerCase().includes(q))
+      .sort(sortRows);
+    rows.forEach((r) => {
+      const tr = document.createElement("tr");
+      if (r.lc) tr.className = "lc";
+      [[r.institution], [r.peer_group], [r.segment], [fmtI(r.sem), "n"], [r.applies_to, "w"], [r.test_out, "w"], [r.catalog_year]].forEach(([t, c]) => {
+        const td = document.createElement("td"); if (c) td.className = c; td.textContent = t; tr.append(td);
+      });
+      const td = document.createElement("td");
+      if (/^https?:\/\//.test(r.source_url)) {
+        const a = document.createElement("a");
+        a.href = r.source_url; a.target = "_blank"; a.rel = "noopener";
+        a.textContent = r.source_url.replace(/^https?:\/\//, "").split("/")[0];
+        a.title = r.source_url;
+        td.append(a);
+      } else td.textContent = r.source_url;
+      tr.append(td);
+      tb.append(tr);
+    });
+    $("shown").textContent = `${fmtI(rows.length)} of ${fmtI(all.length)} institutions shown`;
+  }
+
+  d3.csv("language_requirements.csv").then((raw) => {
+    all = raw.map((r) => ({ ...r, sem: +r.semesters, seg: +r.segment_order, lc: r.peer_group === "Lewis & Clark" }));
+    summary(); chart(); table();
+    document.querySelectorAll("[data-group]").forEach((b) => b.addEventListener("click", () => {
+      state.group = b.dataset.group;
+      document.querySelectorAll("[data-group]").forEach((o) => o.setAttribute("aria-pressed", String(o === b)));
+      chart(); table();
+    }));
+    $("q").addEventListener("input", (e) => { state.q = e.target.value; table(); });
+    let t;
+    window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(chart, 120); });
+  }).catch(() => {
+    const p = document.createElement("p"); p.className = "fail"; p.textContent = "The data file did not load."; $("chart").append(p);
+  });
+})();
+</script>
+</body>
+</html>
