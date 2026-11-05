@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="../peer.css">
 <style>
 .key i.dot20 { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--muted); background: var(--panel); display: inline-block; }
+.chart { min-height: 0; height: auto; }
 .key i.dot25 { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 </style>
 </head>
@@ -71,19 +72,52 @@
 
   <section class="card" aria-labelledby="h-table">
     <h2 id="h-table">Figures by institution</h2>
-    <p class="note">Endowment in millions of dollars at each school's fiscal year end. The basis column says what each figure measures and where it came from.</p>
+    <p class="note">Endowment in millions of dollars at each school's fiscal year end. FY2026 is shown where audited statements were published. The basis column says what each figure measures and where it came from.</p>
     <div class="tbox">
-      <table style="min-width:62rem">
-        <thead><tr><th scope="col">Institution</th><th scope="col">Year end</th><th scope="col" class="n">FY2020 ($M)</th><th scope="col" class="n">FY2025 ($M)</th><th scope="col" class="n">Change</th><th scope="col" class="n">Enrollment</th><th scope="col">Term</th><th scope="col" class="n">Per student</th><th scope="col">Basis</th></tr></thead>
+      <table style="min-width:66rem">
+        <thead><tr><th scope="col">Institution</th><th scope="col">Year end</th><th scope="col" class="n">FY2020 ($M)</th><th scope="col" class="n">FY2025 ($M)</th><th scope="col" class="n">Change</th><th scope="col" class="n">FY2026 ($M)</th><th scope="col" class="n">Enrollment</th><th scope="col">Term</th><th scope="col" class="n">Per student</th><th scope="col">Basis</th></tr></thead>
         <tbody id="t-body"></tbody>
       </table>
     </div>
   </section>
 
-%GROUPS%
+  <section class="card groups-card" id="comparison-set" aria-labelledby="h-set" style="margin-top:16px">
+    <h2 id="h-set">The comparison set</h2>
+    <p class="note">Five national liberal arts colleges, chosen for this comparison rather than from Lewis &amp; Clark's published peer groups. All five have endowments five to eleven times the size of Lewis &amp; Clark's and enroll mostly or only undergraduates, so endowment per student is far higher than at any school on the <a href="../endowment/">peer endowment page</a>.</p>
+    <dl class="gl">
+      <div><dt>Williams College</dt><dd><p class="m">Williamstown, Massachusetts. 2,067 undergraduates and 49 graduate students.</p></dd></div>
+      <div><dt>Swarthmore College</dt><dd><p class="m">Swarthmore, Pennsylvania. Undergraduates only.</p></dd></div>
+      <div><dt>Wesleyan University</dt><dd><p class="m">Middletown, Connecticut. The largest enrollment of the five, including 206 graduate students.</p></dd></div>
+      <div><dt>Bowdoin College</dt><dd><p class="m">Brunswick, Maine. Undergraduates only.</p></dd></div>
+      <div><dt>Grinnell College</dt><dd><p class="m">Grinnell, Iowa. Undergraduates only.</p></dd></div>
+    </dl>
+  </section>
+
   <p class="data-link"><a href="../data/#five-colleges">Data tables and sources for this page →</a><span>Every value with its citation.</span></p>
   <p class="data-link" style="margin-top:6px"><a href="five_college_endowment.csv" download>Download the data (CSV) →</a><span>One row per institution, with the basis of each figure.</span></p>
-%NOTES%
+  <div class="notes">
+    <div>
+      <h3>What is measured</h3>
+      <p>Endowment net assets from the endowment note of each school's audited financial statements, at fiscal year end: May 31 for Lewis &amp; Clark, June 30 for the other five. The FY2020 figure for each of the five is read from its FY2021 statements, which print June 30, 2020 as the prior year. The change combines investment returns, new gifts and spending, so it is not an investment return.</p>
+      <p>Each school's two years are on the same basis. The figures match each school's reported market value to the nearest $10 million or better where that was checked (NACUBO or federal IPEDS for Swarthmore, Bowdoin, Wesleyan and Grinnell).</p>
+    </div>
+    <div>
+      <h3>Differences in what is counted</h3>
+      <ul>
+        <li>Wesleyan's endowment includes working capital funds, operating reserves invested alongside the endowment: $65.1M in 2020 and $57.4M in 2025. Without them its change is +48.6% rather than +45.1%.</li>
+        <li>Swarthmore and Williams exclude split-interest agreements from the endowment; Bowdoin, Wesleyan and Grinnell report outside trusts and split-interest assets elsewhere in their statements.</li>
+        <li>FY2026 audited statements were published for Lewis &amp; Clark ($374.9M), Swarthmore ($3,028.2M) and Bowdoin ($3,552.4M) and are shown in the table only. Williams, Wesleyan and Grinnell had not posted FY2026 statements, so the comparison stops at FY2025.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Enrollment</h3>
+      <ul>
+        <li>Total headcount (undergraduate plus graduate) from each school's Common Data Set, item B1: fall 2025 for Swarthmore and Bowdoin, fall 2024 for Wesleyan and Grinnell, whose 2025-26 data sets were not yet posted.</li>
+        <li>Williams's figure is from its Fast Facts page, as of fall 2025, which draws on its Common Data Set; the data set itself could not be opened.</li>
+        <li>Wesleyan's headcount includes 741 part-time undergraduates reported as other students enrolled for credit (3,064 are full-time). Counting full-time undergraduates and graduate students only, its endowment per student would be higher.</li>
+      </ul>
+    </div>
+  </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script>
@@ -91,7 +125,7 @@
   const $ = (id) => document.getElementById(id);
   const fM = (v) => "$" + d3.format(",.1f")(v) + "M";
   const fP = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + d3.format(".1%")(Math.abs(v));
-  const fK = (v) => "$" + d3.format(",.0f")(v / 1000) + "K";
+  const fK = (v) => v >= 1e6 ? "$" + d3.format(",.2f")(v / 1e6) + "M" : "$" + d3.format(",.0f")(v / 1000) + "K";
   const fD = d3.format(",");
   const ord = (n) => n + (["th", "st", "nd", "rd"][(n % 100 - 20) % 10] || ["th", "st", "nd", "rd"][n % 100] || "th");
   let all = [];
@@ -133,7 +167,7 @@
     const x = d3.scaleLinear([0, d3.max(rows, (r) => Math.max(r.e25, r.e20 || 0))], [ml, W - mr]).nice();
     x.ticks(W < 480 ? 3 : 6).forEach((t) => {
       svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", top).attr("y2", H - bottom).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
-      svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", H - bottom + 16).attr("text-anchor", "middle").text("$" + fD(t) + "M");
+      svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", H - bottom + 16).attr("text-anchor", "middle").text(t >= 1000 ? "$" + d3.format(",.1~f")(t / 1000) + "B" : "$" + fD(t) + "M");
     });
     const tip = tipFor(el);
     rows.forEach((r, i) => {
@@ -146,7 +180,7 @@
         g.append("circle").attr("cx", x(r.e20)).attr("cy", y).attr("r", 4).attr("fill", "var(--panel)").attr("stroke", "var(--muted)").attr("stroke-width", 2);
       }
       g.append("circle").attr("cx", x(r.e25)).attr("cy", y).attr("r", 5).attr("fill", c).attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
-      g.append("text").attr("class", "lbl v").attr("x", x(Math.max(r.e25, r.e20 || 0)) + 9).attr("y", y).attr("dy", "0.32em").text(fM(r.e25).replace(".0M", "M"));
+      g.append("text").attr("class", "lbl v").attr("x", x(Math.max(r.e25, r.e20 || 0)) + 9).attr("y", y).attr("dy", "0.32em").text(r.e25 >= 1000 ? "$" + d3.format(",.2f")(r.e25 / 1000) + "B" : fM(r.e25).replace(".0M", "M"));
       g.append("rect").attr("x", 0).attr("y", y - rowH / 2).attr("width", W).attr("height", rowH).attr("fill", "transparent")
         .on("pointermove", (ev) => tip.show(ev, lines(r))).on("pointerleave", () => tip.hide());
     });
@@ -177,7 +211,7 @@
     });
     const med = d3.median(rows.filter((r) => !r.lc), (r) => r[field]);
     if (med != null) {
-      svg.append("line").attr("x1", x(med)).attr("x2", x(med)).attr("y1", top - 6).attr("y2", H - bottom).attr("stroke", "var(--ink)").attr("stroke-width", 1.5).attr("stroke-dasharray", "4 3").attr("pointer-events", "none");
+      svg.insert("line", ":first-child").attr("x1", x(med)).attr("x2", x(med)).attr("y1", top - 6).attr("y2", H - bottom).attr("stroke", "var(--ink)").attr("stroke-width", 1.5).attr("stroke-dasharray", "4 3").attr("pointer-events", "none");
       const lab = svg.append("text").attr("class", "lbl").attr("x", x(med)).attr("y", top - 10).attr("text-anchor", "middle").attr("fill", "var(--ink)").text("Median " + fmt(med));
       const lw = lab.node().getComputedTextLength();
       if (x(med) + lw / 2 > W) lab.attr("text-anchor", "end").attr("x", W - 2);
@@ -199,15 +233,15 @@
     const withSize = rows.filter((r) => !isNaN(r.e25)).sort((a, b) => b.e25 - a.e25);
     const rs = withSize.findIndex((r) => r.lc) + 1;
     const ahead = withChg.filter((r) => !r.lc && r.chg > lc.chg).length;
-    $("find").textContent = `Lewis & Clark's endowment grew ${fP(lc.chg).replace("+", "")} from FY2020 to FY2025, to ${fM(lc.e25)}. ${ahead === 0 ? "That is faster than all five comparison colleges" : ahead === 5 ? "All five comparison colleges grew faster" : ahead + " of the five comparison colleges grew faster"}; the median of the five was ${fP(d3.median(peers.filter((r) => !isNaN(r.chg)), (r) => r.chg)).replace("+", "")}. Its FY2025 endowment is the ${ord(rs)} largest of the ${withSize.length}, and its endowment per student is ${fK(lc.ps)} against a median of ${fK(d3.median(peers.filter((r) => !isNaN(r.ps)), (r) => r.ps))}.`;
+    $("find").textContent = `Lewis & Clark's endowment grew ${fP(lc.chg).replace("+", "")} from FY2020 to FY2025, to ${fM(lc.e25)}. ${ahead === 0 ? "That is faster than all five comparison colleges" : ahead === 5 ? "All five comparison colleges grew faster" : ["", "One", "Two", "Three", "Four"][ahead] + " of the five comparison colleges grew faster"}; the median of the five was ${fP(d3.median(peers.filter((r) => !isNaN(r.chg)), (r) => r.chg)).replace("+", "")}. ${rs === withSize.length ? "Its FY2025 endowment is the smallest of the six" : `Its FY2025 endowment is the ${ord(rs)} largest of the six`}, and its endowment per student is ${fK(lc.ps)} against a median of ${fK(d3.median(peers.filter((r) => !isNaN(r.ps)), (r) => r.ps))}.`;
     dumbbell(rows);
     bars("c-chg", rows, "chg", fP, (t) => d3.format(".0%")(t));
-    bars("c-ps", rows, "ps", fK, (t) => "$" + fD(t / 1000) + "K");
+    bars("c-ps", rows, "ps", fK, (t) => t >= 1e6 ? "$" + d3.format(",.1f")(t / 1e6) + "M" : "$" + fD(t / 1000) + "K");
     const tb = $("t-body"); tb.replaceChildren();
     rows.slice().sort((a, b) => (b.lc - a.lc) || (isNaN(b.e25) ? -1 : isNaN(a.e25) ? 1 : b.e25 - a.e25)).forEach((r) => {
       const tr = document.createElement("tr"); if (r.lc) tr.className = "lc";
       [[r.institution], [r.fy_end], [isNaN(r.e20) ? "" : d3.format(",.1f")(r.e20), "n"], [isNaN(r.e25) ? "" : d3.format(",.1f")(r.e25), "n"],
-        [isNaN(r.chg) ? "" : fP(r.chg), "n"], [isNaN(r.enr) ? "" : fD(r.enr), "n"], [r.enrollment_term], [isNaN(r.ps) ? "" : "$" + fD(r.ps), "n"], [r.basis, "w"]].forEach(([t, c]) => {
+        [isNaN(r.chg) ? "" : fP(r.chg), "n"], [isNaN(r.e26) ? "" : d3.format(",.1f")(r.e26), "n"], [isNaN(r.enr) ? "" : fD(r.enr), "n"], [r.enrollment_term], [isNaN(r.ps) ? "" : "$" + fD(r.ps), "n"], [r.basis, "w"]].forEach(([t, c]) => {
         const td = document.createElement("td"); if (c) td.className = c; td.textContent = t; tr.append(td);
       });
       tb.append(tr);
