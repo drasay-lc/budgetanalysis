@@ -1,0 +1,92 @@
+institution,line_item,asset_class,liquidity_tier,fy2020_m,fy2025_m,pool_basis
+Lewis & Clark,Directly held securities and cash,Cash and short-term,Within days,45.045,32.625,Long-term investment pool
+Lewis & Clark,Pooled Treasuries,Fixed income,Within days,12.968,19.505,Long-term investment pool
+Lewis & Clark,Domestic equity,Public equity,Within a quarter,29.485,52.194,Long-term investment pool
+Lewis & Clark,International equity,Public equity,After a lockup,51.673,74.270,Long-term investment pool
+Lewis & Clark,"Hedge funds, with lockup",Hedge funds and absolute return,After a lockup,30.661,25.695,Long-term investment pool
+Lewis & Clark,Venture capital,Private equity and venture,No redemption,45.942,71.344,Long-term investment pool
+Lewis & Clark,Private equity,Private equity and venture,No redemption,19.518,29.109,Long-term investment pool
+Lewis & Clark,Real assets,Real assets,No redemption,12.791,15.492,Long-term investment pool
+Lewis & Clark,Pooled bonds,Fixed income,Within a quarter,,12.861,Long-term investment pool
+Lewis & Clark,"Hedge funds, no lockup",Hedge funds and absolute return,Within a quarter,,7.159,Long-term investment pool
+Williams,Short-term investments,Cash and short-term,Within days,9.658,101.065,Investment pool
+Williams,Redemption receivable from underlying funds,Cash and short-term,Within days,54.476,,Investment pool
+Williams,"Advance subscription to underlying funds, net of other assets and liabilities",Other,After a lockup,9.961,,Investment pool
+Williams,Global long equity,Public equity,Within a quarter,724.148,1007.757,Investment pool
+Williams,Global long/short equity,Hedge funds and absolute return,After a lockup,630.428,691.479,Investment pool
+Williams,Absolute return,Hedge funds and absolute return,After a lockup,547.077,504.048,Investment pool
+Williams,Venture capital,Private equity and venture,No redemption,539.790,718.008,Investment pool
+Williams,Buyouts,Private equity and venture,No redemption,234.388,684.711,Investment pool
+Williams,Real assets,Real assets,No redemption,128.399,397.722,Investment pool
+Williams,Real estate,Real assets,No redemption,127.251,,Investment pool
+Williams,Noninvestment grade fixed income,Credit and distressed,After a lockup,188.184,267.145,Investment pool
+Williams,Receivable from underlying funds,Cash and short-term,Within days,,29.751,Investment pool
+Williams,Investment grade fixed income,Fixed income,Within days,,40.504,Investment pool
+Swarthmore,Cash and cash equivalents,Cash and short-term,Within days,118.965,,Endowment investments
+Swarthmore,Fixed income,Fixed income,Within days,86.096,84.403,Endowment investments
+Swarthmore,"Public equity, Level 1",Public equity,Within days,260.589,131.085,Endowment investments
+Swarthmore,"Public equity, Level 2",Public equity,Within a quarter,262.532,275.844,Endowment investments
+Swarthmore,"Public equity, at NAV",Public equity,Within a quarter,290.352,,Endowment investments
+Swarthmore,"Real assets, Level 1",Real assets,Within days,6.860,,Endowment investments
+Swarthmore,"Real assets, at NAV",Real assets,No redemption,219.581,,Endowment investments
+Swarthmore,Private equity,Private equity and venture,No redemption,544.531,959.896,Endowment investments
+Swarthmore,Alternative strategies,Hedge funds and absolute return,After a lockup,314.164,,Endowment investments
+Swarthmore,Endowment cash and cash equivalents,Cash and short-term,Within days,,88.661,Endowment investments
+Swarthmore,"Public equity, at NAV (monthly or annual)",Public equity,Within a quarter,,398.864,Endowment investments
+Swarthmore,Real assets,Real assets,No redemption,,401.685,Endowment investments
+Swarthmore,Hedge funds (quarterly or semi-annual),Hedge funds and absolute return,After a lockup,,172.511,Endowment investments
+Swarthmore,Hedge funds (illiquid),Hedge funds and absolute return,No redemption,,68.403,Endowment investments
+Swarthmore,Private funds (illiquid),Hedge funds and absolute return,No redemption,,261.333,Endowment investments
+Wesleyan,Money market funds and cash equivalents,Cash and short-term,Within days,37.961,15.725,Long-term investments
+Wesleyan,Fixed income,Fixed income,Within days,49.660,36.076,Long-term investments
+Wesleyan,Domestic equity,Public equity,Within days,0.030,,Long-term investments
+Wesleyan,Domestic equity,Public equity,Within a quarter,105.009,,Long-term investments
+Wesleyan,Domestic equity,Public equity,After a lockup,36.683,,Long-term investments
+Wesleyan,Domestic equity,Public equity,No redemption,0.836,,Long-term investments
+Wesleyan,International equity,Public equity,Within days,2.753,,Long-term investments
+Wesleyan,International equity,Public equity,Within a quarter,65.066,,Long-term investments
+Wesleyan,International equity,Public equity,After a lockup,76.963,,Long-term investments
+Wesleyan,International equity,Public equity,No redemption,24.587,,Long-term investments
+Wesleyan,Real estate,Real assets,No redemption,67.239,,Long-term investments
+Wesleyan,Natural resources,Real assets,Within days,2.514,,Long-term investments
+Wesleyan,Natural resources,Real assets,No redemption,30.076,,Long-term investments
+Wesleyan,Venture capital,Private equity and venture,No redemption,182.426,,Long-term investments
+Wesleyan,Buyout,Private equity and venture,No redemption,178.648,,Long-term investments
+Wesleyan,Other private equity,Private equity and venture,Within days,0.681,,Long-term investments
+Wesleyan,Other private equity,Private equity and venture,No redemption,41.380,,Long-term investments
+Wesleyan,Absolute return,Hedge funds and absolute return,No redemption,36.176,33.515,Long-term investments
+Wesleyan,Absolute return,Hedge funds and absolute return,Within days,2.668,,Long-term investments
+Wesleyan,Absolute return,Hedge funds and absolute return,Within a quarter,29.504,164.684,Long-term investments
+Wesleyan,Absolute return,Hedge funds and absolute return,After a lockup,149.973,87.620,Long-term investments
+Wesleyan,Global equity,Public equity,No redemption,,112.035,Long-term investments
+Wesleyan,Global equity,Public equity,Within days,,26.573,Long-term investments
+Wesleyan,Global equity,Public equity,Within a quarter,,117.202,Long-term investments
+Wesleyan,Global equity,Public equity,After a lockup,,147.343,Long-term investments
+Wesleyan,Real assets,Real assets,No redemption,,118.301,Long-term investments
+Wesleyan,Private equity,Private equity and venture,Within days,,3.618,Long-term investments
+Wesleyan,Private equity,Private equity and venture,No redemption,,779.456,Long-term investments
+Bowdoin,Cash and cash equivalents,Cash and short-term,Within days,20.520,75.584,Total investments
+Bowdoin,Cash and cash equivalents,Cash and short-term,No redemption,0.400,0.315,Total investments
+Bowdoin,Fixed income,Fixed income,Within days,50.107,38.235,Total investments
+Bowdoin,Fixed income,Fixed income,No redemption,8.518,7.382,Total investments
+Bowdoin,Equities,Public equity,Within days,37.553,48.333,Total investments
+Bowdoin,Equities,Public equity,Within a quarter,324.142,349.332,Total investments
+Bowdoin,Equities,Public equity,After a lockup,59.851,154.793,Total investments
+Bowdoin,Equities,Public equity,No redemption,31.223,24.193,Total investments
+Bowdoin,Absolute return,Hedge funds and absolute return,Within a quarter,493.526,819.110,Total investments
+Bowdoin,Absolute return,Hedge funds and absolute return,After a lockup,21.485,100.430,Total investments
+Bowdoin,Absolute return,Hedge funds and absolute return,No redemption,33.081,30.594,Total investments
+Bowdoin,Alternative investments: private equity,Private equity and venture,No redemption,673.790,1120.622,Total investments
+Bowdoin,Alternative investments: real assets,Real assets,No redemption,182.325,262.965,Total investments
+Bowdoin,Absolute return,Hedge funds and absolute return,Within days,,32.265,Total investments
+Bowdoin,"Alternative investments: private equity, daily",Private equity and venture,Within days,,0.146,Total investments
+Grinnell,Short-term investments,Cash and short-term,Within days,27.631,271.940,Investments
+Grinnell,U.S. government and agency notes and bonds,Fixed income,Within days,112.563,8.655,Investments
+Grinnell,Corporate and other bonds,Fixed income,Within days,66.621,33.672,Investments
+Grinnell,Marketable equity interests,Public equity,Within days,327.993,11.477,Investments
+Grinnell,Commingled funds,Public equity,After a lockup,703.503,1463.084,Investments
+Grinnell,Private equity,Private equity and venture,No redemption,721.821,1037.004,Investments
+Grinnell,Distressed,Credit and distressed,No redemption,161.182,70.727,Investments
+Grinnell,Real assets,Real assets,No redemption,42.899,51.654,Investments
+Grinnell,"Other, less beneficial interest in trusts",Other,No redemption,0.418,,Investments
+Grinnell,Other direct investments,Other,No redemption,,0.303,Investments

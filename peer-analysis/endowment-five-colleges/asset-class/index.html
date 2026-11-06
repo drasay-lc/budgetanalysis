@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Investments by asset class and liquidity, FY2020 and FY2025, for Lewis &amp; Clark, Williams, Swarthmore, Wesleyan, Bowdoin and Grinnell, from audited financial statements.">
+<title>Five-College Asset Class and Liquidity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Libre+Franklin:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+
+/* Same ledger as the Lewis & Clark asset class page: picker and ticker on top, liquidity filter, ranked bars, then all six side by side. */
+:root {
+  --bg: #f7f7f5; --panel: #ffffff; --ink: #17191a; --muted: #5f6466; --rule: #d9dbd8;
+  --accent: #c2410c; --up: #276749; --down: #9b2c2c;
+  /* asset classes */
+  --c-cash: #5e676c; --c-fi: #a9b2b6; --c-eq: #24507f; --c-hf: #9a86c4; --c-cr: #4b3a7a; --c-pe: #e3a35a; --c-ra: #8a3b1f; --c-oth: #c9ccc9;
+  /* liquidity tiers, same hue families as the L&C page: grey days, blue quarter, violet lockup, warm none */
+  --t1: #5e676c; --t2: #5f8fc4; --t3: #9a86c4; --t4: #e3a35a;
+  --display: "Spectral", Georgia, "Times New Roman", serif;
+  --body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141617; --panel: #1c1f20; --ink: #eceeed; --muted: #a2a8aa; --rule: #33393b; --accent: #f08a4b; --up: #6fcf97; --down: #f08b8b;
+  --c-cash: #8a9499; --c-fi: #5c6569; --c-eq: #4f86c6; --c-hf: #c7b8ea; --c-cr: #9d86d8; --c-pe: #f2c48a; --c-ra: #d0704a; --c-oth: #4a5052;
+  --t1: #8a9499; --t2: #8db6e3; --t3: #c7b8ea; --t4: #f2c48a; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #141617; --panel: #1c1f20; --ink: #eceeed; --muted: #a2a8aa; --rule: #33393b; --accent: #f08a4b; --up: #6fcf97; --down: #f08b8b;
+  --c-cash: #8a9499; --c-fi: #5c6569; --c-eq: #4f86c6; --c-hf: #c7b8ea; --c-cr: #9d86d8; --c-pe: #f2c48a; --c-ra: #d0704a; --c-oth: #4a5052;
+  --t1: #8a9499; --t2: #8db6e3; --t3: #c7b8ea; --t4: #f2c48a; color-scheme: dark; }
+
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 880px; margin: 0 auto; padding-block: 28px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 22px; }
+.wrap > * { min-width: 0; }
+header { display: grid; gap: 6px; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(26px, 5vw, 38px); line-height: 1.12; margin: 0; text-wrap: balance; }
+.lede { margin: 0; color: var(--muted); max-width: 62ch; }
+.find { margin: 4px 0 0; font-family: var(--display); font-size: 18px; line-height: 1.4; max-width: 60ch; }
+.made { font-size: 12.5px; color: var(--muted); margin: 0 0 4px; }
+.made a, .lede a, .notes a { color: inherit; }
+.crumb { margin: 0; font-size: 13px; }
+.crumb a { color: var(--muted); }
+
+.stage { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 18px 14px; display: grid; gap: 16px; min-width: 0; }
+.schools { display: flex; flex-wrap: wrap; gap: 4px; }
+.schools button[aria-pressed="true"] { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+.ticker { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 28px; }
+.fy { font-family: var(--display); font-weight: 600; font-size: clamp(40px, 9vw, 60px); line-height: .9; font-variant-numeric: tabular-nums; }
+.fy small { display: block; font-family: var(--body); font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: .04em; margin-top: 6px; }
+.stat { display: grid; gap: 2px; }
+.k { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.stat .v { font-family: var(--mono); font-size: 20px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.stat .d { font-family: var(--mono); font-size: 12px; font-variant-numeric: tabular-nums; color: var(--muted); }
+.pos { color: var(--up); } .neg { color: var(--down); }
+.scope { margin: -6px 0 0; font-size: 12.5px; color: var(--muted); max-width: 72ch; }
+
+.liq { display: grid; gap: 8px; }
+.liq-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.liq-head .hint { font-size: 12px; color: var(--muted); }
+.chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.chip { text-align: left; display: grid; gap: 3px; align-content: start; padding: 9px 11px; border-radius: 5px; background: var(--bg); font-weight: 500; }
+.chip[aria-pressed="true"] { border-color: var(--ink); background: var(--panel); }
+.chip[aria-pressed="false"] { border-style: dashed; color: var(--muted); }
+.chip[aria-pressed="false"] .sw { opacity: .35; }
+.chip .top { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; }
+.chip .sw { width: 11px; height: 11px; border-radius: 2px; flex: none; }
+.chip .cv { font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.chip .cd { font-size: 11.5px; color: var(--muted); line-height: 1.3; font-weight: 400; }
+button.link { border: none; padding: 0; background: none; font-size: 12px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+button.link:hover { color: var(--ink); }
+
+.bars { position: relative; min-width: 0; transition: height .35s ease; }
+.axis { position: absolute; inset: 0; pointer-events: none; }
+.axis .g { position: absolute; top: 0; bottom: 22px; border-left: 1px dashed var(--rule); }
+.axis .g span { position: absolute; bottom: -18px; transform: translateX(-50%); font-family: var(--mono); font-size: 10.5px; color: var(--muted); white-space: nowrap; }
+.row { position: absolute; left: 0; right: 0; height: 34px; display: grid; grid-template-columns: var(--lab) 1fr; align-items: center; gap: 10px; will-change: transform; transition: opacity .3s ease; }
+.row.off { opacity: 0; pointer-events: none; }
+.row .lab { font-size: 13px; font-weight: 500; text-align: right; line-height: 1.15; min-width: 0; }
+.row .track { position: relative; height: 22px; }
+.row .bar { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 0 3px 3px 0; }
+.row .val { position: absolute; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.row .val i { font-style: normal; margin-left: 6px; font-size: 11px; color: var(--muted); }
+
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+button { font: 600 13px var(--body); color: var(--ink); background: transparent; border: 1px solid var(--rule); border-radius: 4px; padding: 6px 12px; cursor: pointer; }
+button:hover { border-color: var(--ink); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.years { display: flex; gap: 4px; }
+.years button { font-family: var(--mono); font-weight: 500; font-size: 12px; padding: 5px 8px; }
+.years button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+
+section h2 { font-family: var(--display); font-weight: 600; font-size: 21px; margin: 0 0 6px; }
+section > .sub { margin: 0 0 12px; color: var(--muted); font-size: 13.5px; max-width: 68ch; }
+.cmp { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 16px 18px; display: grid; gap: 14px; }
+.cmp h3 { margin: 0; font-size: 13px; font-weight: 600; }
+.stack { display: grid; gap: 6px; }
+.srow { display: grid; grid-template-columns: 104px 1fr; align-items: center; gap: 10px; cursor: pointer; }
+.srow .nm { font-size: 13px; text-align: right; font-weight: 500; }
+.srow.lc .nm { font-weight: 700; }
+.srow.cur .nm { color: var(--accent); }
+.sbar { display: flex; height: 20px; border-radius: 3px; overflow: hidden; background: var(--bg); }
+.sbar span { height: 100%; transition: width .5s ease, opacity .3s; border-right: 1px solid var(--panel); }
+.sbar span.dim { opacity: .2; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend b { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--panel); font-size: 12px; padding: 5px 8px; border-radius: 4px; opacity: 0; transition: opacity .15s; z-index: 5; font-family: var(--mono); white-space: nowrap; }
+
+.notes { display: grid; gap: 10px; color: var(--ink); max-width: 70ch; }
+.notes p { margin: 0; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th, td { padding: 7px 10px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--rule); transition: opacity .3s; }
+th:first-child, td:first-child { text-align: left; position: sticky; left: 0; background: var(--panel); white-space: normal; min-width: 14rem; }
+thead th { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+td { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+td:first-child, td.tc { font-family: var(--body); }
+td.tc { text-align: left; color: var(--muted); }
+tr.off td { opacity: .4; }
+tr.sum td { font-weight: 600; border-top: 1px solid var(--ink); }
+tr.ref td { color: var(--muted); }
+tfoot td { font-family: var(--body); color: var(--muted); font-size: 11.5px; white-space: normal; text-align: left; }
+.links { display: grid; gap: 4px; font-size: 14px; }
+.links a { color: var(--ink); font-weight: 600; }
+.links span { color: var(--muted); font-size: 13px; margin-left: 8px; }
+@media (max-width: 560px) { .row .lab { font-size: 11.5px; } .stat .v { font-size: 17px; } .srow { grid-template-columns: 84px 1fr; } .srow .nm { font-size: 12px; } }
+@media (prefers-reduced-motion: reduce) { .row, .bars, .sbar span, th, td { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Five-College Endowment Comparison</a></p>
+  <header>
+    <div class="eyebrow">Six colleges · investment notes, audited statements</div>
+    <h1>Where six colleges invest, and how fast it can become cash</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5 (high effort), November 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="lede">Each college's investments by asset class at fiscal year end 2020 and 2025, grouped into the four liquidity tiers used on the <a href="../../../endowment-asset-class/">Lewis &amp; Clark asset class page</a>. Pick a college, switch years or press Play, and filter by how quickly each holding can be turned into cash.</p>
+    <p class="find" id="find"></p>
+  </header>
+
+  <div class="stage" aria-label="Investments by asset class for the selected college">
+    <div class="schools" id="schools" role="group" aria-label="College"></div>
+    <div class="ticker">
+      <div class="fy" id="fy">FY2025<small id="fye">Fiscal year ended June 30</small></div>
+      <div class="stat"><span class="k" id="poolk">Investments</span><span class="v" id="tot">$0</span><span class="d" id="totd"></span></div>
+      <div class="stat"><span class="k">Endowment net assets</span><span class="v" id="end">$0</span><span class="d" id="endd"></span></div>
+      <div class="stat"><span class="k">No redemption</span><span class="v" id="ill">0%</span><span class="d" id="illd"></span></div>
+      <div class="stat" id="selstat" hidden><span class="k">Selected liquidity</span><span class="v" id="sel">$0</span><span class="d" id="seld"></span></div>
+    </div>
+    <p class="scope" id="scope"></p>
+    <div class="liq" role="group" aria-labelledby="liqlab">
+      <div class="liq-head">
+        <span class="k" id="liqlab">Filter by liquidity</span>
+        <span class="hint">How fast each holding can be turned into cash <button class="link" id="liqall" type="button" hidden style="margin-left:8px">Show all</button></span>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="bars" id="bars"><div class="axis" id="axis"></div></div>
+    <div class="controls">
+      <button class="primary" id="play" type="button">Play</button>
+      <div class="years" id="years" role="group" aria-label="Fiscal year"></div>
+    </div>
+  </div>
+
+  <section>
+    <h2>All six side by side</h2>
+    <p class="sub">Share of each college's investments, at the year selected above. Tap a college to show it above. Filtering by liquidity dims the other tiers.</p>
+    <div class="cmp">
+      <h3>By liquidity</h3>
+      <div class="stack" id="s-liq"></div>
+      <div class="legend" id="l-liq"></div>
+      <h3 style="margin-top:6px">By asset class</h3>
+      <div class="stack" id="s-cls"></div>
+      <div class="legend" id="l-cls"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 id="h-how">How these numbers were built</h2>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <section>
+    <h2 id="h-tbl">Line items ($ millions)</h2>
+    <p class="sub">Each row as printed in the college's statements, with the asset class and liquidity tier it is counted in here.</p>
+    <div class="tablewrap"><table id="tbl"></table></div>
+  </section>
+
+  <div class="links">
+    <p style="margin:0"><a href="../../data/#five-college-assets">Data tables and sources for this page →</a><span>Every line item with its citation.</span></p>
+    <p style="margin:0"><a href="five_college_asset_class.csv" download>Download the data (CSV) →</a><span>One row per line item, college and tier.</span></p>
+  </div>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+const D = {"order": ["lewis-clark", "williams", "swarthmore", "wesleyan", "bowdoin", "grinnell"], "schools": {"lewis-clark": {"name": "Lewis & Clark", "fye": "May 31", "pool": "Long-term investment pool", "scope": "The college's long-term investment pool, which holds the endowment, excluding charitable remainder trusts and operating investments.", "unf": [null, null], "how": "Same figures and tiers as the <a href=\"../../../endowment-asset-class/\">Endowment by Asset Class and Liquidity</a> page: the fair value note's funds at net asset value, grouped by asset class, with liquidity tiers from the redemption terms printed for each fund category. FY2020 from the FY2021 statements; FY2025 from the FY2026 statements.", "endow": [240.342, 331.959], "items": [["Directly held securities and cash", "cash", 1, 45.045, 32.625], ["Pooled Treasuries", "fi", 1, 12.968, 19.505], ["Domestic equity", "eq", 2, 29.485, 52.194], ["International equity", "eq", 3, 51.673, 74.27], ["Hedge funds, with lockup", "hf", 3, 30.661, 25.695], ["Venture capital", "pe", 4, 45.942, 71.344], ["Private equity", "pe", 4, 19.518, 29.109], ["Real assets", "ra", 4, 12.791, 15.492], ["Pooled bonds", "fi", 2, 0.0, 12.861], ["Hedge funds, no lockup", "hf", 2, 0.0, 7.159]]}, "williams": {"name": "Williams", "fye": "June 30", "pool": "Investment pool", "scope": "The whole investment pool, including the Clark Art Institute's unitized share (about 11% in both years: $352.4M of $3,193.8M in 2020 and $510.9M of $4,442.2M in 2025). Split-interest agreements and other investments are left out.", "unf": [652.8, 591.1], "how": "The investments note lists the pool by strategy with redemption terms for each strategy as a range, not by fund. Tiers are assigned by strategy: short-term investments, receivables from funds and daily investment grade fixed income are within days; global long equity (2 days to 18 months) is within a quarter; long/short equity, absolute return and noninvestment grade fixed income (lockups, gates, up to 12 months, some commitment-based funds) are after a lockup; venture, buyouts, real assets and real estate are closed-end. 2020 also holds a $10.0M advance subscription to a fund, net of $39K of other items, counted after a lockup.", "endow": [2713.288, 3796.601], "items": [["Short-term investments", "cash", 1, 9.658, 101.065], ["Redemption receivable from underlying funds", "cash", 1, 54.476, 0.0], ["Advance subscription to underlying funds, net of other assets and liabilities", "oth", 3, 9.961, 0.0], ["Global long equity", "eq", 2, 724.148, 1007.757], ["Global long/short equity", "hf", 3, 630.428, 691.479], ["Absolute return", "hf", 3, 547.077, 504.048], ["Venture capital", "pe", 4, 539.79, 718.008], ["Buyouts", "pe", 4, 234.388, 684.711], ["Real assets", "ra", 4, 128.399, 397.722], ["Real estate", "ra", 4, 127.251, 0.0], ["Noninvestment grade fixed income", "cr", 3, 188.184, 267.145], ["Receivable from underlying funds", "cash", 1, 0.0, 29.751], ["Investment grade fixed income", "fi", 1, 0.0, 40.504]]}, "swarthmore": {"name": "Swarthmore", "fye": "June 30", "pool": "Endowment investments", "scope": "The endowment rows of the fair value table, which add to endowment net assets exactly. Life income and other investments are left out.", "unf": [599.4, 655.3], "how": "The FY2025 statements print redemption terms for funds at net asset value: public equity funds monthly or annually (within a quarter here), hedge funds quarterly or semi-annually (after a lockup), and illiquid hedge funds, private funds, private equity and real assets (no redemption). Level 1 holdings are within days and Level 2 public equity within a quarter. The FY2020 statements print no redemption terms, so 2020 uses the same assignments by category, with all $314.2M of alternative strategies counted after a lockup; by 2025 two thirds of that category was illiquid. Swarthmore's own estimate of investments available within 30 days was $808M in 2020 and $513M in 2025.", "endow": [2103.67, 2842.685], "items": [["Cash and cash equivalents", "cash", 1, 118.965, 0.0], ["Fixed income", "fi", 1, 86.096, 84.403], ["Public equity, Level 1", "eq", 1, 260.589, 131.085], ["Public equity, Level 2", "eq", 2, 262.532, 275.844], ["Public equity, at NAV", "eq", 2, 290.352, 0.0], ["Real assets, Level 1", "ra", 1, 6.86, 0.0], ["Real assets, at NAV", "ra", 4, 219.581, 0.0], ["Private equity", "pe", 4, 544.531, 959.896], ["Alternative strategies", "hf", 3, 314.164, 0.0], ["Endowment cash and cash equivalents", "cash", 1, 0.0, 88.661], ["Public equity, at NAV (monthly or annual)", "eq", 2, 0.0, 398.864], ["Real assets", "ra", 4, 0.0, 401.685], ["Hedge funds (quarterly or semi-annual)", "hf", 3, 0.0, 172.511], ["Hedge funds (illiquid)", "hf", 4, 0.0, 68.403], ["Private funds (illiquid)", "hf", 4, 0.0, 261.333]]}, "wesleyan": {"name": "Wesleyan", "fye": "June 30", "pool": "Long-term investments", "scope": "Long-term investments less split-interest agreements, other investments and funds held by others. This is within $11M of endowment net assets in both years. Operating cash and short-term investments are left out.", "unf": [279.5, 341.3], "how": "Wesleyan prints a liquidity table for every row: in liquidation, daily, monthly to quarterly, semi-annual to annual, initial lockup and illiquid. Daily is within days, monthly to quarterly within a quarter, semi-annual to annual and initial lockup after a lockup, and illiquid and in liquidation no redemption. Its asset classes were consolidated between 2020 and 2025 (domestic and international equity became global equity; real estate and natural resources became real assets).", "endow": [1130.907, 1641.277], "items": [["Money market funds and cash equivalents", "cash", 1, 37.961, 15.725], ["Fixed income", "fi", 1, 49.66, 36.076], ["Domestic equity", "eq", 1, 0.03, 0.0], ["Domestic equity", "eq", 2, 105.009, 0.0], ["Domestic equity", "eq", 3, 36.683, 0.0], ["Domestic equity", "eq", 4, 0.836, 0.0], ["International equity", "eq", 1, 2.753, 0.0], ["International equity", "eq", 2, 65.066, 0.0], ["International equity", "eq", 3, 76.963, 0.0], ["International equity", "eq", 4, 24.587, 0.0], ["Real estate", "ra", 4, 67.239, 0.0], ["Natural resources", "ra", 1, 2.514, 0.0], ["Natural resources", "ra", 4, 30.076, 0.0], ["Venture capital", "pe", 4, 182.426, 0.0], ["Buyout", "pe", 4, 178.648, 0.0], ["Other private equity", "pe", 1, 0.681, 0.0], ["Other private equity", "pe", 4, 41.38, 0.0], ["Absolute return", "hf", 4, 36.176, 33.515], ["Absolute return", "hf", 1, 2.668, 0.0], ["Absolute return", "hf", 2, 29.504, 164.684], ["Absolute return", "hf", 3, 149.973, 87.62], ["Global equity", "eq", 4, 0.0, 112.035], ["Global equity", "eq", 1, 0.0, 26.573], ["Global equity", "eq", 2, 0.0, 117.202], ["Global equity", "eq", 3, 0.0, 147.343], ["Real assets", "ra", 4, 0.0, 118.301], ["Private equity", "pe", 1, 0.0, 3.618], ["Private equity", "pe", 4, 0.0, 779.456]]}, "bowdoin": {"name": "Bowdoin", "fye": "June 30", "pool": "Total investments", "scope": "Total investments, which also hold charitable gift annuities, pooled life income funds, bond proceeds and operating investments; the statements do not separate them. Total investments exceed endowment net assets by $155.6M in 2020 and $152.6M in 2025.", "unf": [348.1, 339.1], "how": "Bowdoin prints a table of investments by redemption period: daily, monthly, quarterly, semi-annual, annual or longer, and illiquid. Daily is within days, monthly and quarterly within a quarter, semi-annual and annual or longer after a lockup, and illiquid no redemption. That table groups equities and absolute return as single rows, so those two classes are shown whole; private equity and real assets come from the fair value table (all illiquid except $146K daily in 2025).", "endow": [1780.97, 2911.722], "items": [["Cash and cash equivalents", "cash", 1, 20.52, 75.584], ["Cash and cash equivalents", "cash", 4, 0.4, 0.315], ["Fixed income", "fi", 1, 50.107, 38.235], ["Fixed income", "fi", 4, 8.518, 7.382], ["Equities", "eq", 1, 37.553, 48.333], ["Equities", "eq", 2, 324.142, 349.332], ["Equities", "eq", 3, 59.851, 154.793], ["Equities", "eq", 4, 31.223, 24.193], ["Absolute return", "hf", 2, 493.526, 819.11], ["Absolute return", "hf", 3, 21.485, 100.43], ["Absolute return", "hf", 4, 33.081, 30.594], ["Alternative investments: private equity", "pe", 4, 673.79, 1120.622], ["Alternative investments: real assets", "ra", 4, 182.325, 262.965], ["Absolute return", "hf", 1, 0.0, 32.265], ["Alternative investments: private equity, daily", "pe", 1, 0.0, 0.146]]}, "grinnell": {"name": "Grinnell", "fye": "June 30", "pool": "Investments", "scope": "The investments line of the balance sheet: the fair value table less the beneficial interest in trusts ($6.1M in 2020, $7.5M in 2025). Investments exceed endowment net assets by $73.9M in 2020 and $101.1M in 2025.", "unf": [281.2, 468.6], "how": "Grinnell prints redemption terms only as footnotes to its fair value table, with no amounts by term. Short-term investments, bonds and marketable equity held directly are within days. Commingled funds, mostly long-only equity managers with some macro, long/short and credit, have lockups from quarterly to four years (2020) or monthly to three years (2025) and are counted after a lockup, the longest end of their range; some would be redeemable within a quarter. Private equity, distressed and real asset partnerships cannot be redeemed. Unfunded commitments are the sum of the footnote amounts; no total is printed.", "endow": [2090.75, 2847.38], "items": [["Short-term investments", "cash", 1, 27.631, 271.94], ["U.S. government and agency notes and bonds", "fi", 1, 112.563, 8.655], ["Corporate and other bonds", "fi", 1, 66.621, 33.672], ["Marketable equity interests", "eq", 1, 327.993, 11.477], ["Commingled funds", "eq", 3, 703.503, 1463.084], ["Private equity", "pe", 4, 721.821, 1037.004], ["Distressed", "cr", 4, 161.182, 70.727], ["Real assets", "ra", 4, 42.899, 51.654], ["Other, less beneficial interest in trusts", "oth", 4, 0.418, 0.0], ["Other direct investments", "oth", 4, 0.0, 0.303]]}}};
+const CLS = [["cash","Cash and short-term"],["fi","Fixed income"],["eq","Public equity"],["hf","Hedge funds and absolute return"],["cr","Credit and distressed"],["pe","Private equity and venture"],["ra","Real assets"],["oth","Other"]];
+const TIERS = [{id:1,name:"Within days",short:"Cash, directly held securities, daily funds"},{id:2,name:"Within a quarter",short:"Monthly or quarterly redemption, no lockup"},{id:3,name:"After a lockup",short:"Semi-annual or longer, lockups, gates"},{id:4,name:"No redemption",short:"Private funds; cash only as they distribute"}];
+const YEARS = [2020, 2025];
+const fmtM = v => v >= 1000 ? "$" + (v / 1000).toFixed(2) + "B" : "$" + v.toFixed(1) + "M";
+const pc = v => (v * 100).toFixed(1) + "%";
+const sgn = (v, dp) => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(dp);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let cur = "lewis-clark", t = 1, sel = new Set([1, 2, 3, 4]);
+
+// per school: amounts by class and tier, each year
+function agg(k) {
+  const s = D.schools[k], a = YEARS.map(() => ({}));
+  s.items.forEach(([lab, c, tr, v20, v25]) => [v20, v25].forEach((v, i) => { a[i][c] = a[i][c] || [0, 0, 0, 0, 0]; a[i][c][tr] += v; }));
+  return a;
+}
+const A = Object.fromEntries(D.order.map(k => [k, agg(k)]));
+const tot = (k, i) => D.schools[k].items.reduce((s, it) => s + it[3 + i], 0);
+const tierTot = (k, i, tr) => Object.values(A[k][i]).reduce((s, arr) => s + arr[tr], 0);
+const clsVal = (k, i, c) => { const arr = A[k][i][c]; return arr ? [1, 2, 3, 4].reduce((s, tr) => s + (sel.has(tr) ? arr[tr] : 0), 0) : 0; };
+
+// --- school picker
+const sb = document.getElementById("schools");
+D.order.forEach(k => { const b = document.createElement("button"); b.type = "button"; b.textContent = D.schools[k].name; b.dataset.k = k; b.onclick = () => pick(k); sb.appendChild(b); });
+
+// --- bars
+const barsEl = document.getElementById("bars"), axisEl = document.getElementById("axis"), rowH = 36;
+const narrow = () => barsEl.clientWidth < 520;
+const labW = () => narrow() ? 112 : 210;
+const rows = CLS.map(([c, name], i) => {
+  const r = document.createElement("div"); r.className = "row";
+  r.innerHTML = `<div class="lab"></div><div class="track"><div class="bar"></div><div class="val"></div></div>`;
+  r.querySelector(".lab").textContent = name; r.querySelector(".bar").style.background = `var(--c-${c})`;
+  barsEl.appendChild(r); return { c, el: r, bar: r.querySelector(".bar"), val: r.querySelector(".val"), rank: i, target: i };
+});
+let scaleMax = 1, step = 1;
+function setScale() {
+  const mx = Math.max(...YEARS.map((_, i) => Math.max(...CLS.map(([c]) => { const a = A[cur][i][c]; return a ? a[1] + a[2] + a[3] + a[4] : 0; }))));
+  const raw = mx / 4, mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(s => s >= raw);
+  scaleMax = Math.ceil(mx * 1.18 / step) * step;
+}
+function drawAxis() {
+  const lab = labW(); barsEl.style.setProperty("--lab", lab + "px"); axisEl.innerHTML = "";
+  const tw = barsEl.clientWidth - lab - 10;
+  for (let v = 0, n = 0; v <= scaleMax + 1e-9; v += step, n++) {
+    if (narrow() && n % 2) continue;
+    const g = document.createElement("div"); g.className = "g"; g.style.left = (lab + 10 + tw * v / scaleMax) + "px";
+    g.innerHTML = `<span>${v >= 1000 ? "$" + +(v / 1000).toFixed(2) + "B" : "$" + +v.toFixed(0) + "M"}</span>`; axisEl.appendChild(g);
+  }
+}
+const present = c => YEARS.some((_, i) => A[cur][i][c]);
+const visible = c => present(c) && YEARS.some((_, i) => clsVal(cur, i, c) > 0);
+const sizeBars = () => barsEl.style.height = (rows.filter(r => visible(r.c)).length * rowH + 22) + "px";
+
+// --- animation between the two years
+const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const lerp = (a, b) => a + (b - a) * ease(Math.max(0, Math.min(1, t)));
+let playing = false, last = 0, rafOn = false, snap = true;
+function render() {
+  const lab = labW(), tw = barsEl.clientWidth - lab - 10, yi = t < .5 ? 0 : 1;
+  const vals = rows.map(r => lerp(clsVal(cur, 0, r.c), clsVal(cur, 1, r.c)));
+  const order = vals.map((v, i) => [v, i]).sort((a, b) => b[0] - a[0]);
+  const on = i => vals[i] > 0.05;
+  const vis = order.filter(([, i]) => on(i)), hid = order.filter(([, i]) => !on(i));
+  barsEl.style.height = (vis.length * rowH + 22) + "px";
+  vis.concat(hid).forEach(([, i], r) => rows[i].target = r);
+  const k = snap || reduce ? 1 : 0.2; snap = false;
+  const T = lerp(tot(cur, 0), tot(cur, 1));
+  rows.forEach((row, i) => {
+    row.el.classList.toggle("off", !on(i));
+    row.rank += (row.target - row.rank) * k;
+    row.el.style.transform = `translateY(${row.rank * rowH}px)`;
+    const w = Math.max(vals[i] > 0 ? 2 : 0, tw * vals[i] / scaleMax);
+    row.bar.style.width = w + "px"; row.val.style.left = (w + 6) + "px";
+    row.val.innerHTML = fmtM(vals[i]) + (narrow() ? "" : `<i>${pc(vals[i] / T)}</i>`);
+  });
+  const s = D.schools[cur];
+  document.getElementById("fy").firstChild.nodeValue = "FY" + YEARS[yi];
+  document.getElementById("tot").textContent = fmtM(T);
+  document.getElementById("end").textContent = fmtM(lerp(s.endow[0], s.endow[1]));
+  const td = document.getElementById("totd"), ed = document.getElementById("endd");
+  if (yi) { const p1 = (tot(cur, 1) / tot(cur, 0) - 1) * 100, p2 = (s.endow[1] / s.endow[0] - 1) * 100;
+    td.textContent = `${sgn(p1, 1)}% vs FY2020`; td.className = "d " + (p1 >= 0 ? "pos" : "neg");
+    ed.textContent = `${sgn(p2, 1)}% vs FY2020`; ed.className = "d " + (p2 >= 0 ? "pos" : "neg");
+  } else { td.textContent = "Starting year"; td.className = "d"; ed.textContent = "Starting year"; ed.className = "d"; }
+  const ill = lerp(tierTot(cur, 0, 4) / tot(cur, 0), tierTot(cur, 1, 4) / tot(cur, 1));
+  document.getElementById("ill").textContent = pc(ill);
+  const unf = s.unf[yi];
+  document.getElementById("illd").textContent = unf == null ? "of investments" : `Unfunded commitments ${fmtM(unf)}`;
+  TIERS.forEach(tr => { const v = lerp(tierTot(cur, 0, tr.id), tierTot(cur, 1, tr.id)); tr.cv.textContent = `${fmtM(v)} · ${pc(v / T)}`; });
+  const all = sel.size === 4;
+  document.getElementById("selstat").hidden = all;
+  if (!all) {
+    const sv = vals.reduce((a, b) => a + b, 0);
+    let txt = `${pc(sv / T)} of investments`;
+    if (yi) { const sh = i => [...sel].reduce((a, tr) => a + tierTot(cur, i, tr), 0) / tot(cur, i); txt += `, ${sgn((sh(1) - sh(0)) * 100, 1)} pts`; }
+    document.getElementById("sel").textContent = fmtM(sv); document.getElementById("seld").textContent = txt;
+  }
+  document.querySelectorAll("#years button").forEach((b, i) => b.setAttribute("aria-pressed", i === yi));
+}
+function loop(now) {
+  if (playing) { const dt = Math.min(64, now - last); last = now; t += dt / 2600;
+    if (t >= 1) { t = 1; playing = false; playBtn.textContent = "Play from FY2020"; } }
+  render(); stacks();
+  if (playing || rows.some(r => Math.abs(r.rank - r.target) > 0.004)) requestAnimationFrame(loop); else rafOn = false;
+}
+function kick() { if (!rafOn) { rafOn = true; last = performance.now(); requestAnimationFrame(loop); } }
+const playBtn = document.getElementById("play");
+playBtn.onclick = () => { if (playing) { playing = false; playBtn.textContent = "Play"; return; } if (t >= 1) t = 0; playing = true; playBtn.textContent = "Pause"; last = performance.now(); kick(); };
+const yb = document.getElementById("years");
+YEARS.forEach((y, i) => { const b = document.createElement("button"); b.type = "button"; b.textContent = "FY" + y; b.onclick = () => { playing = false; t = i; playBtn.textContent = i ? "Play from FY2020" : "Play"; kick(); }; yb.appendChild(b); });
+
+// --- liquidity filter
+const chipsEl = document.getElementById("chips"), allBtn = document.getElementById("liqall");
+TIERS.forEach(tr => {
+  const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.setAttribute("aria-pressed", "true");
+  b.innerHTML = `<span class="top"><i class="sw" style="background:var(--t${tr.id})"></i>${tr.name}</span><span class="cv"></span><span class="cd">${tr.short}</span>`;
+  b.onclick = () => { if (sel.has(tr.id)) { if (sel.size === 1) return; sel.delete(tr.id); } else sel.add(tr.id); applyFilter(); };
+  chipsEl.appendChild(b); tr.btn = b; tr.cv = b.querySelector(".cv");
+});
+allBtn.onclick = () => { sel = new Set([1, 2, 3, 4]); applyFilter(); };
+function applyFilter() {
+  TIERS.forEach(tr => tr.btn.setAttribute("aria-pressed", sel.has(tr.id)));
+  allBtn.hidden = sel.size === 4;
+  document.querySelectorAll("#tbl tr[data-tier]").forEach(r => r.classList.toggle("off", !sel.has(+r.dataset.tier)));
+  sizeBars(); kick();
+}
+
+// --- all six
+const tip = document.getElementById("tip");
+function stackRow(host, k, parts) {
+  let r = host.querySelector(`[data-k="${k}"]`);
+  if (!r) { r = document.createElement("div"); r.className = "srow" + (k === "lewis-clark" ? " lc" : ""); r.dataset.k = k;
+    r.innerHTML = `<span class="nm">${D.schools[k].name}</span><div class="sbar"></div>`; r.onclick = () => pick(k); host.appendChild(r); }
+  r.classList.toggle("cur", k === cur);
+  const bar = r.querySelector(".sbar");
+  if (bar.children.length !== parts.length) { bar.innerHTML = parts.map(() => "<span></span>").join("");
+    [...bar.children].forEach((sp, j) => { sp.addEventListener("pointermove", e => { tip.textContent = sp.dataset.t; tip.style.opacity = 1; tip.style.left = Math.min(e.clientX + 12, innerWidth - tip.offsetWidth - 8) + "px"; tip.style.top = (e.clientY + 14) + "px"; }); sp.addEventListener("pointerleave", () => tip.style.opacity = 0); }); }
+  parts.forEach(([w, color, dim, label], j) => { const sp = bar.children[j]; sp.style.width = (w * 100) + "%"; sp.style.background = color; sp.classList.toggle("dim", dim); sp.dataset.t = `${D.schools[k].name} · ${label} · ${pc(w)}`; });
+}
+function stacks() {
+  const i = t < .5 ? 0 : 1;
+  D.order.forEach(k => {
+    const T = tot(k, i);
+    stackRow(document.getElementById("s-liq"), k, TIERS.map(tr => [tierTot(k, i, tr.id) / T, `var(--t${tr.id})`, !sel.has(tr.id), tr.name]));
+    stackRow(document.getElementById("s-cls"), k, CLS.map(([c, name]) => { const a = A[k][i][c]; return [a ? (a[1] + a[2] + a[3] + a[4]) / T : 0, `var(--c-${c})`, false, name]; }));
+  });
+}
+document.getElementById("l-liq").innerHTML = TIERS.map(tr => `<span><b style="background:var(--t${tr.id})"></b>${tr.name}</span>`).join("");
+document.getElementById("l-cls").innerHTML = CLS.map(([c, n]) => `<span><b style="background:var(--c-${c})"></b>${n}</span>`).join("");
+
+// --- headline
+(() => {
+  const sh = (k, i, trs) => trs.reduce((a, tr) => a + tierTot(k, i, tr), 0) / tot(k, i);
+  const peers = D.order.filter(k => k !== "lewis-clark");
+  const ill = peers.map(k => sh(k, 1, [4])).sort((a, b) => a - b);
+  const q = peers.map(k => sh(k, 1, [1, 2])).sort((a, b) => a - b);
+  document.getElementById("find").textContent = `At FY2025, ${pc(sh("lewis-clark", 1, [4]))} of Lewis & Clark's investment pool could not be redeemed, against ${pc(ill[0])} to ${pc(ill[4])} at the five colleges. Within a quarter, Lewis & Clark could turn ${pc(sh("lewis-clark", 1, [1, 2]))} into cash, against ${pc(q[0])} to ${pc(q[4])} for the five.`;
+})();
+
+// --- notes and table for the selected school
+const CN = Object.fromEntries(CLS), TN = Object.fromEntries(TIERS.map(tr => [tr.id, tr.name]));
+function texts() {
+  const s = D.schools[cur];
+  document.getElementById("poolk").textContent = s.pool;
+  document.getElementById("fye").textContent = "Fiscal year ended " + s.fye;
+  document.getElementById("scope").textContent = s.scope;
+  document.getElementById("h-how").textContent = "How these numbers were built: " + s.name;
+  document.getElementById("h-tbl").textContent = s.name + " line items ($ millions)";
+  const general = [
+    "<strong>Source.</strong> The investments and fair value notes of each college's audited financial statements. FY2020 figures come from the FY2021 statements (Bowdoin, Grinnell, Swarthmore and Wesleyan print the same figures in their FY2020 statements), and FY2025 from the FY2025 statements; Lewis &amp; Clark's FY2025 is from its FY2026 statements. Every college's rows add to its printed totals.",
+    "<strong>What is counted differs by college.</strong> No college itemizes its endowment alone except Swarthmore. The pool shown is the closest each statement allows; the line under the totals says what it holds. Endowment net assets are shown beside it for comparison.",
+    "<strong>Asset classes</strong> are grouped from each college's own labels into eight common classes. Credit and distressed holds Williams's noninvestment grade fixed income and Grinnell's distressed funds; Swarthmore's alternative strategies, which include private funds, are counted with hedge funds.",
+    "<strong>Liquidity tiers</strong> rank relative liquidity, as on the Lewis &amp; Clark page: <em>within days</em> (cash, directly held securities, daily funds), <em>within a quarter</em> (monthly or quarterly redemption without a lockup), <em>after a lockup</em> (semi-annual or longer redemption, lockups, gates) and <em>no redemption</em> (private funds that return cash only as they sell holdings). Bowdoin and Wesleyan print amounts by redemption period, so their tiers are exact; the others print terms by category, so each category is placed in one tier.",
+    "<strong>" + s.name + ".</strong> " + s.how,
+    "Unfunded commitments are future calls on cash for private funds and are not part of any tier." + (s.unf[0] == null ? "" : ` ${s.name}: ${fmtM(s.unf[0])} at FY2020 and ${fmtM(s.unf[1])} at FY2025.`)
+  ];
+  document.getElementById("notes").innerHTML = general.map(n => `<p>${n}</p>`).join("");
+  const m = v => v ? v.toFixed(1) : "–";
+  let h = `<thead><tr><th>Line item</th><th style="text-align:left">Asset class</th><th style="text-align:left">Liquidity</th><th>FY2020</th><th>FY2025</th></tr></thead><tbody>`;
+  s.items.slice().sort((a, b) => a[2] - b[2] || (b[4] - a[4])).forEach(([lab, c, tr, a, b]) => {
+    h += `<tr data-tier="${tr}"><td>${lab}</td><td class="tc">${CN[c]}</td><td class="tc">${TN[tr]}</td><td>${m(a)}</td><td>${m(b)}</td></tr>`; });
+  h += `<tr class="sum"><td>${s.pool}</td><td></td><td></td><td>${tot(cur, 0).toFixed(1)}</td><td>${tot(cur, 1).toFixed(1)}</td></tr>`;
+  h += `<tr class="ref"><td>Endowment net assets</td><td></td><td></td><td>${s.endow[0].toFixed(1)}</td><td>${s.endow[1].toFixed(1)}</td></tr></tbody>`;
+  h += `<tfoot><tr><td colspan="5">Figures from the audited statements in millions; Bowdoin and Wesleyan rows split one printed row across the redemption periods its liquidity table gives.</td></tr></tfoot>`;
+  document.getElementById("tbl").innerHTML = h;
+  document.querySelectorAll("#tbl tr[data-tier]").forEach(r => r.classList.toggle("off", !sel.has(+r.dataset.tier)));
+}
+function pick(k) {
+  cur = k; document.querySelectorAll("#schools button").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === k));
+  setScale(); drawAxis(); sizeBars(); texts(); snap = true; kick();
+}
+pick(cur);
+if (!reduce) { t = 0; render(); setTimeout(() => playBtn.click(), 700); }
+addEventListener("resize", () => { drawAxis(); snap = true; kick(); });
+</script>
+</body>
+</html>
