@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Net Tuition and Yield vs. Peers</title>
+<meta name="description" content="Lewis & Clark compared with up to three peers on gross and net tuition, discount rate and admissions yield, FY2009 to FY2024, from IPEDS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../peer.css">
+<style>
+:root { --s0: #4F63D2; --s1: #C8760F; --s2: #0B8770; --s3: #A2449A; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --s0: #7685EE; --s1: #C67C22; --s2: #22A07F; --s3: #C862B8; } }
+:root[data-theme="dark"] { --s0: #7685EE; --s1: #C67C22; --s2: #22A07F; --s3: #C862B8; }
+.pick { display: grid; gap: 12px; }
+.slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 10px; }
+.slot { display: grid; gap: 4px; font-size: 12.5px; color: var(--muted); }
+.slot .lab { display: inline-flex; align-items: center; gap: 6px; }
+.slot .lab i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.slot select, .slot .fixed { width: 100%; }
+.slot .fixed { font-size: 13.5px; color: var(--ink); background: var(--zebra); border: 1px solid var(--rule); border-radius: 8px; padding: 6px 10px; font-weight: 600; }
+.presets { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; }
+.presets button { font: inherit; font-size: 13px; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.presets button:hover { border-color: var(--muted); }
+.presets button[aria-pressed="true"] { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+.stage { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: clamp(14px, 2.4vw, 24px); display: grid; gap: 16px; margin-top: 16px; }
+.caption { display: flex; align-items: baseline; gap: 6px 14px; flex-wrap: wrap; min-height: calc(3 * 1.3em); font-family: var(--f-display); font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; margin: 0; padding-bottom: 14px; border-bottom: 1px solid var(--rule); text-wrap: pretty; }
+.caption .cy { flex: none; font-family: var(--f-data); font-size: clamp(15px, 1.8vw, 19px); font-weight: 600; color: var(--panel); background: var(--ink); border-radius: 6px; padding: 2px 10px; line-height: 1.4; }
+.caption .ct { flex: 1 1 20ch; min-width: 0; max-width: 64ch; }
+.stage-grid { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+@media (max-width: 900px) { .stage-grid { grid-template-columns: minmax(0, 1fr); } }
+.multiples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; }
+@media (max-width: 560px) { .multiples { grid-template-columns: minmax(0, 1fr); } }
+.mini h3 { margin: 0 0 2px; font-size: 13.5px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.mini h3 i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex: none; }
+.mini .sub { font-size: 11.5px; color: var(--muted); margin: 0 0 2px; font-family: var(--f-data); }
+.mini .plot { position: relative; min-height: 170px; }
+.mini svg, .tl svg, #quad svg { display: block; width: 100%; overflow: visible; }
+.mlegend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--muted); margin-bottom: 8px; }
+.mlegend span { display: inline-flex; align-items: center; gap: 6px; }
+.mlegend .ln { width: 16px; height: 0; border-top: 2.5px solid var(--ink); display: inline-block; }
+.mlegend .dl { width: 16px; height: 0; border-top: 2px dashed var(--muted); display: inline-block; }
+.mlegend .ar { width: 14px; height: 10px; background: color-mix(in srgb, var(--ink) 12%, transparent); border-radius: 2px; display: inline-block; }
+.ledger { display: grid; gap: 12px; }
+.year { font-family: var(--f-display); font-size: clamp(40px, 5.5vw, 56px); line-height: 1; font-variant-numeric: tabular-nums; }
+.year small { font-family: var(--f-body); font-size: 12.5px; color: var(--muted); display: block; margin-top: 6px; }
+.lt { width: 100%; border-collapse: collapse; font-size: 13px; }
+.lt th, .lt td { padding: 6px 6px; border-bottom: 1px solid var(--rule); text-align: right; font-family: var(--f-data); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lt th { font-family: var(--f-body); font-size: 11.5px; color: var(--muted); font-weight: 600; }
+.lt td:first-child, .lt th:first-child { text-align: left; font-family: var(--f-body); white-space: normal; }
+.lt td:first-child { font-weight: 600; }
+.lt td:first-child i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; margin-right: 6px; vertical-align: -1px; }
+.lt tbody tr:nth-child(even) { background: none; }
+.keep { font-size: 13px; color: var(--muted); margin: 0; }
+.keep b { color: var(--ink); font-family: var(--f-data); font-weight: 500; }
+.transport { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; border-top: 1px solid var(--rule); padding-top: 14px; }
+.transport button, .transport select { font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 7px 12px; cursor: pointer; }
+#play { background: var(--ink); color: var(--panel); border-color: var(--ink); font-weight: 600; min-width: 7.5rem; display: inline-flex; align-items: center; gap: 8px; justify-content: center; }
+#play svg { width: 12px; height: 12px; fill: currentColor; }
+.scrub { flex: 1 1 14rem; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.scrub input { flex: 1; min-width: 0; accent-color: var(--ink); }
+.scrub output { font-family: var(--f-data); font-size: 13px; color: var(--muted); min-width: 4.5ch; }
+.transport .seg button { border: 0; border-radius: 0; padding: 7px 10px; font-size: 13px; }
+.trends { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 16px; margin-top: 16px; }
+.trends .card { margin-top: 0; }
+.tl { position: relative; min-height: 220px; }
+#quad { position: relative; min-height: 340px; }
+.qlab { font-family: var(--f-body); font-size: 11.5px; fill: var(--muted); font-weight: 600; letter-spacing: .02em; }
+.dot-lbl { font-family: var(--f-body); font-size: 12px; font-weight: 600; paint-order: stroke; stroke: var(--panel); stroke-width: 4px; stroke-linejoin: round; }
+#board th { cursor: pointer; user-select: none; }
+#board th[aria-sort="ascending"]::after { content: " ▲"; font-size: 9px; }
+#board th[aria-sort="descending"]::after { content: " ▼"; font-size: 9px; }
+#board tbody tr { cursor: pointer; }
+#board th, #board td { white-space: nowrap; }
+#board tbody tr.sel td { font-weight: 600; }
+#board td i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; margin-right: 6px; vertical-align: -1px; }
+.flag { display: inline-block; font-size: 11px; border: 1px solid var(--net); color: var(--ink); background: color-mix(in srgb, var(--net) 16%, var(--panel)); border-radius: 999px; padding: 0 7px; white-space: nowrap; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Peer analysis</a></p>
+  <header>
+    <div class="eyebrow">Lewis &amp; Clark and 33 peers · IPEDS finance and admissions · FY2009 to FY2024</div>
+    <h1>Net Tuition and Yield vs. Peers</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5 (high effort), November 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="dek">The discount spiral, side by side. Pick up to three peers to compare with Lewis &amp; Clark on list-price (gross) tuition, the net tuition each school keeps after institutional aid, the discount rate, and yield, the share of admitted first-year students who enroll. Press play to watch the years unfold, then use the map below to find peers that grew net tuition and held or raised yield.</p>
+    <p class="find" id="find"></p>
+  </header>
+
+  <section class="card pick" aria-labelledby="h-pick">
+    <h2 id="h-pick" style="margin:0">Choose the comparison</h2>
+    <div class="slots">
+      <div class="slot"><span class="lab"><i style="background:var(--s0)"></i>Always shown</span><div class="fixed">Lewis &amp; Clark</div></div>
+      <div class="slot"><label class="lab" for="p1"><i style="background:var(--s1)"></i>Peer 1</label><select id="p1"></select></div>
+      <div class="slot"><label class="lab" for="p2"><i style="background:var(--s2)"></i>Peer 2</label><select id="p2"></select></div>
+      <div class="slot"><label class="lab" for="p3"><i style="background:var(--s3)"></i>Peer 3</label><select id="p3"></select></div>
+    </div>
+    <div class="presets" role="group" aria-label="Suggested comparisons">
+      <span style="color:var(--muted)">Suggested:</span>
+      <button type="button" data-preset="both">Best on net tuition and yield</button>
+      <button type="button" data-preset="net">Net tuition leaders</button>
+      <button type="button" data-preset="yield">Yield leaders</button>
+      <button type="button" data-preset="pnw">Pacific Northwest peers</button>
+      <label for="since" style="margin-left:auto;color:var(--muted)">Measure change since</label>
+      <select id="since"><option value="2010">FY2010</option><option value="2015" selected>FY2015</option><option value="2020">FY2020</option></select>
+      <a class="ctl-link" href="#peer-groups">How the peer groups were chosen</a>
+    </div>
+  </section>
+
+  <section class="stage" aria-label="Animated comparison">
+    <p class="caption" id="caption" aria-live="polite"></p>
+    <div class="stage-grid">
+      <div>
+        <div class="mlegend" aria-hidden="true">
+          <span><i class="dl"></i>Gross tuition (list price)</span>
+          <span><i class="ar"></i>Institutional aid</span>
+          <span><i class="ln"></i>Net tuition (kept), in each school's color</span>
+        </div>
+        <div class="multiples" id="multiples"></div>
+      </div>
+      <aside class="ledger" aria-live="polite">
+        <div class="year" id="year">FY2024<small id="year-sub"></small></div>
+        <table class="lt">
+          <thead><tr><th scope="col">School</th><th scope="col">Net</th><th scope="col">Discount</th><th scope="col">Yield</th><th scope="col">Admit</th></tr></thead>
+          <tbody id="ledger"></tbody>
+        </table>
+        <p class="keep" id="keep"></p>
+      </aside>
+    </div>
+    <div class="transport">
+      <button id="play" type="button" aria-label="Play"><svg viewBox="0 0 12 12" id="play-ico"><path d="M2 1 L11 6 L2 11 Z"></path></svg><span id="play-t">Play</span></button>
+      <button id="restart" type="button">Restart</button>
+      <div class="scrub"><label for="t" class="sr-only">Fiscal year</label><input id="t" type="range" min="2009" max="2024" step="0.01" value="2024"><output id="t-out" for="t">FY2024</output></div>
+      <label for="speed" class="sr-only">Speed</label>
+      <select id="speed"><option value="0.6">Slow</option><option value="1" selected>Normal</option><option value="2">Fast</option></select>
+      <div class="seg" role="group" aria-label="Dollars">
+        <button type="button" id="m-real" aria-pressed="true">FY2025 dollars</button>
+        <button type="button" id="m-nom" aria-pressed="false">Nominal</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="trends">
+    <section class="card" aria-labelledby="h-idx"><h2 id="h-idx">Net tuition, after inflation</h2><p class="note" id="n-idx">Indexed to 100 in the starting year, FY2025 dollars.</p><div class="tl" id="tl-idx"></div></section>
+    <section class="card" aria-labelledby="h-disc"><h2 id="h-disc">Discount rate</h2><p class="note">Institutional aid as a share of gross tuition and fees.</p><div class="tl" id="tl-disc"></div></section>
+    <section class="card" aria-labelledby="h-yld"><h2 id="h-yld">Yield</h2><p class="note">Enrolled first-year students as a share of those admitted.</p><div class="tl" id="tl-yld"></div></section>
+  </div>
+
+  <section class="card" id="map" aria-labelledby="h-quad" style="margin-top:16px">
+    <h2 id="h-quad">Who grew net tuition and yield?</h2>
+    <p class="note" id="n-quad">Each dot is a school: change in net tuition after inflation (across) against change in yield (up), from the starting year to the year on the scrubber. Top right grew both. Hover for figures; click a dot to add it to the comparison.</p>
+    <div class="key" aria-hidden="true">
+      <span><i class="sq" style="background:var(--s0)"></i>Lewis &amp; Clark</span>
+      <span><i class="sq" style="background:var(--s1)"></i>Peer 1</span>
+      <span><i class="sq" style="background:var(--s2)"></i>Peer 2</span>
+      <span><i class="sq" style="background:var(--s3)"></i>Peer 3</span>
+      <span><i class="sq" style="background:var(--other)"></i>Other peers</span>
+    </div>
+    <div id="quad" role="img" aria-label="Scatter of net tuition change against yield change for all peers"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-board">
+    <h2 id="h-board">All peers, ranked</h2>
+    <p class="note" id="n-board">Change from the starting year to FY2024. Click a column to sort, or a row to add the school to the comparison.</p>
+    <div class="tbox">
+      <table id="board" style="min-width:52rem">
+        <thead><tr>
+          <th scope="col" data-k="short">School</th><th scope="col" data-k="grp">Group</th>
+          <th scope="col" class="n" data-k="net1">Net tuition, FY2024 ($M)</th><th scope="col" class="n" data-k="netchg">Net tuition change, real</th>
+          <th scope="col" class="n" data-k="disc1">Discount, FY2024</th><th scope="col" class="n" data-k="discchg">Discount change (pts)</th>
+          <th scope="col" class="n" data-k="y1">Yield, FY2024</th><th scope="col" class="n" data-k="ychg">Yield change (pts)</th>
+          <th scope="col" data-k="both">Both up</th>
+        </tr></thead>
+        <tbody id="board-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card groups-card" id="peer-groups" aria-labelledby="h-peer-groups" style="margin-top:16px">
+    <h2 id="h-peer-groups">How the peer groups were chosen</h2>
+    <p class="note">All three groups are available in the pickers. Willamette is in groups 1 and 2 and is listed once, in group 1.</p>
+    <dl class="gl">
+      <div><dt>Group 1: L&amp;C comparison group</dt><dd><p>The institutions Lewis &amp; Clark's Office of Institutional Research uses in its College of Arts and Sciences comparison reports: regional peers in Oregon and Washington plus national liberal arts colleges, taken as published without additions or removals.</p><p class="m">Gettysburg, Gonzaga, Kalamazoo, Kenyon, Occidental, Reed, Rhodes, Sarah Lawrence, Skidmore, St. Olaf, Union, University of Portland, University of Puget Sound, Whitman, Willamette.</p></dd></div>
+      <div><dt>Group 2: Carnegie class</dt><dd><p>Private institutions that share Lewis &amp; Clark's 2025 Carnegie classification, Mixed Undergraduate/Graduate-Doctorate, Small (a liberal arts college with law and graduate schools), or sit in the adjacent Medium band, with endowments closer to Lewis &amp; Clark's than most of group 1, and with audited statements or federal single audit filings available.</p><p class="m">Clark, Drew, Loyola New Orleans, Lynchburg, Pacific University, Seattle Pacific, Seattle University, Stetson, Willamette (also in group 1).</p></dd></div>
+      <div><dt>Group 3: Smaller endowment</dt><dd><p>Private institutions with a liberal arts core plus professional or graduate programs, endowments of roughly $70 million to $300 million at fiscal year 2025, and audited statements available.</p><p class="m">Capital, Goucher, Hamline, John Carroll, Ohio Northern, Pacific Lutheran, Roger Williams, Saint Mary's College of California, University of La Verne, University of Redlands.</p></dd></div>
+    </dl>
+  </section>
+
+  <p class="data-link"><a href="../data/#yield">Data tables and sources for this page →</a><span>Every value with its citation.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="peer_yield_net_tuition.csv" download>Download the data (CSV) →</a><span>One row per school and fiscal year: applicants, admits, enrolled, gross and net tuition.</span></p>
+  <div class="notes">
+    <div>
+      <h3>What the measures mean</h3>
+      <p><b>Gross tuition</b> is tuition and fees at list price for every student. <b>Net tuition</b> is what is left after institutional aid (scholarship allowances). The <b>discount rate</b> is aid divided by gross. <b>Yield</b> is the number of first-year students who enrolled divided by the number admitted, for the fall class that starts each fiscal year (FY2024 is the fall 2023 class).</p>
+      <p>Dollars are converted to FY2025 dollars with CPI-U, fiscal-year weighted, the same factors as the rest of the site.</p>
+    </div>
+    <div>
+      <h3>Why these are IPEDS figures</h3>
+      <ul>
+        <li>Every school reports the same federal finance and admissions surveys each year, so the figures line up across all 34 schools. The audited-statement pages in this section cover fewer schools and years.</li>
+        <li>IPEDS tuition is college-wide: it includes graduate and law tuition where a school has them. Lewis &amp; Clark's IPEDS figures match the discount spiral page (FY2024 net tuition $88.4M).</li>
+        <li>The latest year with finance data is FY2024; admissions data run one year further (fall 2024), shown in the CSV.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Reading yield with care</h3>
+      <ul>
+        <li>Yield falls when applications rise faster than enrollment, for example after joining the Common Application or going test-optional (Reed, Stetson and La Verne show such jumps). A falling yield with rising enrollment is not a weakening.</li>
+        <li>Net tuition growth can come from enrollment growth (more students), price, or a lower discount. Compare the gross line, the aid band and the discount chart to see which.</li>
+        <li>FY2021 reflects pandemic operations at most schools. Willamette's FY2022 and later include Pacific Northwest College of Art. Missing years (Lewis &amp; Clark FY2011 and Lynchburg FY2019 admissions) are gaps.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const FY0 = 2009, FY1 = 2024;
+  const SC = ["var(--s0)", "var(--s1)", "var(--s2)", "var(--s3)"];
+  const fM = (v) => "$" + d3.format(",.1f")(v / 1e6) + "M";
+  const fP = d3.format(".1%"), fP0 = d3.format(".0%");
+  const fPts = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + d3.format(".1f")(Math.abs(v * 100)) + " pts";
+  const fChg = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + d3.format(".0%")(Math.abs(v));
+  const fD = d3.format(",");
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const state = { sel: ["", "", ""], since: 2015, mode: "real", t: FY1, sortK: "netchg", sortDir: -1, preset: "both" };
+  let BY = new Map(), SCHOOLS = [], playing = false, last = 0, raf = 0, stepAcc = 0;
+
+  const num = (v) => (v === "" || v == null ? NaN : +v);
+  const rowOf = (k, fy) => (BY.get(k) || {})[fy];
+  const G = (r) => (r ? (state.mode === "real" ? r.gr : r.g) : NaN);
+  const N = (r) => (r ? (state.mode === "real" ? r.nr : r.n) : NaN);
+  const shown = () => ["lewis-clark", ...state.sel.filter(Boolean)];
+  const slotOf = (k) => (k === "lewis-clark" ? 0 : state.sel.indexOf(k) >= 0 ? state.sel.indexOf(k) + 1 : -1);
+  const colorOf = (k) => { const s = slotOf(k); return s >= 0 ? SC[s] : "var(--other)"; };
+  const short = (k) => (SCHOOLS.find((s) => s.key === k) || {}).short || k;
+  const isPNW = (k) => ["reed", "willamette", "puget-sound", "whitman", "gonzaga", "university-of-portland", "pacific-university", "seattle-university", "seattle-pacific", "pacific-lutheran"].includes(k);
+
+  // interpolated value at fractional time for a field getter
+  function lerp(k, time, get) {
+    const a = Math.floor(time), f = time - a;
+    const ra = rowOf(k, a), rb = rowOf(k, Math.min(FY1, a + 1));
+    const va = get(ra), vb = get(rb);
+    if (f === 0 || isNaN(vb)) return va;
+    if (isNaN(va)) return NaN;
+    return va + (vb - va) * f;
+  }
+
+  // window metrics
+  function metrics(k, s, e) {
+    const a = rowOf(k, s), b = rowOf(k, e);
+    if (!a || !b) return null;
+    return {
+      key: k, short: short(k), grp: (SCHOOLS.find((x) => x.key === k) || {}).grp,
+      net1: b.n, netchg: a.nr && b.nr ? b.nr / a.nr - 1 : NaN,
+      disc1: b.d, discchg: b.d - a.d, y1: b.y, ychg: b.y - a.y
+    };
+  }
+  function allMetrics(s, e) { return SCHOOLS.map((x) => metrics(x.key, s, e)).filter(Boolean); }
+  function presetKeys(p) {
+    const peers = allMetrics(state.since, FY1).filter((m) => m.key !== "lewis-clark");
+    if (p === "net") return peers.filter((m) => !isNaN(m.netchg)).sort((a, b) => b.netchg - a.netchg).slice(0, 3).map((m) => m.key);
+    if (p === "yield") return peers.filter((m) => !isNaN(m.ychg)).sort((a, b) => b.ychg - a.ychg).slice(0, 3).map((m) => m.key);
+    if (p === "pnw") return peers.filter((m) => isPNW(m.key) && !isNaN(m.netchg)).sort((a, b) => b.netchg - a.netchg).slice(0, 3).map((m) => m.key);
+    // both: rank by the sum of standardized net growth and yield change, preferring those with both positive
+    const v = peers.filter((m) => !isNaN(m.netchg) && !isNaN(m.ychg));
+    const z = (arr, f) => { const mu = d3.mean(arr, f), sd = d3.deviation(arr, f) || 1; return (m) => (f(m) - mu) / sd; };
+    const zn = z(v, (m) => m.netchg), zy = z(v, (m) => m.ychg);
+    return v.sort((a, b) => (zn(b) + zy(b)) - (zn(a) + zy(a))).slice(0, 3).map((m) => m.key);
+  }
+
+  // ---------- pickers ----------
+  function fillPickers() {
+    ["p1", "p2", "p3"].forEach((id, i) => {
+      const sel = $(id);
+      const opts = [new Option("None", "")];
+      ["Group 1", "Group 2", "Group 3"].forEach((g) => {
+        const og = document.createElement("optgroup"); og.label = g;
+        SCHOOLS.filter((s) => s.grp === g).sort((a, b) => a.short.localeCompare(b.short)).forEach((s) => {
+          const o = new Option(s.short, s.key);
+          if (state.sel.includes(s.key) && state.sel[i] !== s.key) o.disabled = true;
+          og.append(o);
+        });
+        opts.push(og);
+      });
+      sel.replaceChildren(...opts);
+      sel.value = state.sel[i];
+    });
+    document.querySelectorAll("[data-preset]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.preset === state.preset)));
+  }
+  function setSel(arr, preset) { state.sel = [arr[0] || "", arr[1] || "", arr[2] || ""]; state.preset = preset || ""; fillPickers(); rebuild(); }
+  function addSchool(k) {
+    if (k === "lewis-clark" || state.sel.includes(k)) return;
+    const i = state.sel.indexOf("");
+    const next = state.sel.slice();
+    if (i >= 0) next[i] = k; else next[2] = k;
+    setSel(next, "");
+  }
+
+  // ---------- small multiples ----------
+  let MS = [];
+  function buildMultiples() {
+    const box = $("multiples"); box.replaceChildren(); MS = [];
+    const keys = shown();
+    let yMax = 0;
+    keys.forEach((k) => { for (let fy = FY0; fy <= FY1; fy++) { const g = G(rowOf(k, fy)); if (!isNaN(g)) yMax = Math.max(yMax, g); } });
+    keys.forEach((k) => {
+      const wrap = document.createElement("div"); wrap.className = "mini";
+      const h = document.createElement("h3"); const sw = document.createElement("i"); sw.style.background = colorOf(k); h.append(sw, document.createTextNode(k === "lewis-clark" ? "Lewis & Clark" : short(k)));
+      const sub = document.createElement("p"); sub.className = "sub";
+      const plot = document.createElement("div"); plot.className = "plot";
+      wrap.append(h, sub, plot); box.append(wrap);
+      const W = Math.max(240, plot.clientWidth || 300), H = 170, m = { t: 8, r: 58, b: 22, l: 40 };
+      const x = d3.scaleLinear([FY0, FY1], [m.l, W - m.r]);
+      const y = d3.scaleLinear([0, yMax], [H - m.b, m.t]).nice(3);
+      const svg = d3.select(plot).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+      y.ticks(3).forEach((v) => {
+        svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", v === 0 ? "var(--muted)" : "var(--grid)");
+        svg.append("text").attr("class", "lbl").attr("x", m.l - 6).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text("$" + d3.format(",.0f")(v / 1e6) + "M");
+      });
+      [2010, 2015, 2020, 2024].forEach((v) => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - 6).attr("text-anchor", "middle").text("FY" + String(v).slice(2)));
+      const area = svg.append("path").attr("fill", colorOf(k)).attr("fill-opacity", 0.14);
+      const lg = svg.append("path").attr("fill", "none").attr("stroke", "var(--muted)").attr("stroke-width", 1.75).attr("stroke-dasharray", "5 3");
+      const ln = svg.append("path").attr("fill", "none").attr("stroke", colorOf(k)).attr("stroke-width", 2.5).attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+      const dg = svg.append("circle").attr("r", 3.5).attr("fill", "var(--muted)");
+      const dn = svg.append("circle").attr("r", 4.5).attr("fill", colorOf(k)).attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
+      const tg = svg.append("text").attr("class", "lbl");
+      const tn = svg.append("text").attr("class", "lbl-strong").attr("fill", colorOf(k)).style("font-family", "var(--f-data)").style("font-size", "11.5px").style("font-weight", 600);
+      MS.push({ k, x, y, area, lg, ln, dg, dn, tg, tn, sub, H, m });
+    });
+  }
+  function drawMultiples() {
+    const t = state.t;
+    MS.forEach((P) => {
+      const pts = [];
+      for (let fy = FY0; fy <= Math.floor(t); fy++) { const r = rowOf(P.k, fy); if (r && !isNaN(G(r))) pts.push({ fy, g: G(r), n: N(r) }); }
+      if (t > Math.floor(t) && t < FY1) { const g = lerp(P.k, t, G), n = lerp(P.k, t, N); if (!isNaN(g)) pts.push({ fy: t, g, n }); }
+      const line = (f) => d3.line().x((d) => P.x(d.fy)).y((d) => P.y(d[f]))(pts);
+      P.lg.attr("d", pts.length > 1 ? line("g") : null);
+      P.ln.attr("d", pts.length > 1 ? line("n") : null);
+      P.area.attr("d", pts.length > 1 ? d3.area().x((d) => P.x(d.fy)).y0((d) => P.y(d.n)).y1((d) => P.y(d.g))(pts) : null);
+      const cur = pts[pts.length - 1];
+      if (cur) {
+        const cx = P.x(cur.fy);
+        P.dg.attr("cx", cx).attr("cy", P.y(cur.g)).attr("opacity", 1);
+        P.dn.attr("cx", cx).attr("cy", P.y(cur.n)).attr("opacity", 1);
+        let yg = P.y(cur.g), yn = P.y(cur.n);
+        if (yn - yg < 14) { const mid = (yg + yn) / 2; yg = mid - 7; yn = mid + 7; }
+        P.tg.attr("x", cx + 7).attr("y", yg).attr("dy", "0.35em").text(fM(cur.g));
+        P.tn.attr("x", cx + 7).attr("y", yn).attr("dy", "0.35em").text(fM(cur.n));
+        const r = rowOf(P.k, Math.floor(t));
+        P.sub.textContent = r ? "Discount " + (isNaN(r.d) ? "n/a" : fP0(r.d)) + " · Yield " + (isNaN(r.y) ? "n/a" : fP0(r.y)) : "";
+      } else { P.dg.attr("opacity", 0); P.dn.attr("opacity", 0); P.tg.text(""); P.tn.text(""); P.sub.textContent = ""; }
+    });
+  }
+
+  // ---------- ledger + caption ----------
+  function drawLedger() {
+    const t = state.t, fy = Math.floor(t);
+    $("year").firstChild.nodeValue = "FY" + fy;
+    $("year-sub").textContent = "Fall " + (fy - 1) + " entering class · " + (state.mode === "real" ? "FY2025 dollars" : "nominal dollars");
+    const tb = $("ledger"); tb.replaceChildren();
+    shown().forEach((k) => {
+      const r = rowOf(k, fy);
+      const tr = tb.insertRow();
+      const c0 = tr.insertCell(); const sw = document.createElement("i"); sw.style.background = colorOf(k); c0.append(sw, document.createTextNode(k === "lewis-clark" ? "Lewis & Clark" : short(k)));
+      [r && !isNaN(lerp(k, t, N)) ? fM(lerp(k, t, N)) : "", r && !isNaN(r.d) ? fP0(r.d) : "", r && !isNaN(r.y) ? fP0(r.y) : "", r && !isNaN(r.a) ? fP0(r.a) : ""].forEach((v) => { tr.insertCell().textContent = v || "n/a"; });
+    });
+    const lc = rowOf("lewis-clark", fy);
+    const keep = $("keep"); keep.replaceChildren();
+    if (lc) {
+      const parts = shown().map((k) => { const r = rowOf(k, fy); return r && !isNaN(r.d) ? [k === "lewis-clark" ? "Lewis & Clark" : short(k), Math.round((1 - r.d) * 100)] : null; }).filter(Boolean);
+      keep.append("Of every $100 of list tuition, each school keeps: ");
+      parts.forEach(([n, v], i) => { const b = document.createElement("b"); b.textContent = n + " $" + v; keep.append(b); if (i < parts.length - 1) keep.append(", "); });
+      keep.append(".");
+    }
+    const cap = $("caption");
+    const key = fy + "|" + shown().join(",") + "|" + state.mode;
+    if (cap.dataset.k !== key) {
+      cap.dataset.k = key; cap.replaceChildren();
+      const s = document.createElement("span"); s.className = "cy"; s.textContent = "FY" + fy; cap.append(s);
+      const ct = document.createElement("span"); ct.className = "ct"; ct.textContent = captionText(fy); cap.append(ct);
+    }
+    $("t").value = String(t); $("t-out").textContent = "FY" + fy;
+  }
+  function captionText(fy) {
+    const keys = shown();
+    const s = Math.min(state.since, fy);
+    if (fy <= s) { const r = rowOf("lewis-clark", fy); return `The starting line for comparison. Lewis & Clark keeps $${Math.round((1 - r.d) * 100)} of every $100 of list price` + (isNaN(r.y) ? "." : ` and enrolls ${fP0(r.y)} of the students it admits.`); }
+    const ms = keys.map((k) => metrics(k, s, fy)).filter((m) => m && !isNaN(m.netchg));
+    if (!ms.length) return "";
+    const best = ms.slice().sort((a, b) => b.netchg - a.netchg)[0];
+    const lc = ms.find((m) => m.key === "lewis-clark");
+    const nm = (m) => (m.key === "lewis-clark" ? "Lewis & Clark" : m.short);
+    let txt = `Since FY${s}, ${nm(best)} has ${best.netchg >= 0 ? "grown" : "lost"} ${fChg(Math.abs(best.netchg)).replace("+", "")} of net tuition after inflation`;
+    txt += isNaN(best.ychg) ? "." : `, with yield ${best.ychg >= 0 ? "up" : "down"} ${d3.format(".1f")(Math.abs(best.ychg * 100))} points.`;
+    if (lc && best.key !== "lewis-clark") txt += ` Lewis & Clark: net tuition ${fChg(lc.netchg)}, yield ${fPts(lc.ychg)}.`;
+    if (fy === 2021) txt += " Pandemic year.";
+    return txt;
+  }
+
+  // ---------- trend lines ----------
+  function trend(id, get, fmt, ref) {
+    const el = $(id); el.replaceChildren();
+    const keys = shown(); const s = state.since, t = state.t;
+    const W = Math.max(260, el.clientWidth || 320), H = 220, m = { t: 10, r: 92, b: 24, l: 42 };
+    const series = keys.map((k) => {
+      const pts = [];
+      for (let fy = FY0; fy <= Math.floor(t); fy++) { const v = get(k, fy); pts.push({ fy, v }); }
+      if (t > Math.floor(t) && t < FY1) { const a = get(k, Math.floor(t)), b = get(k, Math.floor(t) + 1); if (!isNaN(a) && !isNaN(b)) pts.push({ fy: t, v: a + (b - a) * (t - Math.floor(t)) }); }
+      return { k, pts };
+    });
+    const allV = [];
+    keys.forEach((k) => { for (let fy = FY0; fy <= FY1; fy++) { const v = get(k, fy); if (!isNaN(v)) allV.push(v); } });
+    if (!allV.length) return;
+    const y = d3.scaleLinear(d3.extent(allV.concat(ref != null ? [ref] : [])), [H - m.b, m.t]).nice(4);
+    const x = d3.scaleLinear([FY0, FY1], [m.l, W - m.r]);
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    y.ticks(4).forEach((v) => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", m.l - 6).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text(fmt(v));
+    });
+    if (ref != null) svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(ref)).attr("y2", y(ref)).attr("stroke", "var(--muted)").attr("stroke-dasharray", "3 3");
+    [2010, 2015, 2020, 2024].forEach((v) => svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - 6).attr("text-anchor", "middle").text("FY" + String(v).slice(2)));
+    if (s > FY0) svg.append("line").attr("x1", x(s)).attr("x2", x(s)).attr("y1", m.t).attr("y2", H - m.b).attr("stroke", "var(--rule)").attr("stroke-width", 1.5);
+    const ends = [];
+    series.slice().reverse().forEach(({ k, pts }) => {
+      const c = colorOf(k);
+      svg.append("path").attr("d", d3.line().defined((d) => !isNaN(d.v)).x((d) => x(d.fy)).y((d) => y(d.v))(pts)).attr("fill", "none").attr("stroke", c).attr("stroke-width", k === "lewis-clark" ? 2.75 : 2.25).attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+      const lastPt = pts.filter((d) => !isNaN(d.v)).pop();
+      if (lastPt) { svg.append("circle").attr("cx", x(lastPt.fy)).attr("cy", y(lastPt.v)).attr("r", 3.5).attr("fill", c); ends.push({ k, x: x(lastPt.fy), y: y(lastPt.v), v: lastPt.v, c }); }
+    });
+    ends.sort((a, b) => a.y - b.y);
+    for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 13) ends[i].y = ends[i - 1].y + 13;
+    ends.forEach((e) => svg.append("text").attr("class", "dot-lbl").attr("x", e.x + 7).attr("y", e.y).attr("dy", "0.35em").attr("fill", e.c).text((e.k === "lewis-clark" ? "L&C" : short(e.k).replace("University", "U").slice(0, 14)) + " " + fmt(e.v)));
+  }
+  function drawTrends() {
+    const s = state.since;
+    $("n-idx").textContent = `Indexed to 100 in FY${s}, after inflation (FY2025 dollars), so schools of different sizes compare.`;
+    trend("tl-idx", (k, fy) => { const a = rowOf(k, s), b = rowOf(k, fy); return a && b && a.nr && b.nr ? (b.nr / a.nr) * 100 : NaN; }, (v) => d3.format(".0f")(v), 100);
+    trend("tl-disc", (k, fy) => { const r = rowOf(k, fy); return r ? r.d : NaN; }, fP0);
+    trend("tl-yld", (k, fy) => { const r = rowOf(k, fy); return r ? r.y : NaN; }, fP0);
+  }
+
+  // ---------- quadrant ----------
+  function drawQuad() {
+    const el = $("quad"); el.replaceChildren();
+    const s = state.since, e = Math.max(s + 1, Math.floor(state.t));
+    $("n-quad").textContent = `Each dot is a school: change in net tuition after inflation (across) against change in yield (up), FY${s} to FY${e}. Top right grew both. Hover for figures; click a dot to add it to the comparison.`;
+    const ms = allMetrics(s, e).filter((m) => !isNaN(m.netchg) && !isNaN(m.ychg));
+    const W = Math.max(300, el.clientWidth || 700), H = Math.round(Math.max(340, Math.min(480, W * 0.55))), m = { t: 22, r: 24, b: 40, l: 54 };
+    const xe = d3.extent(ms, (d) => d.netchg), ye = d3.extent(ms, (d) => d.ychg);
+    const x = d3.scaleLinear([Math.min(-0.1, xe[0]), Math.max(0.1, xe[1])], [m.l, W - m.r]).nice();
+    const y = d3.scaleLinear([Math.min(-0.03, ye[0]), Math.max(0.03, ye[1])], [H - m.b, m.t]).nice();
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    svg.append("rect").attr("x", x(0)).attr("y", m.t).attr("width", Math.max(0, W - m.r - x(0))).attr("height", Math.max(0, y(0) - m.t)).attr("fill", "var(--net)").attr("fill-opacity", 0.07);
+    x.ticks(W < 480 ? 4 : 7).forEach((v) => {
+      svg.append("line").attr("x1", x(v)).attr("x2", x(v)).attr("y1", m.t).attr("y2", H - m.b).attr("stroke", v === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", x(v)).attr("y", H - m.b + 16).attr("text-anchor", "middle").text(fChg(v).replace("+0%", "0%"));
+    });
+    y.ticks(6).forEach((v) => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", Math.abs(v) < 1e-9 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", m.l - 6).attr("y", y(v)).attr("dy", "0.35em").attr("text-anchor", "end").text(Math.abs(v) < 1e-9 ? "0" : (v > 0 ? "+" : "−") + d3.format(".0f")(Math.abs(v * 100)));
+    });
+    svg.append("text").attr("class", "lbl").attr("x", W - m.r).attr("y", H - 6).attr("text-anchor", "end").text("Net tuition change after inflation →");
+    svg.append("text").attr("class", "lbl").attr("x", m.l).attr("y", 10).text("↑ Yield change (points)");
+    svg.append("text").attr("class", "qlab").attr("x", W - m.r - 6).attr("y", m.t + 14).attr("text-anchor", "end").text(W < 560 ? "GREW BOTH" : "GREW NET TUITION AND YIELD");
+    svg.append("text").attr("class", "qlab").attr("x", m.l + 6).attr("y", H - m.b - 8).text("LOST BOTH");
+    const tip = document.createElement("div"); tip.className = "tip"; el.append(tip);
+    const order = ms.slice().sort((a, b) => (slotOf(a.key) >= 0) - (slotOf(b.key) >= 0));
+    const labels = [];
+    order.forEach((d) => {
+      const c = colorOf(d.key), on = c !== "var(--other)";
+      const g = svg.append("g").style("cursor", "pointer");
+      g.append("circle").attr("cx", x(d.netchg)).attr("cy", y(d.ychg)).attr("r", on ? 7 : 5).attr("fill", c).attr("stroke", "var(--panel)").attr("stroke-width", 1.5).attr("fill-opacity", on ? 1 : 0.85);
+      g.append("circle").attr("cx", x(d.netchg)).attr("cy", y(d.ychg)).attr("r", 12).attr("fill", "transparent")
+        .on("pointermove", (ev) => {
+          tip.replaceChildren();
+          [[d.key === "lewis-clark" ? "Lewis & Clark" : d.short, "t"], [d.grp || "", "h"], [`Net tuition after inflation ${fChg(d.netchg)}`], [`Yield ${fPts(d.ychg)} to ${fP(d.y1)}`], [`Discount ${fPts(d.discchg)} to ${fP(d.disc1)}`], [on ? "" : "Click to add to the comparison", "h"]]
+            .forEach(([t, cl]) => { if (!t) return; const dv = document.createElement("div"); if (cl) dv.className = cl; dv.textContent = t; tip.append(dv); });
+          tip.style.opacity = 1;
+          const [px, py] = d3.pointer(ev, el), tw = tip.offsetWidth, th = tip.offsetHeight;
+          let l = px + 14; if (l + tw > el.clientWidth) l = Math.max(0, px - tw - 14);
+          let tp = py + 12; if (tp + th > el.clientHeight) tp = Math.max(0, py - th - 8);
+          tip.style.left = l + "px"; tip.style.top = tp + "px";
+        })
+        .on("pointerleave", () => { tip.style.opacity = 0; })
+        .on("click", () => addSchool(d.key));
+      if (on || d.netchg > 0 || d.ychg > 0) labels.push({ d, on, c });
+    });
+    labels.forEach(({ d, on, c }) => {
+      const t = svg.append("text").attr("class", "dot-lbl").attr("x", x(d.netchg) + 10).attr("y", y(d.ychg)).attr("dy", "0.35em").attr("fill", on ? c : "var(--muted)").style("font-weight", on ? 600 : 500).text(d.key === "lewis-clark" ? "Lewis & Clark" : d.short);
+      const w = t.node().getComputedTextLength();
+      if (x(d.netchg) + 10 + w > W) t.attr("x", x(d.netchg) - 10).attr("text-anchor", "end");
+    });
+  }
+
+  // ---------- leaderboard ----------
+  function drawBoard() {
+    const s = state.since;
+    $("n-board").textContent = `Change from FY${s} to FY2024, with net tuition in FY2025 dollars. Click a column to sort, or a row to add the school to the comparison.`;
+    const ms = allMetrics(s, FY1).map((m) => ({ ...m, both: !isNaN(m.netchg) && !isNaN(m.ychg) && m.netchg > 0 && m.ychg > 0 ? 1 : 0 }));
+    const k = state.sortK, dir = state.sortDir;
+    ms.sort((a, b) => { const va = a[k], vb = b[k]; if (typeof va === "string") return dir * va.localeCompare(vb); const na = isNaN(va) ? -Infinity : va, nb = isNaN(vb) ? -Infinity : vb; return dir * (na - nb); });
+    document.querySelectorAll("#board th").forEach((th) => th.setAttribute("aria-sort", th.dataset.k === k ? (dir > 0 ? "ascending" : "descending") : "none"));
+    const tb = $("board-body"); tb.replaceChildren();
+    ms.forEach((m) => {
+      const tr = tb.insertRow(); const c = colorOf(m.key); if (c !== "var(--other)") tr.className = "sel";
+      const c0 = tr.insertCell(); if (c !== "var(--other)") { const sw = document.createElement("i"); sw.style.background = c; c0.append(sw); } c0.append(m.key === "lewis-clark" ? "Lewis & Clark" : m.short);
+      tr.insertCell().textContent = m.grp || "";
+      [[d3.format(",.1f")(m.net1 / 1e6)], [isNaN(m.netchg) ? "" : fChg(m.netchg)], [isNaN(m.disc1) ? "" : fP(m.disc1)], [isNaN(m.discchg) ? "" : fPts(m.discchg).replace(" pts", "")], [isNaN(m.y1) ? "" : fP(m.y1)], [isNaN(m.ychg) ? "" : fPts(m.ychg).replace(" pts", "")]].forEach(([t]) => { const td = tr.insertCell(); td.className = "n"; td.textContent = t; });
+      const fl = tr.insertCell(); if (m.both) { const sp = document.createElement("span"); sp.className = "flag"; sp.textContent = "Both up"; fl.append(sp); }
+      tr.addEventListener("click", () => addSchool(m.key));
+    });
+  }
+
+  function find() {
+    const s = state.since;
+    const ms = allMetrics(s, FY1).filter((m) => m.key !== "lewis-clark" && !isNaN(m.netchg) && !isNaN(m.ychg));
+    const both = ms.filter((m) => m.netchg > 0 && m.ychg > 0).sort((a, b) => b.netchg - a.netchg);
+    const net = ms.filter((m) => m.netchg > 0).sort((a, b) => b.netchg - a.netchg);
+    const lc = metrics("lewis-clark", s, FY1);
+    let txt = `From FY${s} to FY2024, ${net.length} of ${ms.length} peers grew net tuition after inflation`;
+    txt += net.length ? ` (${net.map((m) => m.short).join(", ")})` : "";
+    txt += both.length ? `, and ${both.length === 1 ? "only " + both[0].short + " also raised" : both.map((m) => m.short).join(" and ") + " also raised"} yield.` : ", and none of them also raised yield.";
+    txt += ` Lewis & Clark's net tuition ${lc.netchg < 0 ? "fell" : "rose"} ${d3.format(".0%")(Math.abs(lc.netchg))} after inflation and its yield ${lc.ychg < 0 ? "fell" : "rose"} ${d3.format(".1f")(Math.abs(lc.ychg * 100))} points.`;
+    $("find").textContent = txt;
+  }
+
+  function render() { drawMultiples(); drawLedger(); drawTrends(); drawQuad(); }
+  function rebuild() { buildMultiples(); render(); drawBoard(); find(); }
+
+  // ---------- transport ----------
+  const yearMs = 1300;
+  function setPlaying(p) {
+    playing = p;
+    $("play-t").textContent = p ? "Pause" : (state.t >= FY1 ? "Replay" : "Play");
+    $("play").setAttribute("aria-label", p ? "Pause" : "Play");
+    $("play-ico").innerHTML = p ? '<path d="M2 1 H5 V11 H2 Z M7 1 H10 V11 H7 Z"></path>' : '<path d="M2 1 L11 6 L2 11 Z"></path>';
+    if (p) { last = performance.now(); stepAcc = 0; cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); } else cancelAnimationFrame(raf);
+  }
+  let frame = 0;
+  function tick(now) {
+    const dt = Math.max(0, Math.min(100, now - last)); last = now;
+    const speed = Number($("speed").value);
+    if (reduce) { stepAcc += dt * speed; if (stepAcc >= yearMs) { stepAcc = 0; state.t = Math.min(FY1, Math.floor(state.t) + 1); render(); } }
+    else {
+      const before = Math.floor(state.t);
+      state.t = Math.min(FY1, state.t + dt * speed / yearMs);
+      drawMultiples(); drawLedger();
+      if (Math.floor(state.t) !== before || (frame++ % 3 === 0)) { drawTrends(); }
+      if (Math.floor(state.t) !== before) drawQuad();
+    }
+    if (state.t >= FY1) { state.t = FY1; render(); setPlaying(false); return; }
+    raf = requestAnimationFrame(tick);
+  }
+  $("play").addEventListener("click", () => { if (playing) { setPlaying(false); return; } if (state.t >= FY1) { state.t = FY0; render(); } setPlaying(true); });
+  $("restart").addEventListener("click", () => { state.t = FY0; render(); setPlaying(true); });
+  $("t").addEventListener("input", (e) => { setPlaying(false); state.t = Number(e.target.value); render(); $("play-t").textContent = state.t >= FY1 ? "Replay" : "Play"; });
+  function setMode(mo) { state.mode = mo; $("m-real").setAttribute("aria-pressed", String(mo === "real")); $("m-nom").setAttribute("aria-pressed", String(mo === "nom")); buildMultiples(); render(); }
+  $("m-real").addEventListener("click", () => setMode("real"));
+  $("m-nom").addEventListener("click", () => setMode("nom"));
+  ["p1", "p2", "p3"].forEach((id, i) => $(id).addEventListener("change", (e) => { const next = state.sel.slice(); next[i] = e.target.value; setSel(next, ""); }));
+  document.querySelectorAll("[data-preset]").forEach((b) => b.addEventListener("click", () => setSel(presetKeys(b.dataset.preset), b.dataset.preset)));
+  $("since").addEventListener("change", (e) => { state.since = Number(e.target.value); if (state.preset) setSel(presetKeys(state.preset), state.preset); else rebuild(); });
+  document.querySelectorAll("#board th").forEach((th) => th.addEventListener("click", () => { const k = th.dataset.k; state.sortDir = state.sortK === k ? -state.sortDir : (k === "short" || k === "grp" ? 1 : -1); state.sortK = k; drawBoard(); }));
+
+  d3.csv("peer_yield_net_tuition.csv").then((raw) => {
+    raw.forEach((r) => {
+      const k = r.key, fy = +r.fiscal_year;
+      if (!BY.has(k)) { BY.set(k, {}); SCHOOLS.push({ key: k, short: r.key === "lewis-clark" ? "Lewis & Clark" : r.short, grp: r.peer_group === "Lewis & Clark" ? "" : r.peer_group }); }
+      const g = num(r.gross_tuition), n = num(r.net_tuition);
+      BY.get(k)[fy] = { g, n, gr: num(r.gross_fy2025), nr: num(r.net_fy2025), d: num(r.discount_rate), y: num(r.yield_rate), a: num(r.admit_rate) };
+    });
+    state.sel = presetKeys("both");
+    fillPickers();
+    rebuild();
+    let rz = 0;
+    new ResizeObserver(() => { cancelAnimationFrame(rz); rz = requestAnimationFrame(() => { buildMultiples(); render(); }); }).observe($("multiples"));
+  }).catch(() => { const p = document.createElement("p"); p.className = "fail"; p.textContent = "The data file did not load."; $("multiples").append(p); });
+})();
+</script>
+</body>
+</html>
