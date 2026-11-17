@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Endowment Size and Growth: U.S. News Growers</title>
+<meta name="description" content="Endowment size and five-year growth, FY2019 to FY2024, for Lewis & Clark and the colleges ranked above it by U.S. News that grew real net tuition or yield, from IPEDS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../peer.css">
+<style>
+.key i.dot20 { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--muted); background: var(--panel); display: inline-block; }
+.key i.dot25 { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Peer analysis</a></p>
+  <header>
+    <div class="eyebrow">U.S. News leaders that grew net tuition or yield · IPEDS endowment assets</div>
+    <h1>Endowment Size and Growth: U.S. News Growers</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5, November 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="dek">The 29 colleges from <a href="../usnews-net-tuition-yield/" style="color:inherit">Who Grew Net Tuition and Yield: U.S. News Leaders</a> that grew real net tuition, yield or both from FY2017 to FY2024, with Lewis &amp; Clark: endowment at fiscal year end 2019 and 2024, the five-year change, and endowment per student. Every figure comes from the federal IPEDS finance and enrollment surveys, so all 30 schools are on the same basis.</p>
+    <p class="find" id="find"></p>
+  </header>
+
+  <div class="tiles">
+    <div class="tile"><b id="k-lc25">&nbsp;</b><span>Lewis &amp; Clark endowment, FY2024</span></div>
+    <div class="tile"><b id="k-lcchg">&nbsp;</b><span>Lewis &amp; Clark change, FY2019 to FY2024</span></div>
+    <div class="tile"><b id="k-medchg">&nbsp;</b><span>Median change (shown colleges)</span></div>
+    <div class="tile"><b id="k-lcps">&nbsp;</b><span>Lewis &amp; Clark endowment per student</span></div>
+    <div class="tile"><b id="k-medps">&nbsp;</b><span>Median per student (shown colleges)</span></div>
+    <div class="tile"><b id="k-lcrk">&nbsp;</b><span id="k-lcrk-l">Lewis &amp; Clark per student rank</span></div>
+  </div>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Net tuition and yield result">
+      <button type="button" data-group="" aria-pressed="true">All 29</button>
+      <button type="button" data-group="Both up" aria-pressed="false">Both up</button>
+      <button type="button" data-group="Net tuition up" aria-pressed="false">Net tuition up</button>
+      <button type="button" data-group="Yield up" aria-pressed="false">Yield up</button>
+    </div>
+    <span style="color:var(--muted);font-size:13px">Result on real net tuition and yield, FY2017 to FY2024. <a class="ctl-link" href="#the-set">Which colleges are included</a></span>
+  </div>
+
+  <section class="card" aria-labelledby="h-size">
+    <h2 id="h-size">Endowment, FY2019 and FY2024</h2>
+    <p class="note">Each line runs from the FY2019 endowment (open circle) to FY2024 (filled), sorted by FY2024 size. The filled circle is colored by the college's net tuition and yield result. A line running left means the endowment shrank. Hover or tap a row for figures.</p>
+    <div class="key" aria-hidden="true">
+      <span><i class="dot20"></i>FY2019</span>
+      <span><i class="dot25" style="background:var(--gross)"></i>Lewis &amp; Clark, FY2024</span>
+      <span><i class="dot25" style="background:var(--net)"></i>Both up, FY2024</span>
+      <span><i class="dot25" style="background:var(--aid)"></i>One of the two up, FY2024</span>
+    </div>
+    <div class="chart" id="c-size" role="img" aria-label="Endowment in FY2019 and FY2024 by institution"></div>
+  </section>
+
+  <div class="pair">
+    <section class="card" aria-labelledby="h-chg">
+      <h2 id="h-chg">Five-year change</h2>
+      <p class="note">Percent change in endowment assets from FY2019 to FY2024, before inflation. The dashed line is the median of the colleges shown, not counting Lewis &amp; Clark.</p>
+      <div class="key" aria-hidden="true">
+        <span><i class="sq" style="background:var(--gross)"></i>Lewis &amp; Clark</span>
+        <span><i class="sq" style="background:var(--other)"></i>Other colleges</span>
+        <span><i class="ref"></i>Median</span>
+      </div>
+      <div class="chart" id="c-chg" role="img" aria-label="Five-year endowment change by institution"></div>
+    </section>
+    <section class="card" aria-labelledby="h-ps">
+      <h2 id="h-ps">Endowment per student</h2>
+      <p class="note">FY2024 endowment divided by fall 2023 total headcount (undergraduate plus graduate), both from IPEDS.</p>
+      <div class="key" aria-hidden="true">
+        <span><i class="sq" style="background:var(--gross)"></i>Lewis &amp; Clark</span>
+        <span><i class="sq" style="background:var(--other)"></i>Other colleges</span>
+        <span><i class="ref"></i>Median</span>
+      </div>
+      <div class="chart" id="c-ps" role="img" aria-label="Endowment per student by institution"></div>
+    </section>
+  </div>
+
+  <section class="card" aria-labelledby="h-table">
+    <h2 id="h-table">Figures by institution</h2>
+    <p class="note">Endowment in millions of dollars at each college's fiscal year end, with its U.S. News rank and its net tuition and yield result from FY2017 to FY2024.</p>
+    <div class="tbox">
+      <table style="min-width:62rem">
+        <thead><tr><th scope="col">Institution</th><th scope="col" class="n">U.S. News</th><th scope="col">Result</th><th scope="col" class="n">Net tuition, real</th><th scope="col" class="n">Yield change</th><th scope="col" class="n">FY2019 ($M)</th><th scope="col" class="n">FY2024 ($M)</th><th scope="col" class="n">Change</th><th scope="col" class="n">Enrollment</th><th scope="col" class="n">Per student</th></tr></thead>
+        <tbody id="t-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card groups-card" id="the-set" aria-labelledby="h-the-set" style="margin-top:16px">
+    <h2 id="h-the-set">Which colleges are included</h2>
+    <p class="note">The filter only hides rows; medians use the colleges shown.</p>
+    <dl class="gl">
+      <div><dt>Starting list</dt><dd><p>The 96 colleges ranked ahead of Lewis &amp; Clark (tied at No. 97) in the U.S. News &amp; World Report 2027 Best National Liberal Arts Colleges list, as used on the <a href="../usnews-net-tuition-yield/">U.S. News leaders net tuition and yield page</a>. The three service academies and Berea College, which report no tuition, were already left out there.</p></dd></div>
+      <div><dt>Kept here</dt><dd><p>The colleges whose net tuition after inflation, yield or both rose from FY2017 to FY2024, the longest of that page's three windows: 10 with both up, 7 with net tuition up only and 12 with yield up only.</p><p class="m" id="set-list"></p></dd></div>
+      <div><dt>Not kept</dt><dd><p>The 63 ranked colleges where both measures fell over that window. Starting from FY2018 instead would add 6 colleges and drop Reed; starting from FY2019 would add 10 and drop Bryn Mawr, Gustavus Adolphus, Occidental and Reed. All 10 colleges that grew both stay in under either start.</p></dd></div>
+    </dl>
+  </section>
+
+  <p class="data-link"><a href="../data/#usnews-endowment">Data tables and sources for this page →</a><span>Every value with its citation.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="usnews_endowment.csv" download>Download the data (CSV) →</a><span>One row per college, with its net tuition and yield result. The audited-statement view for Lewis &amp; Clark's own peer groups is <a href="../endowment/" style="font-weight:400">Peer Endowment Size and Growth</a>.</span></p>
+  <div class="notes">
+    <div>
+      <h3>What is measured</h3>
+      <p>Value of endowment assets at the end of the fiscal year from the federal IPEDS finance survey (FY2019 and FY2024, the latest year with finance data for every college), retrieved through the Urban Institute Education Data Portal. These are market values as each college reports them to IPEDS and can differ from endowment net assets in audited statements; Lewis &amp; Clark's FY2024 IPEDS figure is $326.1M.</p>
+    </div>
+    <div>
+      <h3>Why FY2019 to FY2024</h3>
+      <ul>
+        <li>The <a href="../endowment/">peer endowment page</a> compares FY2020 and FY2025 from audited statements. IPEDS has no FY2025 finance data yet, so this page uses the same five-year span one year earlier, on one basis for every college.</li>
+        <li>Changes are before inflation and include gifts, investment returns and spending.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Cautions</h3>
+      <ul>
+        <li>Per student uses total fall 2023 headcount, so colleges with graduate or law students, Lewis &amp; Clark among them, have more students to divide by than undergraduate-only colleges.</li>
+        <li>Thomas Aquinas College's endowment is about $31M, far smaller than the rest of the set.</li>
+        <li>Wesleyan's headcount rose from 3,271 in fall 2023 to 4,011 in fall 2024; this page uses fall 2023.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fM = (v) => (v >= 1000 ? "$" + d3.format(",.2f")(v / 1000) + "B" : "$" + d3.format(",.1f")(v) + "M");
+  const fP = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + d3.format(".1%")(Math.abs(v));
+  const fK = (v) => "$" + d3.format(",.0f")(v / 1000) + "K";
+  const fD = d3.format(",");
+  const fPts = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + d3.format(".1f")(Math.abs(v * 100)) + " pts";
+  const ord = (n) => n + (["th", "st", "nd", "rd"][(n % 100 - 20) % 10] || ["th", "st", "nd", "rd"][n % 100] || "th");
+  const state = { group: "" };
+  let all = [];
+  const num = (v) => (v === "" || v == null ? NaN : +v);
+  const inGroup = (r) => !state.group || r.lc || r.res === state.group;
+  const name = (r) => r.short;
+  const colorOf = (r) => (r.lc ? "var(--gross)" : r.res === "Both up" ? "var(--net)" : "var(--aid)");
+
+  function measure(svg, rows, cls) {
+    const probe = svg.append("text").attr("class", cls);
+    const w = d3.max(rows, (r) => { probe.text(name(r)); return probe.node().getComputedTextLength(); }) || 80;
+    probe.remove();
+    return w;
+  }
+  function tipFor(el) {
+    const tip = document.createElement("div"); tip.className = "tip"; el.append(tip);
+    return {
+      show(ev, lines) {
+        tip.replaceChildren();
+        lines.forEach(([t, cls]) => { const d = document.createElement("div"); if (cls) d.className = cls; d.textContent = t; tip.append(d); });
+        tip.style.opacity = 1;
+        const [px, py] = d3.pointer(ev, el), tw = tip.offsetWidth, th = tip.offsetHeight;
+        let left = px + 14; if (left + tw > el.clientWidth) left = Math.max(0, px - tw - 14);
+        let top = py + 12; if (top + th > el.clientHeight) top = Math.max(0, py - th - 8);
+        tip.style.left = left + "px"; tip.style.top = top + "px";
+      },
+      hide() { tip.style.opacity = 0; }
+    };
+  }
+  const lines = (r) => [[r.institution, "t"], [(r.lc ? "U.S. News No. 97 (tie)" : "U.S. News No. " + r.us + " · " + r.res), "h"],
+    ["FY2019: " + fM(r.e19) + "   FY2024: " + fM(r.e24)],
+    ["Change: " + fP(r.chg) + "   Per student: " + fK(r.ps)],
+    ["Net tuition, real: " + fP(r.netr) + "   Yield: " + fPts(r.yc)]];
+
+  function dumbbell(rows) {
+    const el = $("c-size"); el.replaceChildren();
+    rows = rows.slice().sort((a, b) => b.e24 - a.e24);
+    const W = Math.max(300, el.clientWidth || 700), rowH = 22, top = 8, bottom = 30, mr = W < 480 ? 50 : 66;
+    const H = top + rows.length * rowH + bottom;
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const ml = Math.min(W * 0.42, measure(svg, rows, "nm lc")) + 12;
+    const x = d3.scaleLinear([0, d3.max(rows, (r) => Math.max(r.e24, r.e19))], [ml, W - mr]).nice();
+    x.ticks(W < 480 ? 3 : 6).forEach((t) => {
+      svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", top).attr("y2", H - bottom).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", H - bottom + 16).attr("text-anchor", "middle").text(t >= 1000 ? "$" + d3.format(",")(t / 1000) + "B" : "$" + fD(t) + "M");
+    });
+    const tip = tipFor(el);
+    rows.forEach((r, i) => {
+      const y = top + i * rowH + rowH / 2;
+      const g = svg.append("g");
+      if (r.lc) g.append("rect").attr("x", 0).attr("y", y - rowH / 2).attr("width", W).attr("height", rowH).attr("fill", "var(--gross)").attr("fill-opacity", 0.08);
+      g.append("text").attr("class", r.lc ? "nm lc" : "nm").attr("x", ml - 10).attr("y", y).attr("dy", "0.32em").attr("text-anchor", "end").text(name(r));
+      const c = colorOf(r);
+      g.append("line").attr("x1", x(r.e19)).attr("x2", x(r.e24)).attr("y1", y).attr("y2", y).attr("stroke", c).attr("stroke-width", 2).attr("opacity", 0.55);
+      g.append("circle").attr("cx", x(r.e19)).attr("cy", y).attr("r", 4).attr("fill", "var(--panel)").attr("stroke", "var(--muted)").attr("stroke-width", 2);
+      g.append("circle").attr("cx", x(r.e24)).attr("cy", y).attr("r", 5).attr("fill", c).attr("stroke", "var(--panel)").attr("stroke-width", 1.5);
+      g.append("text").attr("class", "lbl v").attr("x", x(Math.max(r.e24, r.e19)) + 9).attr("y", y).attr("dy", "0.32em").text(fM(r.e24));
+      g.append("rect").attr("x", 0).attr("y", y - rowH / 2).attr("width", W).attr("height", rowH).attr("fill", "transparent")
+        .on("pointermove", (ev) => tip.show(ev, lines(r))).on("pointerleave", () => tip.hide());
+    });
+  }
+
+  function bars(id, rows, field, fmt, tickFmt) {
+    const el = $(id); el.replaceChildren();
+    rows = rows.filter((r) => !isNaN(r[field])).sort((a, b) => b[field] - a[field]);
+    const W = Math.max(280, el.clientWidth || 500), rowH = 20, top = 22, bottom = 26;
+    const H = top + rows.length * rowH + bottom;
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const ml = Math.min(W * 0.42, measure(svg, rows, "nm lc")) + 12, mr = 58;
+    const lo = Math.min(0, d3.min(rows, (r) => r[field])), hi = d3.max(rows, (r) => r[field]);
+    const x = d3.scaleLinear([lo, hi], [ml, W - mr]).nice();
+    x.ticks(4).forEach((t) => {
+      svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", top).attr("y2", H - bottom).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", H - bottom + 16).attr("text-anchor", "middle").text(tickFmt(t));
+    });
+    const tip = tipFor(el);
+    rows.forEach((r, i) => {
+      const y = top + i * rowH;
+      svg.append("text").attr("class", r.lc ? "nm lc" : "nm").attr("x", ml - 10).attr("y", y + rowH / 2).attr("dy", "0.32em").attr("text-anchor", "end").text(name(r));
+      const x0 = x(Math.min(0, r[field])), x1 = x(Math.max(0, r[field]));
+      svg.append("rect").attr("x", x0).attr("y", y + 4).attr("width", Math.max(1, x1 - x0)).attr("height", rowH - 8).attr("rx", 2).attr("fill", r.lc ? "var(--gross)" : "var(--other)");
+      svg.append("text").attr("class", "lbl v").attr("x", x1 + 6).attr("y", y + rowH / 2).attr("dy", "0.32em").text(fmt(r[field]));
+      svg.append("rect").attr("x", 0).attr("y", y).attr("width", W).attr("height", rowH).attr("fill", "transparent")
+        .on("pointermove", (ev) => tip.show(ev, lines(r))).on("pointerleave", () => tip.hide());
+    });
+    const med = d3.median(rows.filter((r) => !r.lc), (r) => r[field]);
+    if (med != null) {
+      svg.append("line").attr("x1", x(med)).attr("x2", x(med)).attr("y1", top - 6).attr("y2", H - bottom).attr("stroke", "var(--ink)").attr("stroke-width", 1.5).attr("stroke-dasharray", "4 3").attr("pointer-events", "none");
+      const lab = svg.append("text").attr("class", "lbl").attr("x", x(med)).attr("y", top - 10).attr("text-anchor", "middle").attr("fill", "var(--ink)").text("Median " + fmt(med));
+      const lw = lab.node().getComputedTextLength();
+      if (x(med) + lw / 2 > W) lab.attr("text-anchor", "end").attr("x", W - 2);
+      if (x(med) - lw / 2 < 0) lab.attr("text-anchor", "start").attr("x", 2);
+    }
+  }
+
+  function draw() {
+    const rows = all.filter(inGroup);
+    const peers = rows.filter((r) => !r.lc);
+    const lc = all.find((r) => r.lc);
+    $("k-lc25").textContent = fM(lc.e24);
+    $("k-lcchg").textContent = fP(lc.chg);
+    $("k-medchg").textContent = fP(d3.median(peers, (r) => r.chg));
+    $("k-lcps").textContent = fK(lc.ps);
+    $("k-medps").textContent = fK(d3.median(peers, (r) => r.ps));
+    const byChg = rows.slice().sort((a, b) => b.chg - a.chg), bySize = rows.slice().sort((a, b) => b.e24 - a.e24), byPs = rows.slice().sort((a, b) => b.ps - a.ps);
+    const rc = byChg.findIndex((r) => r.lc) + 1, rs = bySize.findIndex((r) => r.lc) + 1, rp = byPs.findIndex((r) => r.lc) + 1;
+    $("k-lcrk").textContent = ord(rp);
+    $("k-lcrk-l").textContent = "Lewis & Clark's per student rank of " + rows.length;
+    const scope = state.group ? `the ${peers.length} "${state.group}" colleges plus Lewis & Clark` : `these ${rows.length} colleges`;
+    const lower = rows.length - rp;
+    $("find").textContent = `Lewis & Clark's endowment grew ${fP(lc.chg).replace("+", "")} from FY2019 to FY2024, to ${fM(lc.e24)}: the ${ord(rc)} fastest growth among ${scope}, against a median of ${fP(d3.median(peers, (r) => r.chg)).replace("+", "")}. It is the ${ord(rs)} largest endowment, and at ${fK(lc.ps)} per student it ranks ${ord(rp)} of ${rows.length}` + (lower ? `, ahead of only ${lower === 1 ? "one college" : lower + " colleges"}.` : ", the lowest.");
+    dumbbell(rows);
+    bars("c-chg", rows, "chg", fP, (t) => d3.format(".0%")(t));
+    bars("c-ps", rows, "ps", fK, (t) => "$" + fD(t / 1000) + "K");
+    const tb = $("t-body"); tb.replaceChildren();
+    rows.slice().sort((a, b) => (b.lc - a.lc) || (b.e24 - a.e24)).forEach((r) => {
+      const tr = document.createElement("tr"); if (r.lc) tr.className = "lc";
+      [[r.institution], [r.lc ? "97 (tie)" : String(r.us), "n"], [r.lc ? "" : r.res], [fP(r.netr), "n"], [fPts(r.yc), "n"], [d3.format(",.1f")(r.e19), "n"], [d3.format(",.1f")(r.e24), "n"],
+        [fP(r.chg), "n"], [fD(r.enr), "n"], ["$" + fD(r.ps), "n"]].forEach(([t, c]) => {
+        const td = document.createElement("td"); if (c) td.className = c; td.textContent = t; tr.append(td);
+      });
+      tb.append(tr);
+    });
+  }
+
+  d3.csv("usnews_endowment.csv").then((raw) => {
+    all = raw.map((r) => ({ ...r, lc: r.key === "lewis-clark", res: r.net_tuition_yield_result, us: +r.usnews_rank, netr: num(r.net_tuition_change_real_fy2017_fy2024), yc: num(r.yield_change_fy2017_fy2024),
+      e19: num(r.endowment_fy2019_m), e24: num(r.endowment_fy2024_m), chg: num(r.change_5yr), enr: num(r.total_enrollment_fall2023), ps: num(r.endowment_per_student) }));
+    $("set-list").textContent = all.filter((r) => !r.lc).map((r) => r.short).sort((a, b) => a.localeCompare(b)).join(", ") + ".";
+    draw();
+    document.querySelectorAll("[data-group]").forEach((b) => b.addEventListener("click", () => {
+      state.group = b.dataset.group;
+      document.querySelectorAll("[data-group]").forEach((o) => o.setAttribute("aria-pressed", String(o === b)));
+      draw();
+    }));
+    let t; window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(draw, 120); });
+  }).catch(() => { const p = document.createElement("p"); p.className = "fail"; p.textContent = "The data file did not load."; $("c-size").append(p); });
+})();
+</script>
+</body>
+</html>
