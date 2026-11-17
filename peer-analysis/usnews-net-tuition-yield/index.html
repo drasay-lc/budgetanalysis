@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Who Grew Net Tuition and Yield: U.S. News Leaders</title>
+<meta name="description" content="Lewis & Clark and the colleges ranked above it in the U.S. News 2027 National Liberal Arts list, ranked on real net tuition growth and yield change over the last five to seven years, from IPEDS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../peer.css">
+<style>
+.chart text.nm { font-family: var(--f-body); font-size: 12.5px; fill: var(--ink); }
+.chart text.nm.lc { font-weight: 600; }
+.chart text.rk { font-family: var(--f-data); font-size: 11.5px; fill: var(--muted); }
+.chart text.us { font-family: var(--f-data); font-size: 10.5px; fill: var(--muted); }
+.dot-lbl { font-family: var(--f-body); paint-order: stroke; stroke: var(--panel); stroke-width: 4px; stroke-linejoin: round; }
+.chart text.hd { font-family: var(--f-body); font-size: 12px; font-weight: 600; fill: var(--ink); }
+.spots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12.5rem), 1fr)); gap: 12px; margin-top: 16px; }
+.spot { background: var(--panel); border: 1px solid var(--rule); border-top: 4px solid var(--rule); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; align-content: start; }
+.spot h3 { margin: 0; font-family: var(--f-display); font-weight: 500; font-size: 21px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.spot h3 span { font-family: var(--f-data); font-size: 12px; color: var(--muted); font-weight: 500; white-space: nowrap; }
+.spot dl { margin: 0; display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; font-size: 13px; }
+.spot dt { color: var(--muted); }
+.spot dd { margin: 0; font-family: var(--f-data); text-align: right; font-variant-numeric: tabular-nums; }
+.spot p { margin: 0; font-size: 13px; color: var(--ink); }
+.tag { display: inline-block; font-size: 11.5px; border-radius: 999px; padding: 0 8px; border: 1px solid var(--rule); white-space: nowrap; }
+.tag.both { border-color: var(--net); background: color-mix(in srgb, var(--net) 15%, var(--panel)); }
+.tag.one { border-color: var(--aid); background: color-mix(in srgb, var(--aid) 15%, var(--panel)); }
+#tbl th { cursor: pointer; user-select: none; white-space: nowrap; }
+#tbl td { white-space: nowrap; }
+#tbl th[aria-sort="ascending"]::after { content: " ▲"; font-size: 9px; }
+#tbl th[aria-sort="descending"]::after { content: " ▼"; font-size: 9px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Peer analysis</a></p>
+  <header>
+    <div class="eyebrow">Lewis &amp; Clark and the colleges U.S. News ranks above it · IPEDS finance and admissions · last five to seven years</div>
+    <h1>Who Grew Net Tuition and Yield: U.S. News Leaders</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5, November 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="dek">The same test as <a href="../net-tuition-yield-leaders/" style="color:inherit">Who Grew Net Tuition and Yield</a>, applied to a different set: the 96 colleges ranked ahead of Lewis &amp; Clark (tied at No. 97) in the U.S. News 2027 National Liberal Arts Colleges list. Which of them kept more tuition revenue after inflation and enrolled a larger share of the students they admitted? Every school is ranked on the two together, with equal weight, over three windows ending in FY2024.</p>
+    <p class="find" id="find"></p>
+  </header>
+
+  <div class="tiles">
+    <div class="tile"><b id="k-both">&nbsp;</b><span>Schools with net tuition and yield both up</span></div>
+    <div class="tile"><b id="k-net">&nbsp;</b><span>Schools with real net tuition up</span></div>
+    <div class="tile"><b id="k-yld">&nbsp;</b><span>Schools with yield up</span></div>
+    <div class="tile"><b id="k-mednet">&nbsp;</b><span>Median net tuition change, after inflation</span></div>
+    <div class="tile"><b id="k-lcrank">&nbsp;</b><span id="k-lcrank-l">Lewis &amp; Clark's combined rank</span></div>
+  </div>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Starting year">
+      <button type="button" data-start="2017" aria-pressed="true">FY2017 to FY2024</button>
+      <button type="button" data-start="2018" aria-pressed="false">FY2018 to FY2024</button>
+      <button type="button" data-start="2019" aria-pressed="false">FY2019 to FY2024</button>
+    </div>
+    <div class="seg" role="group" aria-label="U.S. News rank band">
+      <button type="button" data-group="" aria-pressed="true">All ranks</button>
+      <button type="button" data-group="Top 25" aria-pressed="false">Top 25</button>
+      <button type="button" data-group="Ranks 26 to 50" aria-pressed="false">26 to 50</button>
+      <button type="button" data-group="Ranks 51 to 96" aria-pressed="false">51 to 96</button>
+    </div>
+    <a class="ctl-link" href="#the-set">Which schools are included</a>
+  </div>
+
+  <section class="card" aria-labelledby="h-rank">
+    <h2 id="h-rank">Ranked on net tuition and yield together</h2>
+    <p class="note" id="n-rank">Each row shows the change in net tuition after inflation (left) and the change in yield (right) over the window. Rows are sorted by the combined score; the first number is the school's combined rank and the bracketed number is its U.S. News rank. Hover a row for figures.</p>
+    <div class="key" aria-hidden="true">
+      <span><i class="sq" style="background:var(--net)"></i>Both up</span>
+      <span><i class="sq" style="background:var(--aid)"></i>One of the two up</span>
+      <span><i class="sq" style="background:var(--other)"></i>Both down</span>
+      <span><i class="sq" style="background:var(--gross)"></i>Lewis &amp; Clark</span>
+    </div>
+    <div class="chart" id="c-rank" role="img" aria-label="Schools ranked by net tuition change and yield change"></div>
+  </section>
+
+  <div class="spots" id="spots" aria-label="Spotlights"></div>
+
+  <section class="card" aria-labelledby="h-usn" style="margin-top:16px">
+    <h2 id="h-usn">Does a higher U.S. News rank go with growth?</h2>
+    <p class="note">Each dot is a school: its U.S. News rank across, its combined score for the selected window up and down. Above the dashed line means better than the average of the set. Hover a dot for figures.</p>
+    <div class="chart" id="c-usn" role="img" aria-label="Combined score against U.S. News rank"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-bump" style="margin-top:16px">
+    <h2 id="h-bump">How steady are the rankings?</h2>
+    <p class="note">Combined rank in each of the three windows for the schools that reach the top ten in any of them, plus Lewis &amp; Clark. A flat line near the top means the result does not depend on the starting year.</p>
+    <div class="chart" id="c-bump" role="img" aria-label="Combined rank in each window"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-tbl" style="margin-top:16px">
+    <h2 id="h-tbl">All schools</h2>
+    <p class="note" id="n-tbl">Click a column to sort.</p>
+    <div class="tbox">
+      <table id="tbl" style="min-width:62rem">
+        <thead><tr>
+          <th scope="col" class="n" data-k="rank">Rank</th><th scope="col" data-k="name">School</th><th scope="col" class="n" data-k="us">U.S. News</th>
+          <th scope="col" class="n" data-k="netr">Net tuition, real</th><th scope="col" class="n" data-k="netn">Net tuition, nominal</th>
+          <th scope="col" class="n" data-k="y0">Yield, start</th><th scope="col" class="n" data-k="y1">Yield, FY2024</th><th scope="col" class="n" data-k="yc">Yield change</th>
+          <th scope="col" class="n" data-k="app">Applicants</th><th scope="col" class="n" data-k="enr">First-year class</th><th scope="col" data-k="cls">Result</th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card groups-card" id="the-set" aria-labelledby="h-the-set" style="margin-top:16px">
+    <h2 id="h-the-set">Which schools are included</h2>
+    <p class="note" id="n-set">All schools are ranked together; the rank band buttons only hide rows.</p>
+    <dl class="gl">
+      <div><dt>The set</dt><dd><p>Every college ranked ahead of Lewis &amp; Clark in the U.S. News &amp; World Report 2027 Best National Liberal Arts Colleges list, published September 22, 2026. Lewis &amp; Clark is tied at No. 97, so the set is ranks 1 to 96 (ties share a number).</p><p class="m">The bands follow the U.S. News rank: Top 25 (ranks 1 to 25), 26 to 50, and 51 to 96.</p></dd></div>
+      <div><dt>Left out of the ranking</dt><dd><p>Four schools report no meaningful tuition revenue, so a change in net tuition cannot be measured. They stay in the CSV with their admissions figures.</p><p class="m">United States Naval Academy, United States Military Academy, United States Air Force Academy (no tuition), and Berea College (charges no tuition).</p></dd></div>
+      <div><dt>Kept, with care</dt><dd><p>Two schools have very small net tuition, so modest dollar changes become large percentages and pull them to the bottom of the net tuition measure.</p><p class="m">Principia College (about $0.8 million in FY2024, in FY2025 dollars) and Soka University of America (about $1.2 million).</p></dd></div>
+    </dl>
+  </section>
+
+  <p class="data-link"><a href="../data/#usnews-yield">Data tables and sources for this page →</a><span>Every value with its citation.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="usnews_yield_net_tuition.csv" download>Download the data (CSV) →</a><span>One row per school and fiscal year, FY2017 to FY2024. The original <a href="../net-tuition-yield-leaders/" style="font-weight:400">Who Grew Net Tuition and Yield</a> ranks Lewis &amp; Clark's three peer groups.</span></p>
+  <div class="notes">
+    <div>
+      <h3>How the ranking works</h3>
+      <p>For each window, every school gets two measures: the percent change in net tuition after inflation (FY2025 dollars, CPI-U) and the change in yield in percentage points. Each measure is standardized across all ranked schools (distance from the average, in standard deviations) and the two are added, so a school must do well on both to rank high. The discount rate is left out on purpose. The method matches the peer group page, so ranks on the two pages can be read the same way, though they rank different sets.</p>
+    </div>
+    <div>
+      <h3>What the measures are</h3>
+      <ul>
+        <li><b>Net tuition</b> is tuition and fees after institutional aid, from the IPEDS finance survey. It is college-wide, so it includes graduate and law tuition where a school has them. Lewis &amp; Clark's includes its law school and graduate school, which most schools in this set do not have.</li>
+        <li><b>Yield</b> is first-year students enrolled divided by those admitted, from the IPEDS admissions survey. FY2024 is the fall 2023 entering class.</li>
+        <li>FY2024 is the latest year with finance data for every school.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Cautions</h3>
+      <ul>
+        <li>Yield can fall simply because applications rise faster than enrollment, and rise because the applicant pool shrinks. Schools that fill much of the class through early decision report high yields. The applicant and first-year class columns show which way the counts moved.</li>
+        <li>Net tuition can grow through enrollment, price or a lower discount; this page does not separate them.</li>
+        <li>The U.S. News rank is from the 2027 edition, while the measures end in FY2024, so the rank describes where schools stand now, not where they started.</li>
+        <li>FY2017 to FY2019 starting points avoid the pandemic years, but FY2021 sits inside every window.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const END = 2024, STARTS = [2017, 2018, 2019], LC = "lewis-clark";
+  const state = { start: 2017, group: "", sortK: "rank", sortDir: 1 };
+  const num = (v) => (v === "" || v == null ? NaN : +v);
+  const sgnP = (v, d = 0) => (v > 0 ? "+" : v < 0 ? "−" : "") + d3.format("." + d + "%")(Math.abs(v));
+  const sgnPts = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + d3.format(".1f")(Math.abs(v * 100));
+  const fP = d3.format(".1%");
+  const ord = (n) => n + (["th", "st", "nd", "rd"][(n % 100 - 20) % 10] || ["th", "st", "nd", "rd"][n % 100] || "th");
+  let BY = new Map(), META = new Map(), RANKS = {}, N = 0;
+
+  function compute(s) {
+    const out = [];
+    BY.forEach((d, k) => {
+      const a = d[s], b = d[END];
+      if (!a || !b) return;
+      const netr = b.nr / a.nr - 1, netn = b.n / a.n - 1, yc = b.y - a.y;
+      if ([netr, yc].some((v) => !isFinite(v))) return;
+      const m = META.get(k);
+      out.push({ key: k, name: m.name, grp: m.grp, us: m.us, netr, netn, y0: a.y, y1: b.y, yc, app: b.app / a.app - 1, enr: b.enr / a.enr - 1, net1: b.nr });
+    });
+    const z = (f) => { const m = d3.mean(out, f), sd = d3.deviation(out, f) || 1; return (o) => (f(o) - m) / sd; };
+    const zn = z((o) => o.netr), zy = z((o) => o.yc);
+    out.forEach((o) => { o.score = zn(o) + zy(o); o.cls = o.netr > 0 && o.yc > 0 ? "both" : (o.netr > 0 || o.yc > 0 ? "one" : "none"); });
+    out.sort((a, b) => b.score - a.score).forEach((o, i) => (o.rank = i + 1));
+    return out;
+  }
+  const colorOf = (o) => (o.key === LC ? "var(--gross)" : o.cls === "both" ? "var(--net)" : o.cls === "one" ? "var(--aid)" : "var(--other)");
+  const shown = (rows) => rows.filter((o) => !state.group || o.key === LC || o.grp === state.group);
+  const usTxt = (o) => (o.key === LC ? "U.S. News No. 97 (tie)" : "U.S. News No. " + o.us);
+  const resTxt = (o) => (o.cls === "both" ? "Both up" : o.cls === "one" ? (o.netr > 0 ? "Net tuition up" : "Yield up") : "Both down");
+
+  function tipFor(el) {
+    const tip = document.createElement("div"); tip.className = "tip"; el.append(tip);
+    return {
+      show(ev, lines) {
+        tip.replaceChildren();
+        lines.forEach(([t, cl]) => { const d = document.createElement("div"); if (cl) d.className = cl; d.textContent = t; tip.append(d); });
+        tip.style.opacity = 1;
+        const [px, py] = d3.pointer(ev, el), tw = tip.offsetWidth, th = tip.offsetHeight;
+        let l = px + 14; if (l + tw > el.clientWidth) l = Math.max(0, px - tw - 14);
+        let t = py + 12; if (t + th > el.clientHeight) t = Math.max(0, py - th - 8);
+        tip.style.left = l + "px"; tip.style.top = t + "px";
+      },
+      hide() { tip.style.opacity = 0; }
+    };
+  }
+  const tipLines = (o) => [[o.name, "t"], [usTxt(o) + " · combined rank " + o.rank + " of " + N, "h"],
+    ["Net tuition " + sgnP(o.netr, 1) + " after inflation (" + sgnP(o.netn, 1) + " before)"],
+    ["Yield " + fP(o.y0) + " → " + fP(o.y1) + " (" + sgnPts(o.yc) + " pts)"],
+    ["Applicants " + sgnP(o.app) + " · first-year class " + sgnP(o.enr)]];
+
+  function rankChart(rows) {
+    const el = $("c-rank"); el.replaceChildren();
+    rows = shown(rows);
+    const W = Math.max(320, el.clientWidth || 800), narrow = W < 620;
+    const rowH = 21, top = 34, bottom = 26, gap = narrow ? 14 : 28;
+    const H = top + rows.length * rowH + bottom;
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const probe = svg.append("text").attr("class", "nm lc");
+    const lw = d3.max(rows, (o) => { probe.text(o.name); return probe.node().getComputedTextLength(); }); probe.remove();
+    const rkW = 26, usW = narrow ? 0 : 34, nameW = Math.min(W * (narrow ? 0.37 : 0.3), lw) + 10;
+    const x0 = rkW + usW + nameW + 8, avail = W - x0 - 8;
+    const pw = (avail - gap) / 2;
+    const all = Object.values(RANKS).flat();
+    const nx = d3.scaleLinear(d3.extent(all.map((o) => o.netr).concat([0])), [x0, x0 + pw]).nice();
+    const yx = d3.scaleLinear(d3.extent(all.map((o) => o.yc).concat([0])), [x0 + pw + gap, x0 + pw * 2 + gap]).nice();
+    svg.append("text").attr("class", "hd").attr("x", x0).attr("y", 14).text(narrow ? "Net tuition, real" : "Net tuition change, after inflation");
+    svg.append("text").attr("class", "hd").attr("x", x0 + pw + gap).attr("y", 14).text(narrow ? "Yield, pts" : "Yield change, points");
+    [[nx, (v) => sgnP(v)], [yx, (v) => sgnPts(v)]].forEach(([sc, fmt]) => {
+      sc.ticks(narrow ? 2 : 5).forEach((t) => {
+        svg.append("line").attr("x1", sc(t)).attr("x2", sc(t)).attr("y1", top - 6).attr("y2", H - bottom).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
+        svg.append("text").attr("class", "lbl").attr("x", sc(t)).attr("y", H - bottom + 15).attr("text-anchor", "middle").text(t === 0 ? "0" : fmt(t));
+      });
+    });
+    const tip = tipFor(el);
+    rows.forEach((o, i) => {
+      const y = top + i * rowH, cy = y + rowH / 2, c = colorOf(o);
+      if (o.key === LC) svg.append("rect").attr("x", 0).attr("y", y).attr("width", W).attr("height", rowH).attr("fill", "var(--gross)").attr("fill-opacity", 0.08);
+      svg.append("text").attr("class", "rk").attr("x", rkW - 6).attr("y", cy).attr("dy", "0.35em").attr("text-anchor", "end").text(o.rank);
+      if (!narrow) svg.append("text").attr("class", "us").attr("x", rkW + usW - 4).attr("y", cy).attr("dy", "0.35em").attr("text-anchor", "end").text("(" + o.us + ")");
+      svg.append("text").attr("class", o.key === LC ? "nm lc" : "nm").attr("x", rkW + usW + nameW).attr("y", cy).attr("dy", "0.35em").attr("text-anchor", "end").text(o.name);
+      [[nx, o.netr], [yx, o.yc]].forEach(([sc, v]) => {
+        const a = sc(Math.min(0, v)), b = sc(Math.max(0, v));
+        svg.append("rect").attr("x", a).attr("y", y + 4).attr("width", Math.max(1, b - a)).attr("height", rowH - 8).attr("rx", 2).attr("fill", c);
+      });
+      svg.append("rect").attr("x", 0).attr("y", y).attr("width", W).attr("height", rowH).attr("fill", "transparent")
+        .on("pointermove", (ev) => tip.show(ev, tipLines(o))).on("pointerleave", () => tip.hide());
+    });
+  }
+
+  function usnChart(rows) {
+    const el = $("c-usn"); el.replaceChildren();
+    const pts = shown(rows);
+    const W = Math.max(320, el.clientWidth || 800), H = 340, sm = W < 560, m = { t: 14, r: 16, b: 38, l: sm ? 40 : 52 };
+    const allS = Object.values(RANKS).flat().map((o) => o.score);
+    const x = d3.scaleLinear([1, 97], [m.l, W - m.r]);
+    const y = d3.scaleLinear(d3.extent(allS), [H - m.b, m.t]).nice();
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    y.ticks(5).forEach((t) => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(t)).attr("y2", y(t)).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)").attr("stroke-dasharray", t === 0 ? "4 3" : null);
+      svg.append("text").attr("class", "lbl").attr("x", m.l - 8).attr("y", y(t)).attr("dy", "0.35em").attr("text-anchor", "end").text(d3.format("+.1f")(t).replace("-", "−"));
+    });
+    [1, 25, 50, 75, 97].forEach((t) => svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", H - m.b + 16).attr("text-anchor", "middle").text(t === 97 ? "97 (L&C)" : t));
+    svg.append("text").attr("class", "lbl").attr("x", (m.l + W - m.r) / 2).attr("y", H - 4).attr("text-anchor", "middle").text("U.S. News rank, 2027 (1 is highest)");
+    const tip = tipFor(el);
+    pts.slice().sort((a, b) => (a.key === LC) - (b.key === LC)).forEach((o) => {
+      const lc = o.key === LC;
+      svg.append("circle").attr("cx", x(o.us)).attr("cy", y(o.score)).attr("r", lc ? 7 : 4.5).attr("fill", colorOf(o)).attr("fill-opacity", lc ? 1 : 0.85).attr("stroke", "var(--panel)").attr("stroke-width", 1.5)
+        .on("pointermove", (ev) => tip.show(ev, [...tipLines(o), ["Combined score " + d3.format("+.2f")(o.score).replace("-", "−"), "h"]])).on("pointerleave", () => tip.hide());
+      if (lc || o.rank <= 3) svg.append("text").attr("class", "dot-lbl").attr("x", x(o.us) + (o.us > 85 ? -10 : 10)).attr("y", y(o.score)).attr("dy", "0.35em").attr("text-anchor", o.us > 85 ? "end" : "start")
+        .attr("fill", lc ? "var(--gross)" : "var(--ink)").style("font-size", "12px").style("font-weight", 600).text(o.name);
+    });
+  }
+
+  function bump() {
+    const el = $("c-bump"); el.replaceChildren();
+    const keys = new Set([LC]);
+    STARTS.forEach((s) => RANKS[s].filter((o) => o.rank <= 10).forEach((o) => keys.add(o.key)));
+    const series = [...keys].map((k) => ({ key: k, name: META.get(k).name, pts: STARTS.map((s) => { const o = RANKS[s].find((r) => r.key === k); return o ? { s, rank: o.rank, o } : null; }).filter(Boolean) }))
+      .filter((d) => !state.group || d.key === LC || META.get(d.key).grp === state.group);
+    const W = Math.max(320, el.clientWidth || 800), H = 400, sm = W < 560, m = { t: 22, r: sm ? 112 : 160, b: 26, l: sm ? 112 : 160 };
+    const maxR = Math.max(12, d3.max(series, (d) => d3.max(d.pts, (p) => p.rank)));
+    const x = d3.scalePoint(STARTS, [m.l, W - m.r]);
+    const y = d3.scaleLinear([1, maxR], [m.t, H - m.b]);
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    STARTS.forEach((s) => {
+      svg.append("line").attr("x1", x(s)).attr("x2", x(s)).attr("y1", m.t - 6).attr("y2", H - m.b).attr("stroke", "var(--grid)");
+      svg.append("text").attr("class", "lbl").attr("x", x(s)).attr("y", H - 6).attr("text-anchor", "middle").text((sm ? "FY" : "From FY") + s);
+    });
+    [1, 5, 10, maxR].forEach((r) => svg.append("text").attr("class", "lbl").attr("x", 8).attr("y", y(r)).attr("dy", "0.35em").text("#" + r));
+    const colorS = (d) => {
+      if (d.key === LC) return "var(--gross)";
+      const last = d.pts[d.pts.length - 1].o; return last.cls === "both" ? "var(--net)" : last.cls === "one" ? "var(--aid)" : "var(--other)";
+    };
+    const tip = tipFor(el);
+    const labL = [], labR = [];
+    series.sort((a, b) => (a.key === LC) - (b.key === LC)).forEach((d) => {
+      const c = colorS(d), strong = d.key === LC || d.pts.every((p) => p.rank <= 5);
+      svg.append("path").attr("d", d3.line().x((p) => x(p.s)).y((p) => y(p.rank))(d.pts)).attr("fill", "none").attr("stroke", c).attr("stroke-width", strong ? 3 : 1.75).attr("stroke-opacity", strong ? 1 : 0.8);
+      d.pts.forEach((p) => svg.append("circle").attr("cx", x(p.s)).attr("cy", y(p.rank)).attr("r", strong ? 5 : 3.5).attr("fill", c).attr("stroke", "var(--panel)").attr("stroke-width", 1.5)
+        .on("pointermove", (ev) => tip.show(ev, [["From FY" + p.s, "h"], ...tipLines(p.o)])).on("pointerleave", () => tip.hide()));
+      const f = d.pts[0], l = d.pts[d.pts.length - 1];
+      if (f.s === STARTS[0]) labL.push({ y: y(f.rank), t: d.name + " " + f.rank, c, strong });
+      if (l.s === STARTS[STARTS.length - 1]) labR.push({ y: y(l.rank), t: l.rank + " " + d.name, c, strong });
+    });
+    const place = (arr) => { arr.sort((a, b) => a.y - b.y); for (let i = 1; i < arr.length; i++) if (arr[i].y - arr[i - 1].y < 13) arr[i].y = arr[i - 1].y + 13; };
+    place(labL); place(labR);
+    labL.forEach((a) => svg.append("text").attr("class", "dot-lbl").attr("x", m.l - 10).attr("y", a.y).attr("dy", "0.35em").attr("text-anchor", "end").attr("fill", a.strong ? a.c : "var(--muted)").style("font-weight", a.strong ? 600 : 500).style("font-size", sm ? "10.5px" : "12px").text(a.t));
+    labR.forEach((a) => svg.append("text").attr("class", "dot-lbl").attr("x", W - m.r + 10).attr("y", a.y).attr("dy", "0.35em").attr("fill", a.strong ? a.c : "var(--muted)").style("font-weight", a.strong ? 600 : 500).style("font-size", sm ? "10.5px" : "12px").text(a.t));
+  }
+
+  const NOTES = {
+    "barnard-college": "First in all three windows. Yield reached 75.6% in FY2024, the highest of the ranked schools, and net tuition rose after inflation in every window as the first-year class grew.",
+    "colby-college": "Yield reached 49.8% in FY2024, up 14 to 22 points depending on the window, while applications grew sharply and net tuition still rose after inflation.",
+    "colgate-university": "Net tuition grew about 23% to 37% after inflation as applications more than doubled, but yield stayed near 32%, so it ranks high on net tuition alone.",
+    "hillsdale-college": "Yield rose about 19 points in every window, to 61.8%, but net tuition fell after inflation, so its rank rests on yield."
+  };
+  function spots(rows) {
+    const box = $("spots"); box.replaceChildren();
+    ["barnard-college", "colby-college", "colgate-university", "hillsdale-college", LC].forEach((k) => {
+      const o = rows.find((r) => r.key === k); if (!o) return;
+      const card = document.createElement("article"); card.className = "spot"; card.style.borderTopColor = colorOf(o);
+      const h = document.createElement("h3"); h.append(o.name); const rk = document.createElement("span"); rk.textContent = "#" + o.rank + " of " + N; h.append(rk);
+      const dl = document.createElement("dl");
+      [["U.S. News rank", o.key === LC ? "97 (tie)" : String(o.us)], ["Net tuition, after inflation", sgnP(o.netr, 1)], ["Yield", fP(o.y0) + " → " + fP(o.y1)], ["Applicants", sgnP(o.app)], ["First-year class", sgnP(o.enr)]]
+        .forEach(([a, b]) => { const dt = document.createElement("dt"); dt.textContent = a; const dd = document.createElement("dd"); dd.textContent = b; dl.append(dt, dd); });
+      const p = document.createElement("p");
+      if (k === LC) {
+        const above = rows.filter((r) => r.key !== LC && r.rank > o.rank).length;
+        const peers = rows.length - 1;
+        const yr = rows.slice().sort((a, b) => a.y1 - b.y1).findIndex((r) => r.key === LC) + 1;
+        const med = d3.median(rows.filter((r) => r.key !== LC), (r) => r.netr);
+        const vsMed = o.netr < med ? "more than" : "less than";
+        p.textContent = `Ranks ${ord(o.rank)} of ${N}, ahead of ${above} of the ${peers} ranked schools U.S. News places above it. Net tuition fell ${vsMed} the median (${sgnP(med, 1)}) after inflation, and yield moved ${sgnPts(o.yc)} points, steadier than most. At ${fP(o.y1)}, its FY2024 yield is the ${ord(yr)} lowest of the ${N}. Its net tuition includes law and graduate tuition.`;
+      } else p.textContent = NOTES[k];
+      const tag = document.createElement("span"); tag.className = "tag " + (o.cls === "both" ? "both" : o.cls === "one" ? "one" : ""); tag.textContent = resTxt(o);
+      card.append(h, tag, dl, p); box.append(card);
+    });
+  }
+
+  function table(rows) {
+    const k = state.sortK, dir = state.sortDir;
+    const r2 = shown(rows).slice().sort((a, b) => { const va = a[k], vb = b[k]; return typeof va === "string" ? dir * va.localeCompare(vb) : dir * ((isNaN(va) ? -Infinity : va) - (isNaN(vb) ? -Infinity : vb)); });
+    document.querySelectorAll("#tbl th").forEach((th) => th.setAttribute("aria-sort", th.dataset.k === k ? (dir > 0 ? "ascending" : "descending") : "none"));
+    const tb = $("tbody"); tb.replaceChildren();
+    r2.forEach((o) => {
+      const tr = tb.insertRow(); if (o.key === LC) tr.className = "lc";
+      [[o.rank, "n"], [o.name], [o.key === LC ? "97 (tie)" : o.us, "n"], [sgnP(o.netr, 1), "n"], [sgnP(o.netn, 1), "n"], [fP(o.y0), "n"], [fP(o.y1), "n"], [sgnPts(o.yc) + " pts", "n"], [isNaN(o.app) ? "" : sgnP(o.app), "n"], [isNaN(o.enr) ? "" : sgnP(o.enr), "n"]]
+        .forEach(([t, c]) => { const td = tr.insertCell(); if (c) td.className = c; td.textContent = t; });
+      const td = tr.insertCell(); const s = document.createElement("span"); s.className = "tag " + (o.cls === "both" ? "both" : o.cls === "one" ? "one" : ""); s.textContent = resTxt(o); td.append(s);
+    });
+  }
+
+  function draw() {
+    const rows = RANKS[state.start];
+    N = rows.length;
+    const peers = rows.filter((o) => o.key !== LC);
+    const lc = rows.find((o) => o.key === LC);
+    const both = peers.filter((o) => o.cls === "both");
+    $("k-both").textContent = both.length + " of " + peers.length;
+    $("k-net").textContent = peers.filter((o) => o.netr > 0).length + " of " + peers.length;
+    $("k-yld").textContent = peers.filter((o) => o.yc > 0).length + " of " + peers.length;
+    $("k-mednet").textContent = sgnP(d3.median(peers, (o) => o.netr));
+    $("k-lcrank").textContent = ord(lc.rank);
+    $("k-lcrank-l").textContent = "Lewis & Clark's combined rank of " + N;
+    const top = rows[0], second = rows[1];
+    const above = peers.filter((o) => o.rank > lc.rank).length;
+    $("find").textContent = `From FY${state.start} to FY2024, ${top.name} ranks first: net tuition ${sgnP(top.netr, 1)} after inflation and yield ${sgnPts(top.yc)} points. ` +
+      `Only ${both.length} of the ${peers.length} higher-ranked colleges grew both. ${second.name} is second. Lewis & Clark ranks ${ord(lc.rank)} of ${N}, ahead of ${above} of them, with net tuition ${sgnP(lc.netr, 1)} after inflation and yield ${sgnPts(lc.yc)} points.`;
+    $("n-tbl").textContent = `FY${state.start} to FY2024. U.S. News is the 2027 National Liberal Arts rank. Applicants and first-year class are the change in each count. Click a column to sort.`;
+    $("n-set").textContent = `All ${N} ranked schools (${N - 1} colleges plus Lewis & Clark) are ranked together; the rank band buttons only hide rows.`;
+    rankChart(rows); spots(rows); usnChart(rows); bump(); table(rows);
+  }
+
+  d3.csv("usnews_yield_net_tuition.csv").then((raw) => {
+    raw.forEach((r) => {
+      if (r.ranked !== "yes") return;
+      if (!BY.has(r.key)) { BY.set(r.key, {}); META.set(r.key, { name: r.short, grp: r.rank_band === "Lewis & Clark" ? "" : r.rank_band, us: +r.usnews_rank }); }
+      BY.get(r.key)[+r.fiscal_year] = { n: num(r.net_tuition), nr: num(r.net_fy2025), y: num(r.yield_rate), app: num(r.applicants), enr: num(r.enrolled) };
+    });
+    STARTS.forEach((s) => (RANKS[s] = compute(s)));
+    draw();
+    document.querySelectorAll("[data-start]").forEach((b) => b.addEventListener("click", () => { state.start = +b.dataset.start; document.querySelectorAll("[data-start]").forEach((o) => o.setAttribute("aria-pressed", String(o === b))); draw(); }));
+    document.querySelectorAll("[data-group]").forEach((b) => b.addEventListener("click", () => { state.group = b.dataset.group; document.querySelectorAll("[data-group]").forEach((o) => o.setAttribute("aria-pressed", String(o === b))); draw(); }));
+    document.querySelectorAll("#tbl th").forEach((th) => th.addEventListener("click", () => { const k = th.dataset.k; state.sortDir = state.sortK === k ? -state.sortDir : (["rank", "name", "us", "cls"].includes(k) ? 1 : -1); state.sortK = k; table(RANKS[state.start]); }));
+    let t; window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(draw, 150); });
+  }).catch(() => { const p = document.createElement("p"); p.className = "fail"; p.textContent = "The data file did not load."; $("c-rank").append(p); });
+})();
+</script>
+</body>
+</html>
