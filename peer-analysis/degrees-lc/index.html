@@ -18,12 +18,21 @@
 .picks button { font: inherit; font-size: 12.5px; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 4px 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
 .picks button i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; background: var(--other); }
 .picks button[aria-pressed="true"] { border-color: var(--ink); font-weight: 600; }
-#prog th { cursor: pointer; user-select: none; white-space: nowrap; }
+#prog th { cursor: pointer; user-select: none; white-space: normal; }
+#prog th, #prog td { padding: 6px 7px; }
+#prog td:first-child { min-width: 9rem; }
+.tbox.full { max-height: none; overflow: visible; }
+#prog thead th { position: static; }
+@media (max-width: 760px) { .tbox.full { overflow-x: auto; } }
 #prog th[aria-sort="ascending"]::after { content: " ▲"; font-size: 9px; }
 #prog th[aria-sort="descending"]::after { content: " ▼"; font-size: 9px; }
 #prog td.n { position: relative; }
 #prog td.h { background-clip: padding-box; }
 #prog tbody tr { cursor: pointer; }
+.yr { display: inline-flex; align-items: center; gap: 8px; }
+.yr input { width: 14rem; accent-color: var(--ink); }
+.yr output { font-family: var(--f-data); font-weight: 600; min-width: 7ch; }
+#c-shr { min-height: 200px; }
 .up { color: var(--net); } .dn { color: var(--aid); }
 </style>
 </head>
@@ -66,10 +75,22 @@
     <div class="chart" id="c-maj" data-h="320"></div>
   </section>
 
+  <section class="card" aria-labelledby="h-shr">
+    <h2 id="h-shr">Share of graduates by major</h2>
+    <p class="note">Each program's share of the year's bachelor's graduates, by first major. Drag the year; the 3-year average pools the year with the ones before and after (for 2024 only the year before is available, and around the missing 1990 the nearest reported year is used). Pick a comparison year to see its share as a tick on each bar.</p>
+    <div class="controls" style="margin-bottom:8px">
+      <div class="seg" id="smooth2"><button aria-pressed="false" data-v="0">Each year</button><button aria-pressed="true" data-v="1">3-year average</button></div>
+      <label class="yr" for="shy">Year <input type="range" id="shy" min="0" max="39" step="1"><output id="shyo"></output></label>
+      <label for="cmp">Compare with</label><select id="cmp"></select>
+    </div>
+    <div class="key"><span><i class="sq" style="background:var(--gross)"></i><span id="k-y">Selected year</span></span><span><i class="ref"></i><span id="k-c">Comparison year</span></span></div>
+    <div class="chart" id="c-shr"></div>
+  </section>
+
   <section class="card" aria-labelledby="h-tab">
     <h2 id="h-tab">Every program, five years at a time</h2>
     <p class="note">Average bachelor's degrees per year by first major. Shading is relative within each row, so each program's peak period stands out. Click a row to chart it above; click a heading to sort.</p>
-    <div class="tbox"><table id="prog"><thead></thead><tbody></tbody></table></div>
+    <div class="tbox full"><table id="prog"><thead></thead><tbody></tbody></table></div>
     <p class="tnote">The 1990 to 1994 column averages four years because 1990 has no file. Second majors were first reported for 2001. "Other and discontinued" holds small codes such as Russian Studies, Film Studies and physical sciences, other.</p>
   </section>
 
@@ -225,6 +246,39 @@
     $("smooth").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; smooth = b.dataset.v === "1"; [...$("smooth").children].forEach((x) => x.setAttribute("aria-pressed", x === b)); drawMaj(); });
     $("dbl").addEventListener("change", (e) => { dbl = e.target.checked; drawMaj(); });
 
+
+    // share of graduates by major for a chosen year
+    let sy = YEARS.length - 1, smooth2 = true, cmpY = 2005;
+    $("shy").max = YEARS.length - 1; $("shy").value = sy;
+    $("cmp").innerHTML = '<option value="">None</option>' + YEARS.map((y) => `<option value="${y}" ${y === cmpY ? "selected" : ""}>${y}</option>`).join("");
+    const yrsFor = (y) => { const i = YEARS.indexOf(y); return smooth2 ? YEARS.slice(Math.max(0, i - 1), i + 2) : [y]; };
+    const yrLabel = (y) => { const w = yrsFor(y); return w.length > 1 ? `${w[0]}–${w[w.length - 1]}` : `${y}`; };
+    const shares = (y) => { const w = yrsFor(y); const tot = d3.sum(w, (q) => L.get(q).bachelors_first_major); return new Map(names.map((p) => { const n = d3.sum(w, (q) => (progs.get(p).get(q) || { m1: 0 }).m1); return [p, { n: n / w.length, s: tot ? n / tot : 0 }]; })); };
+    function drawShr() {
+      const el = $("c-shr"); el.replaceChildren();
+      const y = YEARS[sy]; $("shyo").textContent = yrLabel(y);
+      const cur = shares(y), cmp = cmpY ? shares(cmpY) : null;
+      $("k-y").textContent = yrLabel(y) + (smooth2 ? " (3-year average)" : ""); $("k-c").textContent = cmpY ? yrLabel(cmpY) : "No comparison";
+      const list = names.map((p) => ({ p, c: cur.get(p), k: cmp ? cmp.get(p) : null })).filter((d) => d.c.s > 0 || (d.k && d.k.s > 0)).sort((a, b) => b.c.s - a.c.s || (b.k ? b.k.s : 0) - (a.k ? a.k.s : 0));
+      const W = Math.max(300, el.clientWidth || 640), rowH = 20, top = 4, ml = W < 520 ? 130 : 210, mr = 56, H = top + list.length * rowH + 22;
+      const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+      const mx = d3.max(list, (d) => Math.max(d.c.s, d.k ? d.k.s : 0)) || 0.1;
+      const x = d3.scaleLinear([0, mx], [ml, W - mr]).nice();
+      x.ticks(5).forEach((t) => { svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", top).attr("y2", H - 20).attr("stroke", "var(--grid)"); svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", H - 6).attr("text-anchor", "middle").text(d3.format(".0%")(t)); });
+      list.forEach((d, i) => { const yy = top + i * rowH;
+        svg.append("text").attr("class", "nm").attr("x", ml - 8).attr("y", yy + 14).attr("text-anchor", "end").text(d.p.length > 30 && W < 520 ? d.p.slice(0, 18) + "…" : d.p);
+        svg.append("rect").attr("x", ml).attr("y", yy + 3).attr("width", Math.max(0, x(d.c.s) - ml)).attr("height", rowH - 6).attr("rx", 2).attr("fill", "var(--gross)");
+        svg.append("text").attr("class", "lbl v").attr("x", x(d.c.s) + 5).attr("y", yy + 14).text(d3.format(".1%")(d.c.s));
+        if (d.k) svg.append("line").attr("x1", x(d.k.s)).attr("x2", x(d.k.s)).attr("y1", yy + 1).attr("y2", yy + rowH - 1).attr("stroke", "var(--ink)").attr("stroke-width", 2);
+        svg.append("rect").attr("x", 0).attr("y", yy).attr("width", W).attr("height", rowH).attr("fill", "transparent")
+          .on("mousemove", (ev) => showTip(ev, `<div class="t">${d.p}</div><div class="r"><i style="background:var(--gross)"></i><span>${yrLabel(y)}</span><b>${d3.format(".1%")(d.c.s)} · ${d3.format(",.1f")(d.c.n)} a year</b></div>` + (d.k ? `<div class="r"><i style="background:var(--ink)"></i><span>${yrLabel(cmpY)}</span><b>${d3.format(".1%")(d.k.s)} · ${d3.format(",.1f")(d.k.n)} a year</b></div>` : "")))
+          .on("mouseleave", hideTip).on("click", () => togglePick(d.p, true));
+      });
+    }
+    $("shy").addEventListener("input", (e) => { sy = +e.target.value; drawShr(); });
+    $("cmp").addEventListener("change", (e) => { cmpY = e.target.value ? +e.target.value : null; drawShr(); });
+    $("smooth2").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; smooth2 = b.dataset.v === "1"; [...$("smooth2").children].forEach((x) => x.setAttribute("aria-pressed", x === b)); drawShr(); });
+
     // program table
     const PER = [[1984, 1989, "1984–89"], [1990, 1994, "1991–94"], [1995, 1999, "1995–99"], [2000, 2004, "2000–04"], [2005, 2009, "2005–09"], [2010, 2014, "2010–14"], [2015, 2019, "2015–19"], [2020, 2024, "2020–24"]];
     const trows = names.map((p) => { const v = PER.map(([a, b]) => progAvg(p, a, b)); const m2 = d3.mean(YEARS.filter((y) => y >= 2020), (y) => (progs.get(p).get(y) || { m2: 0 }).m2); return { p, v, m2, chg: v[4] ? v[7] / v[4] - 1 : null }; });
@@ -236,12 +290,12 @@
       const rs = [...trows].sort((a, b) => (sortK === 0 ? a.p.localeCompare(b.p) * -sortDir : (key(a) - key(b)) * sortDir));
       $("prog").tBodies[0].innerHTML = rs.map((r) => { const mx = d3.max(r.v) || 1;
         return `<tr data-p="${r.p}"><td>${r.p}</td>` + r.v.map((v) => `<td class="n" style="background:color-mix(in srgb, var(--gross) ${Math.round((v / mx) * 28)}%, transparent)">${v ? d3.format(",.1f")(v) : "–"}</td>`).join("") +
-          `<td class="n ${r.chg > 0.05 ? "up" : r.chg < -0.05 ? "dn" : ""}">${r.chg == null || !isFinite(r.chg) ? "new" : (r.chg > 0 ? "+" : "") + d3.format(".0%")(r.chg)}</td><td class="n">${d3.format(",.1f")(r.m2)}</td></tr>`; }).join("");
+          `<td class="n ${r.chg > 0.05 ? "up" : r.chg < -0.05 ? "dn" : ""}">${!r.v[4] && !r.v[7] ? "–" : r.chg == null || !isFinite(r.chg) ? "new" : (r.chg > 0 ? "+" : "") + d3.format(".0%")(r.chg)}</td><td class="n">${d3.format(",.1f")(r.m2)}</td></tr>`; }).join("");
     }
     $("prog").tHead.addEventListener("click", (e) => { const th = e.target.closest("th"); if (!th) return; const k = +th.dataset.k; if (k === sortK) sortDir *= -1; else { sortK = k; sortDir = k === 0 ? 1 : -1; } drawTable(); });
     $("prog").tBodies[0].addEventListener("click", (e) => { const tr = e.target.closest("tr"); if (!tr) return; togglePick(tr.dataset.p, true); $("h-maj").scrollIntoView({ behavior: "smooth", block: "start" }); });
 
-    const drawAll = () => { drawLev(); drawMix(); drawMaj(); };
+    const drawAll = () => { drawLev(); drawMix(); drawMaj(); drawShr(); };
     drawPicks(); drawTable(); drawAll();
     let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(drawAll, 150); });
   }).catch((e) => { document.querySelectorAll(".chart").forEach((el) => (el.innerHTML = '<p class="fail">The data could not be loaded.</p>')); console.error(e); });
