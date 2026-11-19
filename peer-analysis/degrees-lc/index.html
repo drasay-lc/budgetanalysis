@@ -18,7 +18,12 @@
 .picks button { font: inherit; font-size: 12.5px; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 4px 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
 .picks button i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; background: var(--other); }
 .picks button[aria-pressed="true"] { border-color: var(--ink); font-weight: 600; }
-#prog th { cursor: pointer; user-select: none; white-space: nowrap; }
+#prog th { cursor: pointer; user-select: none; white-space: normal; }
+#prog th, #prog td { padding: 6px 7px; }
+#prog td:first-child { min-width: 9rem; }
+.tbox.full { max-height: none; overflow: visible; }
+#prog thead th { position: static; }
+@media (max-width: 760px) { .tbox.full { overflow-x: auto; } }
 #prog th[aria-sort="ascending"]::after { content: " ▲"; font-size: 9px; }
 #prog th[aria-sort="descending"]::after { content: " ▼"; font-size: 9px; }
 #prog td.n { position: relative; }
@@ -69,7 +74,7 @@
   <section class="card" aria-labelledby="h-tab">
     <h2 id="h-tab">Every program, five years at a time</h2>
     <p class="note">Average bachelor's degrees per year by first major. Shading is relative within each row, so each program's peak period stands out. Click a row to chart it above; click a heading to sort.</p>
-    <div class="tbox"><table id="prog"><thead></thead><tbody></tbody></table></div>
+    <div class="tbox full"><table id="prog"><thead></thead><tbody></tbody></table></div>
     <p class="tnote">The 1990 to 1994 column averages four years because 1990 has no file. Second majors were first reported for 2001. "Other and discontinued" holds small codes such as Russian Studies, Film Studies and physical sciences, other.</p>
   </section>
 
@@ -236,7 +241,7 @@
       const rs = [...trows].sort((a, b) => (sortK === 0 ? a.p.localeCompare(b.p) * -sortDir : (key(a) - key(b)) * sortDir));
       $("prog").tBodies[0].innerHTML = rs.map((r) => { const mx = d3.max(r.v) || 1;
         return `<tr data-p="${r.p}"><td>${r.p}</td>` + r.v.map((v) => `<td class="n" style="background:color-mix(in srgb, var(--gross) ${Math.round((v / mx) * 28)}%, transparent)">${v ? d3.format(",.1f")(v) : "–"}</td>`).join("") +
-          `<td class="n ${r.chg > 0.05 ? "up" : r.chg < -0.05 ? "dn" : ""}">${r.chg == null || !isFinite(r.chg) ? "new" : (r.chg > 0 ? "+" : "") + d3.format(".0%")(r.chg)}</td><td class="n">${d3.format(",.1f")(r.m2)}</td></tr>`; }).join("");
+          `<td class="n ${r.chg > 0.05 ? "up" : r.chg < -0.05 ? "dn" : ""}">${!r.v[4] && !r.v[7] ? "–" : r.chg == null || !isFinite(r.chg) ? "new" : (r.chg > 0 ? "+" : "") + d3.format(".0%")(r.chg)}</td><td class="n">${d3.format(",.1f")(r.m2)}</td></tr>`; }).join("");
     }
     $("prog").tHead.addEventListener("click", (e) => { const th = e.target.closest("th"); if (!th) return; const k = +th.dataset.k; if (k === sortK) sortDir *= -1; else { sortK = k; sortDir = k === 0 ? 1 : -1; } drawTable(); });
     $("prog").tBodies[0].addEventListener("click", (e) => { const tr = e.target.closest("tr"); if (!tr) return; togglePick(tr.dataset.p, true); $("h-maj").scrollIntoView({ behavior: "smooth", block: "start" }); });
