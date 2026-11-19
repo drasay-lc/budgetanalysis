@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Bachelor's Degrees by Field: Lewis &amp; Clark and Peers, 1984 to 2024</title>
+<meta name="description" content="Bachelor's degrees by broad field for Lewis & Clark and 33 peers in three groups, from IPEDS Completions, 1984 to 2024.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../peer.css">
+<style>
+:root { --f0:#4F63D2; --f1:#8B5CF6; --f2:#0B8770; --f3:#14A3B8; --f4:#C8760F; --f5:#D14D72; --f6:#6B7280; --f7:#A2449A; --f8:#5B8C2A; --f9:#B4BDC8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --f0:#7685EE; --f1:#A78BFA; --f2:#22A07F; --f3:#38BDD2; --f4:#C67C22; --f5:#E0708F; --f6:#9CA3AF; --f7:#C862B8; --f8:#7DB04A; --f9:#4A5666; } }
+.chart { min-height: 340px; }
+#mix { min-height: 400px; }
+#rank th { cursor: pointer; user-select: none; white-space: nowrap; }
+#rank th[aria-sort="ascending"]::after { content: " ▲"; font-size: 9px; }
+#rank th[aria-sort="descending"]::after { content: " ▼"; font-size: 9px; }
+#rank tbody tr { cursor: pointer; }
+#rank td:first-child { white-space: nowrap; }
+#rank tbody tr.sel td { font-weight: 600; }
+.g { display: inline-block; font-family: var(--f-data); font-size: 11px; color: var(--muted); border: 1px solid var(--rule); border-radius: 4px; padding: 0 5px; }
+.up { color: var(--net); } .dn { color: var(--aid); }
+.controls label { display: inline-flex; gap: 6px; align-items: center; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Peer analysis</a></p>
+  <header>
+    <div class="eyebrow">Lewis &amp; Clark and 33 peers · IPEDS Completions · graduating years 1984 to 2024</div>
+    <h1>Bachelor's Degrees by Field: Lewis &amp; Clark and Peers</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5, November 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="dek">Four decades of bachelor's degrees for Lewis &amp; Clark and the three peer groups, from the federal IPEDS Completions survey. Every graduate is counted once, by first major, and majors are grouped into ten broad fields so schools with different program names line up. Choose a field and a measure, then pick a peer to set against Lewis &amp; Clark.</p>
+    <p class="find" id="find"></p>
+  </header>
+
+  <div class="controls">
+    <label for="field">Field</label><select id="field"></select>
+    <div class="seg" id="measure"><button aria-pressed="true" data-v="share">Share of graduates</button><button aria-pressed="false" data-v="n">Graduates</button><button aria-pressed="false" data-v="idx">Index, 2005–09 = 100</button></div>
+    <div class="seg" id="grp"><button aria-pressed="true" data-v="0">All peers</button><button aria-pressed="false" data-v="1">Group 1</button><button aria-pressed="false" data-v="2">Group 2</button><button aria-pressed="false" data-v="3">Group 3</button></div>
+    <label for="peer">Peer</label><select id="peer"></select>
+    <label><input type="checkbox" id="smooth" checked> 3-year average</label>
+  </div>
+
+  <section class="card" aria-labelledby="h-trend">
+    <h2 id="h-trend">Over time</h2>
+    <p class="note" id="n-trend"></p>
+    <p class="note" style="margin-top:-6px">A school far above the rest (such as Sarah Lawrence in humanities) is held at the top edge so the others stay readable.</p>
+    <div class="key"><span><i style="background:var(--gross)"></i>Lewis &amp; Clark</span><span><i style="background:var(--aid)"></i><span id="k-peer">Chosen peer</span></span><span><i class="ref"></i>Group median</span><span><i style="background:var(--other)"></i>Other schools in the group</span></div>
+    <div class="chart" id="c-trend" data-h="340"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-mix">
+    <h2 id="h-mix">Field mix, 2020 to 2024</h2>
+    <p class="note">Share of each school's bachelor's graduates by field, five graduating years pooled, sorted by the field chosen above. Hover a bar for counts.</p>
+    <div class="key" id="k-mix"></div>
+    <div class="chart" id="mix"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-rank">
+    <h2 id="h-rank">All schools</h2>
+    <p class="note">Average bachelor's degrees a year and field shares, 2020 to 2024 against earlier periods. Click a row to make it the chosen peer; click a heading to sort.</p>
+    <div class="tbox"><table id="rank"><thead></thead><tbody></tbody></table></div>
+    <p class="tnote">Second majors per 100 graduates uses only years each school reported second majors (2001 on); a dash means the school reported none in 2020 to 2024.</p>
+  </section>
+
+  <section class="card groups-card" id="peer-groups" aria-labelledby="h-peer-groups" style="margin-top:16px">
+    <h2 id="h-peer-groups">How the peer groups were chosen</h2>
+    <p class="note">Willamette is in groups 1 and 2 and is listed once, in group 1.</p>
+    <dl class="gl">
+      <div><dt>Group 1: L&amp;C comparison group</dt><dd><p>The institutions Lewis &amp; Clark's Office of Institutional Research uses in its College of Arts and Sciences comparison reports: regional peers in Oregon and Washington plus national liberal arts colleges, taken as published without additions or removals.</p><p class="m">Gettysburg, Gonzaga, Kalamazoo, Kenyon, Occidental, Reed, Rhodes, Sarah Lawrence, Skidmore, St. Olaf, Union, University of Portland, University of Puget Sound, Whitman, Willamette.</p></dd></div>
+      <div><dt>Group 2: Carnegie class</dt><dd><p>Private institutions that share Lewis &amp; Clark's 2025 Carnegie classification, Mixed Undergraduate/Graduate-Doctorate, Small (a liberal arts college with law and graduate schools), or sit in the adjacent Medium band, with endowments closer to Lewis &amp; Clark's than most of group 1, and with audited statements or federal single audit filings available.</p><p class="m">Clark, Drew, Loyola New Orleans, Lynchburg, Pacific University, Seattle Pacific, Seattle University, Stetson, Willamette (also in group 1).</p></dd></div>
+      <div><dt>Group 3: Smaller endowment</dt><dd><p>Private institutions with a liberal arts core plus professional or graduate programs, endowments of roughly $70 million to $300 million at fiscal year 2025, and audited statements available.</p><p class="m">Capital, Goucher, Hamline, John Carroll, Ohio Northern, Pacific Lutheran, Roger Williams, Saint Mary's College of California, University of La Verne, University of Redlands.</p></dd></div>
+    </dl>
+  </section>
+
+  <p class="data-link"><a href="peer_bachelors_by_field.csv" download>Download the data (CSV) →</a><span>One row per school and graduating year: bachelor's by field, second majors and master's degrees.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="../degrees-lc/">Lewis &amp; Clark majors in detail →</a><span>Every L&amp;C major since 1984, and degrees by level.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="../majors-minors/">Which programs each peer offers →</a><span>Catalog-based coverage of L&amp;C's majors and minors.</span></p>
+
+  <div class="notes">
+    <div>
+      <h3>Source</h3>
+      <p>U.S. Department of Education, National Center for Education Statistics, IPEDS Completions survey data files C1984_CIP through C2024_A (revised files where NCES published them), downloaded from the <a href="https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx">IPEDS Data Center</a> on November 19, 2026. Bachelor's degrees are award level 5, first major; summary rows are excluded. 1990 has no file.</p>
+    </div>
+    <div>
+      <h3>The ten fields</h3>
+      <ul>
+        <li><b>Humanities</b>: languages, English, history, philosophy and religion, area and ethnic studies, liberal arts and general studies. <b>Arts</b>: visual and performing arts.</li>
+        <li><b>Social sciences</b>: economics, political science, international affairs, sociology, anthropology. <b>Psychology</b> on its own. <b>Natural sciences and math</b>: biology, chemistry, physics, math, environmental and natural resources.</li>
+        <li><b>Computer science</b> includes engineering. <b>Business</b>, <b>Health</b> (nursing and health professions) and <b>Communication</b> (journalism and media). <b>Other</b> covers education, interdisciplinary codes, public administration, parks and recreation and the rest.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Reading with care</h3>
+      <ul>
+        <li>Sarah Lawrence reports every graduate under liberal arts, so it shows as all humanities.</li>
+        <li>Schools that grew professional programs (nursing at University of Portland and Seattle University, engineering at Gonzaga and Union) show falling humanities shares even when humanities counts held steady. Use the Graduates measure to check.</li>
+        <li>A few early years copy another year's figures (John Carroll, La Verne and Capital report identical 1987 and 1989 numbers; Redlands, Saint Mary's and Stetson repeat the year before in the mid-1980s), and La Verne put nearly every 1991 and 1992 graduate under one code. The 3-year average dampens these.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmt = d3.format(","), P0 = d3.format(".0%"), P1 = d3.format(".1%");
+  const FAM = [["humanities","Humanities"],["arts","Arts"],["social_sciences","Social sciences"],["psychology","Psychology"],["natural_sciences_math","Natural sciences and math"],["cs_engineering","Computer science and engineering"],["business","Business"],["health","Health"],["communication","Communication"],["other","Other"]];
+  const FC = FAM.map((_, i) => `var(--f${i})`);
+  const YEARS = d3.range(1984, 2025).filter((y) => y !== 1990);
+  const LC = 209056;
+  const tip = document.createElement("div"); tip.className = "tip"; document.body.append(tip);
+  function showTip(ev, html) { tip.innerHTML = html; tip.style.opacity = 1; const r = tip.getBoundingClientRect(); let x = ev.pageX + 14, y = ev.pageY + 12; if (x + r.width > window.scrollX + innerWidth - 8) x = ev.pageX - r.width - 14; tip.style.left = x + "px"; tip.style.top = y + "px"; }
+  function hideTip() { tip.style.opacity = 0; }
+  const st = { field: "humanities_arts", measure: "share", grp: 0, peer: 236328, smooth: true };
+  const FIELDS = [["all", "All bachelor's degrees"], ["humanities_arts", "Humanities and arts"], ...FAM, ["stem", "Natural sciences, math, computing"], ["professional", "Business, health and communication"]];
+  const fieldVal = (r, f) => f === "all" ? r.bachelors_first_major : f === "humanities_arts" ? r.humanities + r.arts : f === "stem" ? r.natural_sciences_math + r.cs_engineering : f === "professional" ? r.business + r.health + r.communication : r[f];
+  $("field").innerHTML = FIELDS.map(([k, n]) => `<option value="${k}" ${k === st.field ? "selected" : ""}>${n}</option>`).join("");
+  $("k-mix").innerHTML = FAM.map(([, n], i) => `<span><i class="sq" style="background:${FC[i]}"></i>${n}</span>`).join("");
+
+  d3.csv("peer_bachelors_by_field.csv", d3.autoType).then((rows) => {
+    const by = d3.group(rows, (r) => r.unitid);
+    const schools = [...by.keys()].map((u) => { const rs = by.get(u); return { u, name: rs[0].school, g: rs[0].peer_group, rows: new Map(rs.map((r) => [r.year, r])) }; });
+    const S = new Map(schools.map((s) => [s.u, s]));
+    const pool = (s, y0, y1, f) => { let n = 0, t = 0, k = 0; for (let y = y0; y <= y1; y++) { const r = s.rows.get(y); if (!r) continue; n += fieldVal(r, f); t += r.bachelors_first_major; k++; } return { n, t, k, share: t ? n / t : null, avg: k ? n / k : null }; };
+    $("peer").innerHTML = [1, 2, 3].map((g) => `<optgroup label="Group ${g}">` + schools.filter((s) => s.g === g).sort((a, b) => a.name.localeCompare(b.name)).map((s) => `<option value="${s.u}" ${s.u === st.peer ? "selected" : ""}>${s.name}</option>`).join("") + "</optgroup>").join("");
+
+    // headline
+    const lc = S.get(LC);
+    const peers = schools.filter((s) => s.g > 0);
+    const medShare = (y0, y1, f, list) => d3.median(list, (s) => pool(s, y0, y1, f).share);
+    const lcHa0 = pool(lc, 2005, 2009, "humanities_arts").share, lcHa1 = pool(lc, 2020, 2024, "humanities_arts").share;
+    const g1 = peers.filter((s) => s.g === 1);
+    const pHa0 = medShare(2005, 2009, "humanities_arts", g1), pHa1 = medShare(2020, 2024, "humanities_arts", g1);
+    const lcAll = pool(lc, 2020, 2024, "all").avg, lcAll0 = pool(lc, 2005, 2009, "all").avg;
+    const grew = peers.filter((s) => pool(s, 2020, 2024, "all").avg > pool(s, 2005, 2009, "all").avg).length;
+    $("find").textContent = `Lewis & Clark averaged ${fmt(Math.round(lcAll))} bachelor's graduates a year in 2020 to 2024, ${d3.format("+.0%")(lcAll / lcAll0 - 1)} on 2005 to 2009; ${grew} of the 33 peers grew over the same span. Humanities and arts went from ${P0(lcHa0)} to ${P0(lcHa1)} of L&C graduates, against a group 1 median of ${P0(pHa0)} to ${P0(pHa1)}.`;
+
+    function seriesFor(s) {
+      const raw = new Map(YEARS.map((y) => { const r = s.rows.get(y); if (!r) return [y, null]; const n = fieldVal(r, st.field), t = r.bachelors_first_major; return [y, st.measure === "share" ? (t ? n / t : null) : n]; }));
+      let out = raw;
+      if (st.smooth) { out = new Map(); YEARS.forEach((y, i) => { const w = YEARS.slice(Math.max(0, i - 1), i + 2).map((q) => raw.get(q)).filter((v) => v != null); out.set(y, w.length ? d3.mean(w) : null); }); }
+      if (st.measure === "idx") { const b = d3.mean([2005, 2006, 2007, 2008, 2009].map((y) => raw.get(y)).filter((v) => v != null)); out = new Map([...out].map(([y, v]) => [y, b && v != null ? (v / b) * 100 : null])); }
+      return out;
+    }
+
+    function drawTrend() {
+      const el = $("c-trend"); el.replaceChildren();
+      const fname = FIELDS.find((f) => f[0] === st.field)[1];
+      $("n-trend").textContent = (st.measure === "share" ? `${fname} as a share of each school's bachelor's graduates` : st.measure === "n" ? `${fname}: bachelor's graduates per year` : `${fname}: graduates indexed to the school's 2005 to 2009 average`) + (st.smooth ? ", three-year average." : ".");
+      const inG = peers.filter((s) => !st.grp || s.g === st.grp);
+      const peer = S.get(st.peer); $("k-peer").textContent = peer.name;
+      const ser = inG.map((s) => ({ s, v: seriesFor(s) }));
+      const lcv = seriesFor(lc), pv = seriesFor(peer);
+      const med = new Map(YEARS.map((y) => [y, d3.median(ser, (d) => d.v.get(y))]));
+      const W = Math.max(300, el.clientWidth || 700), H = +el.dataset.h, top = 12, bottom = 26, mr = W < 520 ? 12 : 130;
+      const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+      const vals = [...ser.flatMap((d) => [...d.v.values()]), ...lcv.values(), ...pv.values()].filter((v) => v != null);
+      let hi = d3.quantile(vals.sort(d3.ascending), 0.97); hi = Math.max(hi, d3.max([...lcv.values(), ...pv.values()].filter((v) => v != null)));
+      const y = d3.scaleLinear([0, hi], [H - bottom, top]).nice(5).clamp(true);
+      const tf = st.measure === "share" ? d3.format(".0%") : d3.format(",");
+      const probe = svg.append("text").attr("class", "lbl").text(tf(y.domain()[1])); const ml = Math.ceil(probe.node().getComputedTextLength()) + 10; probe.remove();
+      const x = d3.scaleLinear([1984, 2024], [ml, W - mr]);
+      y.ticks(5).forEach((t) => { svg.append("line").attr("x1", ml).attr("x2", W - mr).attr("y1", y(t)).attr("y2", y(t)).attr("stroke", "var(--grid)"); svg.append("text").attr("class", "lbl").attr("x", ml - 6).attr("y", y(t) + 4).attr("text-anchor", "end").text(tf(t)); });
+      if (st.measure === "idx") svg.append("line").attr("x1", ml).attr("x2", W - mr).attr("y1", y(100)).attr("y2", y(100)).attr("stroke", "var(--muted)").attr("stroke-width", 0.8);
+      [1984, 1990, 2000, 2010, 2020, 2024].forEach((t) => svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", H - 6).attr("text-anchor", "middle").text(t));
+      const gen = d3.line().defined((d) => d[1] != null).x((d) => x(d[0])).y((d) => y(d[1]));
+      const path = (m, attrs) => { const pts = YEARS.map((yy) => [yy, m.get(yy)]); [pts.filter((d) => d[0] < 1990), pts.filter((d) => d[0] > 1990)].forEach((seg) => { const p = svg.append("path").attr("d", gen(seg)).attr("fill", "none"); Object.entries(attrs).forEach(([k, v]) => p.attr(k, v)); }); };
+      ser.filter((d) => d.s.u !== st.peer).forEach((d) => path(d.v, { stroke: "var(--other)", "stroke-width": 1, opacity: 0.8 }));
+      path(med, { stroke: "var(--ink)", "stroke-width": 1.6, "stroke-dasharray": "5 4" });
+      path(pv, { stroke: "var(--aid)", "stroke-width": 2.4 });
+      path(lcv, { stroke: "var(--gross)", "stroke-width": 2.8 });
+      if (mr > 20) { const lab = [["Lewis & Clark", lcv, "var(--gross)"], [peer.name, pv, "var(--aid)"], ["Median", med, "var(--ink)"]].map(([n, m, c]) => ({ n, c, yy: y(m.get(2024) ?? m.get(2023)) })).sort((a, b) => a.yy - b.yy); let prev = -1e9;
+        lab.forEach((l) => { const yy = Math.max(l.yy + 4, prev + 14); prev = yy; svg.append("text").attr("class", "nm").attr("x", W - mr + 6).attr("y", yy).style("fill", l.c).style("font-weight", 600).text(l.n.length > 19 ? l.n.slice(0, 18) + "…" : l.n); }); }
+      const vf = st.measure === "share" ? P1 : st.measure === "idx" ? d3.format(".0f") : st.smooth ? d3.format(",.1f") : fmt;
+      const hl = svg.append("line").attr("y1", top).attr("y2", H - bottom).attr("stroke", "var(--muted)").attr("opacity", 0);
+      svg.append("rect").attr("x", ml).attr("y", top).attr("width", W - mr - ml).attr("height", H - bottom - top).attr("fill", "transparent")
+        .on("mousemove", (ev) => { const [mx, my] = d3.pointer(ev); let yr = Math.round(x.invert(mx)); if (yr === 1990) yr = 1991; yr = Math.max(1984, Math.min(2024, yr)); hl.attr("x1", x(yr)).attr("x2", x(yr)).attr("opacity", 0.5);
+          const near = ser.filter((d) => d.v.get(yr) != null).sort((a, b) => Math.abs(y(a.v.get(yr)) - my) - Math.abs(y(b.v.get(yr)) - my))[0];
+          const rr = [["Lewis & Clark", lcv.get(yr), "var(--gross)"], [peer.name, pv.get(yr), "var(--aid)"], ["Group median", med.get(yr), "var(--ink)"]];
+          if (near && near.s.u !== st.peer) rr.push([near.s.name + " (nearest)", near.v.get(yr), "var(--other)"]);
+          showTip(ev, `<div class="h">${yr}</div>` + rr.map(([n, v, c]) => `<div class="r"><i style="background:${c}"></i><span>${n}</span><b>${v == null ? "–" : vf(v)}</b></div>`).join("")); })
+        .on("mouseleave", () => { hl.attr("opacity", 0); hideTip(); });
+    }
+
+    function drawMix() {
+      const el = $("mix"); el.replaceChildren();
+      const list = schools.filter((s) => s.u === LC || !st.grp || s.g === st.grp).map((s) => { const t = pool(s, 2020, 2024, "all").n; return { s, t, parts: FAM.map(([k]) => pool(s, 2020, 2024, k).n / t), key: pool(s, 2020, 2024, st.field === "all" ? "humanities_arts" : st.field).share }; }).sort((a, b) => b.key - a.key);
+      const W = Math.max(300, el.clientWidth || 700), rowH = 18, top = 4, ml = W < 520 ? 120 : 160, H = top + list.length * rowH + 22;
+      const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+      const x = d3.scaleLinear([0, 1], [ml, W - 8]);
+      [0, 0.25, 0.5, 0.75, 1].forEach((t) => { svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", top).attr("y2", H - 20).attr("stroke", "var(--grid)"); svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", H - 6).attr("text-anchor", "middle").text(P0(t)); });
+      // put the chosen field first in the stack
+      const fi = FAM.findIndex((f) => f[0] === st.field);
+      const order = st.field === "humanities_arts" || st.field === "all" ? [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] : st.field === "stem" ? [4, 5, 0, 1, 2, 3, 6, 7, 8, 9] : st.field === "professional" ? [6, 7, 8, 0, 1, 2, 3, 4, 5, 9] : [fi, ...d3.range(10).filter((i) => i !== fi)];
+      list.forEach((d, i) => { const yy = top + i * rowH; let acc = 0;
+        svg.append("text").attr("class", "nm" + (d.s.u === LC ? " lc" : "")).attr("x", ml - 8).attr("y", yy + 12.5).attr("text-anchor", "end").style("fill", d.s.u === LC ? "var(--gross)" : d.s.u === st.peer ? "var(--aid)" : null).text(d.s.name);
+        order.forEach((k) => { const w = d.parts[k]; svg.append("rect").attr("x", x(acc)).attr("y", yy + 2).attr("width", Math.max(0, x(acc + w) - x(acc) - 0.5)).attr("height", rowH - 4).attr("fill", FC[k]); acc += w; });
+        svg.append("rect").attr("x", ml).attr("y", yy).attr("width", W - 8 - ml).attr("height", rowH).attr("fill", "transparent")
+          .on("mousemove", (ev) => showTip(ev, `<div class="t">${d.s.name}</div><div class="h">${fmt(Math.round(d.t / 5))} bachelor's a year, 2020–24</div>` + order.map((k) => `<div class="r"><i style="background:${FC[k]}"></i><span>${FAM[k][1]}</span><b>${P0(d.parts[k])}</b></div>`).join("")))
+          .on("mouseleave", hideTip).on("click", () => { if (d.s.u !== LC) { st.peer = d.s.u; $("peer").value = d.s.u; drawAll(); } });
+      });
+    }
+
+    let sortK = 2, sortDir = -1;
+    function drawRank() {
+      const list = schools.filter((s) => s.u === LC || !st.grp || s.g === st.grp).map((s) => {
+        const a1 = pool(s, 2020, 2024, "all"), a0 = pool(s, 2005, 2009, "all"), a00 = pool(s, 1985, 1989, "all");
+        const sec = (() => { let n = 0, t = 0; for (let y = 2020; y <= 2024; y++) { const r = s.rows.get(y); if (r) { n += r.second_majors || 0; t += r.bachelors_first_major; } } return n ? (n / t) * 100 : null; })();
+        return { s, cells: [s.name, s.g, a1.avg, a0.avg ? a1.avg / a0.avg - 1 : null, a00.avg ? a1.avg / a00.avg - 1 : null, pool(s, 2020, 2024, "humanities_arts").share, pool(s, 2020, 2024, "social_sciences").share + pool(s, 2020, 2024, "psychology").share, pool(s, 2020, 2024, "stem").share, pool(s, 2020, 2024, "professional").share, sec] };
+      });
+      const head = ["School", "Group", "Bachelor's a year, 2020–24", "Change since 2005–09", "Change since 1985–89", "Humanities and arts", "Social sciences and psychology", "Sciences, math, computing", "Business, health, communication", "Second majors per 100"];
+      $("rank").tHead.innerHTML = "<tr>" + head.map((h, i) => `<th class="${i > 1 ? "n" : ""}" data-k="${i}" ${i === sortK ? `aria-sort="${sortDir > 0 ? "ascending" : "descending"}"` : ""}>${h}</th>`).join("") + "</tr>";
+      list.sort((a, b) => { const x = a.cells[sortK], y = b.cells[sortK]; if (typeof x === "string") return x.localeCompare(y) * sortDir; return ((x ?? -1e9) - (y ?? -1e9)) * sortDir; });
+      const ch = (v) => v == null ? "–" : `<span class="${v > 0.05 ? "up" : v < -0.05 ? "dn" : ""}">${(v > 0 ? "+" : "") + P0(v)}</span>`;
+      $("rank").tBodies[0].innerHTML = list.map(({ s, cells: c }) => `<tr class="${s.u === LC ? "lc" : ""} ${s.u === st.peer ? "sel" : ""}" data-u="${s.u}"><td>${s.u === LC ? '<i style="background:var(--gross)"></i>' : s.u === st.peer ? '<i style="background:var(--aid)"></i>' : ""}${c[0]}</td><td>${c[1] ? `<span class="g">G${c[1]}</span>` : ""}</td><td class="n">${fmt(Math.round(c[2]))}</td><td class="n">${ch(c[3])}</td><td class="n">${ch(c[4])}</td><td class="n">${P0(c[5])}</td><td class="n">${P0(c[6])}</td><td class="n">${P0(c[7])}</td><td class="n">${P0(c[8])}</td><td class="n">${c[9] == null ? "–" : d3.format(".0f")(c[9])}</td></tr>`).join("");
+    }
+    $("rank").tHead.addEventListener("click", (e) => { const th = e.target.closest("th"); if (!th) return; const k = +th.dataset.k; if (k === sortK) sortDir *= -1; else { sortK = k; sortDir = k < 2 ? 1 : -1; } drawRank(); });
+    $("rank").tBodies[0].addEventListener("click", (e) => { const tr = e.target.closest("tr"); if (!tr || +tr.dataset.u === LC) return; st.peer = +tr.dataset.u; $("peer").value = st.peer; drawAll(); });
+
+    const segs = (id, key, conv) => $(id).addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; st[key] = conv(b.dataset.v); [...$(id).children].forEach((x) => x.setAttribute("aria-pressed", x === b)); drawAll(); });
+    segs("measure", "measure", (v) => v); segs("grp", "grp", (v) => +v);
+    $("field").addEventListener("change", (e) => { st.field = e.target.value; drawAll(); });
+    $("peer").addEventListener("change", (e) => { st.peer = +e.target.value; drawAll(); });
+    $("smooth").addEventListener("change", (e) => { st.smooth = e.target.checked; drawAll(); });
+    const drawAll = () => { drawTrend(); drawMix(); drawRank(); };
+    drawAll();
+    let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(drawAll, 150); });
+  }).catch((e) => { document.querySelectorAll(".chart").forEach((el) => (el.innerHTML = '<p class="fail">The data could not be loaded.</p>')); console.error(e); });
+})();
+</script>
+</body>
+</html>

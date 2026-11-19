@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Degrees and Majors at Lewis &amp; Clark, 1984 to 2024</title>
+<meta name="description" content="Every degree Lewis & Clark has reported to IPEDS since 1984: bachelor's, master's and law degrees by year, and bachelor's degrees by major.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../peer.css">
+<style>
+:root { --f0:#4F63D2; --f1:#8B5CF6; --f2:#0B8770; --f3:#14A3B8; --f4:#C8760F; --f5:#D14D72; --f6:#6B7280; --f7:#A2449A; --f8:#5B8C2A; --f9:#B4BDC8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --f0:#7685EE; --f1:#A78BFA; --f2:#22A07F; --f3:#38BDD2; --f4:#C67C22; --f5:#E0708F; --f6:#9CA3AF; --f7:#C862B8; --f8:#7DB04A; --f9:#4A5666; } }
+.chart { min-height: 320px; }
+.picks { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+.picks button { font: inherit; font-size: 12.5px; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 4px 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.picks button i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; background: var(--other); }
+.picks button[aria-pressed="true"] { border-color: var(--ink); font-weight: 600; }
+#prog th { cursor: pointer; user-select: none; white-space: nowrap; }
+#prog th[aria-sort="ascending"]::after { content: " ▲"; font-size: 9px; }
+#prog th[aria-sort="descending"]::after { content: " ▼"; font-size: 9px; }
+#prog td.n { position: relative; }
+#prog td.h { background-clip: padding-box; }
+#prog tbody tr { cursor: pointer; }
+.up { color: var(--net); } .dn { color: var(--aid); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Peer analysis</a></p>
+  <header>
+    <div class="eyebrow">Lewis &amp; Clark College · IPEDS Completions · graduating years 1984 to 2024</div>
+    <h1>Degrees and Majors at Lewis &amp; Clark, 1984 to 2024</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Opus 5.5, November 2026. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="dek">Every degree Lewis &amp; Clark has reported to the federal IPEDS Completions survey, from the first file in 1984 to the latest in 2024: degrees by level, then bachelor's degrees by major. Each year is a graduating year (2024 means July 2023 to June 2024). Majors are counted by the federal program code (CIP) the college reported, grouped into today's L&amp;C program names.</p>
+    <p class="find" id="find"></p>
+  </header>
+
+  <div class="tiles" id="tiles"></div>
+
+  <section class="card" aria-labelledby="h-lev">
+    <h2 id="h-lev">Degrees awarded by level</h2>
+    <p class="note">Bachelor's counts each graduate once, by first major. Master's includes the law school's LL.M. degrees; the J.D. is shown on its own. 1990 has no IPEDS file.</p>
+    <div class="key" id="k-lev"></div>
+    <div class="chart" id="c-lev" data-h="300"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-mix">
+    <h2 id="h-mix">Bachelor's degrees by field</h2>
+    <p class="note">First majors grouped into ten broad fields, the same grouping the peer page uses. Switch between counts and the share of each year's graduates.</p>
+    <div class="controls" style="margin-bottom:8px"><div class="seg" id="mixmode"><button aria-pressed="true" data-v="n">Graduates</button><button aria-pressed="false" data-v="p">Share</button></div></div>
+    <div class="key" id="k-mix"></div>
+    <div class="chart" id="c-mix" data-h="320"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-maj">
+    <h2 id="h-maj">Majors over time</h2>
+    <p class="note">Bachelor's degrees by first major. Pick up to six programs; a three-year average smooths year-to-year swings in small majors.</p>
+    <div class="controls" style="margin-bottom:8px">
+      <div class="seg" id="smooth"><button aria-pressed="false" data-v="0">Each year</button><button aria-pressed="true" data-v="1">3-year average</button></div>
+      <label><input type="checkbox" id="dbl"> Add second majors (2001 on)</label>
+    </div>
+    <div class="picks" id="picks"></div>
+    <div class="chart" id="c-maj" data-h="320"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-tab">
+    <h2 id="h-tab">Every program, five years at a time</h2>
+    <p class="note">Average bachelor's degrees per year by first major. Shading is relative within each row, so each program's peak period stands out. Click a row to chart it above; click a heading to sort.</p>
+    <div class="tbox"><table id="prog"><thead></thead><tbody></tbody></table></div>
+    <p class="tnote">The 1990 to 1994 column averages four years because 1990 has no file. Second majors were first reported for 2001. "Other and discontinued" holds small codes such as Russian Studies, Film Studies and physical sciences, other.</p>
+  </section>
+
+  <p class="data-link"><a href="lc_bachelors_by_major.csv" download>Download bachelor's by major (CSV) →</a><span>One row per year and federal program code, with the L&amp;C program it maps to.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="lc_degrees_by_level.csv" download>Download degrees by level (CSV) →</a><span>One row per year: bachelor's, second majors, master's, LL.M., J.D., other doctorates, certificates.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="../degrees-peers/">Compare with the peer groups →</a><span>The same field grouping for all 34 schools.</span></p>
+
+  <div class="notes">
+    <div>
+      <h3>Source</h3>
+      <p>U.S. Department of Education, National Center for Education Statistics, IPEDS Completions survey data files C1984_CIP through C2024_A (revised files where NCES published them), unit ID 209056, downloaded from the <a href="https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx">IPEDS Data Center</a> on November 19, 2026.</p>
+      <p>Totals are the sum of men and women (1984 to 2007) or the grand total (2008 on). Summary rows (code 99) are excluded.</p>
+    </div>
+    <div>
+      <h3>How majors are matched</h3>
+      <ul>
+        <li>The federal program codes changed in 1990, 2000, 2010 and 2020, and the college has recoded some majors (History moved from 45.08 to 54.01 in 2003; Sociology and Anthropology took its own code in 2013; Music and the languages used other codes from 2013 to 2015). Grouping by program name keeps those series continuous.</li>
+        <li>Lewis &amp; Clark's undergraduate business degrees appear through 2007 and education degrees through 1991 (with one in 2003); World Languages is the combined major code 16.0101.</li>
+        <li>Interdisciplinary majors without their own code are reported under the closest code, so they do not appear separately.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Reading the counts</h3>
+      <ul>
+        <li>A graduate with two majors counts once under the first and again in the second-major figures, which IPEDS has collected only since 2001.</li>
+        <li>Certificates first appear in 2000; the large counts from 2000 to 2012 are post-baccalaureate and post-master's certificates from the graduate school.</li>
+        <li>Counts are what the college reported; IPEDS revises a year only when the college resubmits.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmt = d3.format(",");
+  const FAM = [["humanities","Humanities"],["arts","Arts"],["social_sciences","Social sciences"],["psychology","Psychology"],["natural_sciences_math","Natural sciences and math"],["cs_engineering","Computer science"],["business","Business"],["health","Health"],["communication","Communication"],["other","Other"]];
+  const FC = FAM.map((_, i) => `var(--f${i})`);
+  const PAL = ["var(--gross)", "var(--aid)", "var(--net)", "var(--endow)", "#14A3B8", "#D14D72"];
+  const tip = document.createElement("div"); tip.className = "tip"; document.body.append(tip);
+  function showTip(ev, html) { tip.innerHTML = html; tip.style.opacity = 1; const r = tip.getBoundingClientRect(); let x = ev.pageX + 14, y = ev.pageY + 12; if (x + r.width > window.scrollX + innerWidth - 8) x = ev.pageX - r.width - 14; tip.style.left = x + "px"; tip.style.top = y + "px"; }
+  function hideTip() { tip.style.opacity = 0; }
+  const YEARS = d3.range(1984, 2025).filter((y) => y !== 1990);
+
+  // Generic multi-series line chart. series: [{name, color, values: Map(year->v), width, dash}]
+  function lines(el, series, o = {}) {
+    el.replaceChildren();
+    const W = Math.max(300, el.clientWidth || 640), H = +(el.dataset.h || 300), top = 12, bottom = 26, mr = W < 520 ? 12 : 120;
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const all = series.flatMap((s) => [...s.values.values()]).filter((v) => v != null && !isNaN(v));
+    const y = d3.scaleLinear([0, d3.max(all) || 1], [H - bottom, top]).nice(5);
+    const tf = o.tick || d3.format(",");
+    const probe = svg.append("text").attr("class", "lbl").text(tf(y.domain()[1])); const ml = Math.ceil(probe.node().getComputedTextLength()) + 10; probe.remove();
+    const x = d3.scaleLinear([1984, 2024], [ml, W - mr]);
+    y.ticks(5).forEach((t) => { svg.append("line").attr("x1", ml).attr("x2", W - mr).attr("y1", y(t)).attr("y2", y(t)).attr("stroke", "var(--grid)"); svg.append("text").attr("class", "lbl").attr("x", ml - 6).attr("y", y(t) + 4).attr("text-anchor", "end").text(tf(t)); });
+    [1984, 1990, 2000, 2010, 2020, 2024].forEach((t) => svg.append("text").attr("class", "lbl").attr("x", x(t)).attr("y", H - 6).attr("text-anchor", "middle").text(t));
+    svg.append("line").attr("x1", x(1990)).attr("x2", x(1990)).attr("y1", top).attr("y2", H - bottom).attr("stroke", "var(--rule)").attr("stroke-dasharray", "2 3");
+    const gen = d3.line().defined((d) => d[1] != null && !isNaN(d[1])).x((d) => x(d[0])).y((d) => y(d[1]));
+    series.forEach((s) => {
+      const pts = YEARS.map((yr) => [yr, s.values.get(yr)]);
+      // break the line at the 1990 gap
+      [pts.filter((d) => d[0] < 1990), pts.filter((d) => d[0] > 1990)].forEach((seg) => svg.append("path").attr("d", gen(seg)).attr("fill", "none").attr("stroke", s.color).attr("stroke-width", s.width || 2.2).attr("stroke-dasharray", s.dash || null));
+      if (mr > 20) { const last = [...pts].reverse().find((d) => d[1] != null && !isNaN(d[1])); if (last) s._end = [last, y(last[1])]; }
+    });
+    if (mr > 20) { // end labels with simple collision avoidance
+      const ends = series.filter((s) => s._end).sort((a, b) => a._end[1] - b._end[1]); let prev = -1e9;
+      ends.forEach((s) => { let yy = Math.max(s._end[1] + 4, prev + 13); prev = yy; svg.append("text").attr("class", "nm").attr("x", W - mr + 6).attr("y", yy).attr("fill", s.color).style("fill", s.color).style("font-size", "12px").style("font-weight", 600).text(s.name.length > 18 ? s.name.slice(0, 17) + "…" : s.name); });
+    }
+    const hl = svg.append("line").attr("y1", top).attr("y2", H - bottom).attr("stroke", "var(--muted)").attr("opacity", 0);
+    svg.append("rect").attr("x", ml).attr("y", top).attr("width", W - mr - ml).attr("height", H - bottom - top).attr("fill", "transparent")
+      .on("mousemove", (ev) => { const [mx] = d3.pointer(ev); let yr = Math.round(x.invert(mx)); if (yr === 1990) yr = 1991; yr = Math.max(1984, Math.min(2024, yr)); hl.attr("x1", x(yr)).attr("x2", x(yr)).attr("opacity", 0.5);
+        const rows = series.map((s) => [s, s.values.get(yr)]).filter((d) => d[1] != null).sort((a, b) => b[1] - a[1]);
+        showTip(ev, `<div class="h">${o.yearLabel ? o.yearLabel(yr) : yr}</div>` + rows.map(([s, v]) => `<div class="r"><i style="background:${s.color}"></i><span>${s.name}</span><b>${(o.fmt || fmt)(v)}</b></div>`).join("")); })
+      .on("mouseleave", () => { hl.attr("opacity", 0); hideTip(); });
+  }
+
+  function stacked(el, rows, keys, colors, share) {
+    el.replaceChildren();
+    const W = Math.max(300, el.clientWidth || 640), H = +(el.dataset.h || 320), top = 12, bottom = 26, mr = 12;
+    const svg = d3.select(el).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const data = rows.map((r) => { const t = d3.sum(keys, (k) => r[k]); const o = { year: r.year, _t: t }; keys.forEach((k) => (o[k] = share ? (t ? r[k] / t : 0) : r[k])); return o; });
+    const st = d3.stack().keys(keys)(data);
+    const y = d3.scaleLinear([0, share ? 1 : d3.max(data, (d) => d3.sum(keys, (k) => d[k]))], [H - bottom, top]).nice(5);
+    const tf = share ? d3.format(".0%") : d3.format(",");
+    const ml = 40;
+    const x = d3.scaleBand(rows.map((r) => r.year), [ml, W - mr]).padding(0.12);
+    y.ticks(5).forEach((t) => { svg.append("line").attr("x1", ml).attr("x2", W - mr).attr("y1", y(t)).attr("y2", y(t)).attr("stroke", "var(--grid)"); svg.append("text").attr("class", "lbl").attr("x", ml - 6).attr("y", y(t) + 4).attr("text-anchor", "end").text(tf(t)); });
+    rows.forEach((r) => { if ([1984, 1991, 2000, 2010, 2020, 2024].includes(r.year)) svg.append("text").attr("class", "lbl").attr("x", x(r.year) + x.bandwidth() / 2).attr("y", H - 6).attr("text-anchor", "middle").text(r.year); });
+    st.forEach((layer, i) => svg.append("g").selectAll("rect").data(layer).join("rect").attr("x", (d) => x(d.data.year)).attr("width", x.bandwidth()).attr("y", (d) => y(d[1])).attr("height", (d) => Math.max(0, y(d[0]) - y(d[1]))).attr("fill", colors[i]));
+    svg.append("g").selectAll("rect").data(data).join("rect").attr("x", (d) => x(d.year)).attr("width", x.bandwidth()).attr("y", top).attr("height", H - bottom - top).attr("fill", "transparent")
+      .on("mousemove", (ev, d) => { const r = rows.find((q) => q.year === d.year); showTip(ev, `<div class="h">${d.year} · ${fmt(d._t)} graduates</div>` + keys.map((k, i) => [k, i]).reverse().map(([k, i]) => `<div class="r"><i style="background:${colors[i]}"></i><span>${FAM[i][1]}</span><b>${fmt(r[k])} · ${d3.format(".0%")(d._t ? r[k] / d._t : 0)}</b></div>`).join("")); })
+      .on("mouseleave", hideTip);
+  }
+
+  Promise.all([d3.csv("lc_degrees_by_level.csv", d3.autoType), d3.csv("lc_bachelors_by_major.csv", d3.autoType), d3.csv("../degrees-peers/peer_bachelors_by_field.csv", d3.autoType)]).then(([lev, maj, fam]) => {
+    const L = new Map(lev.map((r) => [r.year, r]));
+    const F = fam.filter((r) => r.unitid === 209056).sort((a, b) => a.year - b.year);
+    // program x year
+    const progs = d3.rollup(maj, (v) => ({ m1: d3.sum(v, (d) => d.first_major), m2: d3.sum(v, (d) => d.second_major || 0) }), (d) => d.lc_program, (d) => d.year);
+    const avg = (arr) => (arr.length ? d3.mean(arr) : null);
+    const progAvg = (p, y0, y1, dbl) => { const m = progs.get(p); const vals = YEARS.filter((y) => y >= y0 && y <= y1).map((y) => { const v = m.get(y); return v ? v.m1 + (dbl ? v.m2 : 0) : 0; }); return avg(vals); };
+    const names = [...progs.keys()].sort((a, b) => progAvg(b, 2020, 2024) - progAvg(a, 2020, 2024));
+
+    // headline + tiles
+    const b24 = L.get(2024).bachelors_first_major;
+    const a8589 = d3.mean([1985, 1986, 1987, 1988, 1989].map((y) => L.get(y).bachelors_first_major));
+    const a2024 = d3.mean([2020, 2021, 2022, 2023, 2024].map((y) => L.get(y).bachelors_first_major));
+    const peakB = d3.greatest(lev, (r) => r.bachelors_first_major);
+    const top1 = names[0], top1v = progAvg(top1, 2020, 2024);
+    const shareP = (y0, y1, key) => { const rs = F.filter((r) => r.year >= y0 && r.year <= y1); return d3.sum(rs, (r) => r[key]) / d3.sum(rs, (r) => r.bachelors_first_major); };
+    const hum0 = shareP(1985, 1989, "humanities") + shareP(1985, 1989, "arts"), hum1 = shareP(2020, 2024, "humanities") + shareP(2020, 2024, "arts");
+    const nat0 = shareP(1985, 1989, "natural_sciences_math"), nat1 = shareP(2020, 2024, "natural_sciences_math");
+    const ps0 = shareP(1985, 1989, "psychology"), ps1 = shareP(2020, 2024, "psychology");
+    const P = d3.format(".0%");
+    $("find").textContent = `Lewis & Clark graduated ${fmt(b24)} bachelor's students in 2024 and averaged ${fmt(Math.round(a2024))} a year from 2020 to 2024, up from ${fmt(Math.round(a8589))} in the late 1980s. Humanities and arts fell from ${P(hum0)} of graduates in 1985 to 1989 to ${P(hum1)}, while psychology rose from ${P(ps0)} to ${P(ps1)} and the natural sciences and math from ${P(nat0)} to ${P(nat1)}.`;
+    const tiles = [
+      [fmt(b24), "bachelor's degrees, 2024"],
+      [fmt(Math.round(a2024)), "a year, 2020 to 2024 average"],
+      [fmt(peakB.bachelors_first_major), `peak year, ${peakB.year}`],
+      [top1, `largest major, ${fmt(Math.round(top1v))} a year since 2020`],
+      [fmt(L.get(2024).second_majors), "second majors, 2024"],
+      [fmt(L.get(2024).jd), "J.D. degrees, 2024"],
+      [fmt(L.get(2024).masters + L.get(2024).law_masters), "master's and LL.M., 2024"]
+    ];
+    $("tiles").innerHTML = tiles.map(([b, s], i) => `<div class="tile"><b${i === 3 ? ' style="font-size:22px;line-height:1.35"' : ""}>${b}</b><span>${s}</span></div>`).join("");
+
+    // levels
+    const LS = [
+      { name: "Bachelor's", color: "var(--gross)", f: (r) => r.bachelors_first_major, width: 2.6 },
+      { name: "Master's and LL.M.", color: "var(--net)", f: (r) => r.masters + r.law_masters },
+      { name: "J.D.", color: "var(--endow)", f: (r) => r.jd },
+      { name: "Certificates", color: "var(--aid)", f: (r) => r.certificates, dash: "4 3" },
+      { name: "Second majors", color: "var(--muted)", f: (r) => (r.second_majors === null ? null : r.second_majors), dash: "2 3", width: 1.6 }
+    ];
+    $("k-lev").innerHTML = LS.map((s) => `<span><i style="background:${s.color}"></i>${s.name}</span>`).join("");
+    const drawLev = () => lines($("c-lev"), LS.map((s) => ({ ...s, values: new Map(lev.map((r) => [r.year, s.f(r)])) })));
+
+    // field mix
+    let share = false;
+    $("k-mix").innerHTML = FAM.map(([, n], i) => `<span><i class="sq" style="background:${FC[i]}"></i>${n}</span>`).join("");
+    const drawMix = () => stacked($("c-mix"), F, FAM.map((f) => f[0]), FC, share);
+    $("mixmode").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; share = b.dataset.v === "p"; [...$("mixmode").children].forEach((x) => x.setAttribute("aria-pressed", x === b)); drawMix(); });
+
+    // majors over time
+    let picked = names.slice(0, 5), smooth = true, dbl = false;
+    const series = (p) => { const m = progs.get(p); const raw = new Map(YEARS.map((y) => { const v = m.get(y); if (dbl && y < 2001) return [y, v ? v.m1 : 0]; return [y, v ? v.m1 + (dbl ? v.m2 : 0) : 0]; }));
+      if (!smooth) return raw; const out = new Map(); YEARS.forEach((y, i) => { const w = YEARS.slice(Math.max(0, i - 1), i + 2); out.set(y, d3.mean(w, (q) => raw.get(q))); }); return out; };
+    function drawPicks() { $("picks").innerHTML = names.map((p) => { const i = picked.indexOf(p); return `<button aria-pressed="${i >= 0}" data-p="${p}"><i style="background:${i >= 0 ? PAL[i] : "var(--other)"}"></i>${p}</button>`; }).join(""); }
+    $("picks").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; togglePick(b.dataset.p); });
+    function togglePick(p, only) { const i = picked.indexOf(p); if (i >= 0 && !only) picked.splice(i, 1); else if (i < 0) { if (picked.length >= 6) picked.shift(); picked.push(p); } drawPicks(); drawMaj(); }
+    const drawMaj = () => lines($("c-maj"), picked.map((p, i) => ({ name: p, color: PAL[i], values: series(p) })), { fmt: smooth ? d3.format(",.1f") : fmt, yearLabel: (y) => (smooth ? `${y} (3-year average)` : y) });
+    $("smooth").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; smooth = b.dataset.v === "1"; [...$("smooth").children].forEach((x) => x.setAttribute("aria-pressed", x === b)); drawMaj(); });
+    $("dbl").addEventListener("change", (e) => { dbl = e.target.checked; drawMaj(); });
+
+    // program table
+    const PER = [[1984, 1989, "1984–89"], [1990, 1994, "1991–94"], [1995, 1999, "1995–99"], [2000, 2004, "2000–04"], [2005, 2009, "2005–09"], [2010, 2014, "2010–14"], [2015, 2019, "2015–19"], [2020, 2024, "2020–24"]];
+    const trows = names.map((p) => { const v = PER.map(([a, b]) => progAvg(p, a, b)); const m2 = d3.mean(YEARS.filter((y) => y >= 2020), (y) => (progs.get(p).get(y) || { m2: 0 }).m2); return { p, v, m2, chg: v[4] ? v[7] / v[4] - 1 : null }; });
+    let sortK = 8, sortDir = -1;
+    function drawTable() {
+      const head = ["Program", ...PER.map((d) => d[2]), "Change since 2005–09", "Second majors 2020–24"];
+      $("prog").tHead.innerHTML = "<tr>" + head.map((h, i) => `<th class="${i ? "n" : ""}" data-k="${i}" ${i === sortK ? `aria-sort="${sortDir > 0 ? "ascending" : "descending"}"` : ""}>${h}</th>`).join("") + "</tr>";
+      const key = (r) => (sortK === 0 ? r.p : sortK <= 8 ? r.v[sortK - 1] : sortK === 9 ? r.chg ?? -9 : r.m2);
+      const rs = [...trows].sort((a, b) => (sortK === 0 ? a.p.localeCompare(b.p) * -sortDir : (key(a) - key(b)) * sortDir));
+      $("prog").tBodies[0].innerHTML = rs.map((r) => { const mx = d3.max(r.v) || 1;
+        return `<tr data-p="${r.p}"><td>${r.p}</td>` + r.v.map((v) => `<td class="n" style="background:color-mix(in srgb, var(--gross) ${Math.round((v / mx) * 28)}%, transparent)">${v ? d3.format(",.1f")(v) : "–"}</td>`).join("") +
+          `<td class="n ${r.chg > 0.05 ? "up" : r.chg < -0.05 ? "dn" : ""}">${r.chg == null || !isFinite(r.chg) ? "new" : (r.chg > 0 ? "+" : "") + d3.format(".0%")(r.chg)}</td><td class="n">${d3.format(",.1f")(r.m2)}</td></tr>`; }).join("");
+    }
+    $("prog").tHead.addEventListener("click", (e) => { const th = e.target.closest("th"); if (!th) return; const k = +th.dataset.k; if (k === sortK) sortDir *= -1; else { sortK = k; sortDir = k === 0 ? 1 : -1; } drawTable(); });
+    $("prog").tBodies[0].addEventListener("click", (e) => { const tr = e.target.closest("tr"); if (!tr) return; togglePick(tr.dataset.p, true); $("h-maj").scrollIntoView({ behavior: "smooth", block: "start" }); });
+
+    const drawAll = () => { drawLev(); drawMix(); drawMaj(); };
+    drawPicks(); drawTable(); drawAll();
+    let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(drawAll, 150); });
+  }).catch((e) => { document.querySelectorAll(".chart").forEach((el) => (el.innerHTML = '<p class="fail">The data could not be loaded.</p>')); console.error(e); });
+})();
+</script>
+</body>
+</html>
