@@ -1,0 +1,35 @@
+key,institution,short,peer_group,oregon_washington,yield_fy2019_pct,yield_fy2024_pct,yield_fall2024_pct,yield_change_fy2019_fy2024_pts,admit_rate_fy2024_pct,discount_fy2019_pct,discount_fy2024_pct,discount_change_fy2019_fy2024_pts,net_tuition_real_change_fy2019_fy2024_pct,language_semesters,language_applies_to,residency_semesters,lc_majors_offered_of_30,lc_majors_coverage_pct,career_field_share_2020_2024_pct,endowment_per_student_usd
+lewis-clark,Lewis & Clark College,Lewis & Clark,Lewis & Clark,yes,12.41,11.71,9.7,-0.7,74.53,42.71,51.55,8.84,-11.18,3,All students,6,,,2.64,99478
+gettysburg,Gettysburg College,Gettysburg,Group 1,,26.27,17.85,15.61,-8.42,47.51,44.94,64.74,19.79,-44.42,2,All students,8,26,86.7,14.45,168266
+gonzaga,Gonzaga University,Gonzaga,Group 1,yes,21.69,17.32,17.48,-4.37,75.96,39.71,43.9,4.19,-5.76,2,Some students,4,25,83.3,48.24,68485
+kalamazoo,Kalamazoo College,Kalamazoo,Group 1,,16.63,13.28,11.73,-3.35,76.23,64.63,72.22,7.59,-26.23,2,All students,6,24,80.0,19.27,250889
+kenyon,Kenyon College,Kenyon,Group 1,,24.46,18.03,18.31,-6.43,30.71,38.4,47.75,9.35,-12.98,2,All students,8,23,76.7,0.0,433902
+occidental,Occidental College,Occidental,Group 1,,20.84,20.29,17.83,-0.55,39.89,44.94,39.99,-4.96,-1.2,2,All students,6,23,76.7,5.07,383089
+puget-sound,University of Puget Sound,Puget Sound,Group 1,yes,12.91,10.94,11.36,-1.96,76.28,41.61,49.6,7.98,-39.82,2,All students,4,25,83.3,16.62,266634
+reed,Reed College,Reed,Group 1,yes,17.39,12.87,13.05,-4.53,27.16,35.91,40.63,4.72,-8.52,0,No requirement,4,26,86.7,4.57,676014
+rhodes,Rhodes College,Rhodes,Group 1,,23.93,16.14,12.11,-7.79,49.68,57.92,63.75,5.82,-21.77,3,All students,6,26,86.7,22.82,252136
+sarah-lawrence,Sarah Lawrence College,Sarah Lawrence,Group 1,,22.89,14.47,14.63,-8.41,58.93,42.24,48.51,6.26,-13.73,0,No requirement,0,24,80.0,0.0,91362
+skidmore,Skidmore College,Skidmore,Group 1,,23.32,26.4,26.61,3.08,22.92,33.54,41.24,7.7,-10.76,1,All students,4,25,83.3,18.17,187911
+st-olaf,St. Olaf College,St. Olaf,Group 1,,29.49,26.56,26.84,-2.93,52.15,57.03,69.8,12.77,-31.35,3,All students,8,25,83.3,5.76,277429
+university-of-portland,University of Portland,U of Portland,Group 1,yes,12.5,8.45,9.62,-4.04,95.39,45.39,54.41,9.02,-33.86,4,Some students,4,20,66.7,55.83,115215
+union,"Union College (Schenectady, NY)",Union,Group 1,,21.98,13.51,13.87,-8.46,43.79,42.25,55.34,13.08,-28.4,1,Menu option,8,24,80.0,24.44,293081
+whitman,Whitman College,Whitman,Group 1,yes,16.25,14.36,14.12,-1.89,49.99,40.14,52.43,12.29,-22.46,1,Menu option,4,26,86.7,6.2,522840
+willamette,Willamette University,Willamette,Group 1,yes,11.09,15.51,14.25,4.43,79.11,47.35,57.72,10.37,-21.6,2,All students,4,24,80.0,5.54,122805
+clark,Clark University,Clark,Group 2,,12.75,14.07,10.73,1.32,41.67,50.22,51.76,1.54,8.49,1,Menu option,4,23,76.7,12.37,164964
+drew,Drew University (College of Liberal Arts),Drew,Group 2,,16.02,12.64,10.74,-3.38,69.44,51.3,56.74,5.43,-17.5,3,All students,8,25,83.3,21.46,56542
+loyola-new-orleans,Loyola University New Orleans,Loyola New Orleans,Group 2,,18.53,12.9,12.11,-5.64,87.72,54.01,55.96,1.95,4.31,2,Some students,6,20,66.7,22.22,
+lynchburg,University of Lynchburg,Lynchburg,Group 2,,,12.08,14.66,,82.19,44.64,42.23,-2.41,-28.71,1,Menu option,6,15,50.0,32.67,60880
+pacific-university,"Pacific University (Forest Grove, Oregon)",Pacific University,Group 2,yes,19.81,15.47,13.12,-4.34,91.76,29.53,28.97,-0.56,-19.26,2,All students,4,24,80.0,29.26,20668
+seattle-pacific,Seattle Pacific University,Seattle Pacific,Group 2,yes,19.0,14.95,15.75,-4.05,91.09,45.7,51.0,5.3,-51.93,0,No requirement,4,13,43.3,35.85,68167
+seattle-university,Seattle University,Seattle University,Group 2,yes,16.57,15.37,13.63,-1.2,76.05,35.24,42.21,6.97,-16.95,2,Some students,4,25,83.3,52.76,51656
+stetson,Stetson University (DeLand undergraduate),Stetson,Group 2,,9.81,9.44,8.21,-0.38,86.43,51.54,61.93,10.39,-38.31,1,Menu option,6,21,70.0,42.07,106132
+capital,Capital University,Capital,Group 3,,20.38,12.93,11.78,-7.45,73.17,52.78,56.0,3.22,-29.34,0,No requirement,6,21,70.0,36.88,68559
+goucher,Goucher College,Goucher,Group 3,,17.03,10.17,9.68,-6.86,72.9,58.5,65.36,6.86,-46.79,3,All students,8,20,66.7,12.1,205685
+hamline,Hamline University,Hamline,Group 3,,16.71,13.81,15.86,-2.91,89.83,42.62,48.44,5.81,-34.11,0,No requirement,0,15,50.0,19.33,61917
+john-carroll,John Carroll University,John Carroll,Group 3,,25.3,16.18,15.94,-9.12,81.1,58.16,56.77,-1.39,-24.99,2,All students,8,19,63.3,37.67,105499
+la-verne,University of La Verne,La Verne,Group 3,,18.17,14.17,9.8,-4.0,48.48,28.55,38.71,10.16,-35.89,2,Some students,0,22,73.3,39.88,32161
+ohio-northern,Ohio Northern University,Ohio Northern,Group 3,,23.04,17.64,19.87,-5.4,73.35,50.31,54.01,3.7,-14.5,0,No requirement,6,13,43.3,61.81,72026
+pacific-lutheran,Pacific Lutheran University,Pacific Lutheran,Group 3,yes,21.75,18.72,14.12,-3.03,80.53,51.41,57.83,6.41,-28.64,2,Some students,4,24,80.0,33.17,50231
+redlands,University of Redlands,Redlands,Group 3,,20.64,16.51,15.86,-4.12,80.92,44.94,50.0,5.06,-41.02,2,Some students,8,23,76.7,42.16,87694
+roger-williams,Roger Williams University,Roger Williams,Group 3,,13.21,14.13,13.04,0.93,87.78,36.18,45.45,9.27,-15.17,0,No requirement,4,19,63.3,35.98,
+saint-marys-ca,Saint Mary's College of California,Saint Mary's CA,Group 3,,14.04,13.18,9.47,-0.85,88.58,39.66,54.85,15.18,-48.95,2,All students,4,25,83.3,32.84,64676

@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Four Recommendations for Differentiation and Yield</title>
+<meta name="description" content="What the analysis on this site adds up to for Lewis & Clark's undergraduate admissions: where yield stands, what has and has not moved it, and four recommendations with their evidence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../peer-analysis/peer.css">
+<style>
+:root { --dot: #8793A3; --band: #EDF0F4; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --dot: #6F7C8D; --band: #1D2632; } }
+:root[data-theme="dark"] { --dot: #6F7C8D; --band: #1D2632; }
+.find { margin-top: 6px; }
+.recs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr)); gap: 12px; margin: 0 0 26px; }
+a.rcard { display: grid; grid-template-rows: auto auto 1fr auto; gap: 6px; background: var(--panel); border: 1px solid var(--rule); border-top: 4px solid var(--gross); border-radius: 10px; padding: 14px 16px 12px; color: inherit; text-decoration: none; transition: border-color .15s; }
+a.rcard:hover { border-color: var(--muted); border-top-color: var(--gross); }
+.rcard .n { font-family: var(--f-data); font-size: 12px; color: var(--muted); }
+.rcard h2 { font-family: var(--f-display); font-weight: 500; font-size: 21px; line-height: 1.2; margin: 0; text-wrap: balance; }
+.rcard p { margin: 0; font-size: 13.5px; color: var(--muted); }
+.rcard .go { font-family: var(--f-data); font-size: 12.5px; color: var(--ink); margin-top: 4px; }
+.band-h { font-family: var(--f-display); font-weight: 500; font-size: clamp(22px, 3vw, 28px); line-height: 1.2; margin: 34px 0 4px; }
+.band-p { color: var(--muted); max-width: 72ch; margin: 0 0 14px; }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.pills button { font: inherit; font-size: 13px; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.pills button:hover { border-color: var(--muted); }
+.pills button[aria-pressed="true"] { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+.ctl-lab { font-size: 13px; color: var(--muted); }
+.card h3 { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
+.card .cap { font-size: 13.5px; margin: 10px 0 0; max-width: 76ch; }
+.key i.dotk { width: 10px; height: 10px; border-radius: 50%; }
+.key i.dia { width: 8px; height: 8px; border-radius: 1.5px; transform: rotate(45deg); margin-inline: 1px; }
+.key i.bandk { width: 18px; height: 10px; border-radius: 2px; background: var(--band); border: 1px solid var(--rule); }
+.chart { min-height: 0; }
+.chart .dl { font-family: var(--f-body); font-size: 12px; fill: var(--ink); paint-order: stroke; stroke: var(--panel); stroke-width: 4px; stroke-linejoin: round; }
+.chart .dl.b { font-weight: 600; }
+.chart .ax { font-family: var(--f-data); font-size: 11px; fill: var(--muted); }
+.chart .axt { font-family: var(--f-body); font-size: 12px; fill: var(--muted); }
+.chart .q { font-family: var(--f-body); font-size: 11.5px; fill: var(--muted); }
+.chart .val { font-family: var(--f-data); font-size: 12px; fill: var(--ink); font-weight: 500; }
+details.tv { margin-top: 10px; font-size: 13px; }
+details.tv summary { cursor: pointer; color: var(--muted); width: fit-content; }
+details.tv summary:hover { color: var(--ink); }
+details.tv .tbox { margin-top: 8px; max-height: 22rem; }
+details.tv td:not(.n), details.tv th:not(.n) { min-width: 8.5rem; }
+section.rec { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--rule); scroll-margin-top: 10px; }
+.rec-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 18px; align-items: start; margin-bottom: 16px; }
+.rec-head .num { font-family: var(--f-display); font-weight: 500; font-size: clamp(44px, 7vw, 64px); line-height: .9; color: var(--gross); grid-row: 1 / span 3; }
+.rec-head h2 { font-family: var(--f-display); font-weight: 500; font-size: clamp(24px, 3.4vw, 32px); line-height: 1.15; margin: 0; text-wrap: balance; }
+.rec-head .lede { margin: 4px 0 0; font-size: 16px; max-width: 66ch; }
+.rec-head .strength { margin: 6px 0 0; font-size: 13px; color: var(--muted); max-width: 72ch; }
+.rec-head .strength b { color: var(--ink); font-weight: 600; }
+.ev h3, .act h3 { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 0 0 8px; }
+.ev ul { margin: 0; padding-left: 1.15em; max-width: 80ch; display: grid; gap: 7px; }
+.ev li::marker, .act li::marker { color: var(--muted); }
+.meters { columns: 1; }
+.meter { display: grid; grid-template-columns: minmax(0, 1fr) clamp(4rem, 22%, 7rem) 4.4rem; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--grid); font-size: 13.5px; break-inside: avoid; }
+.meter .mn small { color: var(--muted); font-size: 12px; }
+.meter .trk { height: 8px; border-radius: 4px; background: color-mix(in srgb, var(--gross) 16%, transparent); overflow: hidden; display: block; }
+.meter .trk i { display: block; height: 100%; border-radius: 4px; background: var(--gross); }
+.meter .fig { font-family: var(--f-data); font-size: 12.5px; text-align: right; white-space: nowrap; }
+.kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 520px) { .kpis { grid-template-columns: minmax(0, 1fr); } }
+.kpi { border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; display: grid; gap: 2px; }
+.kpi .l { font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.kpi .l i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; flex: none; }
+.kpi .v { font-size: 24px; font-weight: 600; line-height: 1.15; }
+.kpi .d { font-size: 12.5px; color: var(--ink); }
+.kpi .d span { color: var(--muted); }
+.act { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 1px; margin-top: 16px; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.act > div { padding: 14px 18px 16px; box-shadow: 0 0 0 1px var(--rule); }
+.act ul { margin: 0; padding-left: 1.15em; display: grid; gap: 7px; font-size: 14px; }
+.act p { margin: 0; font-size: 14px; }
+.act p + p { margin-top: 7px; }
+.src { font-size: 13px; color: var(--muted); margin: 12px 2px 0; max-width: 90ch; }
+.src a { color: inherit; }
+.need { margin-top: 16px; }
+.need p { margin: 0; max-width: 80ch; }
+table.score td:first-child { font-weight: 600; min-width: 13rem; }
+table.score td.r { color: var(--muted); }
+@media (max-width: 640px) {
+  table.score { min-width: 0 !important; }
+  table.score thead { display: none; }
+  table.score tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+  table.score tr:last-child { border-bottom: 0; }
+  table.score td { display: block; padding: 0; border: 0; }
+  table.score td:first-child { min-width: 0; }
+  table.score td:nth-child(2) { grid-column: 1 / -1; font-size: 15px; }
+  table.score td.r { grid-column: 1 / -1; font-size: 13px; }
+  table.score td.n:last-child { grid-column: 2; grid-row: 1; color: var(--muted); }
+  table.score td.n:last-child::before { content: "Rec. "; font-family: var(--f-body); }
+}
+html.printing .wrap { width: 7in; max-width: none; padding-inline: 0; }
+html.printing .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+html.printing .card { padding: 12px; }
+html.printing .act { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+html.printing .act > div { padding: 10px 12px; }
+@page { margin: 0.6in; }
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) { --bg: #fff; --panel: #fff; --ink: #000; --muted: #444; --rule: #bbb; --grid: #ddd; --zebra: #f4f4f4; --gross: #2f3f9e; --net: #0b6b59; --aid: #a35f0a; --endow: #7d3277; --other: #9aa3ad; --dot: #777; --band: #eee; color-scheme: light; }
+  body { font-size: 11.5pt; }
+  .controls, .tip, .rcard .go, details.tv summary { display: none !important; }
+  .card, .act, .tile, a.rcard, .kpi, .meter, .ev li { break-inside: avoid; }
+  .band-h, .band-p, .rec-head, .ev h3, .card h3, .card .note { break-after: avoid; }
+  section.rec { margin-top: 22px; padding-top: 14px; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Budget analysis</a></p>
+  <header>
+    <div class="eyebrow">Lewis &amp; Clark College · College of Arts and Sciences · drawn from every page on this site</div>
+    <h1>Four Recommendations for Differentiation and Yield</h1>
+    <p class="made" role="doc-subtitle">Built with Claude Fable 5.2 (max effort), November 2026, from the analysis on this site. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
+    <p class="dek">What the pages on this site add up to for undergraduate admissions: where yield stands, what has and has not moved it, and four recommendations. Each comes with its evidence, a way to tell whether it is working, and what the public data cannot show. Yield is the share of admitted first-year students who enroll.</p>
+    <p class="find" id="find"></p>
+  </header>
+
+  <div class="tiles" aria-live="polite">
+    <div class="tile"><b id="k-yield">&nbsp;</b><span id="k-yield-l">Yield, latest entering class</span></div>
+    <div class="tile"><b id="k-rank">&nbsp;</b><span>Yield rank among Lewis &amp; Clark and 33 peers, fall 2023 and fall 2024 classes</span></div>
+    <div class="tile"><b id="k-offers">&nbsp;</b><span id="k-offers-l">Admission offers per enrolled student</span></div>
+    <div class="tile"><b id="k-price">&nbsp;</b><span>Price after aid for an entering student, after inflation, fall 2015 to fall 2025</span></div>
+    <div class="tile"><b id="k-disc">&nbsp;</b><span id="k-disc-l">Undergraduate discount rate</span></div>
+    <div class="tile"><b id="k-cov">&nbsp;</b><span>Of Lewis &amp; Clark's 30 majors, the share the typical Group 1 peer also offers</span></div>
+  </div>
+
+  <nav class="recs" aria-label="The four recommendations">
+    <a class="rcard" href="#rec-1"><span class="n">Recommendation 1 · price</span><h2>Stop paying for yield with price</h2><p>Aid per entering student more than doubled in ten years and yield did not rise. Stop raising aid by default and test each new award.</p><span class="go">See the evidence ↓</span></a>
+    <a class="rcard" href="#rec-2"><span class="n">Recommendation 2 · the admit pool</span><h2>Admit for fit, not volume</h2><p>Offers grew two and a half times while the class stayed near 500. Size the pool to the class and build early commitment.</p><span class="go">See the evidence ↓</span></a>
+    <a class="rcard" href="#rec-3"><span class="n">Recommendation 3 · the offer</span><h2>Lead with what peers cannot match</h2><p>Most peers offer most of the same majors. The law school, the graduate school and a few rare programs are what they lack.</p><span class="go">See the evidence ↓</span></a>
+    <a class="rcard" href="#rec-4"><span class="n">Recommendation 4 · the requirements</span><h2>Turn requirements into promises</h2><p>Lewis &amp; Clark asks for more language and more years on campus than most peers. Make each one come with something students get.</p><span class="go">See the evidence ↓</span></a>
+  </nav>
+
+  <h2 class="band-h" id="start">The starting point</h2>
+  <p class="band-p">Before any recommendation: where Lewis &amp; Clark's yield sits among its peers, and which of the things measured on this site move with yield across the 34 schools.</p>
+
+  <div class="controls">
+    <span class="ctl-lab" id="hl-lab">Highlight peers</span>
+    <div class="pills" role="group" aria-labelledby="hl-lab">
+      <button type="button" data-hl="" aria-pressed="true">None</button>
+      <button type="button" data-hl="Group 1" aria-pressed="false">Group 1</button>
+      <button type="button" data-hl="Group 2" aria-pressed="false">Group 2</button>
+      <button type="button" data-hl="Group 3" aria-pressed="false">Group 3</button>
+      <button type="button" data-hl="ow" aria-pressed="false">Oregon and Washington</button>
+    </div>
+    <a class="ctl-link" href="#peer-groups">How the peer groups were chosen</a>
+  </div>
+
+  <div class="pair" style="margin-top:0">
+    <section class="card" aria-labelledby="h-yield">
+      <h3 id="h-yield">Where Lewis &amp; Clark's yield stands</h3>
+      <p class="note">Each mark is a school: the share of admitted first-year students who enrolled. Fall 2023 is the latest class with finance data for every school and is the one used in the peer charts below. Hover or tap a mark.</p>
+      <div class="key peer-key" aria-hidden="true"></div>
+      <div class="chart" id="c-yield" role="img" aria-label="Yield of the fall 2023 and fall 2024 entering classes at Lewis & Clark and 33 peers"></div>
+      <p class="cap" id="cap-yield"></p>
+      <details class="tv"><summary>View as table</summary><div id="tv-yield"></div></details>
+    </section>
+    <section class="card" aria-labelledby="h-track">
+      <h3 id="h-track">What moves with yield across the 34 schools</h3>
+      <p class="note">How closely each measure lines up with fall 2023 yield, as a rank correlation: 0 means no relationship, 1 means the two rise together, and a negative value means one falls as the other rises. This chart always uses every school.</p>
+      <div class="key" aria-hidden="true"><span><i class="sq" style="background:var(--gross)"></i>Outside the band</span><span><i class="sq" style="background:var(--dot)"></i>Inside the band</span><span><i class="bandk"></i>Cannot be told apart from no relationship with this many schools</span></div>
+      <div class="chart" id="c-track" role="img" aria-label="Rank correlation of eight measures with yield across the schools"></div>
+      <p class="cap" id="cap-track"></p>
+      <details class="tv"><summary>View as table</summary><div id="tv-track"></div></details>
+    </section>
+  </div>
+
+  <p class="tnote">A wider check: across Lewis &amp; Clark and the 92 colleges U.S. News ranks above it that report tuition revenue, fall 2023 yield lines up closely with U.S. News rank (rank correlation −0.71) and with the admit rate (−0.62), and Lewis &amp; Clark's yield is 89th of the 93. Yield follows standing in that set too. From <a href="../peer-analysis/usnews-net-tuition-yield/" style="color:inherit">Who Grew Net Tuition and Yield: U.S. News Leaders</a>.</p>
+
+  <section class="card" aria-labelledby="h-ops" style="margin-top:16px">
+    <h3 id="h-ops">Why it matters now</h3>
+    <p class="note">All three schools together, from the audited statements of activities, FY2024 to FY2026.</p>
+    <div class="kpis" id="kpi-ops"></div>
+    <p class="cap" id="cap-ops"></p>
+  </section>
+
+  <!-- ============ Recommendation 1 ============ -->
+  <section class="rec" id="rec-1" aria-labelledby="h-rec-1">
+    <div class="rec-head">
+      <span class="num" aria-hidden="true">1</span>
+      <h2 id="h-rec-1">Stop paying for yield with price</h2>
+      <p class="lede">Stop raising aid per entering student by default, and spend new aid only where it is shown to change a student's decision.</p>
+      <p class="strength"><b>How strong is the evidence?</b> Strong that aid rose and yield did not, at Lewis &amp; Clark and at its peers. It is not proof of what yield would have been without the aid.</p>
+    </div>
+    <div class="ev">
+      <h3>The evidence</h3>
+      <ul>
+        <li>Aid per entering student rose from $22,614 to $50,811 between fall 2015 and fall 2025, and the price a first-year paid after aid fell 44% after inflation, from $30,065 to $16,803. Yield went from 14.1% to 12.5% and never rose above 15.4%.</li>
+        <li>The undergraduate discount rate rose from 58.0% in FY2024 to 63.1% in FY2026. Gross undergraduate tuition and fees barely moved ($135.8M to $135.0M), so undergraduate net tuition fell from $57.1M to $49.8M, $7.3M less in two years.</li>
+        <li>Peers did the same and got the same. From FY2019 to FY2024, 29 of 32 peers raised their discount rate, and only 4 of them gained yield. The median peer raised its discount 6.6 points and lost 4.0 points of yield. Among the 92 colleges U.S. News ranks above Lewis &amp; Clark, 76 raised their discount and 18 of those gained yield.</li>
+        <li>Occidental went the other way over the same years: it lowered its discount rate from 44.9% to 40.0% and kept yield near 20%.</li>
+        <li>Price is not a contest Lewis &amp; Clark can win against its richest peers. Its endowment per student is $99,478, against $676,014 at Reed, $522,840 at Whitman, $433,902 at Kenyon and $383,089 at Occidental.</li>
+      </ul>
+    </div>
+    <div class="pair">
+      <section class="card" aria-labelledby="h-index">
+        <h3 id="h-index">Aid doubled, the price fell, yield did not rise</h3>
+        <p class="note">Lewis &amp; Clark entering classes, fall 2015 to fall 2025. Each measure is set to 100 in fall 2015 so the three can share one scale.</p>
+        <div class="key" aria-hidden="true"><span><i style="background:var(--aid)"></i>Aid per entering student</span><span><i style="background:var(--net)"></i>Price after aid, after inflation</span><span><i style="background:var(--gross)"></i>Yield</span></div>
+        <div class="chart" id="c-index" role="img" aria-label="Aid per entering student, real price after aid and yield, indexed to fall 2015"></div>
+        <p class="cap" id="cap-index"></p>
+        <details class="tv"><summary>View as table</summary><div id="tv-index"></div></details>
+      </section>
+      <section class="card" aria-labelledby="h-dd">
+        <h3 id="h-dd">Peers that raised the discount did not gain yield</h3>
+        <p class="note">Change in discount rate (across) against change in yield (up), FY2019 to FY2024, in percentage points. Lynchburg has no FY2019 admissions figure and is left out.</p>
+        <div class="key peer-key" aria-hidden="true"></div>
+        <div class="chart" id="c-dd" role="img" aria-label="Change in discount rate against change in yield, FY2019 to FY2024, by school"></div>
+        <p class="cap" id="cap-dd"></p>
+        <details class="tv"><summary>View as table</summary><div id="tv-dd"></div></details>
+      </section>
+    </div>
+    <div class="act">
+      <div>
+        <h3>What to do</h3>
+        <ul>
+          <li>Stop raising aid per entering student by default. It has gone up in every year but one since fall 2015.</li>
+          <li>Do the student-level study this site describes: yield by aid offer, need and merit for admitted students, from records the college already holds.</li>
+          <li>Run new aid as a test. Change an award for a defined group, keep a comparison group, and keep the award only if enrollment responds.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>How to tell if it is working</h3>
+        <ul>
+          <li>Aid per entering student ($50,811 for fall 2025) and the first-year discount (75.1%) stop rising.</li>
+          <li>Yield by aid band, reported every fall.</li>
+          <li>Four-year net tuition per entering student, which fell from $100,477 for the fall 2015 class to $77,013 for the fall 2022 class, in FY2025 dollars.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What the data cannot show</h3>
+        <p>Aid is not set at random. It may have kept yield from falling further: applications fell 26% from their fall 2016 peak. Year-by-year totals cannot separate the two; student records with a comparison group can.</p>
+        <p>Each of the last four entering classes received more aid than the one before. As they replace earlier classes the overall discount rate can keep rising even if the next class receives no more, so judge the change by the entering class.</p>
+      </div>
+    </div>
+    <p class="src">Drawn from <a href="../discount-since-2015/">What the Discount Bought</a>, <a href="../net-tuition-peak/">Where Net Tuition Peaks</a>, <a href="../discount-trends/">Discount Rate Trends by School</a>, <a href="../peer-analysis/yield-net-tuition/">Net Tuition and Yield vs. Peers</a>, <a href="../peer-analysis/usnews-net-tuition-yield/">Who Grew Net Tuition and Yield: U.S. News Leaders</a> and <a href="../peer-analysis/endowment/">Endowment Size and Growth</a>.</p>
+  </section>
+
+  <!-- ============ Recommendation 2 ============ -->
+  <section class="rec" id="rec-2" aria-labelledby="h-rec-2">
+    <div class="rec-head">
+      <span class="num" aria-hidden="true">2</span>
+      <h2 id="h-rec-2">Admit for fit, not volume</h2>
+      <p class="lede">Size the admit pool to the class, and build the share of students who commit to Lewis &amp; Clark early.</p>
+      <p class="strength"><b>How strong is the evidence?</b> Clear in Lewis &amp; Clark's own counts over 24 years. The smaller admit pool is one year of evidence, and the pattern across peers is loose.</p>
+    </div>
+    <div class="ev">
+      <h3>The evidence</h3>
+      <ul>
+        <li>Admission offers grew from 1,970 for fall 2001 to 4,967 for fall 2024, two and a half times as many. The entering class went from 416 to 482. It took 4.7 offers to enroll one student in 2001 and 10.3 in 2024.</li>
+        <li>For fall 2025 the college made 836 fewer offers (4,131) and enrolled 35 more students (517). Yield rose from 9.7% to 12.5%.</li>
+        <li>Binding early decision is a small part of the class. 73 students were admitted early decision for fall 2025, at most 14% of the class, and between 39 and 73 in every year since fall 2015.</li>
+        <li>If every one of those 73 enrolled, the other 4,058 admitted students produced 444 enrollments, a yield of 10.9%.</li>
+        <li>Across the 34 schools, the more selective a school is, the higher its yield tends to be (correlation −0.48). At Lewis &amp; Clark's admit rate that pattern gives a yield of 14.4%. Lewis &amp; Clark's was 11.7%.</li>
+      </ul>
+    </div>
+    <div class="pair">
+      <section class="card" aria-labelledby="h-funnel">
+        <h3 id="h-funnel">More than twice the offers, the same class</h3>
+        <p class="note">Lewis &amp; Clark admission offers and first-year students enrolled, fall 2001 to fall 2025, on one scale. Fall 2005, 2007 and 2010 have no admissions figure on this site.</p>
+        <div class="key" aria-hidden="true"><span><i style="background:var(--aid)"></i>Admission offers</span><span><i style="background:var(--gross)"></i>Students enrolled</span></div>
+        <div class="chart" id="c-funnel" role="img" aria-label="Admission offers and students enrolled at Lewis & Clark, fall 2001 to fall 2025"></div>
+        <p class="cap" id="cap-funnel"></p>
+        <details class="tv"><summary>View as table</summary><div id="tv-funnel"></div></details>
+      </section>
+      <section class="card" aria-labelledby="h-ed">
+        <h3 id="h-ed">Early decision is a small part of each class</h3>
+        <p class="note">Students admitted under binding early decision as a share of the entering class, fall 2015 to fall 2025. This is an upper limit: it assumes every early decision admit enrolled.</p>
+        <div class="chart" id="c-ed" role="img" aria-label="Early decision admits as a share of the entering class, fall 2015 to fall 2025"></div>
+        <p class="cap" id="cap-ed"></p>
+        <details class="tv"><summary>View as table</summary><div id="tv-ed"></div></details>
+      </section>
+    </div>
+    <section class="card" aria-labelledby="h-adm" style="margin-top:16px">
+      <h3 id="h-adm">More selective schools enroll more of the students they admit</h3>
+      <p class="note">Admit rate (across) against yield (up) for the fall 2023 class. The line is the straight-line pattern across all 34 schools.</p>
+      <div class="key peer-key" aria-hidden="true"></div>
+      <div class="chart" id="c-adm" role="img" aria-label="Admit rate against yield for the fall 2023 class, by school"></div>
+      <p class="cap" id="cap-adm"></p>
+      <details class="tv"><summary>View as table</summary><div id="tv-adm"></div></details>
+    </section>
+    <div class="act">
+      <div>
+        <h3>What to do</h3>
+        <ul>
+          <li>Plan the admit pool from the class size and each admitted student's likelihood of enrolling, not from volume. Fall 2025 is consistent with the last several hundred offers adding few students.</li>
+          <li>Set a goal for the share of the class that comes through early decision and other firm early commitments, and report it every fall. It has been at most 7% to 15%.</li>
+          <li>Treat signs of interest (visits, interviews, contact with faculty) as part of the admission read, and track yield by each.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>How to tell if it is working</h3>
+        <ul>
+          <li>Admission offers per enrolled student: 8.0 for fall 2025, against 7.0 at the median peer for fall 2023.</li>
+          <li>Early decision admits as a share of the class (at most 14.1% for fall 2025).</li>
+          <li>Class size, net tuition per entering student and second-year retention (83.0% for the fall 2024 class), so that yield is not raised simply by shrinking the class.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What the data cannot show</h3>
+        <p>Yield rises on paper whenever fewer students are admitted. The goal is the class and its net tuition, not the ratio.</p>
+        <p>Selective schools are selective because more students want them. The peer pattern shows what demand looks like, not a tactic that creates it. The public data also say nothing about which admitted students were close to enrolling.</p>
+      </div>
+    </div>
+    <p class="src">Drawn from <a href="../discount-since-2015/">What the Discount Bought</a>, <a href="../spiral-students/">The Spiral and the Students</a> and <a href="../peer-analysis/yield-net-tuition/">Net Tuition and Yield vs. Peers</a>. Early decision counts were read for this page from item C21 of Lewis &amp; Clark's Common Data Sets, 2015-16 to 2025-26.</p>
+  </section>
+
+  <!-- ============ Recommendation 3 ============ -->
+  <section class="rec" id="rec-3" aria-labelledby="h-rec-3">
+    <div class="rec-head">
+      <span class="num" aria-hidden="true">3</span>
+      <h2 id="h-rec-3">Lead with what peers cannot match</h2>
+      <p class="lede">Put the law school, the graduate school and the few programs peers lack at the front of the offer, and count who comes for them.</p>
+      <p class="strength"><b>How strong is the evidence?</b> Clear on what peers offer and on where net tuition is growing. There is no public measure of whether prospective students want the rare programs.</p>
+    </div>
+    <div class="ev">
+      <h3>The evidence</h3>
+      <ul>
+        <li>The list of majors does not set Lewis &amp; Clark apart. The typical Group 1 peer offers 25 of its 30 majors (83%), and 60% of 2020 to 2024 graduates majored in a program that at least 30 of the 33 peers also offer. Psychology, the largest major at 16% of graduates, is offered at all 33.</li>
+        <li>The majors few peers offer are small. Computer Science and Mathematics (2 of 33 peers) and World Languages (6 of 33) together account for 3.5% of graduates. International Affairs, long a signature major, fell from 10.0% of graduates in 2005 to 2009 to 7.9% in 2020 to 2024, and 22 of 33 peers now offer it.</li>
+        <li>What an undergraduate college cannot copy is the rest of Lewis &amp; Clark: a law school and a graduate school of education and counseling. From FY2024 to FY2026 net tuition rose 7.3% at each of them while it fell 12.8% in the undergraduate college.</li>
+        <li>The bridges exist. The college offers a six-year BA and JD, with admission to the law school guaranteed to students who keep a 3.5 grade point average and meet its other benchmarks; a BA and Master of Studies in Law in environmental law in as little as four years; and a five-year BA and Master of Arts in Teaching. It markets them together as the 4-5-6 Commitment. Several rare minors point the same way: Law and Policy (9 of 33 peers), Earth System Science (5) and Entrepreneurial Leadership and Innovation (12).</li>
+        <li>Having them has not been enough. These routes date from about 2019, and yield was 12.0% for fall 2019 and 12.5% for fall 2025. The college's published list of those initiatives gives no enrollment or yield target for them.</li>
+      </ul>
+    </div>
+    <div class="pair">
+      <section class="card" aria-labelledby="h-prog">
+        <h3 id="h-prog">The large majors are the ones every peer offers</h3>
+        <p class="note">Each dot is a Lewis &amp; Clark major: how many of the 33 peers offer it (across) and its share of 2020 to 2024 bachelor's graduates (up). Dance and Data Science have no graduates reported under their own code yet and are left out.</p>
+        <div class="chart" id="c-prog" role="img" aria-label="Lewis & Clark majors by number of peers offering each and share of graduates"></div>
+        <p class="cap" id="cap-prog"></p>
+        <details class="tv"><summary>View as table</summary><div id="tv-prog"></div></details>
+      </section>
+      <section class="card" aria-labelledby="h-rare">
+        <h3 id="h-rare">Lewis &amp; Clark programs that few peers offer</h3>
+        <p class="note">Majors and minors that 12 or fewer of the 33 peers offer at the same level, from each school's current catalog. The bar is the share of peers offering it.</p>
+        <div class="meters" id="rare-list"></div>
+      </section>
+    </div>
+    <section class="card" aria-labelledby="h-net" style="margin-top:16px">
+      <h3 id="h-net">Net tuition by school, FY2024 to FY2026</h3>
+      <p class="note">Tuition and fees after scholarships, from note 15 of the audited statements.</p>
+      <div class="kpis" id="kpi-net"></div>
+      <p class="cap" id="cap-net"></p>
+    </section>
+    <div class="act">
+      <div>
+        <h3>What to do</h3>
+        <ul>
+          <li>Choose two or three routes where the law or graduate school adds something an undergraduate college cannot, and make them the first thing a prospective student sees. Law and policy and the environment are the strongest candidates: each joins a minor few peers offer to the law school. Teaching, through the graduate school, is a third.</li>
+          <li>Give each route its own numbers every year: inquiries, applications, admits, yield and students enrolled.</li>
+          <li>Test demand before adding programs. Rare is not the same as wanted.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>How to tell if it is working</h3>
+        <ul>
+          <li>Applications and yield among students who name one of the routes as their interest.</li>
+          <li>Students entering the BA and JD, BA and Master of Studies in Law, and BA and Master of Arts in Teaching routes each year.</li>
+          <li>Graduates in the programs few peers offer, 3.5% of graduates today for the two rarest majors.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What the data cannot show</h3>
+        <p>Whether admitted students know these routes exist, how many use them, or whether they would choose Lewis &amp; Clark for them. None of that is public.</p>
+        <p>Across the 34 schools, how much of Lewis &amp; Clark's catalog a school shares has no reliable relationship with its yield, and neither does its share of graduates in computing, engineering, business and health. A distinctive catalog does not raise yield by existing.</p>
+      </div>
+    </div>
+    <p class="src">Drawn from <a href="../peer-analysis/majors-minors/">Majors and Minors Comparison</a>, <a href="../peer-analysis/degrees-lc/">Degrees and Majors at Lewis &amp; Clark</a>, <a href="../peer-analysis/degrees-peers/">Bachelor's Degrees by Field vs. Peers</a> and <a href="../discount-trends/">Discount Rate Trends by School</a>. The joint degree routes are described on the college's <a href="https://college.lclark.edu/academics/pre_professional/law/bajd-dual-degree-3-3/">BA and JD</a>, <a href="https://college.lclark.edu/offices/admissions/4-5-6/fine-print">4-5-6 Commitment</a> and <a href="https://college.lclark.edu/dean/strategic-enrollment-management/sem-phase-i-initiatives/">enrollment initiatives</a> pages.</p>
+  </section>
+
+  <!-- ============ Recommendation 4 ============ -->
+  <section class="rec" id="rec-4" aria-labelledby="h-rec-4">
+    <div class="rec-head">
+      <span class="num" aria-hidden="true">4</span>
+      <h2 id="h-rec-4">Turn requirements into promises</h2>
+      <p class="lede">Lewis &amp; Clark asks more of its students than most peers do. Make each requirement come with something students can see they get.</p>
+      <p class="strength"><b>How strong is the evidence?</b> Clear on what each school requires. Across peers there is no sign that requirements move yield in either direction, so this is about how the requirements are presented, not whether to keep them.</p>
+    </div>
+    <div class="ev">
+      <h3>The evidence</h3>
+      <ul>
+        <li>Every student must reach the 201 level in a language, three semesters for a student starting from nothing. 28 of 33 peers require less, and 7 require none.</li>
+        <li>Students must now live on campus for six semesters, up from four. 17 of 33 peers require less, including all ten peers in Oregon and Washington, which require four.</li>
+        <li>Requirements do not sink yield. Across the 34 schools neither one has a measurable relationship with yield. St. Olaf requires as much language as Lewis &amp; Clark and all four years on campus, and has the highest yield of the 34 (26.6%).</li>
+        <li>The requirements are not yet presented as benefits. When read in November 2026, the catalog, the Campus Living page and the 2026-27 housing agreement still described four semesters, and the general education page did not say whether AP or IB scores meet the language requirement.</li>
+        <li>The other half of each promise already exists. By the college's own count about 60% of undergraduates study overseas, and 69% of undergraduates lived in college housing in fall 2025 under the four-semester rule.</li>
+      </ul>
+    </div>
+    <div class="controls" style="margin:16px 0 0">
+      <span class="ctl-lab" id="hl-lab-4">Highlight peers</span>
+      <div class="pills" role="group" aria-labelledby="hl-lab-4">
+        <button type="button" data-hl="" aria-pressed="true">None</button>
+        <button type="button" data-hl="ow" aria-pressed="false">Oregon and Washington</button>
+      </div>
+    </div>
+    <div class="pair">
+      <section class="card" aria-labelledby="h-lang">
+        <h3 id="h-lang">Language required to graduate, and yield</h3>
+        <p class="note">Schools grouped by the semesters of one language a student with no background must take. Height is fall 2023 yield; the short bar in each column is the peer median.</p>
+        <div class="key peer-key" aria-hidden="true"></div>
+        <div class="chart" id="c-lang" role="img" aria-label="Schools by semesters of language required, with yield"></div>
+        <p class="cap" id="cap-lang"></p>
+        <details class="tv"><summary>View as table</summary><div id="tv-lang"></div></details>
+      </section>
+      <section class="card" aria-labelledby="h-res">
+        <h3 id="h-res">Semesters required on campus, and yield</h3>
+        <p class="note">Schools grouped by the semesters a student must live in college housing. Height is fall 2023 yield; the short bar in each column is the peer median.</p>
+        <div class="key peer-key" aria-hidden="true"></div>
+        <div class="chart" id="c-res" role="img" aria-label="Schools by semesters of required on-campus residence, with yield"></div>
+        <p class="cap" id="cap-res"></p>
+        <details class="tv"><summary>View as table</summary><div id="tv-res"></div></details>
+      </section>
+    </div>
+    <div class="act">
+      <div>
+        <h3>What to do</h3>
+        <ul>
+          <li>Present the language requirement as preparation for overseas study, and pair it with a stated commitment: a place on an overseas program for every student who wants one.</li>
+          <li>Say what the third year on campus includes (a guaranteed room, its price, the housing open to juniors) before students apply. Every Oregon and Washington peer asks for one year less.</li>
+          <li>Correct the catalog, the Campus Living page and the housing agreement so admitted students read one rule, and publish every way to meet or test out of the language requirement.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>How to tell if it is working</h3>
+        <ul>
+          <li>Yield among admitted students from Oregon and Washington, where the residency rule can be set directly against every regional peer.</li>
+          <li>The reasons admitted students give for enrolling elsewhere, from a survey of admitted students.</li>
+          <li>The share of undergraduates in college housing (69% in fall 2025) and the share who study overseas.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What the data cannot show</h3>
+        <p>How admitted students weigh either requirement. The peer comparison shows only that heavy requirements and high yield can go together.</p>
+        <p>The six-semester rule is new, so no class has yet enrolled under it. What a third required year of housing costs families, and whether the college can place every student who wants to go overseas, are not in this analysis.</p>
+      </div>
+    </div>
+    <p class="src">Drawn from <a href="../peer-analysis/language-requirements/">Peer Foreign Language Requirements</a> and <a href="../peer-analysis/residency-requirements/">Peer On-Campus Residency Requirements</a>. The housing share was read for this page from item F1 of the Common Data Set; the overseas share is from the college's <a href="https://lclark.edu/offices/communications/we-can-help/statistic-profiles">statistics page</a>.</p>
+  </section>
+
+  <h2 class="band-h" id="scorecard">Nine numbers to report every fall</h2>
+  <p class="band-p">The measures named above, with where each stands today. The last row is the gap: the records that would show which recommendation is working are held by the college and are not public.</p>
+  <section class="card" aria-labelledby="scorecard">
+    <div class="tbox" style="max-height:none">
+      <table class="score" style="min-width:44rem">
+        <thead><tr><th scope="col">Measure</th><th scope="col">Latest</th><th scope="col">For comparison</th><th scope="col" class="n">Recommendation</th></tr></thead>
+        <tbody>
+          <tr><td>Yield</td><td>12.5%, fall 2025</td><td class="r">14.4% at the median peer, fall 2023</td><td class="n">All</td></tr>
+          <tr><td>Aid per entering student</td><td>$50,811, fall 2025</td><td class="r">$22,614 in fall 2015</td><td class="n">1</td></tr>
+          <tr><td>Undergraduate discount rate</td><td>63.1%, FY2026</td><td class="r">58.0% in FY2024</td><td class="n">1</td></tr>
+          <tr><td>Undergraduate net tuition</td><td>$49.8M, FY2026</td><td class="r">$57.1M in FY2024</td><td class="n">1</td></tr>
+          <tr><td>Admission offers per enrolled student</td><td>8.0, fall 2025</td><td class="r">4.7 in fall 2001; 7.0 at the median peer, fall 2023</td><td class="n">2</td></tr>
+          <tr><td>Early decision admits as a share of the class</td><td>At most 14.1%, fall 2025</td><td class="r">Between 6.9% and 14.5% since fall 2015</td><td class="n">2</td></tr>
+          <tr><td>Graduates in the two majors fewest peers offer</td><td>3.5%, 2020 to 2024</td><td class="r">60% in majors that 30 or more peers offer</td><td class="n">3</td></tr>
+          <tr><td>Net tuition at the law and graduate schools</td><td>$33.6M, FY2026</td><td class="r">$31.3M in FY2024</td><td class="n">3</td></tr>
+          <tr><td>Undergraduates living in college housing</td><td>69%, fall 2025</td><td class="r">66% to 71% since fall 2015, apart from 55% in fall 2020</td><td class="n">4</td></tr>
+          <tr><td>Not public</td><td colspan="2">Yield by aid offer, by intended program and by home state; students entering each joint degree route; reasons admitted students enroll elsewhere</td><td class="n">All</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card need" aria-labelledby="h-need">
+    <h3 id="h-need">What all four depend on</h3>
+    <p>Each recommendation is a reading of public totals: classes, schools and years. None of them can say which students respond to what. The college already holds the records that can: who applied, who was admitted, what each was offered, who visited, who enrolled and who stayed. The most useful step is to analyze those records by student and to try each change on a part of the class before applying it to the whole.</p>
+  </section>
+
+  <section class="card groups-card" id="peer-groups" aria-labelledby="h-peer-groups" style="margin-top:16px">
+    <h2 id="h-peer-groups">How the peer groups were chosen</h2>
+    <p class="note">The same three groups are used on every peer page of this site. Willamette is in groups 1 and 2 and is counted once, in group 1. "Oregon and Washington" marks the ten peers in those two states, across all three groups: Gonzaga, Pacific Lutheran, Pacific University, Reed, Seattle Pacific, Seattle University, University of Portland, University of Puget Sound, Whitman and Willamette.</p>
+    <dl class="gl">
+      <div><dt>Group 1: L&amp;C comparison group</dt><dd><p>The institutions Lewis &amp; Clark's Office of Institutional Research uses in its College of Arts and Sciences comparison reports: regional peers in Oregon and Washington plus national liberal arts colleges, taken as published without additions or removals.</p><p class="m">Gettysburg, Gonzaga, Kalamazoo, Kenyon, Occidental, Reed, Rhodes, Sarah Lawrence, Skidmore, St. Olaf, Union, University of Portland, University of Puget Sound, Whitman, Willamette.</p></dd></div>
+      <div><dt>Group 2: Carnegie class</dt><dd><p>Private institutions that share Lewis &amp; Clark's 2025 Carnegie classification, Mixed Undergraduate/Graduate-Doctorate, Small (a liberal arts college with law and graduate schools), or sit in the adjacent Medium band, with endowments closer to Lewis &amp; Clark's than most of group 1, and with audited statements or federal single audit filings available.</p><p class="m">Clark, Drew, Loyola New Orleans, Lynchburg, Pacific University, Seattle Pacific, Seattle University, Stetson, Willamette (also in group 1).</p></dd></div>
+      <div><dt>Group 3: Smaller endowment</dt><dd><p>Private institutions with a liberal arts core plus professional or graduate programs, endowments of roughly $70 million to $300 million at fiscal year 2025, and audited statements available.</p><p class="m">Capital, Goucher, Hamline, John Carroll, Ohio Northern, Pacific Lutheran, Roger Williams, Saint Mary's College of California, University of La Verne, University of Redlands.</p></dd></div>
+    </dl>
+  </section>
+
+  <p class="data-link"><a href="lc_entering_classes.csv" download>Lewis &amp; Clark entering classes (CSV) →</a><span>One row per fall: applicants, offers, enrolled, aid and price after aid, early decision counts and the housing share, with the source of each.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="peer_factors.csv" download>Peer measures (CSV) →</a><span>One row per school: yield, admit rate, discount rate, requirements, majors shared and field mix.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="lc_programs_vs_peers.csv" download>Lewis &amp; Clark programs against peers (CSV) →</a><span>One row per major and minor: how many peers offer it, and for majors the share of graduates.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="college_operations.csv" download>College-wide operations (CSV) →</a><span>One row per fiscal year: net tuition, endowment earnings used for operations and the operating result, from the audited statements.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="../data/">Data tables and sources for the whole site →</a><span>Every charted value with its citation.</span></p>
+
+  <div class="notes">
+    <div>
+      <h3>What this page is</h3>
+      <p>A reading of the public data collected on this site, with a small number of figures added from the same public sources. It is not a statement by Lewis &amp; Clark College, and it is not a forecast. The recommendations are hypotheses to test, in the same spirit as the cautions on <a href="../discount-since-2015/">What the Discount Bought</a>.</p>
+      <p>Every figure is a published number or is computed directly from published numbers. Where one rests on an assumption, the sentence says so.</p>
+    </div>
+    <div>
+      <h3>Where the figures come from</h3>
+      <ul>
+        <li><b>Entering classes, aid and price:</b> IPEDS admissions survey and Lewis &amp; Clark's Common Data Sets, as on <a href="../discount-since-2015/">What the Discount Bought</a>. Price after aid is in FY2025 dollars.</li>
+        <li><b>Tuition by school:</b> note 15 of the audited statements for FY2025 and FY2026, as on <a href="../discount-trends/">Discount Rate Trends by School</a>.</li>
+        <li><b>College-wide operations:</b> the statements of activities and the endowment note (note 10) of the audited statements for FY2024 to FY2026. The link for each year is in the operations CSV.</li>
+        <li><b>Peers:</b> IPEDS finance and admissions surveys for all 34 schools, as on <a href="../peer-analysis/yield-net-tuition/">Net Tuition and Yield vs. Peers</a>. FY2024 is the fall 2023 entering class, and discount rates and net tuition are college-wide.</li>
+        <li><b>Programs and requirements:</b> each school's catalog and housing policy, as on the <a href="../peer-analysis/">Peer Analysis</a> pages. Graduates by major are IPEDS Completions, 2020 to 2024, by first major.</li>
+        <li><b>Added for this page:</b> early decision applications and admits (item C21) and the share of undergraduates in college housing (item F1) from Lewis &amp; Clark's <a href="https://www.lclark.edu/offices/institutional_research/common_data_set/archived/archived_cds.php">Common Data Sets</a>, 2015-16 to 2025-26, read November 20, 2026. The link for each year is in the entering classes CSV.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Cautions</h3>
+      <ul>
+        <li>Thirty-four schools is a small set. A correlation inside the shaded band cannot be told apart from no relationship (5% level, two-sided), and one outside it shows that two things move together, not that one causes the other.</li>
+        <li>Yield falls when applications rise faster than enrollment and rises when the admit pool shrinks, whatever students think of the school.</li>
+        <li>Language and residency requirements are today's rules, set against fall 2023 yield. Six schools, Lewis &amp; Clark among them, have changed their residency rule since 2023.</li>
+        <li>Peer discount rates include graduate and law tuition where a school has them. Lewis &amp; Clark's undergraduate rate (63.1% in FY2026) is higher than its college-wide rate (55.0%). On the undergraduate-only basis that nine Group 1 audits allow, its FY2025 rate of 60.6% was higher than six of the nine (see <a href="../peer-analysis/tuition-discounting/">Undergraduate Tuition Discounting</a>).</li>
+        <li>The early decision and housing figures were read from the Common Data Set files by an automated reader. In most editions the numbers print apart from their labels and were matched by the form's fixed order; the applicant, admit and enrolled totals in the same files match this site's figures in every year. The fall 2024 and fall 2025 editions both print 98 early decision applications.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const num = (v) => (v === "" || v == null ? NaN : +v);
+  const f0 = d3.format(",.0f"), f1 = d3.format(".1f"), f2 = d3.format(".2f");
+  const pct = (v, d = 1) => d3.format("." + d + "f")(v) + "%";
+  const sgn = (v, d = 1) => (v > 0 ? "+" : v < 0 ? "−" : "") + d3.format("." + d + "f")(Math.abs(v));
+  const usd = (v) => "$" + f0(Math.round(v));
+  const usdM = (v) => "$" + f1(v / 1e6) + "M";
+  const ord = (n) => n + (["th", "st", "nd", "rd"][(n % 100 - 20) % 10] || ["th", "st", "nd", "rd"][n % 100] || "th");
+  const state = { hl: "", mono: false };
+  let LC = [], SCH = [], PROG = [], NET = [], OPS = [];
+  const isLC = (d) => d.key === "lewis-clark";
+  const isHL = (d) => !isLC(d) && !!state.hl && (state.hl === "ow" ? d.ow : d.grp === state.hl);
+  const hlName = () => (state.hl === "ow" ? "Oregon and Washington peers" : state.hl + " peers");
+  const grpName = (d) => (isLC(d) ? "Lewis & Clark" : d.grp + (d.ow ? " · Oregon or Washington" : ""));
+
+  // ---------- shared pieces ----------
+  function tipFor(host) {
+    const tip = document.createElement("div"); tip.className = "tip"; host.append(tip);
+    return {
+      show(ev, lines) {
+        tip.replaceChildren();
+        lines.forEach((ln) => {
+          const d = document.createElement("div");
+          if (Array.isArray(ln)) { if (ln[1]) d.className = ln[1]; d.textContent = ln[0]; }
+          else {
+            d.className = "r";
+            if (ln.color) { const i = document.createElement("i"); i.style.background = ln.color; d.append(i); }
+            const s = document.createElement("span"); s.textContent = ln.label;
+            const b = document.createElement("b"); b.textContent = ln.value;
+            d.append(s, b);
+          }
+          tip.append(d);
+        });
+        tip.style.opacity = 1;
+        const [px, py] = d3.pointer(ev, host), tw = tip.offsetWidth, th = tip.offsetHeight;
+        let l = px + 14; if (l + tw > host.clientWidth) l = Math.max(0, px - tw - 14);
+        let t = py + 14; if (t + th > host.clientHeight) t = Math.max(0, py - th - 10);
+        tip.style.left = l + "px"; tip.style.top = t + "px";
+      },
+      hide() { tip.style.opacity = 0; }
+    };
+  }
+  function tableView(id, cols, rows, strong) {
+    const host = $(id); host.replaceChildren();
+    const box = document.createElement("div"); box.className = "tbox";
+    const tb = document.createElement("table");
+    const hr = tb.createTHead().insertRow();
+    cols.forEach((c) => { const th = document.createElement("th"); th.scope = "col"; if (c.n) th.className = "n"; th.textContent = c.h; hr.append(th); });
+    const body = tb.createTBody();
+    rows.forEach((r) => {
+      const tr = body.insertRow(); if (strong && strong(r)) tr.className = "lc";
+      cols.forEach((c) => { const td = tr.insertCell(); if (c.n) td.className = "n"; const v = c.v(r); td.textContent = v == null ? "" : v; });
+    });
+    box.append(tb); host.append(box);
+  }
+  function mark(g, d, x, y) {
+    if (isLC(d)) return g.append("circle").attr("cx", x).attr("cy", y).attr("r", 6.5).attr("fill", "var(--gross)").attr("stroke", "var(--panel)").attr("stroke-width", 2);
+    if (isHL(d)) return g.append("rect").attr("x", x - 4.5).attr("y", y - 4.5).attr("width", 9).attr("height", 9).attr("rx", 1.5).attr("transform", `rotate(45 ${x} ${y})`).attr("fill", "var(--aid)").attr("stroke", "var(--panel)").attr("stroke-width", 2);
+    return g.append("circle").attr("cx", x).attr("cy", y).attr("r", 4.5).attr("fill", "var(--dot)").attr("stroke", "var(--panel)").attr("stroke-width", 2);
+  }
+  const zOrder = (a, b) => (isLC(a) - isLC(b)) || (isHL(a) - isHL(b));
+  function peerKeys() {
+    document.querySelectorAll(".peer-key").forEach((k) => {
+      k.replaceChildren();
+      const add = (cls, color, text) => { const s = document.createElement("span"); const i = document.createElement("i"); i.className = cls; i.style.background = color; s.append(i, document.createTextNode(text)); k.append(s); };
+      add("dotk", "var(--gross)", "Lewis & Clark");
+      if (state.hl) add("dia", "var(--aid)", hlName());
+      add("dotk", "var(--dot)", state.hl ? "Other peers" : "Peers");
+    });
+  }
+  // Nearest-mark hover: the pointer only has to be closest, not on the mark.
+  function nearest(svg, pts, tip, lines, W, H) {
+    const del = d3.Delaunay.from(pts, (p) => p.x, (p) => p.y);
+    const ring = svg.append("circle").attr("r", 10).attr("fill", "none").attr("stroke", "var(--ink)").attr("stroke-width", 1.5).attr("opacity", 0).attr("pointer-events", "none");
+    const off = () => { ring.attr("opacity", 0); tip.hide(); };
+    svg.append("rect").attr("width", W).attr("height", H).attr("fill", "transparent")
+      .on("pointermove pointerdown", (ev) => {
+        const [mx, my] = d3.pointer(ev, svg.node());
+        const p = pts[del.find(mx, my)];
+        if (!p || Math.hypot(p.x - mx, p.y - my) > 44) return off();
+        ring.attr("cx", p.x).attr("cy", p.y).attr("opacity", 1);
+        tip.show(ev, lines(p.d));
+      })
+      .on("pointerleave", off);
+  }
+  // Place a few direct labels. A label that would collide with a mark or another label is skipped,
+  // unless it is forced (then the least crowded spot is used) or given a fixed spot with a leader line.
+  function placeLabels(svg, items, box, obstacles) {
+    const probe = svg.append("text").attr("class", "dl");
+    const taken = obstacles.map((o) => ({ x0: o.x - 6, x1: o.x + 6, y0: o.y - 6, y1: o.y + 6, own: o.id }));
+    const hit = (a, b) => a.x0 < b.x1 && a.x1 > b.x0 && a.y0 < b.y1 && a.y1 > b.y0;
+    const draw = (it, c) => svg.append("text").attr("class", it.bold ? "dl b" : "dl").attr("x", c.x).attr("y", c.y).attr("text-anchor", c.a).attr("pointer-events", "none").text(it.text);
+    items.forEach((it) => {
+      probe.attr("class", it.bold ? "dl b" : "dl").text(it.text);
+      const w = probe.node().getComputedTextLength(), h = 13, gap = it.gap || 9;
+      if (it.at) {
+        const c = { a: it.at.a || "start", x: it.x + it.at.dx, y: it.y + it.at.dy };
+        svg.append("line").attr("x1", it.x).attr("y1", it.y - 7).attr("x2", it.x).attr("y2", c.y + 4).attr("stroke", "var(--muted)").attr("pointer-events", "none");
+        draw(it, c);
+        const x0 = c.a === "start" ? c.x : c.a === "end" ? c.x - w : c.x - w / 2;
+        taken.push({ x0: x0 - 2, x1: x0 + w + 2, y0: c.y - h + 2, y1: c.y + 3 });
+        return;
+      }
+      const cands = [
+        { a: "start", x: it.x + gap, y: it.y + 4, x0: it.x + gap, x1: it.x + gap + w },
+        { a: "end", x: it.x - gap, y: it.y + 4, x0: it.x - gap - w, x1: it.x - gap },
+        { a: "middle", x: it.x, y: it.y - gap - 2, x0: it.x - w / 2, x1: it.x + w / 2 },
+        { a: "middle", x: it.x, y: it.y + gap + 11, x0: it.x - w / 2, x1: it.x + w / 2 },
+        { a: "start", x: it.x - 5, y: it.y - gap - 2, x0: it.x - 5, x1: it.x - 5 + w },
+        { a: "end", x: it.x + 5, y: it.y - gap - 2, x0: it.x + 5 - w, x1: it.x + 5 },
+        { a: "start", x: it.x - 5, y: it.y + gap + 11, x0: it.x - 5, x1: it.x - 5 + w },
+        { a: "end", x: it.x + 5, y: it.y + gap + 11, x0: it.x + 5 - w, x1: it.x + 5 }
+      ];
+      const seq = it.prefer ? it.prefer.concat(d3.range(cands.length).filter((i) => !it.prefer.includes(i))) : d3.range(cands.length);
+      const scored = seq.map((i) => cands[i]).map((c) => {
+        const bb = { x0: c.x0 - 2, x1: c.x1 + 2, y0: c.y - h + 2, y1: c.y + 3 };
+        return { c, bb, inside: bb.x0 >= box.x0 && bb.x1 <= box.x1 && bb.y0 >= box.y0 && bb.y1 <= box.y1, hits: taken.filter((t) => t.own !== it.id && hit(bb, t)).length };
+      }).filter((o) => o.inside);
+      const best = scored.find((o) => o.hits === 0) || (it.force ? d3.least(scored, (o) => o.hits) : null);
+      if (!best) return;
+      draw(it, best.c);
+      taken.push(best.bb);
+    });
+    probe.remove();
+  }
+  function dodge(items, getX, step, first) {
+    const placed = [];
+    const seq = items.slice().sort((a, b) => (first(b) - first(a)) || (getX(a) - getX(b)));
+    seq.forEach((it) => {
+      const xi = getX(it); let k = 0, dy = 0;
+      for (; k < 60; k++) {
+        dy = (k % 2 ? 1 : -1) * Math.ceil(k / 2) * step;
+        if (!placed.some((p) => Math.hypot(p.x - xi, p.dy - dy) < step)) break;
+      }
+      placed.push({ x: xi, dy: dy || 0, it });
+    });
+    return placed;
+  }
+  const rankOf = (a) => {
+    const idx = a.map((v, i) => [v, i]).sort((p, q) => p[0] - q[0]), r = new Array(a.length);
+    for (let i = 0; i < idx.length;) { let j = i; while (j + 1 < idx.length && idx[j + 1][0] === idx[i][0]) j++; for (let k = i; k <= j; k++) r[idx[k][1]] = (i + j) / 2 + 1; i = j + 1; }
+    return r;
+  };
+  const pearson = (a, b) => {
+    const ma = d3.mean(a), mb = d3.mean(b); let s = 0, sa = 0, sb = 0;
+    for (let i = 0; i < a.length; i++) { s += (a[i] - ma) * (b[i] - mb); sa += (a[i] - ma) ** 2; sb += (b[i] - mb) ** 2; }
+    return s / Math.sqrt(sa * sb);
+  };
+  const pairs = (rows, fa, fb) => rows.map((r) => [fa(r), fb(r)]).filter(([x, y]) => !isNaN(x) && !isNaN(y));
+  const spearman = (rows, fa, fb) => { const t = pairs(rows, fa, fb); return { r: pearson(rankOf(t.map((d) => d[0])), rankOf(t.map((d) => d[1]))), n: t.length }; };
+  // Two-sided 5% critical value of a correlation for n schools (t distribution, n - 2 degrees of freedom).
+  const T975 = { 28: 2.048, 29: 2.045, 30: 2.042, 31: 2.040, 32: 2.037 };
+  const rCrit = (n) => { const t = T975[n - 2] || 2.04; return t / Math.sqrt(t * t + n - 2); };
+
+  // ---------- header figures ----------
+  function headline() {
+    const by = new Map(LC.map((d) => [d.fall, d])), a = by.get(2001), b = by.get(2015), z = LC[LC.length - 1];
+    const lc = SCH.find(isLC), peers = SCH.filter((d) => !isLC(d));
+    const rk = (f) => 1 + SCH.filter((d) => f(d) > f(lc)).length;
+    const g1 = peers.filter((d) => d.grp === "Group 1");
+    const und = NET.filter((d) => d.program === "Undergraduate").sort((p, q) => p.fy - q.fy), uz = und[und.length - 1];
+    $("find").textContent = `Since ${a.fall} Lewis & Clark has more than doubled its admission offers, and since ${b.fall} it has more than doubled aid per entering student. The entering class is still about 500 students, and yield has fallen from ${pct(a.yield)} to ${pct(z.yield)}.`;
+    $("k-yield").textContent = pct(z.yield);
+    $("k-yield-l").textContent = `Yield, fall ${z.fall} class: ${f0(z.enrolled)} enrolled of ${f0(z.admits)} admitted`;
+    const r24 = rk((d) => d.y24), r25 = rk((d) => d.y25);
+    $("k-rank").textContent = r24 === r25 ? `${ord(r24)} of ${SCH.length}` : `${ord(r24)} and ${ord(r25)}`;
+    $("k-offers").textContent = f1(z.admits / z.enrolled);
+    $("k-offers-l").textContent = `Admission offers per enrolled student, fall ${z.fall} (${f1(a.admits / a.enrolled)} in fall ${a.fall})`;
+    $("k-price").textContent = sgn(100 * (z.netprice / b.netprice - 1), 0) + "%";
+    $("k-disc").textContent = pct(uz.disc);
+    $("k-disc-l").textContent = `Undergraduate discount rate, FY${uz.fy} (${pct(und[0].disc)} in FY${und[0].fy})`;
+    $("k-cov").textContent = pct(d3.median(g1, (d) => d.cov), 0);
+  }
+
+  // ---------- where yield stands ----------
+  function yieldStrip() {
+    const host = $("c-yield"); host.replaceChildren();
+    const sets = [{ k: "y24", title: "Fall 2023 class" }, { k: "y25", title: "Fall 2024 class" }];
+    const rows = SCH, lc = rows.find(isLC), peers = rows.filter((d) => !isLC(d));
+    const W = Math.max(280, host.clientWidth || 600), rowH = 150, m = { t: 4, r: 12, b: 40, l: 12 }, H = m.t + sets.length * rowH + m.b;
+    const svg = d3.select(host).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const all = sets.flatMap((s) => rows.map((d) => d[s.k]).filter((v) => !isNaN(v)));
+    const x = d3.scaleLinear([Math.floor(d3.min(all) - 1), Math.ceil(d3.max(all) + 1)], [m.l + 6, W - m.r - 6]), base = H - m.b;
+    x.ticks(W < 420 ? 4 : 6).forEach((t) => {
+      svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", m.t + 38).attr("y2", base).attr("stroke", "var(--grid)");
+      svg.append("text").attr("class", "ax").attr("x", x(t)).attr("y", base + 15).attr("text-anchor", "middle").text(t + "%");
+    });
+    svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", base).attr("y2", base).attr("stroke", "var(--rule)");
+    svg.append("text").attr("class", "axt").attr("x", W - m.r).attr("y", H - 6).attr("text-anchor", "end").text("Yield: share of admitted students who enrolled");
+    const pts = [], g = svg.append("g"), over = svg.append("g");
+    sets.forEach((s, i) => {
+      const top = m.t + i * rowH, mid = top + 94, rs = rows.filter((d) => !isNaN(d[s.k])), med = d3.median(peers, (d) => d[s.k]);
+      if (i) svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", top + 2).attr("y2", top + 2).attr("stroke", "var(--rule)");
+      over.append("text").attr("class", "axt").attr("x", W - m.r).attr("y", top + 16).attr("text-anchor", "end").style("font-weight", 600).style("fill", "var(--ink)").text(s.title);
+      // Lewis & Clark above its line; the peer median beside its own, one row lower.
+      over.append("line").attr("x1", x(lc[s.k])).attr("x2", x(lc[s.k])).attr("y1", top + 21).attr("y2", mid + 46).attr("stroke", "var(--gross)").attr("stroke-width", 1.5);
+      const t1 = over.append("text").attr("class", "dl b").attr("y", top + 16).attr("text-anchor", "middle").text("Lewis & Clark " + pct(lc[s.k]));
+      const w1 = t1.node().getComputedTextLength(); t1.attr("x", Math.max(w1 / 2 + 2, Math.min(W - w1 / 2 - 2, x(lc[s.k]))));
+      over.append("line").attr("x1", x(med)).attr("x2", x(med)).attr("y1", top + 26).attr("y2", mid + 46).attr("stroke", "var(--muted)");
+      over.append("text").attr("class", "dl").attr("x", x(med) + 5).attr("y", top + 35).text("Peer median " + pct(med));
+      const row = dodge(rs, (d) => x(d[s.k]), 11.5, (d) => +isLC(d)).map((p) => ({ x: p.x, y: mid + p.dy, d: p.it, s }));
+      row.slice().sort((a, b) => zOrder(a.d, b.d)).forEach((p) => mark(g, p.d, p.x, p.y));
+      const ends = [d3.greatest(peers, (d) => d[s.k]), d3.least(peers, (d) => d[s.k])];
+      placeLabels(over, ends.map((d) => { const p = row.find((q) => q.d === d); return { id: d.key, x: p.x, y: p.y, text: d.short, prefer: [3, 2, 1, 0] }; }), { x0: 0, x1: W, y0: top + 40, y1: top + rowH }, row.map((p) => ({ x: p.x, y: p.y, id: p.d.key })));
+      row.forEach((p) => pts.push(p));
+    });
+    const rankIn = (k, d) => 1 + rows.filter((r) => r[k] > d[k]).length;
+    nearest(svg, pts, tipFor(host), (d) => [[d.name, "t"], [grpName(d), "h"],
+      { label: "Yield, fall 2023", value: pct(d.y24) + " · " + ord(rankIn("y24", d)) }, { label: "Yield, fall 2024", value: pct(d.y25) + " · " + ord(rankIn("y25", d)) }, { label: "Admit rate, fall 2023", value: pct(d.adm) }], W, H);
+    const order = rows.slice().sort((a, b) => b.y24 - a.y24), top2 = order.filter((d) => !isLC(d)).slice(0, 2);
+    $("cap-yield").textContent = `Lewis & Clark enrolled ${pct(lc.y24)} of the students it admitted for fall 2023, ${ord(rankIn("y24", lc))} of the ${rows.length} schools, against ${pct(d3.median(peers, (d) => d.y24))} at the median peer. ${top2[0].short} and ${top2[1].short}, the highest, each enrolled about ${d3.format(".0f")((top2[0].y24 + top2[1].y24) / 2)}%. For fall 2024 Lewis & Clark's yield was ${pct(lc.y25)}, ${ord(rankIn("y25", lc))} of ${rows.length}, against ${pct(d3.median(peers, (d) => d.y25))} at the median peer.`;
+    tableView("tv-yield", [{ h: "Rank, fall 2023", n: 1, v: (d) => rankIn("y24", d) }, { h: "School", v: (d) => d.name }, { h: "Group", v: (d) => (isLC(d) ? "" : d.grp) }, { h: "Yield, fall 2023", n: 1, v: (d) => pct(d.y24) }, { h: "Yield, fall 2024", n: 1, v: (d) => pct(d.y25) }, { h: "Rank, fall 2024", n: 1, v: (d) => rankIn("y25", d) }, { h: "Admit rate, fall 2023", n: 1, v: (d) => pct(d.adm) }], order, isLC);
+  }
+
+  // ---------- what moves with yield ----------
+  const FACTORS = [
+    { f: (d) => d.y19, label: "Its own yield five years earlier", plain: "yield five years earlier" },
+    { f: (d) => d.adm, label: "Admit rate (higher is less selective)", plain: "the admit rate" },
+    { f: (d) => d.cov, label: "Share of Lewis & Clark's majors it offers", short: "Lewis & Clark majors it also offers", plain: "the share of Lewis & Clark's majors offered" },
+    { f: (d) => d.disc24, label: "Discount rate", plain: "the discount rate" },
+    { f: (d) => d.eps, label: "Endowment per student", plain: "endowment per student" },
+    { f: (d) => d.res, label: "Semesters required on campus", plain: "the residency requirement" },
+    { f: (d) => d.career, label: "Graduates in computing, engineering, business and health", short: "Graduates in computing, business, health", plain: "the share of graduates in career fields" },
+    { f: (d) => d.lang, label: "Semesters of language required", plain: "the language requirement" }
+  ];
+  function trackBars() {
+    const host = $("c-track"); host.replaceChildren();
+    const rows = FACTORS.map((F) => ({ ...F, ...spearman(SCH, (d) => d.y24, F.f) })).map((r) => ({ ...r, crit: rCrit(r.n), out: Math.abs(r.r) >= rCrit(r.n) })).sort((a, b) => Math.abs(b.r) - Math.abs(a.r));
+    const W = Math.max(280, host.clientWidth || 600), rowH = 42, m = { t: 8, r: 46, b: 34, l: 46 }, H = m.t + rows.length * rowH + m.b;
+    const svg = d3.select(host).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const x = d3.scaleLinear([-1, 1], [m.l, W - m.r]), bottom = H - m.b, crit = rCrit(SCH.length);
+    svg.append("rect").attr("x", x(-crit)).attr("y", m.t).attr("width", x(crit) - x(-crit)).attr("height", bottom - m.t).attr("fill", "var(--band)");
+    [-1, -0.5, 0, 0.5, 1].forEach((t) => {
+      svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", m.t).attr("y2", bottom).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "ax").attr("x", x(t)).attr("y", bottom + 15).attr("text-anchor", "middle").text(t === 0 ? "0" : sgn(t, 1));
+    });
+    svg.append("text").attr("class", "axt").attr("x", m.l).attr("y", H - 4).text("Falls as yield rises");
+    svg.append("text").attr("class", "axt").attr("x", W - m.r).attr("y", H - 4).attr("text-anchor", "end").text("Rises with yield");
+    const tip = tipFor(host);
+    rows.forEach((r, i) => {
+      const y = m.t + i * rowH, a = x(Math.min(0, r.r)), b = x(Math.max(0, r.r)), by = y + 22;
+      svg.append("text").attr("class", "dl").attr("x", 0).attr("y", y + 15).text(W < 430 && r.short ? r.short : r.label);
+      svg.append("rect").attr("x", a).attr("y", by).attr("width", Math.max(1.5, b - a)).attr("height", 12).attr("rx", 3).attr("fill", r.out ? "var(--gross)" : "var(--dot)");
+      svg.append("text").attr("class", "val").attr("x", r.r >= 0 ? b + 6 : a - 6).attr("y", by + 10).attr("text-anchor", r.r >= 0 ? "start" : "end").text(sgn(r.r, 2));
+      svg.append("rect").attr("x", 0).attr("y", y).attr("width", W).attr("height", rowH).attr("fill", "transparent")
+        .on("pointermove pointerdown", (ev) => tip.show(ev, [[r.label, "t"], [r.n + " schools with both measures", "h"], { label: "Rank correlation with yield", value: sgn(r.r, 2) }, { label: "Needed to stand out", value: "±" + f2(r.crit) },
+          [r.out ? "Outside the band: the two move together." : "Inside the band: no relationship can be shown.", "h"]]))
+        .on("pointerleave", () => tip.hide());
+    });
+    const out = rows.filter((r) => r.out), ins = rows.filter((r) => !r.out), adm = rows.find((r) => r.plain === "the admit rate");
+    const admP = pearson(...((t) => [t.map((d) => d[0]), t.map((d) => d[1])])(pairs(SCH, (d) => d.y24, (d) => d.adm)));
+    $("cap-track").textContent = `Only ${out.length === 1 ? "one measure stands" : out.length + " measures stand"} clear of the band: ${out.map((r) => r.plain + " (" + sgn(r.r, 2) + ")").join(" and ")}. A school's yield is mostly a matter of its standing with applicants, which changes slowly. ` +
+      (adm && !adm.out ? `Selectivity sits at the edge (${sgn(adm.r, 2)} by rank, ${sgn(admP, 2)} as an ordinary correlation). ` : "") +
+      `The discount rate, both requirements, the majors a school shares with Lewis & Clark, its mix of career fields and its endowment per student show no relationship that ${SCH.length} schools can establish.`;
+    tableView("tv-track", [{ h: "Measure", v: (r) => r.label }, { h: "Rank correlation with fall 2023 yield", n: 1, v: (r) => sgn(r.r, 2) }, { h: "Schools", n: 1, v: (r) => r.n }, { h: "Needed to stand out", n: 1, v: (r) => "±" + f2(r.crit) }, { h: "Reading", v: (r) => (r.out ? "Moves with yield" : "No relationship shown") }], rows);
+  }
+
+  // ---------- line charts ----------
+  function lineChart(host, cfg) {
+    host.replaceChildren();
+    const W = Math.max(280, host.clientWidth || 600), H = cfg.H || 300, narrow = W < 460;
+    const m = { t: 16, r: (cfg.mr || 44) + (state.mono ? 56 : 0), b: 30, l: cfg.ml || 40 };
+    const svg = d3.select(host).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const xs = cfg.rows.map(cfg.x), x = d3.scaleLinear(d3.extent(xs), [m.l, W - m.r]);
+    const y = d3.scaleLinear(cfg.yDom, [H - m.b, m.t]);
+    y.ticks(5).forEach((t) => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(t)).attr("y2", y(t)).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "ax").attr("x", m.l - 6).attr("y", y(t)).attr("dy", "0.32em").attr("text-anchor", "end").text(cfg.yFmt(t));
+    });
+    const every = cfg.tickEvery ? cfg.tickEvery(narrow) : 2;
+    xs.filter((v) => (xs[xs.length - 1] - v) % every === 0).forEach((v) => svg.append("text").attr("class", "ax").attr("x", x(v)).attr("y", H - m.b + 16).attr("text-anchor", "middle").text(cfg.xFmt ? cfg.xFmt(v, narrow) : v));
+    if (cfg.ref) {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(cfg.ref.v)).attr("y2", y(cfg.ref.v)).attr("stroke", "var(--muted)");
+      svg.append("text").attr("class", "axt").attr("x", W - m.r - 4).attr("y", y(cfg.ref.v) - 5).attr("text-anchor", "end").text(cfg.ref.label);
+    }
+    cfg.series.forEach((s) => {
+      const pts = cfg.rows.filter((d) => !isNaN(s.v(d)));
+      // Break the line across a missing year rather than bridging it.
+      const segs = []; let cur = [];
+      pts.forEach((d, i) => { if (i && cfg.x(d) - cfg.x(pts[i - 1]) > (cfg.gap || 1)) { segs.push(cur); cur = []; } cur.push(d); });
+      segs.push(cur);
+      const line = d3.line().x((d) => x(cfg.x(d))).y((d) => y(s.v(d)));
+      segs.forEach((sg) => svg.append("path").attr("d", line(sg)).attr("fill", "none").attr("stroke", s.color).attr("stroke-width", 2).attr("stroke-linejoin", "round").attr("stroke-linecap", "round"));
+      if (cfg.dots) pts.forEach((d) => svg.append("circle").attr("cx", x(cfg.x(d))).attr("cy", y(s.v(d))).attr("r", 2.2).attr("fill", s.color));
+      const last = pts[pts.length - 1];
+      svg.append("circle").attr("cx", x(cfg.x(last))).attr("cy", y(s.v(last))).attr("r", 4.5).attr("fill", s.color).attr("stroke", "var(--panel)").attr("stroke-width", 2);
+      svg.append("text").attr("class", "val").attr("x", x(cfg.x(last)) + 8).attr("y", y(s.v(last))).attr("dy", "0.34em").text(s.end(s.v(last)) + (state.mono ? " " + s.short : ""));
+    });
+    const hair = svg.append("line").attr("y1", m.t).attr("y2", H - m.b).attr("stroke", "var(--muted)").attr("opacity", 0).attr("pointer-events", "none");
+    const tip = tipFor(host), off = () => { hair.attr("opacity", 0); tip.hide(); };
+    svg.append("rect").attr("width", W).attr("height", H).attr("fill", "transparent")
+      .on("pointermove pointerdown", (ev) => {
+        const mx = d3.pointer(ev, svg.node())[0], d = d3.least(cfg.rows, (r) => Math.abs(x(cfg.x(r)) - mx));
+        hair.attr("x1", x(cfg.x(d))).attr("x2", x(cfg.x(d))).attr("opacity", 1);
+        tip.show(ev, cfg.tip(d));
+      }).on("pointerleave", off);
+  }
+  function indexChart() {
+    const rows = LC.filter((d) => !isNaN(d.aid)), b = rows[0], z = rows[rows.length - 1];
+    const ix = (k) => (d) => 100 * d[k] / b[k];
+    lineChart($("c-index"), {
+      rows, x: (d) => d.fall, yDom: [40, 240], yFmt: (t) => f0(t), ml: 34, mr: 40, H: 350,
+      xFmt: (v, n) => (n ? "’" + String(v).slice(2) : v), tickEvery: () => 2,
+      ref: { v: 100, label: "Fall " + b.fall + " = 100" },
+      series: [
+        { color: "var(--aid)", v: ix("aid"), end: (v) => f0(v), short: "aid" },
+        { color: "var(--net)", v: ix("netprice"), end: (v) => f0(v), short: "price" },
+        { color: "var(--gross)", v: ix("yield"), end: (v) => f0(v), short: "yield" }
+      ],
+      tip: (d) => [["Fall " + d.fall + " entering class", "t"], [f0(d.enrolled) + " students enrolled", "h"],
+        { color: "var(--aid)", label: "Aid per entering student", value: usd(d.aid) + " (" + f0(ix("aid")(d)) + ")" },
+        { color: "var(--net)", label: "Price after aid, FY2025 dollars", value: usd(d.netprice) + " (" + f0(ix("netprice")(d)) + ")" },
+        { color: "var(--gross)", label: "Yield", value: pct(d.yield) + " (" + f0(ix("yield")(d)) + ")" }]
+    });
+    $("cap-index").textContent = `By fall ${z.fall} aid per entering student stood at ${f0(ix("aid")(z))} against 100 in fall ${b.fall} (${usd(b.aid)} to ${usd(z.aid)}), the price after aid at ${f0(ix("netprice")(z))} (${usd(b.netprice)} to ${usd(z.netprice)} in FY2025 dollars) and yield at ${f0(ix("yield")(z))} (${pct(b.yield)} to ${pct(z.yield)}).`;
+    tableView("tv-index", [{ h: "Fall", v: (d) => d.fall }, { h: "Aid per entering student", n: 1, v: (d) => usd(d.aid) }, { h: "Price after aid, FY2025 dollars", n: 1, v: (d) => usd(d.netprice) }, { h: "First-year discount", n: 1, v: (d) => pct(d.fydisc) }, { h: "Yield", n: 1, v: (d) => pct(d.yield) }, { h: "Class", n: 1, v: (d) => f0(d.enrolled) }], rows);
+  }
+  function funnelChart() {
+    const rows = LC, a = rows[0], z = rows[rows.length - 1], hi = d3.greatest(rows, (d) => d.admits);
+    lineChart($("c-funnel"), {
+      rows, x: (d) => d.fall, yDom: [0, 5500], yFmt: (t) => f0(t), ml: 44, mr: 46, H: 310, dots: true, gap: 1,
+      xFmt: (v, n) => (n ? "’" + String(v).slice(2) : v), tickEvery: (n) => (n ? 6 : 4),
+      series: [
+        { color: "var(--aid)", v: (d) => d.admits, end: (v) => f0(v), short: "offers" },
+        { color: "var(--gross)", v: (d) => d.enrolled, end: (v) => f0(v), short: "enrolled" }
+      ],
+      tip: (d) => [["Fall " + d.fall + " entering class", "t"], [isNaN(d.applicants) ? "Applicant count not on this site" : f0(d.applicants) + " applicants", "h"],
+        { color: "var(--aid)", label: "Admission offers", value: f0(d.admits) }, { color: "var(--gross)", label: "Students enrolled", value: f0(d.enrolled) },
+        { label: "Yield", value: pct(d.yield) }, { label: "Offers per enrolled student", value: f1(d.admits / d.enrolled) }]
+    });
+    $("cap-funnel").textContent = `Offers rose from ${f0(a.admits)} in fall ${a.fall} to a peak of ${f0(hi.admits)} in fall ${hi.fall}, while the entering class stayed between ${f0(d3.min(rows, (d) => d.enrolled))} and ${f0(d3.max(rows, (d) => d.enrolled))}. In fall ${z.fall}, ${f0(z.admits)} offers brought in ${f0(z.enrolled)} students: ${f1(z.admits / z.enrolled)} offers for each student who enrolled, against ${f1(a.admits / a.enrolled)} in fall ${a.fall}.`;
+    tableView("tv-funnel", [{ h: "Fall", v: (d) => d.fall }, { h: "Applicants", n: 1, v: (d) => (isNaN(d.applicants) ? "" : f0(d.applicants)) }, { h: "Admission offers", n: 1, v: (d) => f0(d.admits) }, { h: "Enrolled", n: 1, v: (d) => f0(d.enrolled) }, { h: "Yield", n: 1, v: (d) => pct(d.yield) }, { h: "Offers per enrolled student", n: 1, v: (d) => f1(d.admits / d.enrolled) }], rows);
+  }
+  function edChart() {
+    const host = $("c-ed"); host.replaceChildren();
+    const rows = LC.filter((d) => !isNaN(d.edAdmits));
+    const W = Math.max(280, host.clientWidth || 600), H = 310, m = { t: 22, r: 12, b: 30, l: 40 }, narrow = W < 460;
+    const svg = d3.select(host).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const x = d3.scaleBand(rows.map((d) => d.fall), [m.l, W - m.r]).paddingInner(0.35).paddingOuter(0.2);
+    const y = d3.scaleLinear([0, 20], [H - m.b, m.t]);
+    y.ticks(4).forEach((t) => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(t)).attr("y2", y(t)).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "ax").attr("x", m.l - 6).attr("y", y(t)).attr("dy", "0.32em").attr("text-anchor", "end").text(t + "%");
+    });
+    const bw = Math.min(24, x.bandwidth()), tip = tipFor(host);
+    const lo = d3.least(rows, (d) => d.edShare), z = rows[rows.length - 1], hi = d3.greatest(rows, (d) => d.edShare);
+    rows.forEach((d, i) => {
+      const cx = x(d.fall) + x.bandwidth() / 2, top = y(d.edShare), h = y(0) - top, r = Math.min(4, bw / 2, h);
+      svg.append("path").attr("d", `M${cx - bw / 2},${y(0)}V${top + r}q0,${-r} ${r},${-r}H${cx + bw / 2 - r}q${r},0 ${r},${r}V${y(0)}Z`).attr("fill", "var(--gross)");
+      if (d === lo || d === z) svg.append("text").attr("class", "val").attr("x", cx).attr("y", top - 6).attr("text-anchor", "middle").text(pct(d.edShare));
+      if (!narrow || i % 2 === (rows.length - 1) % 2) svg.append("text").attr("class", "ax").attr("x", cx).attr("y", H - m.b + 16).attr("text-anchor", "middle").text(narrow ? "’" + String(d.fall).slice(2) : d.fall);
+      svg.append("rect").attr("x", x(d.fall) - x.step() * 0.17).attr("y", m.t).attr("width", x.step()).attr("height", H - m.b - m.t).attr("fill", "transparent")
+        .on("pointermove pointerdown", (ev) => tip.show(ev, [["Fall " + d.fall + " entering class", "t"], { label: "Early decision applications", value: f0(d.edApps) }, { label: "Admitted early decision", value: f0(d.edAdmits) }, { label: "Entering class", value: f0(d.enrolled) }, { label: "Share of class, at most", value: pct(d.edShare) }]))
+        .on("pointerleave", () => tip.hide());
+    });
+    const rest = z.admits - z.edAdmits, restEnr = z.enrolled - z.edAdmits;
+    $("cap-ed").textContent = `Between ${f0(d3.min(rows, (d) => d.edAdmits))} and ${f0(d3.max(rows, (d) => d.edAdmits))} students were admitted early decision each year, at most ${pct(lo.edShare)} to ${pct(hi.edShare)} of the class. For fall ${z.fall} it was ${f0(z.edAdmits)} of ${f0(z.enrolled)}. If all ${f0(z.edAdmits)} enrolled, the other ${f0(rest)} admitted students produced ${f0(restEnr)} enrollments, a yield of ${pct(100 * restEnr / rest)}.`;
+    tableView("tv-ed", [{ h: "Fall", v: (d) => d.fall }, { h: "Early decision applications", n: 1, v: (d) => f0(d.edApps) }, { h: "Admitted early decision", n: 1, v: (d) => f0(d.edAdmits) }, { h: "Entering class", n: 1, v: (d) => f0(d.enrolled) }, { h: "Share of class, at most", n: 1, v: (d) => pct(d.edShare) }], rows);
+  }
+
+  // ---------- scatter charts ----------
+  function scatter(host, cfg) {
+    host.replaceChildren();
+    const W = Math.max(280, host.clientWidth || 600), H = cfg.H || 350, narrow = W < 460;
+    const m = { t: 18, r: 16, b: 46, l: 46 };
+    const svg = d3.select(host).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const x = d3.scaleLinear(cfg.xDom, [m.l, W - m.r]), y = d3.scaleLinear(cfg.yDom, [H - m.b, m.t]);
+    if (cfg.shade) svg.append("rect").attr("x", x(cfg.shade[0])).attr("y", m.t).attr("width", x(cfg.shade[1]) - x(cfg.shade[0])).attr("height", H - m.b - m.t).attr("fill", "var(--band)");
+    (cfg.xTicks || x.ticks(narrow ? 4 : 7)).forEach((t) => {
+      svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", m.t).attr("y2", H - m.b).attr("stroke", cfg.zero && t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "ax").attr("x", x(t)).attr("y", H - m.b + 15).attr("text-anchor", "middle").text(cfg.xFmt(t));
+    });
+    y.ticks(5).forEach((t) => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(t)).attr("y2", y(t)).attr("stroke", cfg.zero && t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "ax").attr("x", m.l - 6).attr("y", y(t)).attr("dy", "0.32em").attr("text-anchor", "end").text(cfg.yFmt(t));
+    });
+    svg.append("text").attr("class", "axt").attr("x", W - m.r).attr("y", H - 8).attr("text-anchor", "end").text(narrow && cfg.xLabelShort ? cfg.xLabelShort : cfg.xLabel);
+    svg.append("text").attr("class", "axt").attr("x", 0).attr("y", 10).text(cfg.yLabel);
+    (cfg.notes || []).forEach((n) => svg.append("text").attr("class", "q").attr("x", n.x(x, m, W)).attr("y", n.y(y, m, H)).attr("text-anchor", n.a || "start").text(narrow && n.short ? n.short : n.text));
+    if (cfg.fit) {
+      const [a, b] = cfg.xDom;
+      svg.append("line").attr("x1", x(a)).attr("x2", x(b)).attr("y1", y(cfg.fit.i + cfg.fit.s * a)).attr("y2", y(cfg.fit.i + cfg.fit.s * b)).attr("stroke", "var(--ink)").attr("stroke-width", 1.5);
+    }
+    const pts = cfg.rows.map((d) => ({ x: x(cfg.x(d)), y: y(cfg.y(d)), d }));
+    const g = svg.append("g");
+    pts.slice().sort((p, q) => (cfg.z ? cfg.z(p.d, q.d) : 0)).forEach((p) => cfg.mark(g, p.d, p.x, p.y));
+    const lab = cfg.labels(narrow).map((k) => pts.find((p) => cfg.id(p.d) === k)).filter(Boolean);
+    placeLabels(svg, lab.map((p) => ({ id: cfg.id(p.d), x: p.x, y: p.y, text: cfg.text(p.d, narrow), bold: cfg.bold ? cfg.bold(p.d) : false, prefer: cfg.prefer ? cfg.prefer(p.d) : null, force: cfg.force ? cfg.force(p.d) : false, at: cfg.at ? cfg.at(p.d, narrow) : null })),
+      { x0: m.l + 1, x1: W - 2, y0: m.t - 4, y1: H - m.b - 1 }, pts.map((p) => ({ x: p.x, y: p.y, id: cfg.id(p.d) })));
+    nearest(svg, pts, tipFor(host), cfg.tip, W, H);
+  }
+  function ddChart() {
+    const rows = SCH.filter((d) => !isNaN(d.dd) && !isNaN(d.dy)), peers = rows.filter((d) => !isLC(d)), lc = rows.find(isLC);
+    scatter($("c-dd"), {
+      rows, x: (d) => d.dd, y: (d) => d.dy, xDom: [-7, 21], yDom: [-10.5, 6], H: 350, zero: true,
+      xFmt: (t) => (t === 0 ? "0" : sgn(t, 0)), yFmt: (t) => (t === 0 ? "0" : sgn(t, 0)),
+      xLabel: "Change in discount rate, points (right of 0 is a higher discount)", xLabelShort: "Change in discount rate, points", yLabel: "Change in yield, points (above 0 is a gain)",
+      id: (d) => d.key, text: (d) => (isLC(d) ? "Lewis & Clark" : d.short), bold: isLC, force: isLC, mark, z: zOrder,
+      labels: (n) => (n ? ["lewis-clark", "occidental", "gettysburg"] : ["lewis-clark", "occidental", "gettysburg", "willamette", "skidmore", "john-carroll"]),
+      prefer: (d) => (isLC(d) ? [3, 0, 1, 2] : null),
+      tip: (d) => [[d.name, "t"], [grpName(d), "h"], { label: "Discount rate", value: pct(d.disc19) + " → " + pct(d.disc24) + " (" + sgn(d.dd) + ")" }, { label: "Yield", value: pct(d.y19) + " → " + pct(d.y24) + " (" + sgn(d.dy) + ")" }, { label: "Net tuition, after inflation", value: sgn(d.netchg) + "%" }]
+    });
+    const up = peers.filter((d) => d.dd > 0), upWon = up.filter((d) => d.dy > 0), dn = peers.filter((d) => d.dd <= 0), r = pearson(rows.map((d) => d.dd), rows.map((d) => d.dy));
+    const join = (a) => (a.length > 1 ? a.slice(0, -1).join(", ") + " and " + a[a.length - 1] : a[0] || "");
+    $("cap-dd").textContent = `${up.length} of ${peers.length} peers raised their discount rate, and yield rose at ${upWon.length} of them (${join(upWon.map((d) => d.short))}). The ${dn.length} that lowered it (${join(dn.map((d) => d.short))}) ${dn.some((d) => d.dy > 0) ? "had mixed results" : "did not gain yield either"}. Lewis & Clark raised its discount ${f1(lc.dd)} points and lost ${f1(-lc.dy)} points of yield. Across the ${rows.length} schools the two changes show no relationship (correlation ${sgn(r, 2)}).`;
+    tableView("tv-dd", [{ h: "School", v: (d) => d.name }, { h: "Group", v: (d) => (isLC(d) ? "" : d.grp) }, { h: "Discount, FY2019", n: 1, v: (d) => pct(d.disc19) }, { h: "Discount, FY2024", n: 1, v: (d) => pct(d.disc24) }, { h: "Change, points", n: 1, v: (d) => sgn(d.dd) }, { h: "Yield, FY2019", n: 1, v: (d) => pct(d.y19) }, { h: "Yield, FY2024", n: 1, v: (d) => pct(d.y24) }, { h: "Change, points", n: 1, v: (d) => sgn(d.dy) }], rows.slice().sort((a, b) => b.dy - a.dy), isLC);
+  }
+  function admChart() {
+    const rows = SCH.filter((d) => !isNaN(d.adm) && !isNaN(d.y24)), lc = rows.find(isLC);
+    const xs = rows.map((d) => d.adm), ys = rows.map((d) => d.y24), mx = d3.mean(xs), my = d3.mean(ys);
+    const s = d3.sum(rows, (d) => (d.adm - mx) * (d.y24 - my)) / d3.sum(rows, (d) => (d.adm - mx) ** 2), i = my - s * mx, r = pearson(xs, ys);
+    scatter($("c-adm"), {
+      rows, x: (d) => d.adm, y: (d) => d.y24, xDom: [18, 100], yDom: [5, 29], H: 360, fit: { s, i },
+      xFmt: (t) => t + "%", yFmt: (t) => t + "%", xLabel: "Admit rate (share of applicants admitted)", yLabel: "Yield",
+      id: (d) => d.key, text: (d) => (isLC(d) ? "Lewis & Clark" : d.short), bold: isLC, force: isLC, mark, z: zOrder,
+      labels: (n) => (n ? ["lewis-clark", "skidmore", "st-olaf", "reed"] : ["lewis-clark", "skidmore", "st-olaf", "reed", "university-of-portland", "occidental", "pacific-lutheran", "kenyon"]),
+      prefer: (d) => (isLC(d) ? [3, 1, 0, 2] : null),
+      tip: (d) => [[d.name, "t"], [grpName(d), "h"], { label: "Admit rate", value: pct(d.adm) }, { label: "Yield", value: pct(d.y24) }, { label: "Yield at this admit rate, on the line", value: pct(i + s * d.adm) }]
+    });
+    $("cap-adm").textContent = `Each 10 points of admit rate goes with about ${f1(-10 * s)} points less yield (correlation ${sgn(r, 2)}), though the spread around the line is wide. At Lewis & Clark's admit rate of ${pct(lc.adm)} the line gives a yield of ${pct(i + s * lc.adm)}; Lewis & Clark's was ${pct(lc.y24)}.`;
+    tableView("tv-adm", [{ h: "School", v: (d) => d.name }, { h: "Group", v: (d) => (isLC(d) ? "" : d.grp) }, { h: "Admit rate", n: 1, v: (d) => pct(d.adm) }, { h: "Yield", n: 1, v: (d) => pct(d.y24) }, { h: "Yield on the line", n: 1, v: (d) => pct(i + s * d.adm) }, { h: "Difference, points", n: 1, v: (d) => sgn(d.y24 - (i + s * d.adm)) }], rows.slice().sort((a, b) => a.adm - b.adm), isLC);
+  }
+  function progChart() {
+    const majors = PROG.filter((d) => d.level === "Major"), rows = majors.filter((d) => !isNaN(d.share)), nPeers = 33, cut = 30;
+    scatter($("c-prog"), {
+      rows, x: (d) => d.all, y: (d) => d.share, xDom: [0, 34], yDom: [0, 18], H: 370, shade: [cut - 0.5, 34], xTicks: [0, 5, 10, 15, 20, 25, 30, 33],
+      xFmt: (t) => t, yFmt: (t) => t + "%", xLabel: "Peers offering the major, of " + nPeers, yLabel: "Share of 2020 to 2024 graduates",
+      notes: [{ text: "30 or more peers", x: (x, m, W) => W - m.r - 3, y: (y, m) => m.t + 12, a: "end" }],
+      id: (d) => d.program, text: (d, n) => (n && d.program === "Computer Science and Mathematics" ? "Computer Science and Math" : d.program), mark: (g, d, x, y) => g.append("circle").attr("cx", x).attr("cy", y).attr("r", 5).attr("fill", "var(--gross)").attr("stroke", "var(--panel)").attr("stroke-width", 2),
+      labels: (n) => (n ? ["Computer Science and Mathematics", "World Languages", "Psychology", "International Affairs"] : ["Computer Science and Mathematics", "World Languages", "Psychology", "Biology", "International Affairs", "Rhetoric and Media Studies", "German Studies", "Sociology and Anthropology"]),
+      prefer: (d) => (d.all >= 28 ? [1, 2, 3, 0] : [0, 2, 3, 1]),
+      at: (d, n) => (d.program === "Computer Science and Mathematics" ? { dx: -5, dy: n ? -62 : -46, a: "start" } : d.program === "World Languages" ? { dx: -5, dy: -22, a: "start" } : null),
+      tip: (d) => [[d.program, "t"], [d.note || "Major", "h"], { label: "Peers offering it", value: d.all + " of " + nPeers }, { label: "Group 1 peers offering it", value: d.g1 + " of 15" }, { label: "Share of graduates, 2020 to 2024", value: pct(d.share) }, { label: "Graduates per year", value: f1(d.grads) }, { label: "Share of graduates, 2005 to 2009", value: isNaN(d.share0) ? "n/a" : pct(d.share0) }]
+    });
+    const common = rows.filter((d) => d.all >= cut), rare = rows.filter((d) => d.all <= 12), big = d3.greatest(rows, (d) => d.share);
+    $("cap-prog").textContent = `${f0(common.length)} majors are offered by ${cut} or more of the ${nPeers} peers, and they account for ${pct(d3.sum(common, (d) => d.share), 0)} of graduates. ${big.program} alone is ${pct(big.share)} and is offered at ${big.all === nPeers ? "all " + nPeers : big.all + " of " + nPeers}. The ${f0(rare.length)} majors with graduates that 12 or fewer peers offer account for ${pct(d3.sum(rare, (d) => d.share))}.`;
+    tableView("tv-prog", [{ h: "Major", v: (d) => d.program }, { h: "Peers offering, of 33", n: 1, v: (d) => d.all }, { h: "Group 1, of 15", n: 1, v: (d) => d.g1 }, { h: "Share of graduates, 2020 to 2024", n: 1, v: (d) => (isNaN(d.share) ? "" : pct(d.share)) }, { h: "Graduates per year", n: 1, v: (d) => (isNaN(d.grads) ? "" : f1(d.grads)) }, { h: "Share, 2005 to 2009", n: 1, v: (d) => (isNaN(d.share0) ? "" : pct(d.share0)) }, { h: "Note", v: (d) => d.note }], majors.slice().sort((a, b) => a.all - b.all || a.program.localeCompare(b.program)));
+    const rl = $("rare-list"); rl.replaceChildren();
+    PROG.filter((d) => d.all <= 12).sort((a, b) => a.all - b.all || a.program.localeCompare(b.program)).forEach((d) => {
+      const row = document.createElement("div"); row.className = "meter";
+      const nm = document.createElement("span"); nm.className = "mn"; nm.textContent = d.program + " "; const lv = document.createElement("small"); lv.textContent = d.level.toLowerCase(); nm.append(lv);
+      const trk = document.createElement("span"); trk.className = "trk"; if (d.all > 0) { const f = document.createElement("i"); f.style.width = (100 * d.all / nPeers) + "%"; trk.append(f); }
+      const fig = document.createElement("span"); fig.className = "fig"; fig.textContent = d.all + " of " + nPeers;
+      row.title = d.program + " (" + d.level.toLowerCase() + "): offered by " + d.all + " of " + nPeers + " peers, " + d.g1 + " of 15 in Group 1";
+      row.append(nm, trk, fig); rl.append(row);
+    });
+  }
+  function kpi(box, label, value, delta, from, color) {
+    const k = document.createElement("div"); k.className = "kpi";
+    const l = document.createElement("div"); l.className = "l";
+    if (color) { const i = document.createElement("i"); i.style.background = color; l.append(i); }
+    l.append(document.createTextNode(label));
+    const v = document.createElement("div"); v.className = "v"; v.textContent = value;
+    const d = document.createElement("div"); d.className = "d"; d.textContent = delta + " ";
+    const sp = document.createElement("span"); sp.textContent = from; d.append(sp);
+    k.append(l, v, d); box.append(k);
+  }
+  const arrow = (v) => (v > 0 ? "▲ " : "▼ ");
+  function opsTiles() {
+    const box = $("kpi-ops"); box.replaceChildren();
+    const a = OPS.find((d) => d.fy === 2024), z = OPS[OPS.length - 1];
+    const und = NET.filter((d) => d.program === "Undergraduate"), oth = NET.filter((d) => d.program === "Law" || d.program === "Graduate");
+    const netOf = (rows, fy) => d3.sum(rows.filter((d) => d.fy === fy), (d) => d.net);
+    const dM = (v) => arrow(v) + (v < 0 ? "−" : "+") + usdM(Math.abs(v));
+    kpi(box, "Net tuition, all schools", usdM(z.net), dM(z.net - a.net), "from " + usdM(a.net) + " in FY" + a.fy);
+    kpi(box, "Endowment earnings used for operations", usdM(z.draw), dM(z.draw - a.draw), "from " + usdM(a.draw) + " in FY" + a.fy);
+    kpi(box, "Operating result", usdM(z.op), dM(z.op - a.op), "from " + usdM(a.op) + " in FY" + a.fy);
+    $("cap-ops").textContent = `From FY${a.fy} to FY${z.fy} the undergraduate college lost ${usdM(netOf(und, a.fy) - netOf(und, z.fy))} of net tuition and the law and graduate schools gained ${usdM(netOf(oth, z.fy) - netOf(oth, a.fy))}, leaving the college ${usdM(a.net - z.net)} lower. Over the same two years the endowment's contribution to operations rose ${usdM(z.draw - a.draw)}: the board raised the spending rate from 4.5% to 5.0% starting in FY2025 and approved a further amount of up to 0.5% for College of Arts and Sciences endowments for 2026 through 2028, to be followed by a measured reduction. That further amount has an end date, and the operating result still fell from ${usdM(a.op)} to ${usdM(z.op)}.`;
+  }
+  function netTiles() {
+    const box = $("kpi-net"); box.replaceChildren();
+    const colors = { Undergraduate: "var(--gross)", Law: "var(--aid)", Graduate: "var(--net)" }, out = {};
+    ["Undergraduate", "Law", "Graduate"].forEach((p) => {
+      const s = NET.filter((d) => d.program === p).sort((a, b) => a.fy - b.fy), a = s[0], z = s[s.length - 1], ch = 100 * (z.net / a.net - 1);
+      out[p] = { a, z, ch };
+      kpi(box, p, usdM(z.net), arrow(ch) + sgn(ch) + "%", "from " + usdM(a.net) + " in FY" + a.fy, colors[p]);
+    });
+    const u = out.Undergraduate, lw = out.Law, g = out.Graduate;
+    $("cap-net").textContent = `Between FY${u.a.fy} and FY${u.z.fy} the undergraduate college lost ${usdM(u.a.net - u.z.net)} of net tuition while the law and graduate schools together gained ${usdM(lw.z.net + g.z.net - lw.a.net - g.a.net)}. Undergraduate scholarships rose from ${pct(u.a.disc)} to ${pct(u.z.disc)} of gross tuition and fees over the same two years.`;
+  }
+
+  // ---------- requirement strips ----------
+  function strip(hostId, capId, tvId, cfg) {
+    const host = $(hostId); host.replaceChildren();
+    const rows = SCH.filter((d) => !isNaN(d.y24)), levels = cfg.levels, lc = rows.find(isLC), peers = rows.filter((d) => !isLC(d));
+    const W = Math.max(280, host.clientWidth || 600), H = 330, m = { t: 30, r: 10, b: 58, l: 40 };
+    const svg = d3.select(host).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const x = d3.scaleBand(levels, [m.l, W - m.r]).paddingInner(0.08), y = d3.scaleLinear([5, 29], [H - m.b, m.t]);
+    svg.append("rect").attr("x", x(cfg.v(lc))).attr("y", m.t - 6).attr("width", x.bandwidth()).attr("height", H - m.b - m.t + 6).attr("fill", "var(--band)");
+    y.ticks(5).forEach((t) => {
+      svg.append("line").attr("x1", m.l).attr("x2", W - m.r).attr("y1", y(t)).attr("y2", y(t)).attr("stroke", "var(--grid)");
+      svg.append("text").attr("class", "ax").attr("x", m.l - 6).attr("y", y(t)).attr("dy", "0.32em").attr("text-anchor", "end").text(t + "%");
+    });
+    svg.append("text").attr("class", "axt").attr("x", 0).attr("y", 10).text("Yield");
+    const pts = [];
+    levels.forEach((lv) => {
+      const cx = x(lv) + x.bandwidth() / 2, grp = rows.filter((d) => cfg.v(d) === lv), pg = grp.filter((d) => !isLC(d));
+      svg.append("text").attr("class", "ax").attr("x", cx).attr("y", H - m.b + 16).attr("text-anchor", "middle").text(cfg.tick(lv));
+      svg.append("text").attr("class", "axt").attr("x", cx).attr("y", H - m.b + 31).attr("text-anchor", "middle").text(pg.length + (pg.length === 1 ? " peer" : " peers"));
+      // Dodge sideways inside the column so marks at similar yields do not hide each other.
+      const half = x.bandwidth() / 2 - 8;
+      dodge(grp, (d) => y(d.y24), 11.5, (d) => +isLC(d)).forEach((p) => pts.push({ x: cx + Math.max(-half, Math.min(half, p.dy)), y: p.x, d: p.it }));
+      if (pg.length > 1) { const md = y(d3.median(pg, (d) => d.y24)); svg.append("line").attr("x1", cx - x.bandwidth() / 2 + 4).attr("x2", cx + x.bandwidth() / 2 - 4).attr("y1", md).attr("y2", md).attr("stroke", "var(--ink)").attr("stroke-width", 1.5); }
+    });
+    svg.append("text").attr("class", "axt").attr("x", W - m.r).attr("y", H - 6).attr("text-anchor", "end").text(cfg.xLabel);
+    const g = svg.append("g");
+    pts.slice().sort((a, b) => zOrder(a.d, b.d)).forEach((p) => mark(g, p.d, p.x, p.y));
+    const top = d3.greatest(peers, (d) => d.y24), lab = [lc, top].map((d) => pts.find((p) => p.d === d));
+    placeLabels(svg, lab.map((p) => ({ id: p.d.key, x: p.x, y: p.y, text: isLC(p.d) ? "Lewis & Clark" : p.d.short, bold: isLC(p.d), force: isLC(p.d), prefer: isLC(p.d) ? [0, 1, 3, 2] : [1, 0, 3, 2] })), { x0: m.l, x1: W, y0: 0, y1: H - m.b }, pts.map((p) => ({ x: p.x, y: p.y, id: p.d.key })));
+    nearest(svg, pts, tipFor(host), (d) => [[d.name, "t"], [grpName(d), "h"], { label: cfg.tipLabel, value: cfg.tipVal(d) }, { label: "Yield, fall 2023", value: pct(d.y24) }], W, H);
+    $(capId).textContent = cfg.cap(lc, peers, spearman(rows, (d) => d.y24, cfg.v));
+    tableView(tvId, [{ h: "School", v: (d) => d.name }, { h: "Group", v: (d) => (isLC(d) ? "" : d.grp) }, { h: "Oregon or Washington", v: (d) => (d.ow && !isLC(d) ? "Yes" : "") }, { h: cfg.tipLabel, n: 1, v: (d) => cfg.v(d) }, { h: "Yield, fall 2023", n: 1, v: (d) => pct(d.y24) }], rows.slice().sort((a, b) => cfg.v(b) - cfg.v(a) || b.y24 - a.y24), isLC);
+  }
+  const medBy = (peers, v, lv) => d3.median(peers.filter((d) => v(d) === lv), (d) => d.y24);
+  function langChart() {
+    strip("c-lang", "cap-lang", "tv-lang", {
+      levels: [0, 1, 2, 3, 4], v: (d) => d.lang, tick: (lv) => (lv === 0 ? "None" : lv), xLabel: "Semesters of language required", tipLabel: "Semesters of language", tipVal: (d) => (d.lang === 0 ? "None" : d.lang + " (" + d.langWho.toLowerCase() + ")"),
+      cap: (lc, peers, c) => { const less = peers.filter((d) => d.lang < lc.lang).length, none = peers.filter((d) => d.lang === 0).length;
+        return `Lewis & Clark requires ${lc.lang} semesters. ${less} of ${peers.length} peers require less, ${none} of them none. The median yield of the peers with no requirement is ${pct(medBy(peers, (d) => d.lang, 0))}, and of those requiring two semesters ${pct(medBy(peers, (d) => d.lang, 2))}; across all ${c.n} schools the requirement and yield show no relationship (rank correlation ${sgn(c.r, 2)}).`; }
+    });
+  }
+  function resChart() {
+    strip("c-res", "cap-res", "tv-res", {
+      levels: [0, 4, 6, 8], v: (d) => d.res, tick: (lv) => (lv === 0 ? "None found" : lv), xLabel: "Semesters required in college housing", tipLabel: "Semesters on campus", tipVal: (d) => (d.res === 0 ? "None found" : d.res),
+      cap: (lc, peers, c) => { const less = peers.filter((d) => d.res < lc.res).length, ow = peers.filter((d) => d.ow), owSame = ow.every((d) => d.res === ow[0].res);
+        return `Lewis & Clark requires ${lc.res} semesters. ${less} of ${peers.length} peers require less${owSame ? ", among them all " + ow.length + " Oregon and Washington peers, which require " + ow[0].res : ""}. The median yield of the four-semester peers is ${pct(medBy(peers, (d) => d.res, 4))} and of the eight-semester peers ${pct(medBy(peers, (d) => d.res, 8))}; across all ${c.n} schools the requirement and yield show no relationship (rank correlation ${sgn(c.r, 2)}).`; }
+    });
+  }
+
+  const peerCharts = () => { peerKeys(); yieldStrip(); ddChart(); admChart(); langChart(); resChart(); };
+  const allCharts = () => { headline(); peerCharts(); trackBars(); opsTiles(); indexChart(); funnelChart(); edChart(); progChart(); netTiles(); };
+
+  Promise.all([d3.csv("lc_entering_classes.csv"), d3.csv("peer_factors.csv"), d3.csv("lc_programs_vs_peers.csv"), d3.csv("../data/discount_by_program.csv"), d3.csv("college_operations.csv")]).then(([lc, sch, prog, net, ops]) => {
+    LC = lc.map((r) => ({ fall: +r.fall_term, applicants: num(r.applicants), admits: +r.admits, enrolled: +r.enrolled, yield: 100 * r.enrolled / r.admits, aid: num(r.grant_aid_per_entrant_usd), netprice: num(r.net_price_fy2025_usd), fydisc: num(r.first_year_discount_pct), edApps: num(r.ed_applications), edAdmits: num(r.ed_admits), edShare: num(r.ed_admits_share_of_class_pct), housing: num(r.pct_undergraduates_in_college_housing) })).sort((a, b) => a.fall - b.fall);
+    SCH = sch.map((r) => ({ key: r.key, name: r.key === "lewis-clark" ? "Lewis & Clark" : r.institution, short: r.short, grp: r.peer_group, ow: r.oregon_washington === "yes", y19: num(r.yield_fy2019_pct), y24: num(r.yield_fy2024_pct), y25: num(r.yield_fall2024_pct), dy: num(r.yield_change_fy2019_fy2024_pts), adm: num(r.admit_rate_fy2024_pct), disc19: num(r.discount_fy2019_pct), disc24: num(r.discount_fy2024_pct), dd: num(r.discount_change_fy2019_fy2024_pts), netchg: num(r.net_tuition_real_change_fy2019_fy2024_pct), lang: num(r.language_semesters), langWho: r.language_applies_to, res: num(r.residency_semesters), cov: num(r.lc_majors_coverage_pct), career: num(r.career_field_share_2020_2024_pct), eps: num(r.endowment_per_student_usd) }));
+    PROG = prog.map((r) => ({ level: r.level, program: r.program, all: +r.peers_offering_all, g1: +r.group_1_offering, grads: num(r.graduates_per_year_2020_2024), share: num(r.share_of_graduates_2020_2024_pct), share0: num(r.share_of_graduates_2005_2009_pct), note: r.note }));
+    NET = net.map((r) => ({ program: r.program, fy: +r.fiscal_year, net: +r.net_tuition_fees_usd, disc: +r.discount_rate_pct }));
+    OPS = ops.map((r) => ({ fy: +r.fiscal_year, net: +r.net_tuition_fees_usd, draw: +r.endowment_earnings_allocated_for_operations_usd, op: +r.operating_result_usd })).sort((a, b) => a.fy - b.fy);
+    allCharts();
+    document.querySelectorAll("[data-hl]").forEach((b) => b.addEventListener("click", () => {
+      state.hl = b.dataset.hl;
+      document.querySelectorAll("[data-hl]").forEach((o) => o.setAttribute("aria-pressed", String(o.dataset.hl === state.hl)));
+      peerCharts();
+    }));
+    let t, w = window.innerWidth;
+    window.addEventListener("resize", () => { if (window.innerWidth === w) return; w = window.innerWidth; clearTimeout(t); t = setTimeout(allCharts, 150); });
+    // For printing, redraw at the paper's width and name each line at its end so the charts read without color.
+    const printMode = (on) => { state.mono = on; document.documentElement.classList.toggle("printing", on); allCharts(); };
+    window.addEventListener("beforeprint", () => printMode(true));
+    window.addEventListener("afterprint", () => printMode(false));
+  }).catch(() => {
+    const p = document.createElement("p"); p.className = "fail"; p.textContent = "The data files did not load."; $("c-yield").append(p);
+  });
+})();
+</script>
+</body>
+</html>
