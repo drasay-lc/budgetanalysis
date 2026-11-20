@@ -1,0 +1,57 @@
+state,name,region,pct_change_2023_to_2041,assumed_feeder_state,source
+AL,Alabama,South,2,no,1
+AK,Alaska,West,-14,no,1
+AZ,Arizona,West,-2,no,1
+AR,Arkansas,South,-5,no,1
+CA,California,West,-29,yes,1
+CO,Colorado,West,-12,yes,1
+CT,Connecticut,Northeast,-4,no,1
+DE,Delaware,South,8,no,1
+DC,District of Columbia,South,31,no,1
+FL,Florida,South,12,no,1
+GA,Georgia,South,-1,no,1
+HI,Hawaii,West,-33,no,1
+ID,Idaho,West,13,no,1
+IL,Illinois,Midwest,-32,no,1
+IN,Indiana,Midwest,-10,no,1
+IA,Iowa,Midwest,-4,no,1
+KS,Kansas,Midwest,-12,no,1
+KY,Kentucky,South,-9,no,1
+LA,Louisiana,South,-4,no,1
+ME,Maine,Northeast,-10,no,1
+MD,Maryland,South,-11,no,1
+MA,Massachusetts,Northeast,-8,no,1
+MI,Michigan,Midwest,-20,no,1
+MN,Minnesota,Midwest,-12,no,1
+MS,Mississippi,South,-16,no,1
+MO,Missouri,Midwest,-12,no,1
+MT,Montana,West,5,no,1
+NE,Nebraska,Midwest,-4,no,1
+NV,Nevada,West,-9,no,1
+NH,New Hampshire,Northeast,-10,no,1
+NJ,New Jersey,Northeast,-1,no,1
+NM,New Mexico,West,-21,no,1
+NY,New York,Northeast,-27,no,1
+NC,North Carolina,South,6,no,1
+ND,North Dakota,West,13,no,1
+OH,Ohio,Midwest,-6,no,1
+OK,Oklahoma,South,0,no,1
+OR,Oregon,West,-19,yes,1
+PA,Pennsylvania,Northeast,-17,no,1
+RI,Rhode Island,Northeast,-15,no,1
+SC,South Carolina,South,14,no,1
+SD,South Dakota,West,7,no,1
+TN,Tennessee,South,15,no,1
+TX,Texas,South,5,no,1
+UT,Utah,West,-6,no,1
+VT,Vermont,Northeast,-15,no,1
+VA,Virginia,South,-6,no,1
+WA,Washington,West,-8,yes,1
+WV,West Virginia,South,-26,no,1
+WI,Wisconsin,Midwest,-15,no,1
+WY,Wyoming,West,-23,no,1
+US,United States,benchmark,-10.5,no,4
+West,West region,benchmark,-20,no,1
+Midwest,Midwest region,benchmark,-16,no,1
+Northeast,Northeast region,benchmark,-17,no,1
+South,South region,benchmark,3,no,1
