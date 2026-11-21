@@ -1,0 +1,35 @@
+college,group,baseline,cliff_gradual,cliff_gradual_fixed50,cliff_onetime,persist,fixed_cost_change
+Drew,Group 2,0.67,1.19,0.99,0.92,0.69,0.32
+Sarah Lawrence,Group 1,0.22,0.3,0.58,0.26,0.22,0.36
+Pacific Lutheran,Group 3,0.52,0.8,0.47,0.67,0.84,-0.05
+Redlands,Group 3,0.11,0.16,0.32,0.14,0.81,0.21
+Lewis & Clark,Lewis & Clark,0.07,0.12,0.27,0.09,0.07,0.2
+Clark,Group 2,0.19,0.28,0.27,0.17,0.19,0.08
+Seattle Pacific,Group 2,0.19,0.29,0.23,0.25,0.55,0.04
+Pacific University,Group 2,0.08,0.11,0.22,0.11,0.09,0.14
+Lynchburg,Group 2,0.17,0.22,0.21,0.19,0.23,0.04
+Saint Mary's CA,Group 3,0.16,0.29,0.19,0.25,0.56,0.03
+Kalamazoo,Group 1,0.1,0.16,0.16,0.17,0.13,0.06
+Willamette,Group 1,0.13,0.19,0.15,0.18,0.13,0.02
+Loyola New Orleans,Group 2,0.04,0.06,0.12,0.05,0.04,0.08
+Goucher,Group 3,0.08,0.17,0.12,0.13,0.69,0.04
+Gonzaga,Group 1,0.04,0.05,0.12,0.04,0.04,0.08
+Roger Williams,Group 3,0.04,0.05,0.11,0.05,0.04,0.07
+U of Portland,Group 1,0.04,0.06,0.11,0.05,0.09,0.07
+La Verne,Group 3,0.04,0.05,0.07,0.04,0.13,0.03
+Gettysburg,Group 1,0.03,0.04,0.07,0.05,0.03,0.04
+Capital,Group 3,0.02,0.03,0.06,0.03,0.08,0.04
+Hamline,Group 3,0.04,0.05,0.06,0.05,0.13,0.02
+John Carroll,Group 3,0.04,0.05,0.06,0.05,0.1,0.02
+Whitman,Group 1,0.04,0.08,0.06,0.08,0.05,0.02
+Union,Group 1,0.03,0.03,0.05,0.03,0.03,0.02
+Ohio Northern,Group 3,0.02,0.03,0.05,0.02,0.02,0.03
+Seattle University,Group 2,0.03,0.04,0.05,0.04,0.03,0.02
+Stetson,Group 2,0.02,0.02,0.04,0.02,0.03,0.02
+Skidmore,Group 1,0.02,0.02,0.04,0.02,0.02,0.02
+Reed,Group 1,0.03,0.05,0.04,0.04,0.03,0.01
+Occidental,Group 1,0.02,0.03,0.03,0.03,0.02,0.01
+Puget Sound,Group 1,0.02,0.03,0.03,0.03,0.14,0.01
+Rhodes,Group 1,0.02,0.02,0.03,0.03,0.02,0.01
+Kenyon,Group 1,0.02,0.02,0.02,0.02,0.02,0.0
+St. Olaf,Group 1,0.02,0.02,0.02,0.02,0.02,0.0

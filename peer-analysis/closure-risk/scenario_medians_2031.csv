@@ -1,0 +1,6 @@
+scenario,label,np4_median_pct
+baseline,Flat enrollment,0.43
+cliff_gradual,15% gradual decline by 2029,0.75
+cliff_gradual_fixed50,"15% gradual decline, half of costs fixed",0.91
+cliff_onetime,15% drop in 2025,0.63
+persist,2019-23 decline persists,0.66

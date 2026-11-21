@@ -1,0 +1,7 @@
+model,description,auc_this_year,auc_this_year_np4,paper_auc_this_year,auc_three_year,auc_three_year_np4,paper_auc_three_year
+A,"LPM, continuous, non-missing sample",74.9,74.2,78.7,81.9,81.5,
+B,"LASSO-selected LPM, continuous",78.6,78.5,83.4,81.9,81.5,
+C,"LPM, binned variables, full sample",78.7,79.7,75.6,77.9,76.5,
+D,"XGBoost, binned variables, full sample",79.6,84.5,76.9,79.7,84.4,
+E,"XGBoost, continuous variables, full sample",82.3,86.5,80.6,81.5,85.3,
+F,"XGBoost, all controls (lags 2-5), full sample",82.9,86.8,81.8,81.9,84.8,86.8
