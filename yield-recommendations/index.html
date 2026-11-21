@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Four Recommendations for Differentiation and Yield</title>
-<meta name="description" content="What the analysis on this site adds up to for Lewis & Clark's undergraduate admissions: where yield stands, what has and has not moved it, and four recommendations with their evidence.">
+<meta name="description" content="What the analysis on this site adds up to for Lewis & Clark's undergraduate admissions: where yield stands, what has and has not moved it, how a shrinking pool of high school graduates changes the picture, and four recommendations with their evidence.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -15,6 +15,16 @@
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --dot: #6F7C8D; --band: #1D2632; } }
 :root[data-theme="dark"] { --dot: #6F7C8D; --band: #1D2632; }
 .find { margin-top: 6px; }
+@media (min-width: 760px) { .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.key i.ring { width: 11px; height: 11px; border-radius: 50%; background: var(--panel); border: 2.5px solid var(--aid); }
+.pool { margin-top: 16px; background: var(--panel); border: 1px solid var(--rule); border-left: 4px solid var(--aid); border-radius: 10px; padding: 14px 18px 16px; }
+.pool h3 { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 0 0 10px; }
+.pool ul { margin: 0; padding-left: 1.15em; max-width: 84ch; display: grid; gap: 7px; }
+.pool li::marker { color: var(--muted); }
+.pool li b { font-weight: 600; }
+.pool .kpis { margin: 0 0 8px; }
+.pool .cap { font-size: 13.5px; margin: 0 0 12px; max-width: 84ch; }
+.band-p a { color: inherit; }
 .recs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr)); gap: 12px; margin: 0 0 26px; }
 a.rcard { display: grid; grid-template-rows: auto auto 1fr auto; gap: 6px; background: var(--panel); border: 1px solid var(--rule); border-top: 4px solid var(--gross); border-radius: 10px; padding: 14px 16px 12px; color: inherit; text-decoration: none; transition: border-color .15s; }
 a.rcard:hover { border-color: var(--muted); border-top-color: var(--gross); }
@@ -41,6 +51,7 @@ a.rcard:hover { border-color: var(--muted); border-top-color: var(--gross); }
 .chart .axt { font-family: var(--f-body); font-size: 12px; fill: var(--muted); }
 .chart .q { font-family: var(--f-body); font-size: 11.5px; fill: var(--muted); }
 .chart .val { font-family: var(--f-data); font-size: 12px; fill: var(--ink); font-weight: 500; }
+.chart .val.halo { paint-order: stroke; stroke: var(--panel); stroke-width: 5px; stroke-linejoin: round; }
 details.tv { margin-top: 10px; font-size: 13px; }
 details.tv summary { cursor: pointer; color: var(--muted); width: fit-content; }
 details.tv summary:hover { color: var(--ink); }
@@ -104,8 +115,8 @@ html.printing .act > div { padding: 10px 12px; }
   :root, :root[data-theme="dark"], :root:not([data-theme="light"]) { --bg: #fff; --panel: #fff; --ink: #000; --muted: #444; --rule: #bbb; --grid: #ddd; --zebra: #f4f4f4; --gross: #2f3f9e; --net: #0b6b59; --aid: #a35f0a; --endow: #7d3277; --other: #9aa3ad; --dot: #777; --band: #eee; color-scheme: light; }
   body { font-size: 11.5pt; }
   .controls, .tip, .rcard .go, details.tv summary { display: none !important; }
-  .card, .act, .tile, a.rcard, .kpi, .meter, .ev li { break-inside: avoid; }
-  .band-h, .band-p, .rec-head, .ev h3, .card h3, .card .note { break-after: avoid; }
+  .card, .act, .tile, a.rcard, .kpi, .meter, .ev li, .pool li { break-inside: avoid; }
+  .band-h, .band-p, .rec-head, .ev h3, .pool h3, .card h3, .card .note { break-after: avoid; }
   section.rec { margin-top: 22px; padding-top: 14px; }
   a { color: inherit; text-decoration: none; }
 }
@@ -118,7 +129,7 @@ html.printing .act > div { padding: 10px 12px; }
     <div class="eyebrow">Lewis &amp; Clark College · College of Arts and Sciences · drawn from every page on this site</div>
     <h1>Four Recommendations for Differentiation and Yield</h1>
     <p class="made" role="doc-subtitle">Built with Claude Fable 5.2 (max effort), November 2026, from the analysis on this site. Source data, analysis and review by Dan Rasay; see the <a href="https://github.com/drasay-lc/budgetanalysis/commits/main">commit history</a>.</p>
-    <p class="dek">What the pages on this site add up to for undergraduate admissions: where yield stands, what has and has not moved it, and four recommendations. Each comes with its evidence, a way to tell whether it is working, and what the public data cannot show. Yield is the share of admitted first-year students who enroll.</p>
+    <p class="dek">What the pages on this site add up to for undergraduate admissions: where yield stands, what has and has not moved it, and four recommendations, reread here for a pool of high school graduates that has started to shrink. Each comes with its evidence, what the shrinking pool changes, a way to tell whether it is working, and what the public data cannot show. Yield is the share of admitted first-year students who enroll.</p>
     <p class="find" id="find"></p>
   </header>
 
@@ -129,13 +140,15 @@ html.printing .act > div { padding: 10px 12px; }
     <div class="tile"><b id="k-price">&nbsp;</b><span>Price after aid for an entering student, after inflation, fall 2015 to fall 2025</span></div>
     <div class="tile"><b id="k-disc">&nbsp;</b><span id="k-disc-l">Undergraduate discount rate</span></div>
     <div class="tile"><b id="k-cov">&nbsp;</b><span>Of Lewis &amp; Clark's 30 majors, the share the typical Group 1 peer also offers</span></div>
+    <div class="tile"><b id="k-or">&nbsp;</b><span id="k-or-l">Of U.S. first-year students, the share from Oregon</span></div>
+    <div class="tile"><b id="k-west">&nbsp;</b><span id="k-west-l">High school graduates in the West, class of 2025 to class of 2041</span></div>
   </div>
 
   <nav class="recs" aria-label="The four recommendations">
-    <a class="rcard" href="#rec-1"><span class="n">Recommendation 1 · price</span><h2>Stop paying for yield with price</h2><p>Aid per entering student more than doubled in ten years and yield did not rise. Stop raising aid by default and test each new award.</p><span class="go">See the evidence ↓</span></a>
-    <a class="rcard" href="#rec-2"><span class="n">Recommendation 2 · the admit pool</span><h2>Admit for fit, not volume</h2><p>Offers grew two and a half times while the class stayed near 500. Size the pool to the class and build early commitment.</p><span class="go">See the evidence ↓</span></a>
-    <a class="rcard" href="#rec-3"><span class="n">Recommendation 3 · the offer</span><h2>Lead with what peers cannot match</h2><p>Most peers offer most of the same majors. The law school, the graduate school and a few rare programs are what they lack.</p><span class="go">See the evidence ↓</span></a>
-    <a class="rcard" href="#rec-4"><span class="n">Recommendation 4 · the requirements</span><h2>Turn requirements into promises</h2><p>Lewis &amp; Clark asks for more language and more years on campus than most peers. Make each one come with something students get.</p><span class="go">See the evidence ↓</span></a>
+    <a class="rcard" href="#rec-1"><span class="n">Recommendation 1 · price</span><h2>Stop paying for yield with price</h2><p>Aid per entering student more than doubled in ten years and yield did not rise. A smaller pool will add pressure to discount. Stop raising aid by default, keep need apart from price, and test each new award.</p><span class="go">See the evidence ↓</span></a>
+    <a class="rcard" href="#rec-2"><span class="n">Recommendation 2 · the admit pool</span><h2>Admit for fit, not volume</h2><p>Offers grew two and a half times while the class stayed near 500. A smaller pool ends that. Size the pool to the class, build early commitment and follow the funnel state by state.</p><span class="go">See the evidence ↓</span></a>
+    <a class="rcard" href="#rec-3"><span class="n">Recommendation 3 · the offer</span><h2>Lead with what peers cannot match</h2><p>Most peers offer most of the same majors. The law school, the graduate school and a few rare programs are what they lack, and a reason for a student in another state to come.</p><span class="go">See the evidence ↓</span></a>
+    <a class="rcard" href="#rec-4"><span class="n">Recommendation 4 · the requirements</span><h2>Turn requirements into promises</h2><p>Lewis &amp; Clark asks for more language and more years on campus than most peers, and more of its class now comes from Oregon. Make each one come with something students get.</p><span class="go">See the evidence ↓</span></a>
   </nav>
 
   <h2 class="band-h" id="start">The starting point</h2>
@@ -181,13 +194,43 @@ html.printing .act > div { padding: 10px 12px; }
     <p class="cap" id="cap-ops"></p>
   </section>
 
+  <h2 class="band-h" id="pool">What changes next: a smaller pool</h2>
+  <p class="band-p">Everything above describes the last ten years. This section looks ahead. WICHE projects that the number of students finishing high school in the United States peaked with the class of 2025 and will shrink through 2041, faster in the West than in any other region. The first sign has arrived: preliminary national counts for fall 2026 show 0.7% fewer 18-year-old undergraduates than a year earlier. Lewis &amp; Clark's entering class has already begun to change. The projections are set out state by state on <a href="../college-age-demographics/">The Shrinking Pool</a>.</p>
+
+  <div class="pair" style="margin-top:0">
+    <section class="card" aria-labelledby="h-pool">
+      <h3 id="h-pool">Fewer graduates in the states Lewis &amp; Clark draws on most</h3>
+      <p class="note">Projected change in the number of high school graduates from the class of 2025, the year the fall 2025 entering class finished high school. The five states are the top five home states the college lists for that class. Hover or tap a row.</p>
+      <div class="key" aria-hidden="true"><span><i class="ring"></i>By the class of 2030</span><span><i class="dotk" style="background:var(--gross)"></i>By the class of 2041</span></div>
+      <div class="chart" id="c-pool" role="img" aria-label="Projected change in high school graduates from the class of 2025, by 2030 and by 2041, for Lewis & Clark's top five home states, the West and the United States"></div>
+      <p class="cap" id="cap-pool"></p>
+      <details class="tv"><summary>View as table</summary><div id="tv-pool"></div></details>
+    </section>
+    <section class="card" aria-labelledby="h-origin">
+      <h3 id="h-origin">The class already comes from closer to home</h3>
+      <p class="note">Lewis &amp; Clark's entering first-year students by where they come from, fall 2015 to fall 2025. The Common Data Set gives the share of U.S. students from out of state as a whole percentage, so the Oregon and other-state counts are approximate.</p>
+      <div class="key" aria-hidden="true"><span><i style="background:var(--aid)"></i>Other U.S. states</span><span><i style="background:var(--gross)"></i>Oregon</span><span><i style="background:var(--net)"></i>Outside the U.S.</span></div>
+      <div class="chart" id="c-origin" role="img" aria-label="Lewis & Clark entering first-year students from other U.S. states, from Oregon and from outside the U.S., fall 2015 to fall 2025"></div>
+      <p class="cap" id="cap-origin"></p>
+      <details class="tv"><summary>View as table</summary><div id="tv-origin"></div></details>
+    </section>
+  </div>
+  <p class="tnote" id="cap-mix"></p>
+
+  <section class="card" aria-labelledby="h-stand" style="margin-top:16px">
+    <h3 id="h-stand">What standing still would take</h3>
+    <p class="note">Arithmetic, not a forecast. It assumes Lewis &amp; Clark's applications and offers shrink in step with the West's graduating class between 2025 and 2041, and that nothing else changes.</p>
+    <div class="kpis" id="kpi-stand"></div>
+    <p class="cap" id="cap-stand"></p>
+  </section>
+
   <!-- ============ Recommendation 1 ============ -->
   <section class="rec" id="rec-1" aria-labelledby="h-rec-1">
     <div class="rec-head">
       <span class="num" aria-hidden="true">1</span>
       <h2 id="h-rec-1">Stop paying for yield with price</h2>
-      <p class="lede">Stop raising aid per entering student by default, and spend new aid only where it is shown to change a student's decision.</p>
-      <p class="strength"><b>How strong is the evidence?</b> Strong that aid rose and yield did not, at Lewis &amp; Clark and at its peers. It is not proof of what yield would have been without the aid.</p>
+      <p class="lede">Stop raising aid per entering student by default, keep aid that meets need apart from aid that cuts the price, and spend new aid only where it is shown to change a student's decision.</p>
+      <p class="strength"><b>How strong is the evidence?</b> Strong that aid rose and yield did not, at Lewis &amp; Clark and at its peers. It is not proof of what yield would have been without the aid, and most of the increase went to students with financial need.</p>
     </div>
     <div class="ev">
       <h3>The evidence</h3>
@@ -217,11 +260,22 @@ html.printing .act > div { padding: 10px 12px; }
         <details class="tv"><summary>View as table</summary><div id="tv-dd"></div></details>
       </section>
     </div>
+    <div class="pool">
+      <h3>What the shrinking pool changes</h3>
+      <div class="kpis" id="kpi-need"></div>
+      <p class="cap" id="cap-need"></p>
+      <ul>
+        <li><b>Aid doubled while the pool was still growing.</b> Aid per entering student went from $22,614 to $50,811 between fall 2015 and fall 2025, the years in which the national graduating class climbed to its peak. Yield did not rise then, and from here each class comes from a smaller pool.</li>
+        <li><b>Every college is discounting more.</b> Among the 258 private colleges in NACUBO's 2025 study, the average first-year discount rate was an estimated 57.1% for 2025-26, up from 48% ten years earlier. A smaller pool adds to that pressure at every college, and a price cut that holds one class would have to be repeated for each smaller class after it.</li>
+        <li><b>The plainest price cut is the merit award to a student without financial need.</b> Its average more than doubled, from $15,836 to $35,287, while list tuition rose 51%. The share of the class receiving one did not grow: 33% in fall 2015 and 27% in fall 2025.</li>
+      </ul>
+    </div>
     <div class="act">
       <div>
         <h3>What to do</h3>
         <ul>
-          <li>Stop raising aid per entering student by default. It has gone up in every year but one since fall 2015.</li>
+          <li>Stop raising aid per entering student by default. It has gone up in every year but one since fall 2015, and a shrinking pool will invite it to go up again.</li>
+          <li>Keep two budgets: grants that meet need, and merit awards to students without need. The second was $5.0M for the fall 2025 class and is the part most plainly spent on price, so it is the first place to stop raising by default.</li>
           <li>Do the student-level study this site describes: yield by aid offer, need and merit for admitted students, from records the college already holds.</li>
           <li>Run new aid as a test. Change an award for a defined group, keep a comparison group, and keep the award only if enrollment responds.</li>
         </ul>
@@ -232,15 +286,17 @@ html.printing .act > div { padding: 10px 12px; }
           <li>Aid per entering student ($50,811 for fall 2025) and the first-year discount (75.1%) stop rising.</li>
           <li>Yield by aid band, reported every fall.</li>
           <li>Four-year net tuition per entering student, which fell from $100,477 for the fall 2015 class to $77,013 for the fall 2022 class, in FY2025 dollars.</li>
+          <li>Merit awards to students without need: how many and how large (142 students at an average of $35,287 for fall 2025).</li>
         </ul>
       </div>
       <div>
         <h3>What the data cannot show</h3>
         <p>Aid is not set at random. It may have kept yield from falling further: applications fell 26% from their fall 2016 peak. Year-by-year totals cannot separate the two; student records with a comparison group can.</p>
         <p>Each of the last four entering classes received more aid than the one before. As they replace earlier classes the overall discount rate can keep rising even if the next class receives no more, so judge the change by the entering class.</p>
+        <p>Whether the students in a smaller pool will need more aid or less. Lewis &amp; Clark's own class has needed more: Pell-eligible students were 16% to 22% of each entering class from fall 2015 to fall 2023, and 32.9% of the fall 2025 class. Nor can public data show what other colleges will offer as their own pools shrink.</p>
       </div>
     </div>
-    <p class="src">Drawn from <a href="../discount-since-2015/">What the Discount Bought</a>, <a href="../net-tuition-peak/">Where Net Tuition Peaks</a>, <a href="../discount-trends/">Discount Rate Trends by School</a>, <a href="../peer-analysis/yield-net-tuition/">Net Tuition and Yield vs. Peers</a>, <a href="../peer-analysis/usnews-net-tuition-yield/">Who Grew Net Tuition and Yield: U.S. News Leaders</a> and <a href="../peer-analysis/endowment/">Endowment Size and Growth</a>.</p>
+    <p class="src">Drawn from <a href="../discount-since-2015/">What the Discount Bought</a>, <a href="../net-tuition-peak/">Where Net Tuition Peaks</a>, <a href="../discount-trends/">Discount Rate Trends by School</a>, <a href="../peer-analysis/yield-net-tuition/">Net Tuition and Yield vs. Peers</a>, <a href="../peer-analysis/usnews-net-tuition-yield/">Who Grew Net Tuition and Yield: U.S. News Leaders</a> and <a href="../peer-analysis/endowment/">Endowment Size and Growth</a>. The split between need-based grants and merit awards is from items H2 and H2A of the Common Data Sets, as on What the Discount Bought. The sector discount rates are from the NACUBO Tuition Discounting Study as reported by Higher Ed Dive in <a href="https://www.highereddive.com/news/tuition-discount-rate-reaches-57-for-private-nonprofits-nacubo-says/821554/">2026</a> and <a href="https://www.highereddive.com/news/tuition-discounting-nacubo-study-private-nonprofits/751410/">2025</a>.</p>
   </section>
 
   <!-- ============ Recommendation 2 ============ -->
@@ -248,8 +304,8 @@ html.printing .act > div { padding: 10px 12px; }
     <div class="rec-head">
       <span class="num" aria-hidden="true">2</span>
       <h2 id="h-rec-2">Admit for fit, not volume</h2>
-      <p class="lede">Size the admit pool to the class, and build the share of students who commit to Lewis &amp; Clark early.</p>
-      <p class="strength"><b>How strong is the evidence?</b> Clear in Lewis &amp; Clark's own counts over 24 years. The smaller admit pool is one year of evidence, and the pattern across peers is loose.</p>
+      <p class="lede">Size the admit pool to the class, build the share of students who commit to Lewis &amp; Clark early, and follow the funnel state by state as the pool shrinks.</p>
+      <p class="strength"><b>How strong is the evidence?</b> Clear in Lewis &amp; Clark's own counts over 24 years. The smaller admit pool is one year of evidence, and the pattern across peers is loose. The projections rest on children already born, but they count graduates, not applicants.</p>
     </div>
     <div class="ev">
       <h3>The evidence</h3>
@@ -286,6 +342,14 @@ html.printing .act > div { padding: 10px 12px; }
       <p class="cap" id="cap-adm"></p>
       <details class="tv"><summary>View as table</summary><div id="tv-adm"></div></details>
     </section>
+    <div class="pool">
+      <h3>What the shrinking pool changes</h3>
+      <ul>
+        <li><b>Volume is the lever a smaller pool takes away.</b> Applications are already 26% below their fall 2016 peak (7,796 to 5,804), a fall that came while the national graduating class was still growing. If applications shrink with the West's graduating class, making the fall 2025 number of offers in 2041 would mean admitting 89% of applicants instead of 71%.</li>
+        <li><b>The class leans more on Oregon, and Oregon is about to shrink.</b> Oregon students were 9% to 12% of U.S. first-year students in every fall from 2015 to 2021, and 22% in fall 2025. Oregon's graduating class is projected to be 8% smaller in 2030 than in 2025 and 22% smaller in 2041, and the ten Oregon and Washington peers recruit from it too.</li>
+        <li><b>What was lost is reach.</b> About 474 first-year students a year came from other states in the fall 2015 to 2019 classes, and about 368 a year in the last two. Among the college's other top home states, California is projected to graduate 28% fewer students in 2041 than in 2025, Colorado 14% fewer and Washington 11% fewer. Texas is about level.</li>
+      </ul>
+    </div>
     <div class="act">
       <div>
         <h3>What to do</h3>
@@ -293,6 +357,7 @@ html.printing .act > div { padding: 10px 12px; }
           <li>Plan the admit pool from the class size and each admitted student's likelihood of enrolling, not from volume. Fall 2025 is consistent with the last several hundred offers adding few students.</li>
           <li>Set a goal for the share of the class that comes through early decision and other firm early commitments, and report it every fall. It has been at most 7% to 15%.</li>
           <li>Treat signs of interest (visits, interviews, contact with faculty) as part of the admission read, and track yield by each.</li>
+          <li>Report applications, offers, yield and enrolled students by home state every fall, and set recruiting effort against each state's projected pool.</li>
         </ul>
       </div>
       <div>
@@ -301,15 +366,17 @@ html.printing .act > div { padding: 10px 12px; }
           <li>Admission offers per enrolled student: 8.0 for fall 2025, against 7.0 at the median peer for fall 2023.</li>
           <li>Early decision admits as a share of the class (at most 14.1% for fall 2025).</li>
           <li>Class size, net tuition per entering student and second-year retention (83.0% for the fall 2024 class), so that yield is not raised simply by shrinking the class.</li>
+          <li>U.S. first-year students from Oregon (22% for fall 2025) and from other states (about 380).</li>
         </ul>
       </div>
       <div>
         <h3>What the data cannot show</h3>
         <p>Yield rises on paper whenever fewer students are admitted. The goal is the class and its net tuition, not the ratio.</p>
         <p>Selective schools are selective because more students want them. The peer pattern shows what demand looks like, not a tactic that creates it. The public data also say nothing about which admitted students were close to enrolling.</p>
+        <p>Why fewer students come from other states: fewer applications, fewer offers or lower yield. Federal data report only the home states of students who enrolled, every other year, and the rest is in the college's records. Whether Lewis &amp; Clark can win students in states where the pool is holding is untested, and every college with a shrinking home market will look to the same places.</p>
       </div>
     </div>
-    <p class="src">Drawn from <a href="../discount-since-2015/">What the Discount Bought</a>, <a href="../spiral-students/">The Spiral and the Students</a> and <a href="../peer-analysis/yield-net-tuition/">Net Tuition and Yield vs. Peers</a>. Early decision counts were read for this page from item C21 of Lewis &amp; Clark's Common Data Sets, 2015-16 to 2025-26.</p>
+    <p class="src">Drawn from <a href="../discount-since-2015/">What the Discount Bought</a>, <a href="../spiral-students/">The Spiral and the Students</a> and <a href="../peer-analysis/yield-net-tuition/">Net Tuition and Yield vs. Peers</a>. Early decision counts were read for this page from item C21 of Lewis &amp; Clark's Common Data Sets, 2015-16 to 2025-26, and the share of U.S. first-year students from out of state from item F1. High school graduate projections are from WICHE, as on <a href="../college-age-demographics/">The Shrinking Pool</a>.</p>
   </section>
 
   <!-- ============ Recommendation 3 ============ -->
@@ -317,7 +384,7 @@ html.printing .act > div { padding: 10px 12px; }
     <div class="rec-head">
       <span class="num" aria-hidden="true">3</span>
       <h2 id="h-rec-3">Lead with what peers cannot match</h2>
-      <p class="lede">Put the law school, the graduate school and the few programs peers lack at the front of the offer, and count who comes for them.</p>
+      <p class="lede">Put the law school, the graduate school and the few programs peers lack at the front of the offer, most of all for students in other states, and count who comes for them.</p>
       <p class="strength"><b>How strong is the evidence?</b> Clear on what peers offer and on where net tuition is growing. There is no public measure of whether prospective students want the rare programs.</p>
     </div>
     <div class="ev">
@@ -350,12 +417,20 @@ html.printing .act > div { padding: 10px 12px; }
       <div class="kpis" id="kpi-net"></div>
       <p class="cap" id="cap-net"></p>
     </section>
+    <div class="pool">
+      <h3>What the shrinking pool changes</h3>
+      <ul>
+        <li><b>The undergraduate college is the part that depends on 18-year-olds.</b> It brought in 60% of Lewis &amp; Clark's net tuition in FY2026. The law and graduate schools enroll older students, and demand for law school is rising: 27.4% more people applied to law schools nationally in the 2026 cycle than two years earlier.</li>
+        <li><b>Programs beyond the bachelor's degree are what colleges built the last time the pool shrank.</b> In the decade after 1981 the number of 18-year-olds fell by a fifth or more. Between 1984 and 1994 the number of four-year colleges offering programs beyond the bachelor's degree grew by 155, and graduate enrollment grew sharply. Lewis &amp; Clark already has both schools.</li>
+        <li><b>A distinctive offer is a reason to come from farther away.</b> The U.S. students Lewis &amp; Clark has lost are from other states: about 474 a year in the fall 2015 to 2019 classes and about 368 a year in the last two, while the number from Oregon nearly doubled. A student in California or Colorado has many colleges nearer home, and most offer the same majors. Forecasts by Nathan Grawe put the pool for colleges ranked outside the U.S. News top 100 about 10% lower and describe a gentler path for more selective colleges. Lewis &amp; Clark is tied at No. 97 among national liberal arts colleges.</li>
+      </ul>
+    </div>
     <div class="act">
       <div>
         <h3>What to do</h3>
         <ul>
-          <li>Choose two or three routes where the law or graduate school adds something an undergraduate college cannot, and make them the first thing a prospective student sees. Law and policy and the environment are the strongest candidates: each joins a minor few peers offer to the law school. Teaching, through the graduate school, is a third.</li>
-          <li>Give each route its own numbers every year: inquiries, applications, admits, yield and students enrolled.</li>
+          <li>Choose two or three routes where the law or graduate school adds something an undergraduate college cannot, and make them the first thing a prospective student sees, above all in other states. Law and policy and the environment are the strongest candidates: each joins a minor few peers offer to the law school. Teaching, through the graduate school, is a third.</li>
+          <li>Give each route its own numbers every year: inquiries, applications, admits, yield and students enrolled, by home state.</li>
           <li>Test demand before adding programs. Rare is not the same as wanted.</li>
         </ul>
       </div>
@@ -365,15 +440,17 @@ html.printing .act > div { padding: 10px 12px; }
           <li>Applications and yield among students who name one of the routes as their interest.</li>
           <li>Students entering the BA and JD, BA and Master of Studies in Law, and BA and Master of Arts in Teaching routes each year.</li>
           <li>Graduates in the programs few peers offer, 3.5% of graduates today for the two rarest majors.</li>
+          <li>First-year students from other states (about 380 for fall 2025), and how many of them name a route.</li>
         </ul>
       </div>
       <div>
         <h3>What the data cannot show</h3>
         <p>Whether admitted students know these routes exist, how many use them, or whether they would choose Lewis &amp; Clark for them. None of that is public.</p>
         <p>Across the 34 schools, how much of Lewis &amp; Clark's catalog a school shares has no reliable relationship with its yield, and neither does its share of graduates in computing, engineering, business and health. A distinctive catalog does not raise yield by existing.</p>
+        <p>Graduate study is not a shelter by itself. In preliminary national counts for fall 2026, master's enrollment fell 3.7% and new international enrollment fell 15%.</p>
       </div>
     </div>
-    <p class="src">Drawn from <a href="../peer-analysis/majors-minors/">Majors and Minors Comparison</a>, <a href="../peer-analysis/degrees-lc/">Degrees and Majors at Lewis &amp; Clark</a>, <a href="../peer-analysis/degrees-peers/">Bachelor's Degrees by Field vs. Peers</a> and <a href="../discount-trends/">Discount Rate Trends by School</a>. The joint degree routes are described on the college's <a href="https://college.lclark.edu/academics/pre_professional/law/bajd-dual-degree-3-3/">BA and JD</a>, <a href="https://college.lclark.edu/offices/admissions/4-5-6/fine-print">4-5-6 Commitment</a> and <a href="https://college.lclark.edu/dean/strategic-enrollment-management/sem-phase-i-initiatives/">enrollment initiatives</a> pages.</p>
+    <p class="src">Drawn from <a href="../peer-analysis/majors-minors/">Majors and Minors Comparison</a>, <a href="../peer-analysis/degrees-lc/">Degrees and Majors at Lewis &amp; Clark</a>, <a href="../peer-analysis/degrees-peers/">Bachelor's Degrees by Field vs. Peers</a> and <a href="../discount-trends/">Discount Rate Trends by School</a>. The joint degree routes are described on the college's <a href="https://college.lclark.edu/academics/pre_professional/law/bajd-dual-degree-3-3/">BA and JD</a>, <a href="https://college.lclark.edu/offices/admissions/4-5-6/fine-print">4-5-6 Commitment</a> and <a href="https://college.lclark.edu/dean/strategic-enrollment-management/sem-phase-i-initiatives/">enrollment initiatives</a> pages. Law school applicant counts are from the <a href="https://www.lsac.org/podcast/keeping-data-september-2026">Law School Admission Council</a>; the account of the 1980s decline is from <a href="https://www.nber.org/books-and-chapters/financing-institutions-higher-education/ebbing-tide-how-will-higher-education-adapt-demographic-change">Vigdor (2024)</a>; the forecasts by selectivity are from <a href="https://www.chronicle.com/article/how-to-navigate-the-demographic-cliff">Grawe (2021)</a>; and the fall 2026 counts are from the <a href="https://nscresearchcenter.org/enrollment-insights/">National Student Clearinghouse</a> and the Institute of International Education, as on <a href="../college-age-demographics/">The Shrinking Pool</a>.</p>
   </section>
 
   <!-- ============ Recommendation 4 ============ -->
@@ -381,7 +458,7 @@ html.printing .act > div { padding: 10px 12px; }
     <div class="rec-head">
       <span class="num" aria-hidden="true">4</span>
       <h2 id="h-rec-4">Turn requirements into promises</h2>
-      <p class="lede">Lewis &amp; Clark asks more of its students than most peers do. Make each requirement come with something students can see they get.</p>
+      <p class="lede">Lewis &amp; Clark asks more of its students than most peers do, and more of its class now comes from Oregon, where every regional peer asks less. Make each requirement come with something students can see they get.</p>
       <p class="strength"><b>How strong is the evidence?</b> Clear on what each school requires. Across peers there is no sign that requirements move yield in either direction, so this is about how the requirements are presented, not whether to keep them.</p>
     </div>
     <div class="ev">
@@ -419,13 +496,21 @@ html.printing .act > div { padding: 10px 12px; }
         <details class="tv"><summary>View as table</summary><div id="tv-res"></div></details>
       </section>
     </div>
+    <div class="pool">
+      <h3>What the shrinking pool changes</h3>
+      <ul>
+        <li><b>More of the class can compare the rules directly.</b> Oregon students are 22% of U.S. first-year students, up from 9% to 12% through fall 2021, and all ten Oregon and Washington peers require four semesters on campus to Lewis &amp; Clark's six. As Oregon's graduating class shrinks, those peers will be recruiting the same smaller group.</li>
+        <li><b>More of the class will feel the cost.</b> A third of the fall 2025 class is eligible for a Pell grant (32.9%). The share was between 16% and 22% in every class from fall 2015 to fall 2023. A third required year in college housing is a cost a family can price, so the promise has to include the price and what aid covers.</li>
+        <li><b>More families are new to this.</b> First-generation students averaged 15% of the fall 2015 to 2019 classes and were 22.4% of the fall 2025 class. One rule, stated the same way everywhere, matters more when fewer families have been through college admission before.</li>
+      </ul>
+    </div>
     <div class="act">
       <div>
         <h3>What to do</h3>
         <ul>
           <li>Present the language requirement as preparation for overseas study, and pair it with a stated commitment: a place on an overseas program for every student who wants one.</li>
-          <li>Say what the third year on campus includes (a guaranteed room, its price, the housing open to juniors) before students apply. Every Oregon and Washington peer asks for one year less.</li>
-          <li>Correct the catalog, the Campus Living page and the housing agreement so admitted students read one rule, and publish every way to meet or test out of the language requirement.</li>
+          <li>Say what the third year on campus includes (a guaranteed room, its price, the housing open to juniors, and what aid covers) before students apply. Every Oregon and Washington peer asks for one year less.</li>
+          <li>Correct the catalog, the Campus Living page and the housing agreement so admitted students read one rule, and publish every way to meet or test out of the language requirement, including for students who already speak a second language.</li>
         </ul>
       </div>
       <div>
@@ -434,18 +519,20 @@ html.printing .act > div { padding: 10px 12px; }
           <li>Yield among admitted students from Oregon and Washington, where the residency rule can be set directly against every regional peer.</li>
           <li>The reasons admitted students give for enrolling elsewhere, from a survey of admitted students.</li>
           <li>The share of undergraduates in college housing (69% in fall 2025) and the share who study overseas.</li>
+          <li>Yield among Pell-eligible and first-generation admitted students, from the college's records.</li>
         </ul>
       </div>
       <div>
         <h3>What the data cannot show</h3>
         <p>How admitted students weigh either requirement. The peer comparison shows only that heavy requirements and high yield can go together.</p>
         <p>The six-semester rule is new, so no class has yet enrolled under it. What a third required year of housing costs families, and whether the college can place every student who wants to go overseas, are not in this analysis.</p>
+        <p>Whether a third required year changes the decision for Oregon students or for families with financial need. Both are a growing share of the class.</p>
       </div>
     </div>
-    <p class="src">Drawn from <a href="../peer-analysis/language-requirements/">Peer Foreign Language Requirements</a> and <a href="../peer-analysis/residency-requirements/">Peer On-Campus Residency Requirements</a>. The housing share was read for this page from item F1 of the Common Data Set; the overseas share is from the college's <a href="https://lclark.edu/offices/communications/we-can-help/statistic-profiles">statistics page</a>.</p>
+    <p class="src">Drawn from <a href="../peer-analysis/language-requirements/">Peer Foreign Language Requirements</a> and <a href="../peer-analysis/residency-requirements/">Peer On-Campus Residency Requirements</a>. The housing share was read for this page from item F1 of the Common Data Set; the overseas share is from the college's <a href="https://lclark.edu/offices/communications/we-can-help/statistic-profiles">statistics page</a>. First-generation and Pell-eligible shares are from the <a href="https://www.lclark.edu/live/files/37566-ay-25-26-cas-trends-">CAS Trends factbook</a> and the college's <a href="https://www.lclark.edu/live/news/57101-class-of-2029-stats">Class of 2029</a> page.</p>
   </section>
 
-  <h2 class="band-h" id="scorecard">Nine numbers to report every fall</h2>
+  <h2 class="band-h" id="scorecard">Twelve numbers to report every fall</h2>
   <p class="band-p">The measures named above, with where each stands today. The last row is the gap: the records that would show which recommendation is working are held by the college and are not public.</p>
   <section class="card" aria-labelledby="scorecard">
     <div class="tbox" style="max-height:none">
@@ -456,12 +543,15 @@ html.printing .act > div { padding: 10px 12px; }
           <tr><td>Aid per entering student</td><td>$50,811, fall 2025</td><td class="r">$22,614 in fall 2015</td><td class="n">1</td></tr>
           <tr><td>Undergraduate discount rate</td><td>63.1%, FY2026</td><td class="r">58.0% in FY2024</td><td class="n">1</td></tr>
           <tr><td>Undergraduate net tuition</td><td>$49.8M, FY2026</td><td class="r">$57.1M in FY2024</td><td class="n">1</td></tr>
+          <tr><td>Merit awards to students without need</td><td>$35,287 average, to 27% of the class, fall 2025</td><td class="r">$15,836 average, to 33% of the class, in fall 2015</td><td class="n">1</td></tr>
           <tr><td>Admission offers per enrolled student</td><td>8.0, fall 2025</td><td class="r">4.7 in fall 2001; 7.0 at the median peer, fall 2023</td><td class="n">2</td></tr>
           <tr><td>Early decision admits as a share of the class</td><td>At most 14.1%, fall 2025</td><td class="r">Between 6.9% and 14.5% since fall 2015</td><td class="n">2</td></tr>
+          <tr><td>U.S. first-year students from Oregon</td><td>22%, fall 2025</td><td class="r">9% to 12% from fall 2015 to fall 2021; Oregon's graduating class is projected to be 22% smaller in 2041 than in 2025</td><td class="n">2, 4</td></tr>
+          <tr><td>First-year students from other states</td><td>About 380, fall 2025</td><td class="r">About 474 a year in the fall 2015 to 2019 classes</td><td class="n">2, 3</td></tr>
           <tr><td>Graduates in the two majors fewest peers offer</td><td>3.5%, 2020 to 2024</td><td class="r">60% in majors that 30 or more peers offer</td><td class="n">3</td></tr>
           <tr><td>Net tuition at the law and graduate schools</td><td>$33.6M, FY2026</td><td class="r">$31.3M in FY2024</td><td class="n">3</td></tr>
           <tr><td>Undergraduates living in college housing</td><td>69%, fall 2025</td><td class="r">66% to 71% since fall 2015, apart from 55% in fall 2020</td><td class="n">4</td></tr>
-          <tr><td>Not public</td><td colspan="2">Yield by aid offer, by intended program and by home state; students entering each joint degree route; reasons admitted students enroll elsewhere</td><td class="n">All</td></tr>
+          <tr><td>Not public</td><td colspan="2">Applications, offers and yield by home state; yield by aid offer and by intended program; students entering each joint degree route; reasons admitted students enroll elsewhere</td><td class="n">All</td></tr>
         </tbody>
       </table>
     </div>
@@ -469,7 +559,7 @@ html.printing .act > div { padding: 10px 12px; }
 
   <section class="card need" aria-labelledby="h-need">
     <h3 id="h-need">What all four depend on</h3>
-    <p>Each recommendation is a reading of public totals: classes, schools and years. None of them can say which students respond to what. The college already holds the records that can: who applied, who was admitted, what each was offered, who visited, who enrolled and who stayed. The most useful step is to analyze those records by student and to try each change on a part of the class before applying it to the whole.</p>
+    <p>Each recommendation is a reading of public totals: classes, schools and years. None of them can say which students respond to what. The college already holds the records that can: who applied, who was admitted, what each was offered, who visited, who enrolled and who stayed. The most useful step is to analyze those records by student and to try each change on a part of the class before applying it to the whole. The shrinking pool sets the pace: the West's graduating class is projected to be 6% smaller in 2030 than in 2025 and 20% smaller in 2041, so the next five entering classes are the time to learn what works.</p>
   </section>
 
   <section class="card groups-card" id="peer-groups" aria-labelledby="h-peer-groups" style="margin-top:16px">
@@ -482,7 +572,8 @@ html.printing .act > div { padding: 10px 12px; }
     </dl>
   </section>
 
-  <p class="data-link"><a href="lc_entering_classes.csv" download>Lewis &amp; Clark entering classes (CSV) →</a><span>One row per fall: applicants, offers, enrolled, aid and price after aid, early decision counts and the housing share, with the source of each.</span></p>
+  <p class="data-link"><a href="lc_entering_classes.csv" download>Lewis &amp; Clark entering classes (CSV) →</a><span>One row per fall: applicants, offers, enrolled, aid and price after aid, early decision counts, the housing share, where first-year students come from, and Pell-eligible and first-generation shares, with the source of each.</span></p>
+  <p class="data-link" style="margin-top:6px"><a href="pool_projections.csv" download>High school graduate projections (CSV) →</a><span>One row per place: projected graduates for the classes of 2023 to 2041 in Lewis &amp; Clark's top five home states, the West and the United States, from WICHE.</span></p>
   <p class="data-link" style="margin-top:6px"><a href="peer_factors.csv" download>Peer measures (CSV) →</a><span>One row per school: yield, admit rate, discount rate, requirements, majors shared and field mix.</span></p>
   <p class="data-link" style="margin-top:6px"><a href="lc_programs_vs_peers.csv" download>Lewis &amp; Clark programs against peers (CSV) →</a><span>One row per major and minor: how many peers offer it, and for majors the share of graduates.</span></p>
   <p class="data-link" style="margin-top:6px"><a href="college_operations.csv" download>College-wide operations (CSV) →</a><span>One row per fiscal year: net tuition, endowment earnings used for operations and the operating result, from the audited statements.</span></p>
@@ -493,6 +584,7 @@ html.printing .act > div { padding: 10px 12px; }
       <h3>What this page is</h3>
       <p>A reading of the public data collected on this site, with a small number of figures added from the same public sources. It is not a statement by Lewis &amp; Clark College, and it is not a forecast. The recommendations are hypotheses to test, in the same spirit as the cautions on <a href="../discount-since-2015/">What the Discount Bought</a>.</p>
       <p>Every figure is a published number or is computed directly from published numbers. Where one rests on an assumption, the sentence says so.</p>
+      <p>Revised November 20, 2026 to add the projected decline in high school graduates, where the entering class comes from, and what the shrinking pool changes for each recommendation.</p>
     </div>
     <div>
       <h3>Where the figures come from</h3>
@@ -502,6 +594,8 @@ html.printing .act > div { padding: 10px 12px; }
         <li><b>College-wide operations:</b> the statements of activities and the endowment note (note 10) of the audited statements for FY2024 to FY2026. The link for each year is in the operations CSV.</li>
         <li><b>Peers:</b> IPEDS finance and admissions surveys for all 34 schools, as on <a href="../peer-analysis/yield-net-tuition/">Net Tuition and Yield vs. Peers</a>. FY2024 is the fall 2023 entering class, and discount rates and net tuition are college-wide.</li>
         <li><b>Programs and requirements:</b> each school's catalog and housing policy, as on the <a href="../peer-analysis/">Peer Analysis</a> pages. Graduates by major are IPEDS Completions, 2020 to 2024, by first major.</li>
+        <li><b>The pool:</b> projected high school graduates from WICHE, <a href="https://www.wiche.edu/wp-content/uploads/2024/12/2024-Knocking-at-the-College-Door-final.pdf">Knocking at the College Door</a>, 11th edition (December 2024), tables 4, 5 and 9, as on <a href="../college-age-demographics/">The Shrinking Pool</a>. Changes on this page are measured from the class of 2025. The top five home states are from the college's <a href="https://www.lclark.edu/live/news/57101-class-of-2029-stats">Class of 2029</a> page. The fall 2026 count of 18-year-old undergraduates is from the <a href="https://nscresearchcenter.org/enrollment-insights/">National Student Clearinghouse</a>.</li>
+        <li><b>Where the class comes from, and its need:</b> the share of U.S. first-year students from out of state (item F1) and first-year students by race, ethnicity and citizenship (item B2) from the Common Data Sets; first-generation and Pell-eligible students from the <a href="https://www.lclark.edu/live/files/37566-ay-25-26-cas-trends-">CAS Trends factbook</a> of October 2025 and, for fall 2025, the Class of 2029 page; need-based grants and merit awards (items H2 and H2A) as on <a href="../discount-since-2015/">What the Discount Bought</a>. The link for each year is in the entering classes CSV.</li>
         <li><b>Added for this page:</b> early decision applications and admits (item C21) and the share of undergraduates in college housing (item F1) from Lewis &amp; Clark's <a href="https://www.lclark.edu/offices/institutional_research/common_data_set/archived/archived_cds.php">Common Data Sets</a>, 2015-16 to 2025-26, read November 20, 2026. The link for each year is in the entering classes CSV.</li>
       </ul>
     </div>
@@ -513,6 +607,9 @@ html.printing .act > div { padding: 10px 12px; }
         <li>Language and residency requirements are today's rules, set against fall 2023 yield. Six schools, Lewis &amp; Clark among them, have changed their residency rule since 2023.</li>
         <li>Peer discount rates include graduate and law tuition where a school has them. Lewis &amp; Clark's undergraduate rate (63.1% in FY2026) is higher than its college-wide rate (55.0%). On the undergraduate-only basis that nine Group 1 audits allow, its FY2025 rate of 60.6% was higher than six of the nine (see <a href="../peer-analysis/tuition-discounting/">Undergraduate Tuition Discounting</a>).</li>
         <li>The early decision and housing figures were read from the Common Data Set files by an automated reader. In most editions the numbers print apart from their labels and were matched by the form's fixed order; the applicant, admit and enrolled totals in the same files match this site's figures in every year. The fall 2024 and fall 2025 editions both print 98 early decision applications.</li>
+        <li>The pool figures are projections of high school graduates, not of applicants. A selective private college may see a smaller change: WICHE projects private high school graduates in the West to be about level, and Grawe's forecasts describe a gentler path for more selective colleges. The standing-still figures assume applications move with the number of graduates. The national counts for fall 2026 are preliminary.</li>
+        <li>Oregon and other-state counts are worked out from a percentage published to the nearest whole number, and are good to within a few students. The out-of-state share was read from the same files, by the same automated reader, as the housing share, and each edition's housing figure matched the one already on this site. The 2018-19 edition prints 80% out of state for all undergraduates, well below the years on either side; the first-year figure used here is 89%.</li>
+        <li>The account of how colleges adapted to the decline of the 1980s is from one study. The national race and ethnicity projections count public high school graduates only.</li>
       </ul>
     </div>
   </div>
@@ -530,7 +627,7 @@ html.printing .act > div { padding: 10px 12px; }
   const usdM = (v) => "$" + f1(v / 1e6) + "M";
   const ord = (n) => n + (["th", "st", "nd", "rd"][(n % 100 - 20) % 10] || ["th", "st", "nd", "rd"][n % 100] || "th");
   const state = { hl: "", mono: false };
-  let LC = [], SCH = [], PROG = [], NET = [], OPS = [];
+  let LC = [], SCH = [], PROG = [], NET = [], OPS = [], POOL = [], AID = [], COH = [];
   const isLC = (d) => d.key === "lewis-clark";
   const isHL = (d) => !isLC(d) && !!state.hl && (state.hl === "ow" ? d.ow : d.grp === state.hl);
   const hlName = () => (state.hl === "ow" ? "Oregon and Washington peers" : state.hl + " peers");
@@ -682,7 +779,8 @@ html.printing .act > div { padding: 10px 12px; }
     const rk = (f) => 1 + SCH.filter((d) => f(d) > f(lc)).length;
     const g1 = peers.filter((d) => d.grp === "Group 1");
     const und = NET.filter((d) => d.program === "Undergraduate").sort((p, q) => p.fy - q.fy), uz = und[und.length - 1];
-    $("find").textContent = `Since ${a.fall} Lewis & Clark has more than doubled its admission offers, and since ${b.fall} it has more than doubled aid per entering student. The entering class is still about 500 students, and yield has fallen from ${pct(a.yield)} to ${pct(z.yield)}.`;
+    const west = POOL.find((d) => d.place === "West"), oo = origins(), o1 = oo[oo.length - 1], oe = earlyOregon(oo);
+    $("find").textContent = `Since ${a.fall} Lewis & Clark has more than doubled its admission offers, and since ${b.fall} it has more than doubled aid per entering student. The entering class is still about 500 students, and yield has fallen from ${pct(a.yield)} to ${pct(z.yield)}. The pool it recruits from has now turned: the West is projected to graduate ${f0(-west.c41)}% fewer high school students in 2041 than in 2025.`;
     $("k-yield").textContent = pct(z.yield);
     $("k-yield-l").textContent = `Yield, fall ${z.fall} class: ${f0(z.enrolled)} enrolled of ${f0(z.admits)} admitted`;
     const r24 = rk((d) => d.y24), r25 = rk((d) => d.y25);
@@ -693,6 +791,10 @@ html.printing .act > div { padding: 10px 12px; }
     $("k-disc").textContent = pct(uz.disc);
     $("k-disc-l").textContent = `Undergraduate discount rate, FY${uz.fy} (${pct(und[0].disc)} in FY${und[0].fy})`;
     $("k-cov").textContent = pct(d3.median(g1, (d) => d.cov), 0);
+    $("k-or").textContent = pct(100 - o1.oos, 0);
+    $("k-or-l").textContent = `Of U.S. first-year students, the share from Oregon, fall ${o1.fall} (${oe.lo}% to ${oe.hi}% from fall ${oe.from} to fall ${oe.to})`;
+    $("k-west").textContent = sgn(west.c41, 0) + "%";
+    $("k-west-l").textContent = `High school graduates in the West, class of 2025 to class of 2041 (${sgn(west.c30, 0)}% by 2030)`;
   }
 
   // ---------- where yield stands ----------
@@ -1050,15 +1152,100 @@ html.printing .act > div { padding: 10px 12px; }
     });
   }
 
-  const peerCharts = () => { peerKeys(); yieldStrip(); ddChart(); admChart(); langChart(); resChart(); };
-  const allCharts = () => { headline(); peerCharts(); trackBars(); opsTiles(); indexChart(); funnelChart(); edChart(); progChart(); netTiles(); };
+  // ---------- the pool ahead ----------
+  const place = (p) => POOL.find((d) => d.place === p);
+  function poolChart() {
+    const host = $("c-pool"); host.replaceChildren();
+    const rows = POOL.slice().sort((a, b) => a.c41 - b.c41);
+    const W = Math.max(280, host.clientWidth || 600), narrow = W < 460, rowH = 40;
+    const m = { t: 24, r: 52, b: 6, l: narrow ? 92 : 112 }, H = m.t + rows.length * rowH + m.b;
+    const svg = d3.select(host).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const x = d3.scaleLinear([narrow ? -41 : -36, 4], [m.l, W - m.r]);
+    [-30, -20, -10, 0].forEach((t) => {
+      svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", m.t - 4).attr("y2", H - m.b).attr("stroke", t === 0 ? "var(--muted)" : "var(--grid)");
+      svg.append("text").attr("class", "ax").attr("x", x(t)).attr("y", 11).attr("text-anchor", "middle").text(t === 0 ? "0" : sgn(t, 0) + "%");
+    });
+    const tip = tipFor(host);
+    rows.forEach((d, i) => {
+      const top = m.t + i * rowH, y = top + rowH / 2, a = x(d.c30), b = x(d.c41), lo = Math.min(a, b), hi = Math.max(a, b);
+      svg.append("text").attr("class", d.kind === "state" ? "dl b" : "dl").attr("x", 0).attr("y", y + 4).text(narrow && d.place === "United States" ? "U.S." : d.place);
+      svg.append("line").attr("x1", lo).attr("x2", hi).attr("y1", y).attr("y2", y).attr("stroke", "var(--dot)").attr("stroke-width", 2);
+      // Hollow for 2030 and filled for 2041, so the two read apart without color.
+      svg.append("circle").attr("cx", a).attr("cy", y).attr("r", 5).attr("fill", "var(--panel)").attr("stroke", "var(--aid)").attr("stroke-width", 2.5);
+      svg.append("circle").attr("cx", b).attr("cy", y).attr("r", 6.5).attr("fill", "var(--gross)").attr("stroke", "var(--panel)").attr("stroke-width", 2);
+      svg.append("text").attr("class", "val halo").attr("x", lo - 11).attr("y", y + 4).attr("text-anchor", "end").text(sgn(a < b ? d.c30 : d.c41) + "%");
+      svg.append("text").attr("class", "val halo").attr("x", hi + 11).attr("y", y + 4).text(sgn(a < b ? d.c41 : d.c30) + "%");
+      svg.append("rect").attr("x", 0).attr("y", top).attr("width", W).attr("height", rowH).attr("fill", "transparent")
+        .on("pointermove pointerdown", (ev) => tip.show(ev, [[d.place, "t"], [d.kind === "state" ? "A top five home state of the fall 2025 class" : d.kind === "region" ? "The West, as WICHE defines it" : "All states", "h"],
+          { label: "Class of 2025", value: f0(d.g25) }, { label: "Class of 2030", value: f0(d.g30) + " (" + sgn(d.c30) + "%)" }, { label: "Class of 2041", value: f0(d.g41) + " (" + sgn(d.c41) + "%)" }]))
+        .on("pointerleave", () => tip.hide());
+    });
+    const west = place("West"), us = place("United States"), ca = place("California"), ore = place("Oregon"), wa = place("Washington"), co = place("Colorado"), tx = place("Texas");
+    $("cap-pool").textContent = `The West is projected to graduate ${f1(-west.c30)}% fewer students in 2030 than in 2025 and ${f1(-west.c41)}% fewer in 2041, a drop of ${f0(west.g25 - west.g41)} graduates a year. California, first on the college's list, falls ${f1(-ca.c41)}% and Oregon ${f1(-ore.c41)}%. Colorado falls ${f1(-co.c41)}% and Washington ${f1(-wa.c41)}%, and Texas ends about where it started (${sgn(tx.c41)}%). The nation as a whole falls ${f1(-us.c41)}%.`;
+    tableView("tv-pool", [{ h: "Place", v: (d) => d.place }, { h: "Class of 2025", n: 1, v: (d) => f0(d.g25) }, { h: "Class of 2030", n: 1, v: (d) => f0(d.g30) }, { h: "Class of 2035", n: 1, v: (d) => f0(d.g35) }, { h: "Class of 2041", n: 1, v: (d) => f0(d.g41) }, { h: "Change by 2030", n: 1, v: (d) => sgn(d.c30) + "%" }, { h: "Change by 2041", n: 1, v: (d) => sgn(d.c41) + "%" }], rows);
+  }
+  // Oregon and other-state counts come from a whole-number percentage of U.S. first-year students, so they are approximate.
+  const origins = () => LC.filter((d) => !isNaN(d.oos)).map((d) => { const us = d.enrolled - d.intl, other = Math.round(us * d.oos / 100); return { ...d, us, other, oregon: us - other }; });
+  // The run of early years before Oregon's share of U.S. first-year students began to climb.
+  const earlyOregon = (rows) => { const cut = rows.findIndex((d) => 100 - d.oos >= 14), e = rows.slice(0, cut > 0 ? cut : rows.length); return { lo: d3.min(e, (d) => 100 - d.oos), hi: d3.max(e, (d) => 100 - d.oos), from: e[0].fall, to: e[e.length - 1].fall }; };
+  function originChart() {
+    const rows = origins(), a = rows[0], z = rows[rows.length - 1], sh = (d) => 100 - d.oos;
+    lineChart($("c-origin"), {
+      rows, x: (d) => d.fall, yDom: [0, 650], yFmt: (t) => f0(t), ml: 40, mr: 44, H: 310, dots: true,
+      xFmt: (v, n) => (n ? "’" + String(v).slice(2) : v), tickEvery: () => 2,
+      series: [
+        { color: "var(--aid)", v: (d) => d.other, end: (v) => f0(v), short: "others" },
+        { color: "var(--gross)", v: (d) => d.oregon, end: (v) => f0(v), short: "Oregon" },
+        { color: "var(--net)", v: (d) => d.intl, end: (v) => f0(v), short: "non-U.S." }
+      ],
+      tip: (d) => [["Fall " + d.fall + " entering class", "t"], [f0(d.enrolled) + " students enrolled", "h"],
+        { color: "var(--aid)", label: "Other U.S. states, about", value: f0(d.other) }, { color: "var(--gross)", label: "Oregon, about", value: f0(d.oregon) }, { color: "var(--net)", label: "Outside the U.S.", value: f0(d.intl) },
+        { label: "U.S. students from Oregon", value: pct(sh(d), 0) }]
+    });
+    // Averages over several classes, because single years swing with the size of the class.
+    const first = rows.slice(0, 5), last = rows.slice(-2), oe = earlyOregon(rows), mean = (rs, f) => f0(d3.mean(rs, f));
+    $("cap-origin").textContent = `In the fall ${first[0].fall} to fall ${first[first.length - 1].fall} classes about ${mean(first, (d) => d.other)} first-year students a year came from other states and about ${mean(first, (d) => d.oregon)} from Oregon. In the last two classes about ${mean(last, (d) => d.other)} a year came from other states and about ${mean(last, (d) => d.oregon)} from Oregon. Oregon's share of U.S. first-year students was between ${oe.lo}% and ${oe.hi}% in every fall from ${oe.from} to ${oe.to} and reached ${pct(sh(z), 0)} in fall ${z.fall}. Between ${f0(d3.min(rows, (d) => d.intl))} and ${f0(d3.max(rows, (d) => d.intl))} students a year came from outside the U.S., ${f0(z.intl)} of them in fall ${z.fall}.`;
+    tableView("tv-origin", [{ h: "Fall", v: (d) => d.fall }, { h: "Entering class", n: 1, v: (d) => f0(d.enrolled) }, { h: "From outside the U.S.", n: 1, v: (d) => f0(d.intl) }, { h: "U.S. students from out of state, as published", n: 1, v: (d) => pct(d.oos, 0) }, { h: "Other U.S. states, about", n: 1, v: (d) => f0(d.other) }, { h: "Oregon, about", n: 1, v: (d) => f0(d.oregon) }], rows);
+    const soc = (d) => 100 * d.soc / (d.cohort - d.intl), upto = (y) => rows.filter((d) => d.fall <= y), span = (rs, f) => `${f0(d3.min(rs, f))}% to ${f0(d3.max(rs, f))}%`;
+    $("cap-mix").textContent = `The makeup of the class is moving the same way as the pool. Nationally, WICHE projects 26% fewer White public high school graduates in 2041 than in 2023, 16% more Hispanic graduates and 68% more multiracial graduates. At Lewis & Clark, students of color were ${span(upto(2022), soc)} of U.S. first-year students in every fall from ${a.fall} to 2022 and ${pct(soc(z))} in fall ${z.fall}. Pell-eligible students were ${span(upto(2023), (d) => d.pell)} of each class through fall 2023 and ${pct(z.pell)} in fall ${z.fall}. First-generation students averaged ${f0(d3.sum(first, (d) => d.fg * d.cohort) / d3.sum(first, (d) => d.cohort))}% of the fall ${first[0].fall} to fall ${first[first.length - 1].fall} classes and were ${pct(z.fg)} of the fall ${z.fall} class.`;
+  }
+  function standTiles() {
+    const box = $("kpi-stand"); box.replaceChildren();
+    const z = LC[LC.length - 1], west = place("West"), us = place("United States"), r41 = west.g41 / west.g25, r30 = west.g30 / west.g25, u41 = us.g41 / us.g25;
+    const cls = (r) => Math.round(z.enrolled * r), need = (r) => z.yield / r, lost = z.enrolled - cls(r41);
+    const since = (y) => { const hit = LC.filter((d) => d.fall < z.fall && d.yield >= y); return hit.length ? hit[hit.length - 1].fall : null; };
+    const admit = 100 * z.admits / z.applicants, admitNeed = 100 * z.admits / (z.applicants * r41), s41 = since(need(r41)), cv = COH.filter((d) => !isNaN(d.v4)).pop();
+    kpi(box, "Entering class in 2041 at today's yield", f0(cls(r41)), "▼ " + f0(lost) + " fewer", "than the " + f0(z.enrolled) + " of fall " + z.fall);
+    kpi(box, "Yield needed to keep the class at " + f0(z.enrolled), pct(need(r41)), "▲ " + sgn(need(r41) - z.yield) + " points", "from " + pct(z.yield) + (s41 ? "; last reached in fall " + s41 : ""));
+    kpi(box, "Admit rate needed to keep making " + f0(z.admits) + " offers", pct(admitNeed, 0), "▲ " + sgn(admitNeed - admit, 0) + " points", "from " + pct(admit, 0) + " in fall " + z.fall);
+    $("cap-stand").textContent = `The West's graduating class is projected to be ${f1(100 * (1 - r41))}% smaller in 2041 than in 2025. By 2030 the same arithmetic gives a class of ${f0(cls(r30))}, or a yield of ${pct(need(r30))} to hold it at ${f0(z.enrolled)}. If Lewis & Clark's pool shrank only as much as the nation's (${f1(100 * (1 - u41))}% by 2041), the class would be ${f0(cls(u41))} and the yield needed ${pct(need(u41))}. ` +
+      (cv ? `Each student who entered in fall ${cv.fall} was worth ${usd(cv.v4)} of net tuition over four years, in FY2025 dollars. At that figure ${f0(lost)} fewer students is ${usdM(lost * cv.v4)} less from each entering class.` : "");
+  }
+  function needTiles() {
+    const box = $("kpi-need"); box.replaceChildren();
+    const a = AID[0], z = AID[AID.length - 1], lz = LC.find((d) => d.fall === z.fall);
+    const ns = (d) => 100 * d.needN / d.enrolled, nb = (d) => d.needN * d.needAvg / d.enrolled, mb = (d) => d.meritN * d.meritAvg / d.enrolled;
+    const rise = nb(z) + mb(z) - nb(a) - mb(a), share = 100 * (nb(z) - nb(a)) / rise;
+    kpi(box, "First-year students with a need-based grant", pct(ns(z)), "▲ " + sgn(ns(z) - ns(a)) + " points", "from " + pct(ns(a)) + " in fall " + a.fall);
+    const pl = LC.filter((d) => !isNaN(d.pell)), prev = pl[pl.length - 2], before = pl.filter((d) => d.fall <= 2023);
+    kpi(box, "Pell-eligible first-year students", pct(lz.pell), "▲ " + sgn(lz.pell - prev.pell) + " points", "from fall " + prev.fall + "; " + f0(d3.min(before, (d) => d.pell)) + "% to " + f0(d3.max(before, (d) => d.pell)) + "% of each class through fall 2023");
+    const ms = (d) => 100 * d.meritN / d.enrolled;
+    kpi(box, "Merit award to a student without need", usd(z.meritAvg), "▲ " + sgn(100 * (z.meritAvg / a.meritAvg - 1), 0) + "%", "from " + usd(a.meritAvg) + " in fall " + a.fall + "; given to " + pct(ms(z), 0) + " of the class, " + pct(ms(a), 0) + " then");
+    $("cap-need").textContent = `Of the ${usd(rise)} rise in aid per entering student between fall ${a.fall} and fall ${z.fall}, ${pct(share, 0)} was need-based grants, and the students receiving them made up ${pct(ns(z), 0)} of the class instead of ${pct(ns(a), 0)}. The other ${pct(100 - share, 0)} was merit aid to students without financial need: ${f0(z.meritN)} students and ${usdM(z.meritN * z.meritAvg)} for fall ${z.fall}.`;
+  }
 
-  Promise.all([d3.csv("lc_entering_classes.csv"), d3.csv("peer_factors.csv"), d3.csv("lc_programs_vs_peers.csv"), d3.csv("../data/discount_by_program.csv"), d3.csv("college_operations.csv")]).then(([lc, sch, prog, net, ops]) => {
-    LC = lc.map((r) => ({ fall: +r.fall_term, applicants: num(r.applicants), admits: +r.admits, enrolled: +r.enrolled, yield: 100 * r.enrolled / r.admits, aid: num(r.grant_aid_per_entrant_usd), netprice: num(r.net_price_fy2025_usd), fydisc: num(r.first_year_discount_pct), edApps: num(r.ed_applications), edAdmits: num(r.ed_admits), edShare: num(r.ed_admits_share_of_class_pct), housing: num(r.pct_undergraduates_in_college_housing) })).sort((a, b) => a.fall - b.fall);
+  const peerCharts = () => { peerKeys(); yieldStrip(); ddChart(); admChart(); langChart(); resChart(); };
+  const allCharts = () => { headline(); peerCharts(); trackBars(); opsTiles(); poolChart(); originChart(); standTiles(); indexChart(); funnelChart(); edChart(); needTiles(); progChart(); netTiles(); };
+
+  Promise.all([d3.csv("lc_entering_classes.csv"), d3.csv("peer_factors.csv"), d3.csv("lc_programs_vs_peers.csv"), d3.csv("../data/discount_by_program.csv"), d3.csv("college_operations.csv"), d3.csv("pool_projections.csv"), d3.csv("../data/first_year_aid.csv"), d3.csv("../data/cohort_value.csv")]).then(([lc, sch, prog, net, ops, pool, aid, coh]) => {
+    LC = lc.map((r) => ({ fall: +r.fall_term, applicants: num(r.applicants), admits: +r.admits, enrolled: +r.enrolled, yield: 100 * r.enrolled / r.admits, aid: num(r.grant_aid_per_entrant_usd), netprice: num(r.net_price_fy2025_usd), fydisc: num(r.first_year_discount_pct), edApps: num(r.ed_applications), edAdmits: num(r.ed_admits), edShare: num(r.ed_admits_share_of_class_pct), housing: num(r.pct_undergraduates_in_college_housing), oos: num(r.pct_us_first_years_from_out_of_state), intl: num(r.international_first_years), soc: num(r.students_of_color_us_first_years), cohort: num(r.class_profile_cohort), pell: num(r.pell_eligible_first_years_pct), fg: num(r.first_generation_first_years_pct) })).sort((a, b) => a.fall - b.fall);
     SCH = sch.map((r) => ({ key: r.key, name: r.key === "lewis-clark" ? "Lewis & Clark" : r.institution, short: r.short, grp: r.peer_group, ow: r.oregon_washington === "yes", y19: num(r.yield_fy2019_pct), y24: num(r.yield_fy2024_pct), y25: num(r.yield_fall2024_pct), dy: num(r.yield_change_fy2019_fy2024_pts), adm: num(r.admit_rate_fy2024_pct), disc19: num(r.discount_fy2019_pct), disc24: num(r.discount_fy2024_pct), dd: num(r.discount_change_fy2019_fy2024_pts), netchg: num(r.net_tuition_real_change_fy2019_fy2024_pct), lang: num(r.language_semesters), langWho: r.language_applies_to, res: num(r.residency_semesters), cov: num(r.lc_majors_coverage_pct), career: num(r.career_field_share_2020_2024_pct), eps: num(r.endowment_per_student_usd) }));
     PROG = prog.map((r) => ({ level: r.level, program: r.program, all: +r.peers_offering_all, g1: +r.group_1_offering, grads: num(r.graduates_per_year_2020_2024), share: num(r.share_of_graduates_2020_2024_pct), share0: num(r.share_of_graduates_2005_2009_pct), note: r.note }));
     NET = net.map((r) => ({ program: r.program, fy: +r.fiscal_year, net: +r.net_tuition_fees_usd, disc: +r.discount_rate_pct }));
     OPS = ops.map((r) => ({ fy: +r.fiscal_year, net: +r.net_tuition_fees_usd, draw: +r.endowment_earnings_allocated_for_operations_usd, op: +r.operating_result_usd })).sort((a, b) => a.fy - b.fy);
+    POOL = pool.map((r) => ({ place: r.place, kind: r.kind, g25: +r.graduates_2025, g30: +r.graduates_2030, g35: +r.graduates_2035, g41: +r.graduates_2041 })).map((d) => ({ ...d, c30: 100 * (d.g30 / d.g25 - 1), c41: 100 * (d.g41 / d.g25 - 1) }));
+    AID = aid.map((r) => ({ fall: +r.fall_term, enrolled: +r.enrolled, needN: +r.need_grant_recipients_h2e, needAvg: +r.avg_need_grant_usd_h2k, meritN: +r.nonneed_inst_recipients_h2a_n, meritAvg: +r.avg_nonneed_inst_usd_h2a_o })).sort((a, b) => a.fall - b.fall);
+    COH = coh.map((r) => ({ fall: +r.fall_term, v4: num(r.four_year_net_tuition_per_entrant_fy2025_usd) })).sort((a, b) => a.fall - b.fall);
     allCharts();
     document.querySelectorAll("[data-hl]").forEach((b) => b.addEventListener("click", () => {
       state.hl = b.dataset.hl;
