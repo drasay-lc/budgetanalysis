@@ -1,4 +1,4 @@
-state,name,region,pct_change_2023_to_2041,assumed_feeder_state,source
+state,name,region,pct_change_2023_to_2041,top_five_home_state_fall_2025,source
 AL,Alabama,South,2,no,1
 AK,Alaska,West,-14,no,1
 AZ,Arizona,West,-2,no,1
@@ -42,7 +42,7 @@ RI,Rhode Island,Northeast,-15,no,1
 SC,South Carolina,South,14,no,1
 SD,South Dakota,West,7,no,1
 TN,Tennessee,South,15,no,1
-TX,Texas,South,5,no,1
+TX,Texas,South,5,yes,1
 UT,Utah,West,-6,no,1
 VT,Vermont,Northeast,-15,no,1
 VA,Virginia,South,-6,no,1
