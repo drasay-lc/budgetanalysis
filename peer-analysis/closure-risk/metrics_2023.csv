@@ -1,0 +1,35 @@
+college,group,fall_2023_enrollment,fy2023_margin_pct,tuition_share_pct,days_cash_proxy,endowment_m,plant_debt_m
+Clark,Group 2,4124,-33.1,67.0,321.0,451.0,0.0
+Goucher,Group 3,1500,-22.0,33.0,446.0,240.0,109.0
+Saint Mary's CA,Group 3,2775,-19.6,51.0,232.0,171.0,51.0
+Willamette,Group 1,2112,-18.6,50.0,284.0,305.0,100.0
+Drew,Group 2,2226,-16.5,46.0,-204.0,129.0,70.0
+John Carroll,Group 3,2773,-13.2,53.0,692.0,263.0,178.0
+Lynchburg,Group 2,2592,-11.2,62.0,326.0,136.0,56.0
+Seattle Pacific,Group 2,2659,-10.3,57.0,481.0,162.0,83.0
+Pacific Lutheran,Group 3,2737,-9.6,60.0,271.0,118.0,0.0
+Sarah Lawrence,Group 1,1743,-9.3,59.0,180.0,139.0,46.0
+Redlands,Group 3,3192,-6.7,51.0,315.0,237.0,103.0
+Skidmore,Group 1,2776,-4.4,59.0,1058.0,429.0,96.0
+Gettysburg,Group 1,2895,-3.7,43.0,660.0,385.0,77.0
+Gonzaga,Group 1,7306,-3.3,67.0,473.0,434.0,231.0
+Lewis & Clark,Lewis & Clark,3526,-2.9,68.0,425.0,312.0,153.0
+U of Portland,Group 1,3457,-2.3,62.0,798.0,301.0,79.0
+Union,Group 1,2082,1.5,41.0,732.0,522.0,169.0
+Seattle University,Group 2,7182,1.7,71.0,673.0,298.0,153.0
+Ohio Northern,Group 3,3042,2.0,51.0,240.0,203.0,89.0
+Loyola New Orleans,Group 2,4351,3.4,63.0,515.0,236.0,329.0
+Pacific University,Group 2,3479,3.5,75.0,317.0,59.0,75.0
+Capital,Group 3,2388,4.1,52.0,575.0,131.0,38.0
+Roger Williams,Group 3,4861,4.3,60.0,344.0,95.0,77.0
+Rhodes,Group 1,1952,7.6,37.0,855.0,406.0,80.0
+La Verne,Group 3,5596,8.1,68.0,492.0,131.0,114.0
+Stetson,Group 2,3669,8.5,44.0,479.0,364.0,133.0
+St. Olaf,Group 1,3074,9.7,35.0,1225.0,712.0,130.0
+Hamline,Group 3,2432,11.8,56.0,394.0,127.0,42.0
+Occidental,Group 1,1854,18.1,42.0,800.0,604.0,95.0
+Kalamazoo,Group 1,1196,19.6,27.0,598.0,287.0,43.0
+Puget Sound,Group 1,1914,20.0,40.0,1052.0,449.0,63.0
+Reed,Group 1,1458,22.4,39.0,1560.0,721.0,124.0
+Kenyon,Group 1,2184,31.2,34.0,1226.0,560.0,263.0
+Whitman,Group 1,1544,38.7,27.0,1437.0,733.0,77.0

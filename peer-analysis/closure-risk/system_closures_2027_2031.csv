@@ -1,0 +1,6 @@
+scenario,closures_per_year_lasso,closures_per_year_xgboost,label
+baseline,37.0,45.0,Flat enrollment
+cliff_gradual,43.0,61.0,15% gradual decline by 2029
+cliff_gradual_fixed50,47.0,64.0,"15% gradual decline, half of costs fixed"
+cliff_onetime,44.0,82.0,15% drop in 2025
+persist,67.0,80.0,2019-23 decline persists
