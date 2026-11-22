@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Shrinking Pool, in Motion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* VOICE: a calm newsroom explainer film, one finding per scene.
+   IDEA: a class photo that empties: every dot is a group of graduates, and the missing ones stay as outlines.
+   PICTURE: a full-width stage of dots, bars and one line, drawn on a canvas and animated through the years 2025 to 2041.
+   COLOUR and TYPE: the budget site's own: ink on white (night: pale ink on deep slate), blue for students, amber for the loss; Spectral titles, IBM Plex Sans text.
+   LAYOUT: title, caption, stage, then one row of controls; stacks on phones. */
+:root{color-scheme:light dark;--bg:light-dark(#F3F5F8,#0F141B);--panel:light-dark(#FFFFFF,#161D26);--ink:light-dark(#17202A,#E6EBF1);--muted:light-dark(#5A6675,#95A2B1);--rule:light-dark(#DEE3EA,#2A3442);--blue:light-dark(#4F63D2,#7685EE);--amber:light-dark(#C8760F,#D48A2E);--ghost:light-dark(#C9D0DA,#3A4656)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "IBM Plex Sans",system-ui,sans-serif;overflow-x:clip}
+.wrap{max-width:1120px;margin:0 auto;padding:clamp(20px,4vw,44px) max(4vw,16px) 40px}
+.crumb{font-size:13px;margin:0 0 14px}.crumb a{color:var(--muted)}
+.kicker{font-size:14px;color:var(--muted);margin:0 0 4px}
+h1{font:500 clamp(30px,4.6vw,46px)/1.05 Spectral,Georgia,serif;margin:0 0 16px;text-wrap:balance}
+.film{background:var(--panel);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.cap{padding:18px clamp(16px,3vw,28px) 4px;min-height:112px}
+.cap h2{font:500 clamp(22px,2.8vw,30px)/1.15 Spectral,Georgia,serif;margin:0 0 6px;text-wrap:balance}
+.cap p{margin:0;color:var(--muted);max-width:70ch}
+.stage{position:relative;height:clamp(340px,52vw,520px)}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding:12px clamp(12px,3vw,24px) 16px;border-top:1px solid var(--rule)}
+button{font:500 14px "IBM Plex Sans",sans-serif;color:var(--ink);background:var(--panel);border:1px solid var(--rule);border-radius:8px;min-height:44px;padding:0 14px;cursor:pointer}
+button:hover{border-color:var(--muted)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+button[aria-current=step]{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+#play{min-width:92px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{padding:0 11px;font-size:13px;font-weight:400}
+input[type=range]{flex:1 1 180px;accent-color:var(--blue);min-height:44px}
+.time{font:500 13px "IBM Plex Mono",monospace;color:var(--muted);white-space:nowrap}
+.notes{font-size:14px;color:var(--muted);max-width:76ch;margin-top:18px}
+.notes a{color:inherit}
+details{margin-top:12px}summary{cursor:pointer;color:var(--ink);font-weight:500;min-height:32px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;margin-top:8px}
+th,td{padding:6px 10px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+@media(max-width:600px){.cap{min-height:150px}.stage{height:420px}.chips{order:3;width:100%}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <p class="crumb"><a href="../">← Budget analysis</a></p>
+  <p class="kicker">Lewis &amp; Clark College · high school graduates, classes of 2025 to 2041</p>
+  <h1>The Shrinking Pool, in Motion</h1>
+  <section class="film" aria-label="Animated film in six scenes">
+    <div class="cap" aria-live="polite"><h2 id="cap-h">The largest graduating class ever</h2><p id="cap-p">&nbsp;</p></div>
+    <div class="stage" id="stage"><canvas id="cv" role="img" aria-label="Animated dots, bars and a line showing projected high school graduates falling from 2025 to 2041. The numbers are in the table below the film."></canvas></div>
+    <div class="bar">
+      <button id="play" type="button" aria-label="Pause">Pause</button>
+      <button id="again" type="button">Replay</button>
+      <input id="scrub" type="range" min="0" max="1000" value="0" aria-label="Position in the film">
+      <span class="time" id="time">0:00 / 0:00</span>
+      <div class="chips" id="chips" role="group" aria-label="Scenes"></div>
+    </div>
+  </section>
+
+  <div class="notes">
+    <p>Projections are WICHE's, from <a href="https://www.wiche.edu/wp-content/uploads/2024/12/2024-Knocking-at-the-College-Door-final.pdf">Knocking at the College Door</a>, 11th edition (December 2024), tables 4, 5 and 9. They count high school graduates, not applicants. Lewis &amp; Clark's fall 2025 class of 517 and its home states are from the college's Common Data Set 2025-26 and Class of 2029 page. The last scene is arithmetic, not a forecast: it assumes the college's applications and offers shrink in step with the West's graduating class and nothing else changes. The full analysis is on <a href="../college-age-demographics/">The Shrinking Pool</a> and <a href="../recommendations-shrinking-pool/">Four Recommendations for the Demographic Decline</a>.</p>
+    <details><summary>The numbers in the film</summary>
+      <div class="scroll"><table id="tbl"><thead><tr><th>Place</th><th>Class of 2025</th><th>Class of 2030</th><th>Class of 2035</th><th>Class of 2041</th><th>Change, 2025 to 2041</th></tr></thead><tbody></tbody></table></div>
+    </details>
+  </div>
+</main>
+<script>
+{
+  // ---------- data (WICHE, 11th edition) ----------
+  const NAT = [[2024,3763336],[2025,3857783],[2026,3841094],[2027,3764007],[2028,3688623],[2029,3675987],[2030,3643801],[2031,3641127],[2032,3665492],[2033,3642164],[2034,3726657],[2035,3633730],[2036,3565658],[2037,3508531],[2038,3382147],[2039,3440434],[2040,3443358],[2041,3373947]];
+  const PLACES = [
+    { name: "California", v: [469214, 435481, 402356, 339022] },
+    { name: "Oregon", v: [42752, 39182, 38349, 33272] },
+    { name: "Colorado", v: [65716, 60300, 59557, 56457] },
+    { name: "Washington", v: [83021, 79259, 80777, 73935] },
+    { name: "Texas", v: [408251, 399411, 410286, 414861] }
+  ];
+  const WEST = [936104, 880140, 845999, 745295], YRS = [2025, 2030, 2035, 2041];
+  const LC = { cls: 517, yld: 12.5 };
+  const fmt = (n) => Math.round(n).toLocaleString("en-US");
+  const pc = (a, b) => { const v = Math.round(1000 * (b / a - 1)) / 10; return (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(1) + "%"; };
+  const lerp = (a, b, u) => a + (b - a) * u, clamp = (u) => Math.max(0, Math.min(1, u)), ease = (u) => u < .5 ? 2 * u * u : 1 - (-2 * u + 2) ** 2 / 2;
+  const at = (pts, y) => { for (let i = 1; i < pts.length; i++) if (y <= pts[i][0]) { const [y0, v0] = pts[i - 1], [y1, v1] = pts[i]; return lerp(v0, v1, (y - y0) / (y1 - y0)); } return pts[pts.length - 1][1]; };
+  const four = (v) => YRS.map((y, i) => [y, v[i]]);
+  const westR = WEST[3] / WEST[0], need = LC.yld / westR;
+
+  // ---------- scenes ----------
+  const S = [
+    { k: "Peak", d: 6, h: "The largest graduating class ever", p: "About 3.86 million students finished high school in the United States in 2025, the most on record. Each dot is 10,000 of them." },
+    { k: "Nation", d: 10, h: "Then the pool starts to drain", p: "WICHE projects fewer graduates almost every year to 2041, because fewer children were born after 2007. Outlines are the graduates who will not be there." },
+    { k: "West", d: 8, h: "The West falls furthest", p: "Lewis & Clark draws most of its students from the West, where the graduating class shrinks about one fifth. Each dot is 2,500 graduates." },
+    { k: "Home states", d: 9, h: "The college's top five home states", p: "Each bar is that state's class of 2025, set to the same length. California, first on the list, loses more than a quarter; only Texas holds." },
+    { k: "Lewis & Clark", d: 10, h: "What it means for one entering class", p: "Each dot is one student in the fall 2025 class of 517. If applications shrink with the West's graduates and nothing else changes:" },
+    { k: "Summary", d: 6, h: "The next five classes are the time to act", p: "By 2030 the West is already 6% smaller. Holding the class means winning a larger share of a smaller pool." }
+  ];
+  let T = 0; const START = S.map((s) => { const t = T; T += s.d; return t; });
+
+  const cv = document.getElementById("cv"), ctx = cv.getContext("2d"), stage = document.getElementById("stage");
+  const capH = document.getElementById("cap-h"), capP = document.getElementById("cap-p");
+  const playB = document.getElementById("play"), scrub = document.getElementById("scrub"), timeL = document.getElementById("time"), chipsEl = document.getElementById("chips");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W = 0, H = 0, t = 0, playing = !reduced, last = 0, shown = -1, C = {};
+
+  chipsEl.innerHTML = S.map((s, i) => `<button type="button" data-i="${i}">${i + 1}. ${s.k}</button>`).join("");
+  document.getElementById("tbl").tBodies[0].innerHTML = [{ name: "United States", v: [2025, 2030, 2035, 2041].map((y) => at(NAT, y)) }, { name: "West", v: WEST }, ...PLACES]
+    .map((r) => `<tr><td>${r.name}</td>${r.v.map((x) => `<td>${fmt(x)}</td>`).join("")}<td>${pc(r.v[0], r.v[3])}</td></tr>`).join("") +
+    `<tr><td>Lewis &amp; Clark entering class, same draw rates as the West</td><td>${LC.cls}</td><td>${Math.round(LC.cls * WEST[1] / WEST[0])}</td><td>${Math.round(LC.cls * WEST[2] / WEST[0])}</td><td>${Math.round(LC.cls * westR)}</td><td>${pc(LC.cls, Math.round(LC.cls * westR))}</td></tr>`;
+
+  // light-dark() is not resolved by getPropertyValue, so read each colour through a probe element.
+  const probe = document.createElement("i"); probe.style.display = "none"; document.body.appendChild(probe);
+  function colours() { for (const k of ["ink", "muted", "rule", "blue", "amber", "ghost", "panel"]) { probe.style.color = `var(--${k})`; C[k] = getComputedStyle(probe).color; } }
+  function size() { const r = stage.getBoundingClientRect(), d = devicePixelRatio || 1; W = r.width; H = r.height; cv.width = Math.round(W * d); cv.height = Math.round(H * d); ctx.setTransform(d, 0, 0, d, 0, 0); colours(); draw(); }
+
+  const font = (w, px, fam) => `${w} ${px}px ${fam === "m" ? '"IBM Plex Mono",monospace' : fam === "s" ? 'Spectral,Georgia,serif' : '"IBM Plex Sans",sans-serif'}`;
+  function text(s, x, y, o) { ctx.font = font(o.w || 400, o.px || 14, o.f); ctx.fillStyle = o.c || C.ink; ctx.textAlign = o.a || "left"; ctx.textBaseline = o.b || "alphabetic"; ctx.globalAlpha = o.al ?? 1; ctx.fillText(s, x, y); ctx.globalAlpha = 1; }
+
+  // A grid of n dots in a box; the first `full` are solid, the rest are outlines, all scaled by `appear`.
+  function dots(n, full, box, appear = 1, colour = C.blue) {
+    const ratio = box.w / box.h; let cols = Math.max(1, Math.ceil(Math.sqrt(n * ratio))), rows = Math.ceil(n / cols);
+    while (rows * (box.w / cols) > box.h && cols < n) { cols++; rows = Math.ceil(n / cols); }
+    const step = Math.min(box.w / cols, box.h / rows), r = Math.max(1.6, step * .36), ox = box.x + (box.w - cols * step) / 2 + step / 2, oy = box.y + (box.h - rows * step) / 2 + step / 2;
+    for (let i = 0; i < n; i++) {
+      const s = clamp(appear * n - i); if (s <= 0) break;
+      const x = ox + (i % cols) * step, y = oy + Math.floor(i / cols) * step;
+      ctx.beginPath(); ctx.arc(x, y, r * (.4 + .6 * ease(s)), 0, 7);
+      if (i < full) { ctx.fillStyle = colour; ctx.fill(); }
+      else { ctx.strokeStyle = C.amber; ctx.lineWidth = Math.max(1, r * .32); ctx.globalAlpha = .75; ctx.stroke(); ctx.globalAlpha = 1; }
+    }
+  }
+  function counter(big, small, x, y, al = 1, a = "left") {
+    const px = Math.min(56, Math.max(30, W * .055));
+    text(big, x, y, { px, w: 500, f: "m", al, a }); text(small, x, y + 24, { px: 14, c: C.muted, al, a });
+  }
+
+  function scene0(u) {
+    const narrow = W < 600, box = narrow ? { x: 16, y: 112, w: W - 32, h: H - 124 } : { x: W * .36, y: 24, w: W * .6, h: H - 48 };
+    const n = Math.round(NAT[1][1] / 1e4), a = ease(clamp(u / .75));
+    dots(n, n, box, a);
+    counter(fmt(NAT[1][1] * a), "graduates, class of 2025", narrow ? 16 : 32, narrow ? 52 : H * .45);
+    text("Each dot is 10,000 graduates", narrow ? 16 : 32, narrow ? 100 : H * .45 + 50, { px: 13, c: C.muted, al: clamp(u * 3 - 1) });
+  }
+  function scene1(u) {
+    const narrow = W < 600, yr = lerp(2025, 2041, ease(clamp((u - .08) / .82))), v = at(NAT, yr), n = Math.round(NAT[1][1] / 1e4), full = Math.round(v / 1e4);
+    const chartH = narrow ? 120 : H * .3, box = narrow ? { x: 16, y: 92, w: W - 32, h: H - chartH - 112 } : { x: W * .36, y: 20, w: W * .6, h: H - chartH - 40 };
+    dots(n, full, box);
+    counter(fmt(v), `class of ${Math.floor(yr)} · ${pc(NAT[1][1], v)} from 2025`, narrow ? 16 : 32, narrow ? 50 : H * .3);
+    // line chart of the national series
+    const cx = narrow ? 16 : 32, cw = W - cx * 2, cy = H - chartH + 10, ch = chartH - 36, lo = 3.3e6, hi = 3.9e6;
+    const X = (y) => cx + (y - 2025) / 16 * cw, Y = (val) => cy + ch - (val - lo) / (hi - lo) * ch;
+    ctx.strokeStyle = C.rule; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(cx, cy + ch); ctx.lineTo(cx + cw, cy + ch); ctx.stroke();
+    ctx.strokeStyle = C.blue; ctx.lineWidth = 2.5; ctx.lineJoin = "round"; ctx.beginPath();
+    for (let y = 2025; y <= yr + 1e-6; y += .25) { const px = X(y), py = Y(at(NAT, y)); y === 2025 ? ctx.moveTo(px, py) : ctx.lineTo(px, py); }
+    ctx.stroke();
+    ctx.beginPath(); ctx.arc(X(yr), Y(v), 5, 0, 7); ctx.fillStyle = C.blue; ctx.fill();
+    for (const y of [2025, 2030, 2035, 2041]) text(String(y), X(y), cy + ch + 18, { px: 12, c: C.muted, a: y === 2025 ? "left" : y === 2041 ? "right" : "center", f: "m" });
+  }
+  function scene2(u) {
+    const narrow = W < 600, n = Math.round(WEST[0] / 2500), yr = lerp(2025, 2041, ease(clamp((u - .2) / .7))), v = at(four(WEST), yr);
+    const box = narrow ? { x: 16, y: 112, w: W - 32, h: H - 124 } : { x: W * .36, y: 24, w: W * .6, h: H - 48 };
+    dots(n, Math.round(v / 2500), box, ease(clamp(u / .2)));
+    counter(fmt(v), `the West, class of ${Math.floor(yr)} · ${pc(WEST[0], v)}`, narrow ? 16 : 32, narrow ? 52 : H * .42);
+    text(`United States over the same years: ${pc(NAT[1][1], at(NAT, yr))}`, narrow ? 16 : 32, narrow ? 100 : H * .42 + 50, { px: 13, c: C.muted });
+  }
+  function scene3(u) {
+    const narrow = W < 600, yr = lerp(2025, 2041, ease(clamp((u - .15) / .75))), lx = narrow ? 16 : 40, labW = narrow ? 96 : 150, rx = narrow ? 64 : 120;
+    const top = narrow ? 64 : 70, rowH = Math.min(64, (H - top - 30) / PLACES.length), full = W - lx - labW - rx;
+    text(`Class of ${Math.floor(yr)}, as a share of each state's class of 2025`, lx, top - 30, { px: 13, c: C.muted });
+    PLACES.forEach((p, i) => {
+      const y = top + i * rowH, v = at(four(p.v), yr), ratio = v / p.v[0], bh = Math.min(26, rowH * .5), by = y + (rowH - bh) / 2, appear = ease(clamp(u * 6 - i * .5));
+      text(p.name, lx, by + bh / 2, { px: narrow ? 14 : 16, w: 500, b: "middle", al: appear });
+      ctx.globalAlpha = appear; ctx.strokeStyle = C.ghost; ctx.lineWidth = 1.5; ctx.strokeRect(lx + labW + .75, by + .75, full - 1.5, bh - 1.5);
+      const wv = full * Math.min(ratio, 1.05) * appear;
+      ctx.fillStyle = C.blue; ctx.fillRect(lx + labW, by, Math.min(wv, full * 1.05), bh);
+      if (ratio < 1) { ctx.fillStyle = C.amber; ctx.globalAlpha = appear * .28; ctx.fillRect(lx + labW + wv, by, full - wv, bh); }
+      ctx.globalAlpha = 1;
+      text(pc(p.v[0], v), lx + labW + full + 12, by + bh / 2, { px: 14, w: 500, f: "m", b: "middle", al: appear, c: ratio < 1 ? C.ink : C.blue });
+    });
+  }
+  function scene4(u) {
+    const narrow = W < 600, yr = lerp(2025, 2041, ease(clamp((u - .12) / .55))), cls = LC.cls * at(four(WEST), yr) / WEST[0];
+    const box = narrow ? { x: 16, y: 112, w: W - 32, h: H - 124 } : { x: W * .36, y: 24, w: W * .6, h: H - 48 };
+    dots(LC.cls, Math.round(cls), box, ease(clamp(u / .12)));
+    counter(String(Math.round(cls)), `students, class of ${Math.floor(yr)}, ${LC.yld}% yield`, narrow ? 16 : 32, narrow ? 50 : H * .34);
+    const al = clamp((u - .72) * 5);
+    text(`${LC.cls - Math.round(LC.cls * westR)} fewer students a year by 2041.`, narrow ? 16 : 32, narrow ? 100 : H * .34 + 56, { px: 15, w: 600, al, c: C.amber });
+    if (!narrow) text(`Holding ${LC.cls} would take a yield of ${need.toFixed(1)}%.`, 32, H * .34 + 80, { px: 15, al });
+  }
+  function scene5(u) {
+    const narrow = W < 600, items = [["−12.5%", "United States, 2025 to 2041"], ["−20.4%", "the West"], ["−27.7%", "California, first home state"], ["412", `of ${LC.cls}: the entering class at today's yield`]];
+    const cols = narrow ? 1 : 2, cw = (W - 64) / cols, rh = narrow ? (H - 40) / 4 : (H - 60) / 2;
+    items.forEach(([big, small], i) => {
+      const x = 32 + (i % cols) * cw, y = (narrow ? 28 : 40) + Math.floor(i / cols) * rh + rh * .45, al = ease(clamp(u * 4 - i * .5));
+      text(big, x, y, { px: narrow ? 34 : Math.min(60, W * .06), w: 500, f: "m", al, c: i === 3 ? C.amber : C.ink });
+      text(small, x, y + 26, { px: 14, c: C.muted, al });
+    });
+  }
+  const DRAW = [scene0, scene1, scene2, scene3, scene4, scene5];
+
+  function draw() {
+    if (!W) return;
+    let i = START.findIndex((s, k) => t < s + S[k].d); if (i < 0) i = S.length - 1;
+    const u = clamp((t - START[i]) / S[i].d);
+    ctx.clearRect(0, 0, W, H);
+    // fade between scenes
+    ctx.globalAlpha = 1; DRAW[i](u);
+    const fadeIn = clamp(u * S[i].d / .4); if (fadeIn < 1) { ctx.fillStyle = C.panel; ctx.globalAlpha = 1 - fadeIn; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; }
+    if (i !== shown) {
+      shown = i; capH.textContent = S[i].h; capP.textContent = S[i].p;
+      chipsEl.querySelectorAll("button").forEach((b, k) => { if (k === i) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current"); });
+    }
+    scrub.value = Math.round(t / T * 1000);
+    const mm = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`; timeL.textContent = `${mm(t)} / ${mm(T)}`;
+  }
+  function setPlaying(p) { playing = p; playB.textContent = p ? "Pause" : "Play"; playB.setAttribute("aria-label", p ? "Pause" : "Play"); if (p) { if (t >= T - .01) t = 0; last = performance.now(); requestAnimationFrame(tick); } }
+  function tick(now) {
+    if (!playing) return;
+    t = Math.min(T, t + (now - last) / 1000); last = now; draw();
+    if (t >= T) { setPlaying(false); return; }
+    requestAnimationFrame(tick);
+  }
+  // Reduced motion: each scene button jumps to the scene's finished state.
+  const jump = (i) => { t = reduced ? START[i] + S[i].d - .001 : START[i]; draw(); };
+
+  playB.addEventListener("click", () => setPlaying(!playing));
+  document.getElementById("again").addEventListener("click", () => { t = 0; reduced ? (jump(0), setPlaying(false)) : setPlaying(true); draw(); });
+  scrub.addEventListener("input", () => { t = scrub.value / 1000 * T; if (playing) setPlaying(false); draw(); });
+  chipsEl.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; jump(+b.dataset.i); });
+  addEventListener("keydown", (e) => { if (e.key === " " && !/INPUT|BUTTON/.test(document.activeElement.tagName)) { e.preventDefault(); setPlaying(!playing); } });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { colours(); draw(); });
+  const themeWatch = new MutationObserver(() => { colours(); draw(); }); themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  const ro = new ResizeObserver(size); ro.observe(stage);
+
+  const begin = () => { size(); if (reduced) { jump(0); setPlaying(false); } else setPlaying(true); };
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(begin, begin);
+}
+</script>
+</body>
+</html>
