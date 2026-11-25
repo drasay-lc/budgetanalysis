@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Closure Model Track Record</title>
+<meta name="description" content="Would the college closure model have flagged real closures in advance? Oregon nonprofit closures since 2006 and U.S. closures of colleges that resemble Lewis & Clark's peers, 2016 to 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* VOICE: a research note from the budget analysis site; plain, exact, conclusion first.
+   IDEA: an audit of a forecaster: each closure is a case file with the scores it got beforehand.
+   PICTURE: small multiples of percentile paths into each closure, a size map, a dot strip of peak scores.
+   COLOUR and TYPE: the site's own tokens (Spectral, IBM Plex); orange marks the riskiest tenth, blue is L&C.
+   LAYOUT: tiles, then Part 1 (Oregon) and Part 2 (U.S. peers) as card stacks, method at the end. */
+:root { --bg:#F3F5F8; --panel:#FFFFFF; --ink:#17202A; --muted:#5A6675; --rule:#DEE3EA; --grid:#E9EDF2; --zebra:#F7F9FB;
+  --gross:#4F63D2; --net:#0B8770; --aid:#C8760F; --endow:#A2449A; --other:#B4BDC8; --band:rgba(200,118,15,.10);
+  --f-display:"Spectral",Georgia,"Times New Roman",serif; --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,Menlo,monospace; color-scheme:light; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0F141B; --panel:#161D26; --ink:#E6EBF1; --muted:#95A2B1; --rule:#2A3442; --grid:#212A36; --zebra:#1A222D; --gross:#7685EE; --net:#22A07F; --aid:#D48A30; --endow:#C862B8; --other:#4A5666; --band:rgba(212,138,48,.16); color-scheme:dark; } }
+:root[data-theme="dark"] { --bg:#0F141B; --panel:#161D26; --ink:#E6EBF1; --muted:#95A2B1; --rule:#2A3442; --grid:#212A36; --zebra:#1A222D; --gross:#7685EE; --net:#22A07F; --aid:#D48A30; --endow:#C862B8; --other:#4A5666; --band:rgba(212,138,48,.16); color-scheme:dark; }
+* { box-sizing:border-box; min-width:0; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--f-body); font-size:15px; line-height:1.5; overflow-x:clip; }
+.wrap { max-width:72rem; margin:0 auto; padding-inline:clamp(14px,4vw,40px); padding-block:28px 56px; }
+.crumb { margin:0 0 14px; font-size:13px; } .crumb a { color:var(--muted); }
+header { display:grid; gap:6px; margin-bottom:18px; }
+.eyebrow { font-size:13px; color:var(--muted); font-weight:500; }
+h1 { font-family:var(--f-display); font-weight:500; font-size:clamp(28px,4.2vw,40px); line-height:1.1; margin:0; text-wrap:balance; }
+.made { font-size:13px; color:var(--muted); margin:-2px 0 6px; } .made a { color:inherit; }
+.dek { color:var(--muted); max-width:70ch; margin:0; }
+.tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,11rem),1fr)); gap:10px; margin:0 0 12px; }
+.tile { background:var(--panel); border:1px solid var(--rule); border-radius:10px; padding:12px 16px; }
+.tile b { display:block; font-family:var(--f-display); font-weight:500; font-size:32px; line-height:1.1; font-variant-numeric:tabular-nums; }
+.tile span { font-size:13px; color:var(--muted); }
+.jump { display:flex; flex-wrap:wrap; gap:6px 18px; font-size:14px; margin:6px 0 20px; } .jump a { color:var(--ink); font-weight:500; }
+.part { font-family:var(--f-display); font-weight:500; font-size:clamp(22px,3vw,28px); margin:34px 0 4px; }
+.partdek { color:var(--muted); margin:0 0 14px; max-width:72ch; }
+.card { background:var(--panel); border:1px solid var(--rule); border-radius:10px; padding:clamp(14px,2.4vw,22px); }
+.card + .card { margin-top:16px; }
+.card h3 { font-size:16px; font-weight:600; margin:0 0 4px; }
+.note { font-size:13px; color:var(--muted); margin:0 0 10px; max-width:78ch; }
+.key { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:13px; color:var(--muted); margin-bottom:8px; }
+.key span { display:inline-flex; align-items:center; gap:6px; }
+.key i { display:inline-block; width:18px; height:3px; border-radius:2px; }
+.key i.dot { width:10px; height:10px; border-radius:50%; } .key i.hollow { background:none; border:2px solid var(--muted); }
+.key i.sq { width:10px; height:10px; border-radius:1px; } .key i.band { height:10px; background:var(--band); border-top:1px dashed var(--aid); }
+.multi { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,15.5rem),1fr)); gap:12px; }
+.panel { border:1px solid var(--rule); border-radius:8px; padding:10px 10px 6px; }
+.panel h4 { font-size:13.5px; margin:0; font-weight:600; line-height:1.3; }
+.panel p { font-size:13px; color:var(--muted); margin:0 0 4px; }
+.mini { position:relative; height:120px; }
+.fig { position:relative; }
+svg { display:block; width:100%; overflow:visible; }
+.lbl { font-family:var(--f-data); font-size:11px; fill:var(--muted); }
+.nm { font-size:12px; fill:var(--ink); }
+.tip { position:absolute; pointer-events:none; background:var(--panel); border:1px solid var(--rule); border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.12); padding:6px 10px; font-size:13px; opacity:0; z-index:3; max-width:18rem; font-variant-numeric:tabular-nums; }
+.tip .h { font-weight:600; } .tip .m { color:var(--muted); }
+.tbox { overflow:auto; border:1px solid var(--rule); border-radius:8px; }
+table { border-collapse:collapse; width:100%; font-size:13px; font-variant-numeric:tabular-nums; }
+th, td { padding:7px 10px; text-align:left; border-bottom:1px solid var(--rule); vertical-align:top; }
+thead th { background:var(--panel); font-size:12.5px; color:var(--muted); font-weight:600; vertical-align:bottom; position:sticky; top:0; }
+td.n, th.n { text-align:right; font-family:var(--f-data); white-space:nowrap; }
+tbody tr:nth-child(even) { background:var(--zebra); }
+td a { color:var(--ink); }
+.yes { font-weight:600; } .tag { display:inline-block; font-size:12px; border:1px solid var(--rule); border-radius:4px; padding:0 5px; color:var(--muted); white-space:nowrap; }
+.callout { font-family:var(--f-display); font-size:clamp(17px,2vw,20px); line-height:1.45; margin:0; max-width:70ch; }
+details { margin-top:16px; } summary { cursor:pointer; font-weight:600; }
+details li { margin-bottom:6px; max-width:80ch; }
+.data-link { margin:22px 0 0; font-size:14px; display:flex; flex-wrap:wrap; gap:4px 16px; } .data-link a { color:var(--ink); font-weight:600; }
+@media (max-width:600px) { .stack thead { display:none; } .stack tr { display:grid; padding-block:8px; } .stack td { display:flow-root; border:0; padding:2px 0 2px 8.5em; text-align:left; } .stack td::before { content:attr(data-l); float:left; width:8em; margin-left:-8.5em; color:var(--muted); font-family:var(--f-body); white-space:normal; line-height:1.35; font-size:12.5px; }
+  .stack td, .stack td.n { white-space:normal; } .stack td:empty { display:none; } }
+@media print { body { background:#fff; color:#000; } .card,.tile,.panel { border-color:#999; break-inside:avoid; } .tip,.jump { display:none; } .tbox { overflow:visible; } :root { --band:rgba(0,0,0,.08); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="crumb"><a href="../">← Closure risk</a></p>
+  <header>
+    <div class="eyebrow">Closure risk · model track record · IPEDS 2002 to 2023, closures to 2027</div>
+    <h1 id="title">The model caught most small-college closures, but none at colleges Lewis &amp; Clark's peers' size</h1>
+    <p class="made">Built with Claude Opus 5.5, November 2026, for Dan Rasay. Code and outputs: <a href="https://github.com/drasay-lc/closure-risk">drasay-lc/closure-risk</a> (<code>src/closure_backtest.py</code>).</p>
+    <p class="dek">This page asks whether the closure model from Kelchen, Ritter and Webber (Philadelphia Fed, 2024), as replicated for the peer analysis, would have warned about real closures. Every score here comes from a model that never saw the college it scores. A closure counts as <b>flagged</b> when the college sat in the riskiest tenth of private nonprofit four-year colleges in any of the scores covering its closure year.</p>
+  </header>
+  <div class="tiles" id="tiles"></div>
+  <nav class="jump"><a href="#oregon">Part 1: Oregon closures</a><a href="#us">Part 2: U.S. peer closures</a><a href="#method">Method and sources</a></nav>
+
+  <h2 class="part" id="oregon">Part 1. Oregon nonprofit closures since 2006</h2>
+  <p class="partdek" id="or-dek"></p>
+  <section class="card">
+    <h3>Each college's percentile in the years before it closed</h3>
+    <p class="note">The line is the three-year closure score as a percentile among about 1,500 private nonprofit four-year colleges (100 = riskiest). The shaded band is the riskiest tenth. The dashed line is the closure year. A score dated <i>t</i> is built from data two years earlier.</p>
+    <div class="key"><span><i style="background:var(--ink)"></i>College's percentile</span><span><i class="dot" style="background:var(--aid)"></i>In the riskiest tenth</span><span><i class="band"></i>Riskiest tenth</span><span><i style="background:var(--gross)"></i>Lewis &amp; Clark</span></div>
+    <div class="multi" id="or-multi"></div>
+  </section>
+  <section class="card">
+    <h3>Oregon closures and what the model said</h3>
+    <div class="tbox"><table class="stack" id="or-table"><thead><tr><th>College</th><th class="n">Closed</th><th class="n">Peak percentile (last 3 scores)</th><th class="n">Rank</th><th>Flagged</th><th class="n">First flag</th><th class="n">Expenses $M</th><th class="n">Endowment $M</th><th>Source</th></tr></thead><tbody></tbody></table></div>
+    <p class="note" style="margin-top:10px" id="or-untested"></p>
+  </section>
+  <section class="card">
+    <h3>Oregon colleges in the riskiest tenth since 2016 that are still open</h3>
+    <p class="note">These are the false alarms so far, or closures still to come. PNCA has reported as a unit of Willamette since their 2021 merger, so its recent figures are hard to read as a standalone college.</p>
+    <div class="tbox"><table class="stack" id="or-open"><thead><tr><th>College</th><th>Score years in the riskiest tenth</th><th class="n">2025 percentile</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <h2 class="part" id="us">Part 2. U.S. closures of colleges like Lewis &amp; Clark's peers, 2016 to 2027</h2>
+  <p class="partdek" id="us-dek"></p>
+  <section class="card">
+    <h3>Most colleges that closed were far smaller than the comparison set</h3>
+    <p class="note" id="scatter-note"></p>
+    <div class="key"><span><i class="sq" style="border:2px solid var(--gross)"></i>Comparison set (FY2023)</span><span><i class="sq" style="background:var(--gross)"></i>Lewis &amp; Clark</span><span><i class="dot" style="background:var(--aid)"></i>Closed, flagged</span><span><i class="dot hollow" style="border-color:var(--aid)"></i>Closed, not flagged</span><span><i class="dot" style="background:var(--other)"></i>Closed, outside the peer screen</span></div>
+    <div class="fig" id="scatter" style="height:420px"></div>
+  </section>
+  <section class="card">
+    <h3>Highest percentile each peer and near-peer closure reached before closing</h3>
+    <p class="note">Highest percentile among the scores covering the closure year. Filled dots reached the riskiest tenth. The blue line is Lewis &amp; Clark's percentile for 2025.</p>
+    <div class="fig" id="strip"></div>
+  </section>
+  <section class="card">
+    <h3>The seven peer-sized closures, year by year</h3>
+    <p class="note">Same layout as Part 1, with Lewis &amp; Clark's own percentile in blue for comparison. Absorbed colleges were taken over by a stronger institution rather than shut.</p>
+    <div class="multi" id="us-multi"></div>
+  </section>
+  <section class="card">
+    <h3>Peer and near-peer closures</h3>
+    <p class="note">Size is the median of the last five fiscal years before closing, in FY2023 dollars. Sort by tapping a column heading.</p>
+    <div class="tbox" style="max-height:34rem"><table class="stack" id="us-table"><thead><tr><th data-k="institution">College</th><th data-k="close_year" class="n">Closed</th><th data-k="tier">Tier</th><th data-k="carnegie_class">Carnegie class</th><th data-k="expenses_m" class="n">Expenses $M</th><th data-k="endowment_m" class="n">Endowment $M</th><th data-k="peak_pct" class="n">Highest percentile</th><th data-k="flagged">Flagged</th><th data-k="lead_years" class="n">Years of warning</th></tr></thead><tbody></tbody></table></div>
+  </section>
+  <section class="card">
+    <h3>What this means for reading Lewis &amp; Clark's score</h3>
+    <p class="callout" id="meaning"></p>
+  </section>
+
+  <details id="method"><summary>Method and sources</summary>
+    <ul id="method-list"></ul>
+  </details>
+  <p class="data-link"><a href="backtest_oregon.csv">Oregon table (CSV)</a><a href="backtest_us_candidates.csv">All U.S. closures screened (CSV)</a><a href="backtest_histories.csv">Year-by-year scores (CSV)</a></p>
+</div>
+<div class="tip" id="tip"></div>
+<script src="data.js"></script>
+<script>
+{
+const D = window.TRACK, C = D.context, TOP = 90;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ord = n => { n = Math.floor(n); const s = ['th','st','nd','rd'], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); };
+const f1 = v => v == null || isNaN(v) ? '' : Number(v).toFixed(1);
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const tip = document.getElementById('tip');
+function showTip(e, html) { tip.innerHTML = html; tip.style.opacity = 1; const r = document.body.getBoundingClientRect(); let x = e.pageX + 12, y = e.pageY + 12; if (x + 260 > window.innerWidth) x = e.pageX - 270; tip.style.left = x + 'px'; tip.style.top = y + 'px'; }
+function hideTip() { tip.style.opacity = 0; }
+const byName = {}; D.hist.forEach(r => (byName[r.institution] ||= []).push(r));
+Object.values(byName).forEach(a => a.sort((p, q) => p.t - q.t));
+const LC = byName['Lewis & Clark College'] || [];
+const pctTxt = (p, n) => n ? `${p}% of ${n}` : `${p}%`;
+
+// ---------- tiles and deks
+const tiles = [
+  [`${C.oregon_flagged} of ${C.oregon_tested}`, 'Oregon closures flagged in advance'],
+  [`${C.not_a_peer_flagged} of ${C.not_a_peer_scored}`, 'U.S. closures of smaller or unlike colleges flagged'],
+  [`${C.near_peer_flagged} of ${C.near_peer_scored}`, 'Near-peer closures flagged (peer-like, smaller)'],
+  [`${C.peer_flagged} of ${C.peer_scored}`, 'Peer-sized closures flagged'],
+  [`${f1(C.top_tenth_close_rate_pct)}%`, `of colleges in the riskiest tenth closed within 3 years (${f1(C.rest_close_rate_pct)}% of the rest)`]
+];
+document.getElementById('tiles').innerHTML = tiles.map(([b, s]) => `<div class="tile"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('');
+const orMiss = D.oregon.filter(r => r.flagged === 'no');
+document.getElementById('or-dek').textContent = `${C.oregon_flagged} of the ${C.oregon_tested} Oregon closures the data can test were in the riskiest tenth in the scores leading up to them.` + orMiss.map(r => ` ${r.institution.replace(/ University$/, '')}, the miss, peaked at the ${ord(r.peak_pct)} percentile.`).join('');
+document.getElementById('us-dek').textContent = `${C.n_us_closures} private nonprofit four-year colleges closed or were absorbed from 2016 to 2027. Seven pass every part of the peer screen, and ${C.near_peer_n} more match on Carnegie class, academics and residential campus but are smaller. The model flagged none of the seven.`;
+document.getElementById('scatter-note').textContent = `Each closed college at its size in the five years before closing, against the 34-college comparison set in FY2023 (both axes in FY2023 dollars, log scale). The dashed lines are the peer floors: half of the smallest comparison-set budget ($${f1(C.exp_floor_m)}M) and endowment ($${f1(C.end_floor_m)}M). Colleges with no endowment reported are drawn at the bottom edge.`;
+
+// ---------- small multiples
+function multiples(el, names, meta, showLC) {
+  el.innerHTML = names.map((n, i) => { const m = meta[n]; return `<div class="panel"><h4>${esc(n)}</h4><p>${esc(m.sub)}</p><div class="mini" data-i="${i}"></div></div>`; }).join('');
+  const draw = () => el.querySelectorAll('.mini').forEach(box => {
+    const n = names[+box.dataset.i], m = meta[n], s = byName[n] || [], W = box.clientWidth, H = box.clientHeight;
+    const x0 = 2008, x1 = Math.max(2025, m.close), L = 22, R = 6, T = 6, B = 16;
+    const X = y => L + (y - x0) / (x1 - x0) * (W - L - R), Y = p => T + (100 - p) / 100 * (H - T - B);
+    const path = a => a.filter(r => r.t >= x0 && r.pct_closed_3yr != null).map((r, j) => `${j ? 'L' : 'M'}${X(r.t).toFixed(1)},${Y(r.pct_closed_3yr).toFixed(1)}`).join('');
+    let g = `<rect x="${L}" y="${Y(100)}" width="${W - L - R}" height="${Y(TOP) - Y(100)}" fill="${css('--band')}"/>`;
+    g += [0, 50, 100].map(v => `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css('--grid')}"/><text class="lbl" x="${L - 4}" y="${Y(v) + 3}" text-anchor="end">${v}</text>`).join('');
+    g += [2010, 2015, 2020, 2025].map(v => `<text class="lbl" x="${X(v)}" y="${H - 2}" text-anchor="middle">${W < 200 ? "'" + String(v).slice(2) : v}</text>`).join('');
+    g += `<line x1="${X(m.close)}" x2="${X(m.close)}" y1="${T}" y2="${H - B}" stroke="${css('--ink')}" stroke-dasharray="3 3"/>`;
+    if (showLC) g += `<path d="${path(LC)}" fill="none" stroke="${css('--gross')}" stroke-width="1.5" opacity=".9"/>`;
+    g += `<path d="${path(s)}" fill="none" stroke="${css('--ink')}" stroke-width="1.6"/>`;
+    g += s.filter(r => r.t >= x0 && r.pct_closed_3yr >= TOP).map(r => `<circle cx="${X(r.t)}" cy="${Y(r.pct_closed_3yr)}" r="3" fill="${css('--aid')}"/>`).join('');
+    g += s.filter(r => r.t >= x0).map(r => `<rect x="${X(r.t) - 4}" y="${T}" width="8" height="${H - T - B}" fill="transparent" data-t="${r.t}"/>`).join('');
+    box.innerHTML = `<svg width="${W}" height="${H}" role="img" aria-label="${esc(n)}: percentile by year">${g}</svg>`;
+    box.querySelectorAll('rect[data-t]').forEach(rc => { const r = s.find(q => q.t == rc.dataset.t);
+      const on = e => showTip(e, `<div class="h">${esc(n)}, ${r.t}</div><div>${ord(r.pct_closed_3yr)} percentile, rank ${r.rank_3yr} of ${r.n_np4}</div><div class="m">Chance of closing ${r.t} to ${r.t + 2}: ${r.p_closed_3yr}%. Built on FY${r.t - 2} data.</div>`);
+      rc.addEventListener('mousemove', on); rc.addEventListener('click', on); rc.addEventListener('mouseleave', hideTip); });
+  });
+  new ResizeObserver(draw).observe(el); draw();
+}
+const orTested = D.oregon.filter(r => r.flagged === 'yes' || r.flagged === 'no');
+const orMeta = {}; orTested.forEach(r => orMeta[r.institution] = { close: r.close_year, sub: `${r.event_type === 'absorbed' ? 'Absorbed' : 'Closed'} ${r.close_year} · peak ${ord(r.peak_pct)} · ${r.flagged === 'yes' ? 'flagged' : 'not flagged'}` });
+multiples(document.getElementById('or-multi'), orTested.map(r => r.institution), orMeta, false);
+
+// ---------- Oregon tables
+const link = u => /^https?:\/\//.test(u || '') ? `<a href="${esc(u)}">link</a>` : '';
+document.querySelector('#or-table tbody').innerHTML = orTested.map(r => `<tr><td>${esc(r.institution)}${r.event_type === 'absorbed' ? ' <span class="tag">absorbed</span>' : ''}</td><td class="n">${r.close_year}</td><td class="n">${ord(r.peak_pct)} (${r.peak_t})</td><td class="n">${r.peak_rank} of ${r.peak_n}</td><td class="${r.flagged === 'yes' ? 'yes' : ''}">${r.flagged === 'yes' ? 'Yes' : 'No'}</td><td class="n">${r.first_flag_t ? `${r.first_flag_t} (${r.lead_years} yr ahead)` : ''}</td><td class="n">${f1(r.expenses_m)}</td><td class="n">${f1(r.endowment_m)}</td><td>${link(r.source)}</td></tr>`).join('');
+document.getElementById('or-untested').innerHTML = 'Not testable: ' + D.oregon.filter(r => !(r.flagged === 'yes' || r.flagged === 'no')).map(r => `${esc(r.institution)} (${r.close_year}; ${esc(r.in_ipeds.replace(/^no: /, ''))}, ${link(r.source)})`).join('; ') + '.';
+document.querySelector('#or-open tbody').innerHTML = D.oregon_open.map(r => `<tr><td>${esc(r.institution)}</td><td>${esc(r.years_in_riskiest_tenth.join(', '))}</td><td class="n">${r.pct_2025 == null ? '' : ord(r.pct_2025)}</td></tr>`).join('');
+
+// ---------- scatter
+const sc = document.getElementById('scatter');
+const closed = D.us.filter(r => r.expenses_m > 0);
+const lcRow = D.compare.find(r => /Lewis/.test(r.INSTNM));
+function drawScatter() {
+  const W = sc.clientWidth, H = sc.clientHeight, L = 46, R = 10, T = 10, B = 34, narrow = W < 520;
+  const lx = v => Math.log10(Math.max(v, 1)), ly = v => Math.log10(Math.max(v, 0.3));
+  const X = v => L + (lx(v) - 0) / (lx(400) - 0) * (W - L - R), Y = v => T + (ly(1000) - ly(v)) / (ly(1000) - ly(0.3)) * (H - T - B);
+  const xt = narrow ? [1, 10, 100] : [1, 3, 10, 30, 100, 300], yt = narrow ? [1, 10, 100, 1000] : [1, 3, 10, 30, 100, 300, 1000];
+  let g = xt.map(v => `<line x1="${X(v)}" x2="${X(v)}" y1="${T}" y2="${H - B}" stroke="${css('--grid')}"/><text class="lbl" x="${X(v)}" y="${H - B + 14}" text-anchor="middle">$${v}M</text>`).join('');
+  g += yt.map(v => `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css('--grid')}"/><text class="lbl" x="${L - 5}" y="${Y(v) + 3}" text-anchor="end">$${v}M</text>`).join('');
+  g += `<text class="lbl" x="${W - R}" y="${H - 2}" text-anchor="end">Total expenses →</text><text class="lbl" x="${L + 4}" y="${T + 10}">↑ Endowment</text>`;
+  g += `<rect x="${X(C.exp_floor_m)}" y="${T}" width="${W - R - X(C.exp_floor_m)}" height="${Y(C.end_floor_m) - T}" fill="${css('--band')}" opacity=".5"/>`;
+  g += `<line x1="${X(C.exp_floor_m)}" x2="${X(C.exp_floor_m)}" y1="${T}" y2="${H - B}" stroke="${css('--muted')}" stroke-dasharray="4 3"/><line x1="${L}" x2="${W - R}" y1="${Y(C.end_floor_m)}" y2="${Y(C.end_floor_m)}" stroke="${css('--muted')}" stroke-dasharray="4 3"/>`;
+  const pts = [];
+  closed.filter(r => r.tier === 'not a peer').forEach(r => pts.push({ r, x: X(r.expenses_m), y: Y(r.endowment_m || 0.3), el: `<circle r="3" fill="${css('--other')}" opacity=".8"/>` }));
+  closed.filter(r => r.tier !== 'not a peer').forEach(r => pts.push({ r, x: X(r.expenses_m), y: Y(r.endowment_m || 0.3), el: r.flagged === 'yes' ? `<circle r="5" fill="${css('--aid')}"/>` : `<circle r="5" fill="${css('--panel')}" stroke="${css('--aid')}" stroke-width="2"/>` }));
+  D.compare.forEach(r => pts.push({ c: r, x: X(r.expenses_m), y: Y(r.endowment_m), el: r === lcRow ? `<rect x="-5" y="-5" width="10" height="10" fill="${css('--gross')}"/>` : `<rect x="-4" y="-4" width="8" height="8" fill="none" stroke="${css('--gross')}" stroke-width="1.5"/>` }));
+  g += pts.map((p, i) => `<g transform="translate(${p.x.toFixed(1)},${p.y.toFixed(1)})" data-i="${i}">${p.el}</g>`).join('');
+  const lab = closed.filter(r => r.tier === 'peer');
+  if (!narrow) { const ls = lab.map(r => ({ x: X(r.expenses_m), y: Y(r.endowment_m), t: r.institution.replace(/ (College|University)$/, '').replace(/^(The )?College of /, '').replace(/^The /, '') })).sort((a, b) => a.y - b.y);
+    let last = -1e9; ls.forEach(l => { l.ly = Math.max(l.y + 4, last + 13); last = l.ly; });
+    const lx = Math.max(...ls.map(l => l.x)) + 16;
+    g += ls.map(l => `<line x1="${l.x + 5}" y1="${l.y}" x2="${lx - 3}" y2="${l.ly - 4}" stroke="${css('--muted')}" stroke-width=".6"/><text class="nm" x="${lx}" y="${l.ly}">${esc(l.t)}</text>`).join(''); }
+  const lcx = X(lcRow.expenses_m), lcEnd = lcx > W - 110;
+  g += `<text class="nm" x="${lcEnd ? lcx - 8 : lcx + 8}" y="${Y(lcRow.endowment_m) - 8}" text-anchor="${lcEnd ? 'end' : 'start'}" font-weight="600">Lewis &amp; Clark</text>`;
+  sc.innerHTML = `<svg width="${W}" height="${H}" role="img" aria-label="Scatter of closed colleges by expenses and endowment against the comparison set">${g}</svg>`;
+  sc.querySelectorAll('g[data-i]').forEach(n => { const p = pts[+n.dataset.i];
+    const html = p.c ? `<div class="h">${esc(p.c.INSTNM)}</div><div class="m">Comparison set, FY2023: expenses $${f1(p.c.expenses_m)}M, endowment $${f1(p.c.endowment_m)}M</div>`
+      : `<div class="h">${esc(p.r.institution)} (${esc(p.r.state || '')})</div><div>${p.r.event_type === 'absorbed' ? 'Absorbed' : 'Closed'} ${p.r.close_year} · ${esc(p.r.tier)}</div><div class="m">Expenses $${f1(p.r.expenses_m)}M, endowment $${f1(p.r.endowment_m)}M (FY${esc(p.r.size_fys)} median)</div><div>${p.r.peak_pct != null ? `Peak ${ord(p.r.peak_pct)} percentile; ${p.r.flagged === 'yes' ? 'flagged' : 'not flagged'}` : 'No score'}</div>`;
+    const on = e => showTip(e, html); n.addEventListener('mousemove', on); n.addEventListener('click', on); n.addEventListener('mouseleave', hideTip); });
+}
+new ResizeObserver(drawScatter).observe(sc); drawScatter();
+
+// ---------- strip
+const st = document.getElementById('strip');
+const stripRows = D.us.filter(r => r.tier !== 'not a peer' && r.peak_pct != null).sort((a, b) => (a.tier === b.tier ? b.peak_pct - a.peak_pct : a.tier === 'peer' ? -1 : 1));
+function drawStrip() {
+  const W = st.clientWidth, narrow = W < 520, rowH = 19, T = 22, L = narrow ? 128 : 210, R = 12, GAP = 22, H = T + stripRows.length * rowH + 2 * GAP + 30;
+  st.style.height = H + 'px';
+  const X = p => L + p / 100 * (W - L - R);
+  let g = [0, 25, 50, 75, 100].map(v => `<line x1="${X(v)}" x2="${X(v)}" y1="${T - 6}" y2="${H - 26}" stroke="${css('--grid')}"/><text class="lbl" x="${X(v)}" y="${H - 12}" text-anchor="middle">${v}</text>`).join('');
+  g += `<rect x="${X(TOP)}" y="${T - 6}" width="${X(100) - X(TOP)}" height="${H - 20 - T}" fill="${css('--band')}"/>`;
+  g += `<line x1="${X(C.lc_pct_2025)}" x2="${X(C.lc_pct_2025)}" y1="${T - 6}" y2="${H - 26}" stroke="${css('--gross')}" stroke-width="2"/><text class="lbl" x="${X(C.lc_pct_2025) + 4}" y="${T - 10}" fill="${css('--gross')}">L&amp;C 2025: ${ord(C.lc_pct_2025)}</text>`;
+  let prev = null, off = 0;
+  stripRows.forEach((r, i) => {
+    if (r.tier !== prev) { off += GAP; g += `<text class="lbl" x="0" y="${T + i * rowH + off - 6}" font-weight="600" fill="${css('--ink')}">${r.tier === 'peer' ? 'Peer-sized' : 'Near peers (smaller)'}</text>`; prev = r.tier; }
+    const y = T + i * rowH + off + rowH / 2;
+    const nm = r.institution.replace(/^The /, ''), short = narrow && nm.length > 20 ? nm.slice(0, 19) + '…' : nm;
+    g += `<text class="nm" x="0" y="${y + 4}">${esc(short)}</text><line x1="${L}" x2="${X(r.peak_pct)}" y1="${y}" y2="${y}" stroke="${css('--rule')}"/>`;
+    g += r.flagged === 'yes' ? `<circle cx="${X(r.peak_pct)}" cy="${y}" r="5" fill="${css('--aid')}"/>` : `<circle cx="${X(r.peak_pct)}" cy="${y}" r="5" fill="${css('--panel')}" stroke="${css('--aid')}" stroke-width="2"/>`;
+    g += `<rect x="0" y="${y - rowH / 2}" width="${W}" height="${rowH}" fill="transparent" data-i="${i}"/>`; });
+  st.innerHTML = `<svg width="${W}" height="${H}" role="img" aria-label="Highest percentile reached by each peer and near-peer closure">${g}</svg>`;
+  st.querySelectorAll('rect[data-i]').forEach(n => { const r = stripRows[+n.dataset.i];
+    const on = e => showTip(e, `<div class="h">${esc(r.institution)} (${esc(r.state || '')})</div><div>${r.event_type === 'absorbed' ? 'Absorbed' : 'Closed'} ${r.close_year}; peak ${ord(r.peak_pct)} in ${r.peak_t} (rank ${r.peak_rank} of ${r.peak_n})</div><div class="m">${esc(r.carnegie_class)}; expenses $${f1(r.expenses_m)}M, endowment $${f1(r.endowment_m)}M</div>`);
+    n.addEventListener('mousemove', on); n.addEventListener('click', on); n.addEventListener('mouseleave', hideTip); });
+}
+new ResizeObserver(drawStrip).observe(st); drawStrip();
+
+// ---------- US peer multiples
+const peers = D.us.filter(r => r.tier === 'peer').sort((a, b) => a.close_year - b.close_year);
+const pMeta = {}; peers.forEach(r => pMeta[r.institution] = { close: r.close_year, sub: `${r.state} · ${r.event_type === 'absorbed' ? 'absorbed' : 'closed'} ${r.close_year} · peak ${ord(r.peak_pct)}` });
+multiples(document.getElementById('us-multi'), peers.map(r => r.institution), pMeta, true);
+
+// ---------- US table with sort
+const usRows = D.us.filter(r => r.tier !== 'not a peer');
+let sortK = 'tier', dir = 1;
+function drawTable() {
+  const v = r => r[sortK] ?? -1;
+  const rows = [...usRows].sort((a, b) => (v(a) > v(b) ? 1 : v(a) < v(b) ? -1 : (b.peak_pct ?? -1) - (a.peak_pct ?? -1)) * dir);
+  document.querySelector('#us-table tbody').innerHTML = rows.map(r => `<tr><td>${esc(r.institution)} (${esc(r.state || '')})${r.event_type === 'absorbed' ? ' <span class="tag">absorbed</span>' : ''}</td><td class="n">${r.close_year}</td><td>${esc(r.tier)}</td><td>${esc(r.carnegie_class)}</td><td class="n">${f1(r.expenses_m)}</td><td class="n">${f1(r.endowment_m)}</td><td class="n">${r.peak_pct == null ? 'no score' : ord(r.peak_pct)}</td><td class="${r.flagged === 'yes' ? 'yes' : ''}">${r.flagged === 'yes' ? 'Yes' : r.flagged === 'no' ? 'No' : ''}</td><td class="n">${r.lead_years ?? ''}</td></tr>`).join('');
+}
+document.querySelectorAll('#us-table th').forEach(th => { th.style.cursor = 'pointer'; th.tabIndex = 0;
+  const go = () => { const k = th.dataset.k; dir = sortK === k ? -dir : 1; sortK = k; drawTable(); };
+  th.addEventListener('click', go); th.addEventListener('keydown', e => { if (e.key === 'Enter') go(); }); });
+drawTable();
+
+// ---------- labels for stacked tables on phones
+function labelCells() { document.querySelectorAll('table.stack').forEach(t => { const hs = [...t.tHead.rows[0].cells].map(c => c.textContent); [...t.tBodies[0].rows].forEach(tr => [...tr.cells].forEach((c, i) => c.dataset.l = hs[i] || '')); }); }
+labelCells(); new MutationObserver(labelCells).observe(document.querySelector('#us-table tbody'), { childList: true });
+
+// ---------- meaning and method
+const pk = peers.map(r => r.peak_pct), lo = Math.min(...pk), hi = Math.max(...pk);
+document.getElementById('meaning').textContent = `Lewis & Clark's 2025 score sits at the ${ord(C.lc_pct_2025)} percentile. The seven peer-sized colleges that closed or were absorbed peaked between the ${ord(lo)} and ${ord(hi)} percentiles before they went, all riskier than L&C is now but none in the riskiest tenth. The model's track record is strongest for small, thinly endowed colleges, which is most of the colleges that close. For a college of L&C's size, a low score is a useful screen but not a clean bill of health: watch the warning signs directly (enrollment against its five-year high, operating margins, debt) rather than the percentile alone.`;
+const M = [
+  `Scores: model F (gradient-boosted trees, all controls) for closing within three years, cross-fitted in five folds grouped by institution, so no college is scored by a model trained on itself. Percentiles compare each college with the private nonprofit four-year colleges scored the same year.`,
+  `Timing: a score for year t uses fall t-2 enrollment and FY t-2 finance, and covers closure in t, t+1 or t+2. A closure in year C is flagged if any of the scores for C-2 to C put the college in the riskiest tenth. "Years of warning" counts back from C to the first flag in the six score years before it. IPEDS data end with FY2023, so the last score is for ${C.score_year}; closures from 2024 on are judged only on scores built from FY2023 data or earlier.`,
+  `Closures: 2016 to 2023 from the IPEDS directory files (the same source the model trains on); 2023 to 2027 events and absorptions from a sourced list in <code>config/closure_events.csv</code>; Oregon events in <code>config/oregon_closures.csv</code>. Absorbed colleges (Wheelock, Mills, Cabrini, Marymount Manhattan and others) were taken over by another institution rather than shut, which is a different kind of failure.`,
+  `Peer screen, all from Carnegie classifications in the IPEDS directory (2015, 2018 or 2021 edition, the latest the college had) and IPEDS finance: (1) basic class among those in the comparison set: Doctoral (high research or professional), Master's, or Baccalaureate arts &amp; sciences or diverse fields; (2) academics: an undergraduate program mix that includes the arts and sciences (not professions-focused) and a four-year, mostly full-time undergraduate profile; (3) a primarily or highly residential campus; (4) size: expenses of at least $${f1(C.exp_floor_m)}M and endowment of at least $${f1(C.end_floor_m)}M, half of the smallest values in the comparison set ($${f1(C.exp_min_m)}M and $${f1(C.end_min_m)}M). Near peers pass 1 to 3 and spend at least $${f1(C.exp_floor_m / 2)}M. Special-focus colleges such as the University of the Arts are outside the screen.`,
+  `Caveats: closure dates in IPEDS can lag the real event by a year; St. Andrews (NC) has no score because it stopped reporting on its own in 2010, when it became part of Webber International University, so its size figures are from 2006 to 2010; the scores are screening scores, not forecasts. Size uses the median of the last five fiscal years before closing because some colleges report a zero endowment in the year they merge.`
+];
+document.getElementById('method-list').innerHTML = M.map(m => `<li>${m}</li>`).join('');
+}
+</script>
+</body>
+</html>
