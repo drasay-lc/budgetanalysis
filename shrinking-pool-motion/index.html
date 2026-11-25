@@ -101,7 +101,9 @@ th:first-child,td:first-child{text-align:left}
     { k: "Lewis & Clark", d: 10, h: "What it means for one entering class", p: "Each dot is one student in the fall 2025 class of 517. If applications shrink with the West's graduates and nothing else changes:" },
     { k: "Summary", d: 6, h: "The next five classes are the time to act", p: "By 2030 the West is already 6% smaller. Holding the class means winning a larger share of a smaller pool." }
   ];
-  let T = 0; const START = S.map((s) => { const t = T; T += s.d; return t; });
+  // Each scene animates for d seconds, then holds its finished state for HOLD seconds before the next begins.
+  const HOLD = 2.5, span = (k) => S[k].d + (k < S.length - 1 ? HOLD : 0);
+  let T = 0; const START = S.map((s, k) => { const t = T; T += span(k); return t; });
 
   const cv = document.getElementById("cv"), ctx = cv.getContext("2d"), stage = document.getElementById("stage");
   const capH = document.getElementById("cap-h"), capP = document.getElementById("cap-p");
@@ -206,7 +208,7 @@ th:first-child,td:first-child{text-align:left}
 
   function draw() {
     if (!W) return;
-    let i = START.findIndex((s, k) => t < s + S[k].d); if (i < 0) i = S.length - 1;
+    let i = START.findIndex((s, k) => t < s + span(k)); if (i < 0) i = S.length - 1;
     const u = clamp((t - START[i]) / S[i].d);
     ctx.clearRect(0, 0, W, H);
     // fade between scenes
