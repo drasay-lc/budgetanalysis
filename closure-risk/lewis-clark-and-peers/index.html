@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Closure and Distress Risk vs. Peers</title>
-<meta name="description" content="Lewis & Clark and 33 peers scored with the college closure and financial distress model of Kelchen, Ritter and Webber (Philadelphia Fed, 2024), using IPEDS data from 2002 to 2023.">
+<meta name="description" content="Lewis & Clark and 34 peers scored with the college closure and financial distress model of Kelchen, Ritter and Webber (Philadelphia Fed, 2024), using IPEDS data from 2002 to 2023.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -29,7 +29,7 @@ td.heat { font-family: var(--f-data); text-align: right; white-space: nowrap; }
 <div class="wrap">
   <p class="crumb"><a href="../">← Closure risk</a></p>
   <header>
-    <div class="eyebrow">Lewis &amp; Clark and 33 peers · IPEDS enrollment, staff and finance · 2002 to 2023</div>
+    <div class="eyebrow">Lewis &amp; Clark and 34 peers · IPEDS enrollment, staff and finance · 2002 to 2023</div>
     <h1>Closure and Distress Risk vs. Peers</h1>
     <p class="made" role="doc-subtitle">Built with Claude Opus 5.5, November 2026, for Dan Rasay. The model code and full outputs are kept in a separate repository, <a href="https://github.com/drasay-lc/closure-risk">drasay-lc/closure-risk</a>. How the model did on real closures: <a href="../track-record/">Track Record</a>.</p>
     <p class="dek">This page applies the model from Kelchen, Ritter and Webber, "Predicting College Closures and Financial Distress" (Federal Reserve Bank of Philadelphia Working Paper 24-20, 2024). The model was trained on every private college that reported to IPEDS from 2002 to 2023, including about 1,840 that closed. Each college is scored on how closely its enrollment, staffing, revenue, expenses, balance sheet and the paper's four warning signs resemble those of colleges that went on to close. The scores rank colleges for screening; they are not forecasts.</p>
@@ -157,7 +157,7 @@ td.heat { font-family: var(--f-data); text-align: right; white-space: nowrap; }
     $("t-pct").textContent = cur.percentile || "n/a";
     $("t-cliff").textContent = fmt(sc.cliff_gradual_fixed50, f2) + "%";
     $("t-base").textContent = fmt(sc.baseline, f2) + "%";
-    $("find").textContent = `Lewis & Clark's chance of closing by 2027 scores ${fmt(cur.risk_3yr_pct, f2)}%, percentile ${cur.percentile} of ${fd(nAll)} private nonprofit four-year colleges. The median college scores ${f2(med)}%, and ${below} of the 34 colleges in this comparison score below it.`;
+    $("find").textContent = `Lewis & Clark's chance of closing by 2027 scores ${fmt(cur.risk_3yr_pct, f2)}%, percentile ${cur.percentile} of ${fd(nAll)} private nonprofit four-year colleges. The median college scores ${f2(med)}%, and ${below} of the ${D.current_risk.length} colleges in this comparison score below it.`;
 
     const sys = (k) => fmt((D.system_closures_2027_2031.find((r) => r.scenario === k) || {}).closures_per_year_lasso, fd);
     $("n-sys").textContent = `Lewis & Clark moves from ${fmt(sc.baseline, f2)}% with flat enrollment to ${fmt(sc.cliff_gradual, f2)}% with a gradual 15% decline, and ${fmt(sc.cliff_gradual_fixed50, f2)}% when half of costs are fixed (its FY2023 margin was ${fmt(met.fy2023_margin_pct, f1)}% and tuition was ${fmt(met.tuition_share_pct, fd)}% of revenue). Across all private colleges, the paper's LASSO model expects about ${sys("baseline")} closures a year from 2027 to 2031 with flat enrollment, ${sys("cliff_gradual")} with a gradual 15% decline, ${sys("cliff_gradual_fixed50")} if half of costs are fixed, and ${sys("persist")} if each college's 2019 to 2023 decline persists.`;

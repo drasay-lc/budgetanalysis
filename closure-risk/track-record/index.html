@@ -79,7 +79,7 @@ details li { margin-bottom:6px; max-width:80ch; }
   <p class="crumb"><a href="../">← Closure risk</a></p>
   <header>
     <div class="eyebrow">Closure risk · model track record · IPEDS 2002 to 2023, closures to 2027</div>
-    <h1 id="title">The model caught most small-college closures, but none at colleges Lewis &amp; Clark's peers' size</h1>
+    <h1 id="title">The model caught most small-college closures, but few at colleges that resemble Lewis &amp; Clark's peers</h1>
     <p class="made">Built with Claude Opus 5.5, November 2026, for Dan Rasay. Code and outputs: <a href="https://github.com/drasay-lc/closure-risk">drasay-lc/closure-risk</a> (<code>src/closure_backtest.py</code>).</p>
     <p class="dek">This page asks whether the closure model from Kelchen, Ritter and Webber (Philadelphia Fed, 2024), as replicated for the peer analysis, would have warned about real closures. Every score here comes from a model that never saw the college it scores. A closure counts as <b>flagged</b> when the college sat in the riskiest tenth of private nonprofit four-year colleges in any of the scores covering its closure year.</p>
   </header>
@@ -119,7 +119,7 @@ details li { margin-bottom:6px; max-width:80ch; }
     <div class="fig" id="strip"></div>
   </section>
   <section class="card">
-    <h3>The seven peer-sized closures, year by year</h3>
+    <h3 id="peer-multi-title">The peer-sized closures, year by year</h3>
     <p class="note">Same layout as Part 1, with Lewis &amp; Clark's own percentile in blue for comparison. Absorbed colleges were taken over by a stronger institution rather than shut.</p>
     <div class="multi" id="us-multi"></div>
   </section>
@@ -166,8 +166,10 @@ const tiles = [
 document.getElementById('tiles').innerHTML = tiles.map(([b, s]) => `<div class="tile"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('');
 const orMiss = D.oregon.filter(r => r.flagged === 'no');
 document.getElementById('or-dek').textContent = `${C.oregon_flagged} of the ${C.oregon_tested} Oregon closures the data can test were in the riskiest tenth in the scores leading up to them.` + orMiss.map(r => ` ${r.institution.replace(/ University$/, '')}, the miss, peaked at the ${ord(r.peak_pct)} percentile.`).join('');
-document.getElementById('us-dek').textContent = `${C.n_us_closures} private nonprofit four-year colleges closed or were absorbed from 2016 to 2027. Seven pass every part of the peer screen, and ${C.near_peer_n} more match on Carnegie class, academics and residential campus but are smaller. The model flagged none of the seven.`;
-document.getElementById('scatter-note').textContent = `Each closed college at its size in the five years before closing, against the 34-college comparison set in FY2023 (both axes in FY2023 dollars, log scale). The dashed lines are the peer floors: half of the smallest comparison-set budget ($${f1(C.exp_floor_m)}M) and endowment ($${f1(C.end_floor_m)}M). Colleges with no endowment reported are drawn at the bottom edge.`;
+const pf = D.us.filter(r => r.tier === 'peer' && r.flagged === 'yes');
+document.getElementById('title').textContent = `The model caught most small-college closures, but only ${C.peer_flagged} of ${C.peer_scored} at colleges that resemble Lewis & Clark's peers`;
+document.getElementById('us-dek').textContent = `${C.n_us_closures} private nonprofit four-year colleges closed or were absorbed from 2016 to 2027. ${C.peer_n} pass every part of the peer screen, and ${C.near_peer_n} more match on Carnegie class, academics and residential campus but are smaller. The model flagged ${C.peer_flagged} of the ${C.peer_scored} peer-sized closures it could score` + (pf.length ? ` (${pf.map(r => r.institution).join(', ')}).` : '.');
+document.getElementById('scatter-note').textContent = `Each closed college at its size in the five years before closing, against the ${D.compare.length}-college comparison set in FY2023 (both axes in FY2023 dollars, log scale). The dashed lines are the peer floors: half of the smallest comparison-set budget ($${f1(C.exp_floor_m)}M) and endowment ($${f1(C.end_floor_m)}M). Colleges with no endowment reported are drawn at the bottom edge. Tap or hover a dot for its name; the chart below names every peer and near peer.`;
 
 // ---------- small multiples
 function multiples(el, names, meta, showLC) {
@@ -221,11 +223,6 @@ function drawScatter() {
   closed.filter(r => r.tier !== 'not a peer').forEach(r => pts.push({ r, x: X(r.expenses_m), y: Y(r.endowment_m || 0.3), el: r.flagged === 'yes' ? `<circle r="5" fill="${css('--aid')}"/>` : `<circle r="5" fill="${css('--panel')}" stroke="${css('--aid')}" stroke-width="2"/>` }));
   D.compare.forEach(r => pts.push({ c: r, x: X(r.expenses_m), y: Y(r.endowment_m), el: r === lcRow ? `<rect x="-5" y="-5" width="10" height="10" fill="${css('--gross')}"/>` : `<rect x="-4" y="-4" width="8" height="8" fill="none" stroke="${css('--gross')}" stroke-width="1.5"/>` }));
   g += pts.map((p, i) => `<g transform="translate(${p.x.toFixed(1)},${p.y.toFixed(1)})" data-i="${i}">${p.el}</g>`).join('');
-  const lab = closed.filter(r => r.tier === 'peer');
-  if (!narrow) { const ls = lab.map(r => ({ x: X(r.expenses_m), y: Y(r.endowment_m), t: r.institution.replace(/ (College|University)$/, '').replace(/^(The )?College of /, '').replace(/^The /, '') })).sort((a, b) => a.y - b.y);
-    let last = -1e9; ls.forEach(l => { l.ly = Math.max(l.y + 4, last + 13); last = l.ly; });
-    const lx = Math.max(...ls.map(l => l.x)) + 16;
-    g += ls.map(l => `<line x1="${l.x + 5}" y1="${l.y}" x2="${lx - 3}" y2="${l.ly - 4}" stroke="${css('--muted')}" stroke-width=".6"/><text class="nm" x="${lx}" y="${l.ly}">${esc(l.t)}</text>`).join(''); }
   const lcx = X(lcRow.expenses_m), lcEnd = lcx > W - 110;
   g += `<text class="nm" x="${lcEnd ? lcx - 8 : lcx + 8}" y="${Y(lcRow.endowment_m) - 8}" text-anchor="${lcEnd ? 'end' : 'start'}" font-weight="600">Lewis &amp; Clark</text>`;
   sc.innerHTML = `<svg width="${W}" height="${H}" role="img" aria-label="Scatter of closed colleges by expenses and endowment against the comparison set">${g}</svg>`;
@@ -262,7 +259,7 @@ function drawStrip() {
 new ResizeObserver(drawStrip).observe(st); drawStrip();
 
 // ---------- US peer multiples
-const peers = D.us.filter(r => r.tier === 'peer').sort((a, b) => a.close_year - b.close_year);
+const peers = D.us.filter(r => r.tier === 'peer' && r.peak_pct != null).sort((a, b) => a.close_year - b.close_year);
 const pMeta = {}; peers.forEach(r => pMeta[r.institution] = { close: r.close_year, sub: `${r.state} · ${r.event_type === 'absorbed' ? 'absorbed' : 'closed'} ${r.close_year} · peak ${ord(r.peak_pct)}` });
 multiples(document.getElementById('us-multi'), peers.map(r => r.institution), pMeta, true);
 
@@ -284,13 +281,15 @@ function labelCells() { document.querySelectorAll('table.stack').forEach(t => { 
 labelCells(); new MutationObserver(labelCells).observe(document.querySelector('#us-table tbody'), { childList: true });
 
 // ---------- meaning and method
-const pk = peers.map(r => r.peak_pct), lo = Math.min(...pk), hi = Math.max(...pk);
-document.getElementById('meaning').textContent = `Lewis & Clark's 2025 score sits at the ${ord(C.lc_pct_2025)} percentile. The seven peer-sized colleges that closed or were absorbed peaked between the ${ord(lo)} and ${ord(hi)} percentiles before they went, all riskier than L&C is now but none in the riskiest tenth. The model's track record is strongest for small, thinly endowed colleges, which is most of the colleges that close. For a college of L&C's size, a low score is a useful screen but not a clean bill of health: watch the warning signs directly (enrollment against its five-year high, operating margins, debt) rather than the percentile alone.`;
+const pk = peers.filter(r => r.peak_pct != null).map(r => r.peak_pct), lo = Math.min(...pk), hi = Math.max(...pk);
+document.getElementById('peer-multi-title').textContent = `The ${peers.length} peer-sized closures, year by year`;
+const pfMax = Math.max(0, ...pf.map(r => r.expenses_m)), bigger = peers.filter(r => r.flagged === 'no' && r.expenses_m > pfMax);
+document.getElementById('meaning').textContent = `Lewis & Clark's 2025 score sits at the ${ord(C.lc_pct_2025)} percentile. The ${peers.length} peer-sized colleges that closed or were absorbed peaked between the ${ord(lo)} and ${ord(hi)} percentiles in the scores before they went, all riskier than L&C is now.` + (pf.length ? ` Only ${pf.length} reached the riskiest tenth, and none spent more than $${Math.round(pfMax)}M a year; the ${bigger.length} larger ones were all missed.` : ' None reached the riskiest tenth.') + ` The model's track record is strongest for small, thinly endowed colleges, which is most of the colleges that close. For a college of L&C's size, a low score is a useful screen but not a clean bill of health: watch the warning signs directly (enrollment against its five-year high, operating margins, debt) rather than the percentile alone.`;
 const M = [
   `Scores: model F (gradient-boosted trees, all controls) for closing within three years, cross-fitted in five folds grouped by institution, so no college is scored by a model trained on itself. Percentiles compare each college with the private nonprofit four-year colleges scored the same year.`,
   `Timing: a score for year t uses fall t-2 enrollment and FY t-2 finance, and covers closure in t, t+1 or t+2. A closure in year C is flagged if any of the scores for C-2 to C put the college in the riskiest tenth. "Years of warning" counts back from C to the first flag in the six score years before it. IPEDS data end with FY2023, so the last score is for ${C.score_year}; closures from 2024 on are judged only on scores built from FY2023 data or earlier.`,
   `Closures: 2016 to 2023 from the IPEDS directory files (the same source the model trains on); 2023 to 2027 events and absorptions from a sourced list in <code>config/closure_events.csv</code>; Oregon events in <code>config/oregon_closures.csv</code>. Absorbed colleges (Wheelock, Mills, Cabrini, Marymount Manhattan and others) were taken over by another institution rather than shut, which is a different kind of failure.`,
-  `Peer screen, all from Carnegie classifications in the IPEDS directory (2015, 2018 or 2021 edition, the latest the college had) and IPEDS finance: (1) basic class among those in the comparison set: Doctoral (high research or professional), Master's, or Baccalaureate arts &amp; sciences or diverse fields; (2) academics: an undergraduate program mix that includes the arts and sciences (not professions-focused) and a four-year, mostly full-time undergraduate profile; (3) a primarily or highly residential campus; (4) size: expenses of at least $${f1(C.exp_floor_m)}M and endowment of at least $${f1(C.end_floor_m)}M, half of the smallest values in the comparison set ($${f1(C.exp_min_m)}M and $${f1(C.end_min_m)}M). Near peers pass 1 to 3 and spend at least $${f1(C.exp_floor_m / 2)}M. Special-focus colleges such as the University of the Arts are outside the screen.`,
+  `Peer screen, all from Carnegie classifications in the IPEDS directory (2015, 2018 or 2021 edition, the latest the college had) and IPEDS finance: (1) basic class among those in the comparison set: Doctoral (high research or professional), Master's, or Baccalaureate arts &amp; sciences or diverse fields; (2) academics: an undergraduate program mix that includes the arts and sciences (not professions-focused) and a four-year, mostly full-time undergraduate profile; (3) a primarily or highly residential campus; (4) size: expenses of at least $${f1(C.exp_floor_m)}M and endowment of at least $${f1(C.end_floor_m)}M, half of the smallest values in the comparison set of Lewis &amp; Clark and its ${D.compare.length - 1} peers ($${f1(C.exp_min_m)}M and $${f1(C.end_min_m)}M, both Hampshire's FY2023 figures since it joined Group 3). Near peers pass 1 to 3 and spend at least $${f1(C.exp_floor_m / 2)}M. Special-focus colleges such as the University of the Arts are outside the screen.`,
   `Caveats: closure dates in IPEDS can lag the real event by a year; St. Andrews (NC) has no score because it stopped reporting on its own in 2010, when it became part of Webber International University, so its size figures are from 2006 to 2010; the scores are screening scores, not forecasts. Size uses the median of the last five fiscal years before closing because some colleges report a zero endowment in the year they merge.`
 ];
 document.getElementById('method-list').innerHTML = M.map(m => `<li>${m}</li>`).join('');

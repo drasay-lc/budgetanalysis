@@ -1,4 +1,5 @@
 college,group,risk_3yr_pct,percentile,risk_this_year_pct
+Hampshire,Group 3,1.19,59,0.231
 Saint Mary's CA,Group 3,0.54,46,0.121
 Drew,Group 2,0.51,45,0.668
 Pacific Lutheran,Group 3,0.48,44,0.134
@@ -14,18 +15,18 @@ Capital,Group 3,0.13,24,0.111
 Sarah Lawrence,Group 1,0.13,24,0.016
 Whitman,Group 1,0.11,21,0.014
 U of Portland,Group 1,0.09,17,0.036
-Pacific University,Group 2,0.08,15,0.01
 La Verne,Group 3,0.08,15,0.039
+Pacific University,Group 2,0.08,15,0.01
 Reed,Group 1,0.06,10,0.025
 Lewis & Clark,Lewis & Clark,0.06,11,0.013
 Puget Sound,Group 1,0.06,11,0.081
 Loyola New Orleans,Group 2,0.05,7,0.03
 Roger Williams,Group 3,0.05,8,0.009
-John Carroll,Group 3,0.04,6,0.047
 Seattle University,Group 2,0.04,7,0.017
+John Carroll,Group 3,0.04,6,0.047
+St. Olaf,Group 1,0.04,5,0.033
 Occidental,Group 1,0.04,6,0.014
 Union,Group 1,0.04,5,0.045
-St. Olaf,Group 1,0.04,5,0.033
 Gettysburg,Group 1,0.03,3,0.013
 Gonzaga,Group 1,0.03,2,0.009
 Skidmore,Group 1,0.03,3,0.02
